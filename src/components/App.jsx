@@ -2,7 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import {
   //useEffect,
-  lazy } from 'react';
+  lazy,
+} from 'react';
 // import { useDispatch } from 'react-redux';
 
 // import Loader from './Loader/Loader';
@@ -10,7 +11,7 @@ import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
-const HomePage = lazy(() => import('../pages/Home'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/Calendar'));
