@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import { PrivateRoute } from './PrivateRoute';
 import { HelmetProvider } from 'react-helmet-async';
 import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 // import Loader from './Loader/Loader';
 import { Layout } from './Layout/Layout';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -14,7 +15,7 @@ const CalendarPage = lazy(() => import('../pages/Calendar'));
 
 export const App = () => {
   // const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const { isRefreshing } = useAuth();
 
   // useEffect(() => {
