@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { useEffect, lazy } from 'react';
+import {
+  //useEffect,
+  lazy } from 'react';
 // import { useDispatch } from 'react-redux';
 
 // import Loader from './Loader/Loader';
