@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkGooseTrack_project_group_1_frontend=self.webpackChunkGooseTrack_project_group_1_frontend||[]).push([[38],{38:function(r,e,n){n.r(e),n.d(e,{default:function(){return t}});var o=n(184);function t(){return(0,o.jsx)(o.Fragment,{})}}}]);
-//# sourceMappingURL=38.bd9ec2a1.chunk.js.map
