@@ -1,16 +1,20 @@
+import { Route, Routes } from 'react-router-dom';
+// import Loader from './Loader/Loader';
+import { Layout } from './Layout/Layout';
+
 export const App = () => {
+  // const isLoading = useSelector(selectIsLoading);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    //  isLoading ? (
+    //   <Loader />
+    // ) : (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* <Route index element={<HomePage />} /> */}
+        </Route>
+      </Routes>
+    </>
   );
 };
