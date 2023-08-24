@@ -1,16 +1,16 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, styled } from 'styled-components';
 import 'modern-normalize';
-import PoppinsMedium from "../../assets/fonts/Poppins-Medium.ttf";
-import PoppinsRegular from "../../assets/fonts/Poppins-Regular.ttf";
-import InterBold from "../../assets/fonts/Inter-Bold.ttf";
-import InterMedium from "../../assets/fonts/Inter-Medium.ttf";
-import InterRegular from "../../assets/fonts/Inter-Regular.ttf";
-import InterSemiBold from "../../assets/fonts/Inter-SemiBold.ttf";
-import InterSemiBoldItalic from "../../assets/fonts/Inter-SemiBold-Italic.ttf";
-import CoolveticaRegular from "../../assets/fonts/Coolvetica-Regular.otf";
-import CoolveticaRegularItalic from "../../assets/fonts/Coolvetica-Regular-Italic.otf";
+import PoppinsMedium from '../../assets/fonts/Poppins-Medium.ttf';
+import PoppinsRegular from '../../assets/fonts/Poppins-Regular.ttf';
+import InterBold from '../../assets/fonts/Inter-Bold.ttf';
+import InterMedium from '../../assets/fonts/Inter-Medium.ttf';
+import InterRegular from '../../assets/fonts/Inter-Regular.ttf';
+import InterSemiBold from '../../assets/fonts/Inter-SemiBold.ttf';
+import InterSemiBoldItalic from '../../assets/fonts/Inter-SemiBold-Italic.ttf';
+import CoolveticaRegular from '../../assets/fonts/Coolvetica-Regular.otf';
+import CoolveticaRegularItalic from '../../assets/fonts/Coolvetica-Regular-Italic.otf';
 
-export const globalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 
     @font-face {
         font-family: 'PoppinsRegular';
@@ -84,7 +84,7 @@ export const globalStyle = createGlobalStyle`
         font-style: italic;
     }
 
-body{
+body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
   'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
