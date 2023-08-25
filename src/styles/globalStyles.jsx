@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 import 'modern-normalize';
 import PoppinsMedium from '../fonts/Poppins-Medium.ttf';
 import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
@@ -10,7 +10,7 @@ import InterSemiBoldItalic from '../fonts/Inter-SemiBold-Italic.ttf';
 import CoolveticaRegular from '../fonts/Coolvetica-Regular.otf';
 import CoolveticaRegularItalic from '../fonts/Coolvetica-Regular-Italic.otf';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
     @font-face {
         font-family: 'PoppinsRegular';
@@ -137,3 +137,5 @@ button {
     border: none;
   }
 `;
+
+export default GlobalStyle;
