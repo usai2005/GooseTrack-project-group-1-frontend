@@ -24,7 +24,7 @@ export default function HomePage() {
                 </LoginLink>
               </li>
               <li>
-                <SignupLink href="#">Sign up</SignupLink>
+                <SignupLink to="/register">Sign up</SignupLink>
               </li>
             </List>
           </Container>
