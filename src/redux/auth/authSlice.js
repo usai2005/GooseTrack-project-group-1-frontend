@@ -9,7 +9,14 @@ import {
 } from './handlers';
 
 const initialState = {
-  user: { name: null, email: null }, /// додати інші поля !!!!!!!!!!
+  user: { 
+    name: null, 
+    email: null,
+    avatar: null,
+    phone: null,
+    skype: null,
+    birthday: null,
+    }, 
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
