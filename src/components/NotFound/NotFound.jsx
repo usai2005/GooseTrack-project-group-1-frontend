@@ -1,16 +1,18 @@
-import desk1x from '../../../assets/images/notFound/desk@1x.png';
-import desk2x from '../../../assets/images/notFound/desk@2x.png';
-import tab1x from '../../../assets/images/notFound/tab@1x.png';
-import tab2x from '../../../assets/images/notFound/tab@2x.png';
-import mob1x from '../../../assets/images/notFound/mob@1x.png';
-import mob2x from '../../../assets/images/notFound/mob@1x.png';
+import desk1x from '../../images/notFound/desk@1x.webp';
+import desk2x from '../../images/notFound/desk@2x.webp';
+import tab1x from '../../images/notFound/tab@1x.webp';
+import tab2x from '../../images/notFound/tab@2x.webp';
+import mob1x from '../../images/notFound/mob@1x.webp';
+import mob2x from '../../images/notFound/mob@1x.webp';
 
-import { Wrapper, Text, Img, Info, Home } from './NotFound.styled';
+import { Container } from '../../styles/container';
+import { Wrapper, Content, Text, Img, Info, Title, Btn } from './NotFound.styled';
 
 export const NotFoundComp = () => {
   return (
-    <>
+     <Container>
       <Wrapper>
+      <Content>
         <Text>4</Text>
         <Img
           srcSet={`${desk1x} 1440w, ${desk2x} 2880w,  ${tab1x} 768w, ${tab2x} 1536w, ${mob1x} 375w, ${mob2x} 750w,`}
@@ -18,12 +20,12 @@ export const NotFoundComp = () => {
           alt="goose"
         />
         <Text>4</Text>
-      </Wrapper>
+      </Content>
       <Info>
-        <p>We’re sorry, the page you requested could not be found.</p>
-        <Home>Please go back to the homepage.</Home>
+        <Title>We’re sorry, the page you requested could not be found.Please go back to the homepage.</Title>
       </Info>
-    </>
+      <Btn to="/">HomePage</Btn>
+      </Wrapper>
+    </Container>
   );
 };
-

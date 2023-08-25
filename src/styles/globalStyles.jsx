@@ -1,16 +1,16 @@
-import { createGlobalStyle, styled } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 import 'modern-normalize';
-import PoppinsMedium from '../../assets/fonts/Poppins-Medium.ttf';
-import PoppinsRegular from '../../assets/fonts/Poppins-Regular.ttf';
-import InterBold from '../../assets/fonts/Inter-Bold.ttf';
-import InterMedium from '../../assets/fonts/Inter-Medium.ttf';
-import InterRegular from '../../assets/fonts/Inter-Regular.ttf';
-import InterSemiBold from '../../assets/fonts/Inter-SemiBold.ttf';
-import InterSemiBoldItalic from '../../assets/fonts/Inter-SemiBold-Italic.ttf';
-import CoolveticaRegular from '../../assets/fonts/Coolvetica-Regular.otf';
-import CoolveticaRegularItalic from '../../assets/fonts/Coolvetica-Regular-Italic.otf';
+import PoppinsMedium from '../fonts/Poppins-Medium.ttf';
+import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
+import InterBold from '../fonts/Inter-Bold.ttf';
+import InterMedium from '../fonts/Inter-Medium.ttf';
+import InterRegular from '../fonts/Inter-Regular.ttf';
+import InterSemiBold from '../fonts/Inter-SemiBold.ttf';
+import InterSemiBoldItalic from '../fonts/Inter-SemiBold-Italic.ttf';
+import CoolveticaRegular from '../fonts/Coolvetica-Regular.otf';
+import CoolveticaRegularItalic from '../fonts/Coolvetica-Regular-Italic.otf';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
     @font-face {
         font-family: 'PoppinsRegular';
@@ -137,3 +137,5 @@ button {
     border: none;
   }
 `;
+
+export default GlobalStyle;
