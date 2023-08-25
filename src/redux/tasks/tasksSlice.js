@@ -1,3 +1,5 @@
+import { handleFulfilled, handlePending, handleRejected } from "./handlers"
+
 const { createSlice } = require("@reduxjs/toolkit")
 const { fetchTasks, addTask, deleteTask, updateTask } = require("./tasksOperations")
 
@@ -13,47 +15,24 @@ const tasksSlice = createSlice({
     initialState,
     extraReducers: builder => {
         builder
-        .addCase(fetchTasks.pending, state => {
-            state.isLoading = true;
-            state.error = null;
-        })
-        .addCase(fetchTasks.fulfilled, (state, { payload }) => {
-            state.tasks = payload;
-            state.isLoading = false;
-            state.error = null;
-        })
-        .addCase(fetchTasks.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
-        .addCase(addTask.pending, state => {
-            state.isLoading = true;
-            state.error = null;
-        })
+        .addCase(fetchTasks.pending, handlePending)
+        .addCase(fetchTasks.fulfilled, handleFulfilled)
+        .addCase(fetchTasks.rejected, handleRejected)
+        .addCase(addTask.pending, handlePending)
         .addCase(addTask.fulfilled, (state, { payload }) => {
             state.tasks.push(payload);
             state.isLoading = false;
             state.error = null;
         })
-        .addCase(addTask.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
-        .addCase(deleteTask.pending, state => {
-            state.isLoading = true;
-            state.error = null;
-        })
+        .addCase(addTask.rejected, handleRejected)
+        .addCase(deleteTask.pending, handlePending)
         .addCase(deleteTask.fulfilled, (state, { payload }) => {
             state.tasks = state.tasks.filter(task => task._id !== payload);
             state.isLoading = false;
             state.error = null;
         })
-        .addCase(deleteTask.rejected)
-        .addCase(updateTask.pending, state => {
-            state.isLoading = true;
-            state.error = null;
-        })
-
+        .addCase(deleteTask.rejected, handleRejected)
+        .addCase(updateTask.pending, handlePending)
         .addCase(updateTask.fulfilled, (state, { payload }) => {
             const updateTaskIndex = state.tasks.findIndex(
              task => task._id === payload.data._id
@@ -65,11 +44,7 @@ const tasksSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         })
-
-        .addCase(updateTask.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
+        .addCase(updateTask.rejected, handleRejected)
     }
 })
 
