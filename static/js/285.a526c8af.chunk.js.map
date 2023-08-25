@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/285.a526c8af.chunk.js","mappings":"wNAAe,SAASA,IACtB,OAAOC,EAAAA,EAAAA,KAAAC,EAAAA,SAAA,GACT,C","sources":["pages/Register.jsx"],"sourcesContent":["export default function Register() {\n  return <></>;\n}\n"],"names":["Register","_jsx","_Fragment"],"sourceRoot":""}
