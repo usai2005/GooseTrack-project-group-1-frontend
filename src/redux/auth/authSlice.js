@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, register } from './operations';
+import { currentUser, logIn, logOut, register } from './operations';
 import {
   handleFulfilled,
   handleLogOut,
@@ -9,21 +9,28 @@ import {
 } from './handlers';
 
 const initialState = {
-  user: { name: null, email: null }, /// додати інші поля !!!!!!!!!!
+  user: { 
+    name: null, 
+    email: null,
+    avatar: null,
+    phone: null,
+    skype: null,
+    birthday: null,
+    }, 
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'users',
   initialState,
   extraReducers: builder => {
     builder
       .addCase(logOut.fulfilled, handleLogOut)
-      .addCase(refreshUser.pending, handlePending)
-      .addCase(refreshUser.fulfilled, handleRefresh)
-      .addCase(refreshUser.rejected, handleRefreshReject)
+      .addCase(currentUser.pending, handlePending)
+      .addCase(currentUser.fulfilled, handleRefresh)
+      .addCase(currentUser.rejected, handleRefreshReject)
       .addMatcher(
         isAnyOf(register.fulfilled, logIn.fulfilled),
         handleFulfilled
