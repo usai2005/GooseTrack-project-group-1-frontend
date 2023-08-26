@@ -10,6 +10,8 @@ import {
 import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { Provider } from 'react-redux';
+import { store } from 'redux/store';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -47,7 +49,8 @@ export const App = () => {
     //   </Routes>
     // </>
 
-    <HelmetProvider>
+    <Provider store={store}>
+      <HelmetProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -78,5 +81,6 @@ export const App = () => {
         </Route>
       </Routes>
     </HelmetProvider>
+    </Provider>
   );
 };
