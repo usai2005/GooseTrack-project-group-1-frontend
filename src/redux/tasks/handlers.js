@@ -9,7 +9,7 @@ export const handleRejected = (state, { payload }) => {
 };
 
 export const handleFulfilled = (state, { payload }) => {
-    state.reviews = payload;
+    state.tasks = payload;
     state.isLoading = false;
     state.error = null;
 }
