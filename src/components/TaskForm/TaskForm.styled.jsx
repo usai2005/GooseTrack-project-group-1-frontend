@@ -44,6 +44,7 @@ export const Label = styled.label`
 `;
 
 export const TitleField = styled(Field)`
+  box-sizing: border-box;
   width: 267px;
   height: 42px;
   flex-shrink: 0;
@@ -80,6 +81,7 @@ export const FieldContainer = styled.div`
 `;
 
 export const TimeField = styled(Field)`
+  box-sizing: border-box;
   width: 126px;
   height: 42px;
   flex-shrink: 0;
@@ -109,26 +111,47 @@ export const PriorityContainer = styled.div`
 `;
 
 export const PriorityLabel = styled.label`
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 6px;
 `;
 
 export const PriorityField = styled(Field)`
-  width: 10px;
-  height: 10px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background-color: ${props => {
+  /* outline: 1px solid
+    ${props => {
+    if (props.checked) {
+      switch (props.value) {
+        case 'low':
+          return '#36a1e8';
+        case 'medium':
+          return '#F3B249';
+        case 'high':
+          return '#EA3D65';
+        default:
+          return '';
+      }
+    }
+  }}; */
+  /* background-color: ${props => {
     switch (props.value) {
       case 'low':
-        return '#72C2F8';
+        return '#36a1e8';
       case 'medium':
         return '#F3B249';
       case 'high':
         return '#EA3D65';
       default:
-        return 'black';
+        return 'transparent';
     }
-  }};
+  }}; */
   cursor: pointer;
 `;
 
