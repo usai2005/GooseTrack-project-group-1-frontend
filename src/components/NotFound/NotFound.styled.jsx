@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const viewport = {
-  mob: '@media screen and (max-width: 767px)',
   tab: '@media screen and (min-width: 768px)',
   desk: '@media screen and (min-width: 1440px)',
 };

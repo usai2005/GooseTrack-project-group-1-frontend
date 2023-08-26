@@ -10,24 +10,24 @@ import {
   LabelList,
   ResponsiveContainer,
 } from 'recharts';
-import { Container } from '../../styles/container';
-import { Title, Wrapper } from './StatisticsComp.styled';
+
+import { Container, Title, Wrapper } from './StatisticsComp.styled';
 
 const data = [
   {
     name: 'To Do',
-    day: 4000,
-    month: 2400,
+    day: 4,
+    month: 24,
   },
   {
     name: 'In Progress',
-    day: 3000,
-    month: 1398,  
+    day: 3,
+    month: 13,
   },
   {
     name: 'Done',
-    day: 2000,
-    month: 9800, 
+    day: 2,
+    month: 9,
   },
 ];
 
@@ -36,9 +36,12 @@ export const StatisticsComp = () => {
     <Container>
       <Title>Tasks</Title>
       <Wrapper>
-        <ResponsiveContainer  height={300} width={500}>
-      
-          <BarChart data={data} margin={{ top: 24, }} barGap={14} >
+        <ResponsiveContainer>
+          <BarChart
+            data={data}
+            margin={{ top: 24, right: 10, left: 10, bottom: 10 }}
+            barGap={14}
+          >
             <defs>
               <linearGradient id="colorDay" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
@@ -71,7 +74,6 @@ export const StatisticsComp = () => {
               <LabelList dataKey="month" position="top" />
             </Bar>
           </BarChart>
-
         </ResponsiveContainer>
       </Wrapper>
     </Container>
