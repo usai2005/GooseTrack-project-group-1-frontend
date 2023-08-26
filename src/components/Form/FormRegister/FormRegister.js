@@ -3,6 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Label, ContainerInput } from './FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 const styleInput = {
   padding: 18,
@@ -23,55 +25,67 @@ const SignupSchema = Yup.object().shape({
     .min(6, 'Password is too short - should be 6 chars minimum.')
     .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 });
-const FormRegister = () => (
-  <Formik
-    initialValues={{
-      name: '',
-      email: '',
-      password: '',
-    }}
-    validationSchema={SignupSchema}
-    onSubmit={values => {
-      // same shape as initial values
-      console.log(values);
-    }}
-  >
-    {({ errors, touched }) => (
-      <Form style={{ width: '100%' }}>
-        <ContainerInput>
-          <Label>Name</Label>
-          <Field name="name" placeholder="Enter your name" style={styleInput} />
-          {errors.name && touched.name ? <div>{errors.name}</div> : null}
-        </ContainerInput>
-        <ContainerInput>
-          <Label>Email</Label>
-          <Field
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            style={styleInput}
-          />
-          {errors.email && touched.email ? <div>{errors.email}</div> : null}
-        </ContainerInput>
+const FormRegister = () => {
+  const dispatch = useDispatch();
 
-        <ContainerInput>
-          <Label>Password</Label>{' '}
-          <Field
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            style={styleInput}
-          />
-          {errors.password && touched.password ? (
-            <div>{errors.password}</div>
-          ) : null}
-        </ContainerInput>
+  return (
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
+      }}
+        
+      validationSchema={SignupSchema}
 
-        {/* <button type="submit">Submit</button> */}
-        <FormButton>Sign Up</FormButton>
-      </Form>
-    )}
-  </Formik>
-);
+      onSubmit={async (values, { resetForm }) => {
+          try {
+            await dispatch(register(values));
+            resetForm();
+
+            // console.log(values);
+          } catch (error) {
+            console.error('Registration failed', error);
+          }
+        }
+      }
+    >
+      {({ errors, touched }) => (
+        <Form style={{ width: '100%' }}>
+          <ContainerInput>
+            <Label>Name</Label>
+            <Field name="name" placeholder="Enter your name" style={styleInput} />
+            {errors.name && touched.name ? <div>{errors.name}</div> : null}
+          </ContainerInput>
+          <ContainerInput>
+            <Label>Email</Label>
+            <Field
+              name="email"
+              type="email"
+              placeholder="Enter email"
+              style={styleInput}
+            />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          </ContainerInput>
+
+          <ContainerInput>
+            <Label>Password</Label>{' '}
+            <Field
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              style={styleInput}
+            />
+            {errors.password && touched.password ? (
+              <div>{errors.password}</div>
+            ) : null}
+          </ContainerInput>
+
+          <FormButton type="submit">Sign Up</FormButton>
+        </Form>
+      )}
+    </Formik>
+  )
+};
 
 export default FormRegister;
