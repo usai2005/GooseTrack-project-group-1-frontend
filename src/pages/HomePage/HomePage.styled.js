@@ -13,6 +13,11 @@ export const AuthContainer = styled.div`
   background-color: #3e85f3;
 `;
 
+export const LogoImg = styled.img`
+  width: 121px;
+  height: 49px;
+`;
+
 export const HeroTitle = styled.h1`
   margin: 0 0 32px;
   padding: 0;
@@ -127,10 +132,18 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const DescriptionList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
   margin: 0;
   padding: 0;
 
   list-style: none;
+
+  &.middle {
+    align-items: flex-start;
+  }
 `;
 
 export const DescriptionListItem = styled.li`
@@ -158,6 +171,8 @@ export const DescriptionListItem = styled.li`
     &.middle {
       flex-direction: row-reverse;
       align-items: center;
+
+      margin-right: 77px;
     }
 
     &.last {

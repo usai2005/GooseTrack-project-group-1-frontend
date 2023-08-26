@@ -1,6 +1,7 @@
 import {
   // SectionHero,
   AuthContainer,
+  LogoImg,
   DescriptionContainer,
   DescriptionList,
   DescriptionListItem,
@@ -28,6 +29,7 @@ export default function HomePage() {
       <main>
         <section>
           <AuthContainer>
+            <LogoImg />
             <HeroTitle>
               G<span>oo</span>seTrack
             </HeroTitle>
