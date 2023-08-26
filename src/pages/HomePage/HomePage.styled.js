@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { ReactComponent as LoginIcon } from '../../images/icons/log-in-01.svg';
-
-// export const SectionHero = styled.section`
-// `;
 
 export const AuthContainer = styled.div`
   display: flex;
@@ -12,7 +8,6 @@ export const AuthContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${'' /* min-width: 374px; */}
   height: 100vh;
 
   background-color: #3e85f3;
@@ -121,6 +116,14 @@ export const SignupLink = styled(Link)`
 
 export const DescriptionContainer = styled.div`
   padding: 64px 20px;
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 32px 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 64px 128px 118px;
+  }
 `;
 
 export const DescriptionList = styled.ul`
@@ -128,29 +131,64 @@ export const DescriptionList = styled.ul`
   padding: 0;
 
   list-style: none;
-  ${
-    '' /* InfoTitle {
-    &:last-child {
-      min-width: 139px;
-    }
-  } */
-  }
 `;
 
 export const DescriptionListItem = styled.li`
   margin: 0;
   padding: 0;
 
-  &:last-child > div {
-    width: 139px;
+  margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    &.middle {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 1107px;
+
+    &.middle {
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    &.last {
+      margin-bottom: 100px;
+    }
   }
 `;
 
 export const InfoThumb = styled.div`
   margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    width: 275px;
+  }
 `;
 
-export const PictureThumb = styled.div``;
+export const PictureThumb = styled.div`
+  width: 335px;
+  height: 457px;
+
+  background-color: #ff0;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 700px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 604px;
+  }
+`;
 
 export const InfoNumber = styled.p`
   margin: 0 0 14px;
@@ -181,6 +219,14 @@ export const InfoTitle = styled.div`
   border-radius: 44px;
 
   background-color: #dcebf7;
+
+  &.last {
+    width: 139px;
+
+    @media screen and (min-width: 768px) {
+      width: 169px;
+    }
+  }
 
   @media screen and (min-width: 768px) {
     width: 264px;

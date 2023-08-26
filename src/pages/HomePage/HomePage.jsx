@@ -20,7 +20,6 @@ import {
 import icons from '../../images/icons.svg';
 
 import { Container } from '../../styles/container';
-// import { ReactComponent as LoginIcon } from '../../images/icons/log-in-01.svg';
 
 export default function HomePage() {
   return (
@@ -65,8 +64,8 @@ export default function HomePage() {
                 </InfoThumb>
                 <PictureThumb></PictureThumb>
               </DescriptionListItem>
-              <DescriptionListItem>
-                <InfoThumb>
+              <DescriptionListItem className="middle">
+                <InfoThumb className="middle">
                   <InfoNumber>2.</InfoNumber>
                   <ItemTitle>SIDEBAR</ItemTitle>
                   <ItemDescription>
@@ -79,10 +78,10 @@ export default function HomePage() {
                 </InfoThumb>
                 <PictureThumb></PictureThumb>
               </DescriptionListItem>
-              <DescriptionListItem>
+              <DescriptionListItem className="last">
                 <InfoThumb>
                   <InfoNumber>3.</InfoNumber>
-                  <InfoTitle>
+                  <InfoTitle className="last">
                     <h2>all in</h2>
                   </InfoTitle>
                   <ItemTitle>one</ItemTitle>
