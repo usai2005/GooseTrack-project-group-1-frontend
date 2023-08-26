@@ -57,10 +57,7 @@ const reviewsSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         })
-        .addCase(deleteReview.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
+        .addCase(deleteReview.rejected, handleRejected)
         .addCase(updateReview.pending, handlePending)
         .addCase(updateReview.fulfilled, (state, { payload }) => {
             const updateReviewIndex = state.reviews.findIndex(
