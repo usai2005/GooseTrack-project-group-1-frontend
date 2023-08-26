@@ -1,8 +1,12 @@
 import { handleFulfilled, handlePending, handleRejected } from "./handlers"
 
 const { createSlice } = require("@reduxjs/toolkit")
-const { fetchTasks, addTask, deleteTask, updateTask } = require("./tasksOperations")
-
+const { fetchTasks, 
+    addTask, 
+    deleteTask, 
+    updateTask, 
+    getAllTasks 
+} = require("./tasksOperations")
 
 const initialState = {
     tasks: [], 
@@ -15,6 +19,9 @@ const tasksSlice = createSlice({
     initialState,
     extraReducers: builder => {
         builder
+        .addCase(getAllTasks.pending, handlePending)
+        .addCase(getAllTasks.fulfilled, handleFulfilled)
+        .addCase(getAllTasks.rejected, handleRejected)
         .addCase(fetchTasks.pending, handlePending)
         .addCase(fetchTasks.fulfilled, handleFulfilled)
         .addCase(fetchTasks.rejected, handleRejected)
