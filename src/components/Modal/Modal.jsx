@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Overlay, ModalContainer, CloseButton } from './Modal.styled';
+import { Overlay, ModalContainer} from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
