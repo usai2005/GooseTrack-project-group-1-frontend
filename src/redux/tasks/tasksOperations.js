@@ -3,7 +3,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://goosetrack-18hi.onrender.com/api/v1';
 
-export const fetchTasks  = createAsyncThunk(
+export const getAllTasks = createAsyncThunk(
+  'tasks/getAll',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get('/tasks');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasks',
     async (month, thunkAPI) => {
         try {
