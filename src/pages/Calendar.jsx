@@ -1,3 +1,11 @@
+import { CalendarLayout } from 'components/Calendar/CalendarLayout';
+
 export default function Calendar() {
-  return <></>;
+  return (
+    <>
+      <div>
+        <CalendarLayout />
+      </div>
+    </>
+  );
 }
