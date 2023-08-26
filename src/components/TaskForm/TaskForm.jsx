@@ -109,7 +109,7 @@ export const TaskForm = ({ onClose }) => {
               </Label>
             </FieldContainer>
 
-            <div>Picked: {values.priority}</div>
+            <div>priority: {values.priority}</div>
             <PriorityContainer role="group">
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="low" />
