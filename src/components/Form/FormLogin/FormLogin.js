@@ -9,7 +9,8 @@ import {
   StyledInlineErrorMessage,
   ContainerForm,
   LoginIcon,
-  LoginIconPassword,
+  InputContainer,
+  StyledInlineMessage,
 } from './FormLogin.styled';
 import FormButton from '../FormButton/FormButton';
 import { useDispatch } from 'react-redux';
@@ -61,56 +62,71 @@ function FormLogin() {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>
-              <Label htmlFor="email">
-                Email
-                <Input
-                  type="email"
-                  name="email"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  autoComplete="email"
-                  placeholder="Enter email"
+              <InputContainer>
+                <Label
+                  htmlFor="email"
                   valid={touched.email && !errors.email}
                   error={touched.email && errors.email}
-                />
-              </Label>
-              <ErrorMessage name="email">
-                {msg => (
-                  <StyledInlineErrorMessage>
-                    {msg}
+                >
+                  Email
+                  <Input
+                    type="email"
+                    name="email"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    autoComplete="email"
+                    placeholder="Enter email"
+                    valid={touched.email && !errors.email}
+                    error={touched.email && errors.email}
+                  />
+                </Label>
+                <ErrorMessage name="email">
+                  {msg => (
+                    <StyledInlineErrorMessage>
+                      {msg}
+                      <LoginIcon>
+                        <use
+                          href={icons + '#icon-baseline-error-outline'}
+                        ></use>
+                      </LoginIcon>
+                    </StyledInlineErrorMessage>
+                  )}
+                </ErrorMessage>
+                {!errors.name && touched.name && (
+                  <StyledInlineMessage>
+                    This is an CORRECT email
                     <LoginIcon>
-                      <use href={icons + '#icon-log-in-01'}></use>
+                      <use href={icons + '#icon-done'}></use>
+                    </LoginIcon>
+                  </StyledInlineMessage>
+                )}
+              </InputContainer>
+              <InputContainer>
+                <Label
+                  htmlFor="password"
+                  valid={touched.password && !errors.password}
+                  error={touched.password && errors.password}
+                >
+                  Password
+                  <Input
+                    type="text"
+                    name="password"
+                    autoCorrect="off"
+                    autoComplete="password"
+                    placeholder="Enter password"
+                    valid={touched.password && !errors.password}
+                    error={touched.password && errors.password}
+                  />
+                </Label>
+                {errors.password && touched.password && (
+                  <StyledInlineErrorMessage>
+                    {errors.password}
+                    <LoginIcon>
+                      <use href={icons + '#icon-baseline-error-outline'}></use>
                     </LoginIcon>
                   </StyledInlineErrorMessage>
                 )}
-              </ErrorMessage>
-              <Label htmlFor="password">
-                Password
-                <Input
-                  type="text"
-                  name="password"
-                  autoCorrect="off"
-                  autoComplete="password"
-                  placeholder="Enter password"
-                  valid={touched.password && !errors.password}
-                  error={touched.password && errors.password}
-                />
-              </Label>
-              {errors.password && touched.password && (
-                <StyledInlineErrorMessage>
-                  {errors.password}
-                  <LoginIconPassword>
-                    <use href={icons + '#icon-log-in-01'}></use>
-                  </LoginIconPassword>
-                </StyledInlineErrorMessage>
-              )}
-
-              {/* <Submit type="submit" disabled={!isValid}>
-                <span>Sign up</span>
-                <LoginIcon>
-                  <use href={icons + '#icon-log-in-01'}></use>
-                </LoginIcon>
-              </Submit> */}
+              </InputContainer>
               <FormButton isValid={isValid}>Log in</FormButton>
             </Form>
           </ContainerForm>
