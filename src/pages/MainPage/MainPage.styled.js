@@ -14,8 +14,17 @@ export const AuthContainer = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  width: 121px;
-  height: 49px;
+  width: 142px;
+  height: 142px;
+
+  margin-bottom: 2px;
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 149px;
+
+    margin-bottom: -5px;
+  }
 `;
 
 export const HeroTitle = styled.h1`
@@ -83,7 +92,7 @@ export const LoginLink = styled(Link)`
   letter-spacing: -0.28px;
   text-decoration: none;
 
-  cursor: pointer;
+  ${'' /* cursor: pointer; */}
 
   span {
     margin-right: 6px;
@@ -189,22 +198,6 @@ export const InfoThumb = styled.div`
   }
 `;
 
-export const PictureThumb = styled.div`
-  width: 335px;
-  height: 457px;
-
-  background-color: #ff0;
-
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    height: 700px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 604px;
-  }
-`;
-
 export const InfoNumber = styled.p`
   margin: 0 0 14px;
   padding: 0;
@@ -272,6 +265,8 @@ export const ItemTitle = styled.p`
   text-transform: uppercase;
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+
     font-size: 40px;
     line-height: calc(44 / 40);
   }
@@ -290,4 +285,6 @@ export const ItemDescription = styled.p`
 export const LoginIcon = styled.svg`
   width: 18px;
   height: 18px;
+
+  stroke: #3e85f3;
 `;

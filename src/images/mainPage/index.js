@@ -1,0 +1,26 @@
+const IMAGES = {
+  gooseLogoMob1x143: require('./goose-logo-mob-1x-143.webp'),
+  gooseLogoMob2x285: require('./goose-logo-mob-2x-285.webp'),
+  gooseLogoTabDesk1x150: require('./goose-logo-tab-desk-1x-150.webp'),
+  gooseLogoTabDesk2x300: require('./goose-logo-tab-desk-2x-300.webp'),
+  allInOneDesk1x604: require('./all-in-one-desk-1x-604.webp'),
+  allInOneDesk2x1208: require('./all-in-one-desk-2x-1208.webp'),
+  allInOneMob1x335: require('./all-in-one-mob-1x-335.webp'),
+  allInOneMob2x670: require('./all-in-one-mob-2x-670.webp'),
+  allInOneTab1x704: require('./all-in-one-tab-1x-704.webp'),
+  allInOneTab2x1408: require('./all-in-one-tab-2x-1408.webp'),
+  calendarViewDesk1x604: require('./calendar-view-desk-1x-604.webp'),
+  calendarViewDesk2x1208: require('./calendar-view-desk-2x-1208.webp'),
+  calendarViewMob1x335: require('./calendar-view-mob-1x-335.webp'),
+  calendarViewMob2x670: require('./calendar-view-mob-2x-670.webp'),
+  calendarViewTab1x704: require('./calendar-view-tab-1x-704.webp'),
+  calendarViewTab2x1408: require('./calendar-view-tab-2x-1408.webp'),
+  sidebarDesk1x604: require('./sidebar-desk-1x-604.webp'),
+  sidebarDesk2x1208: require('./sidebar-desk-2x-1208.webp'),
+  sidebarMob1x335: require('./sidebar-mob-1x-335.webp'),
+  sidebarMob2x670: require('./sidebar-mob-2x-670.webp'),
+  sidebarTab1x704: require('./sidebar-tab-1x-704.webp'),
+  sidebarTab2x1408: require('./sidebar-tab-2x-1408.webp'),
+};
+
+export default IMAGES;
