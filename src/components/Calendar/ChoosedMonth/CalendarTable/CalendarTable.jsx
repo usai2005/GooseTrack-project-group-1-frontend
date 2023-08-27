@@ -4,14 +4,14 @@ import {
   addDays,
   startOfMonth,
   endOfMonth,
-  endOfWeek,
+  // endOfWeek,
   isSameMonth,
   isSameDay,
-  subMonths,
-  addMonths,
-  set,
+  // subMonths,
+  // addMonths,
+  // set,
+  parse,
 } from 'date-fns';
-import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
@@ -19,14 +19,18 @@ import {
   WeekDay,
   DateNum,
   DateWrap,
-  DatePickerWrapper,
-  ControlWrapper,
-  Controls,
-} from '../../Calendar.styled';
+} from './CalendarTable.styled';
 
-import { useState } from 'react';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+// import { useState } from 'react';
 import { CalendarTasks } from './CalendarTasks/CalendarTasks';
+import {
+  // useDispatch,
+  useSelector,
+} from 'react-redux';
+import {
+  selectActiveDate,
+  //  selectSelectedDate
+} from 'redux/date/selectors';
 
 const tasks = [
   { id: 1, date: '24-08-2023', text: 'To do something', priority: 'low' },
@@ -36,14 +40,31 @@ const tasks = [
   { id: 111, date: '20-08-2023', text: 'To do 3', priority: 'Hight' },
 ];
 
+const WeekDayItem = ({ currentDate, activeDate, isToday, tasksToShow }) => {
+  return (
+    <WeekDay key={currentDate}>
+      {!isSameMonth(currentDate, activeDate) ? (
+        <span></span>
+      ) : (
+        <DateNum>
+          <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
+        </DateNum>
+      )}
+
+      {tasksToShow.length > 0 && CalendarTasks(tasksToShow)}
+    </WeekDay>
+  );
+};
+
 const generateDatesForCurrentWeek = (
   date,
-  selectedDate,
-  activeDate,
-  setSelectedDate
+  // selectedDate,
+  activeDate
+  // setSelectedDate
 ) => {
   let currentDate = date;
   const week = [];
+  // const dispatch = useDispatch();
 
   for (let day = 0; day < 7; day++) {
     const cloneDate = currentDate;
@@ -55,46 +76,50 @@ const generateDatesForCurrentWeek = (
     );
 
     week.push(
-      <WeekDay
-        key={currentDate}
-        // className={`day ${
-        //   isSameMonth(currentDate, activeDate) ? '' : 'inactiveDay'
-        // } ${isSameDay(currentDate, selectedDate) ? 'selectedDay' : ''}
-        // ${isSameDay(currentDate, new Date()) ? 'today' : ''}`}
+      // <WeekDay key={currentDate}>
+      //   {!isSameMonth(currentDate, activeDate) ? (
+      //     <span></span>
+      //   ) : (
+      //     <DateNum>
+      //       <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
+      //     </DateNum>
+      //   )}
 
-        onClick={() => {
-          console.log('click');
-          //// очищение добавить
-          setSelectedDate(cloneDate);
-          console.log(selectedDate);
-        }}
-      >
-        {!isSameMonth(currentDate, activeDate) ? (
-          <span></span>
-        ) : (
-          <DateNum>
-            <DateWrap istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
-          </DateNum>
-        )}
-
-        {tasksToShow.length > 0 && CalendarTasks(tasksToShow)}
-      </WeekDay>
+      //   {tasksToShow.length > 0 && CalendarTasks(tasksToShow)}
+      // </WeekDay>
+      <WeekDayItem
+        currentDate={currentDate}
+        activeDate={activeDate}
+        isToday={isToday}
+        tasksToShow={tasksToShow}
+      />
     );
     currentDate = addDays(currentDate, 1);
   }
   return week;
 };
+
 //////////
 export const CalendarTable = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [activeDate, setActiveDate] = useState(new Date());
+  // const dispatch = useDispatch();
+
+  // const selectedDate = parse(
+  //   useSelector(selectSelectedDate),
+  //   'dd-MM-yyyy',
+  //   new Date()
+  // );
+  const activeDate = parse(
+    useSelector(selectActiveDate),
+    'dd-MM-yyyy',
+    new Date()
+  );
 
   const startOfTheSelectedMonth = startOfMonth(activeDate);
   const endOfTheSelectedMonth = endOfMonth(activeDate);
   const startDate = startOfWeek(startOfTheSelectedMonth, { weekStartsOn: 1 });
-  // const endDate = endOfWeek(endOfTheSelectedMonth);
 
   let currentDate = startDate;
+  // console.log('currentDate', currentDate);
 
   const allWeeks = [];
 
@@ -102,69 +127,17 @@ export const CalendarTable = () => {
     allWeeks.push(
       generateDatesForCurrentWeek(
         currentDate,
-        selectedDate,
-        activeDate,
-        setSelectedDate
+        // selectedDate,
+        activeDate
+        // setSelectedDate
       )
     );
     currentDate = addDays(currentDate, 7);
   }
-  //////////temporary solution/////////
-  // const renderMonthContent = (month, shortMonth, longMonth) => {
-  //   const tooltipText = `Tooltip for month: ${longMonth}`;
-  //   return <span title={tooltipText}>{shortMonth}</span>;
-  // };
-  // const renderDayContents = (day, date) => {
-  //   const tooltipText = `Tooltip for date: ${date}`;
-  //   return <span title={tooltipText}>{getDate(date)}</span>;
-  // };
-  /*
-  const [startDate, setStartDate] = useState(new Date());
-  
-  return (
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      renderDayContents={renderDayContents}
-*/
-
-  console.log(allWeeks);
+  // console.log(allWeeks);
 
   return (
     <>
-      <ControlWrapper>
-        <DatePickerWrapper>
-          <ReactDatePicker
-            selected={activeDate}
-            onChange={setActiveDate}
-            // renderDayContents={renderDayContents}
-            // renderMonthContent={renderMonthContent}
-            // showMonthYearPicker
-            // locale="ua-Uk"
-            calendarStartDay={1}
-            dateFormat="MMMM yyyy"
-            closeOnScroll={true}
-            formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-            // minDate={'02-01-2020'}
-            todayButton="Today"
-          />
-        </DatePickerWrapper>
-        <div>
-          <Controls
-            type="button"
-            onClick={() => setActiveDate(subMonths(activeDate, 1))}
-          >
-            <AiOutlineLeft />
-          </Controls>
-          <Controls
-            type="button"
-            onClick={() => setActiveDate(addMonths(activeDate, 1))}
-          >
-            <AiOutlineRight />
-          </Controls>
-        </div>
-      </ControlWrapper>
-
       <WeekContainer>{allWeeks}</WeekContainer>
     </>
   );

@@ -8,6 +8,7 @@ const PERIOD = {
 
 const dateInitialState = {
   selectedDate: format(new Date(), 'dd-MM-yyyy'),
+  activeDate: format(new Date(), 'dd-MM-yyyy'),
   periodType: PERIOD.Month,
 };
 
@@ -15,16 +16,20 @@ const dateSlice = createSlice({
   name: 'date',
   initialState: dateInitialState,
   reducers: {
-    setDate(state, action) {
-      state.date = action.payload;
+    setActiveDate(state, action) {
+      state.activeDate = action.payload;
+    },
+    setSelectedDate(state, action) {
+      state.selectedDate = action.payload;
     },
     setPeriodType(state, action) {
-      state.date = action.payload;
+      state.periodType = action.payload;
     },
   },
 });
 
-export const { setDate } = dateSlice.actions;
-export const { setPeriodType } = dateSlice.actions;
+export const { setActiveDate, setSelectedDate, setPeriodType } =
+  dateSlice.actions;
+// export const { setPeriodType } = dateSlice.actions;
 
 export const dateReducer = dateSlice.reducer;

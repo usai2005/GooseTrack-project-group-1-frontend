@@ -11,6 +11,10 @@ import { logOut } from "redux/auth/operations";
 
 const initialState = {
     reviews: [], 
+    ownReview: {
+        rating: '',
+        review: '',
+      },
     isLoading: false, 
     error: null
 }
@@ -18,17 +22,27 @@ const initialState = {
 const reviewsSlice = createSlice({
     name: 'reviews',
     initialState,
+    reducers: {
+        changeRating(state, { payload }) {
+          state.ownReview.rating = payload;
+        },
+      },
     extraReducers: builder => {
         builder
         .addCase(fetchReviews.pending, handlePending)
         .addCase(fetchReviews.fulfilled, handleFulfilled)
         .addCase(fetchReviews.rejected, handleRejected)
         .addCase(fetchOwnReviews.pending, handlePending)
-        .addCase(fetchOwnReviews.fulfilled, handleFulfilled)
+        .addCase(fetchOwnReviews.fulfilled, (state, { payload }) => {
+            state.ownReview = payload;
+            state.isLoading = false;
+            state.error = null;
+          })
         .addCase(fetchOwnReviews.rejected, handleRejected)
         .addCase(addReview.pending, handlePending)
         .addCase(addReview.fulfilled, (state, { payload }) => {
             state.reviews.push(payload);
+            state.ownReview = payload;
             state.isLoading = false;
             state.error = null;
         })
@@ -36,13 +50,14 @@ const reviewsSlice = createSlice({
         .addCase(deleteReview.pending, handlePending)
         .addCase(deleteReview.fulfilled, (state, { payload }) => {
             state.reviews = state.reviews.filter(review => review._id !== payload);
+            state.ownReview = {
+                rating: '',
+                review: ''
+              };
             state.isLoading = false;
             state.error = null;
         })
-        .addCase(deleteReview.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
+        .addCase(deleteReview.rejected, handleRejected)
         .addCase(updateReview.pending, handlePending)
         .addCase(updateReview.fulfilled, (state, { payload }) => {
             const updateReviewIndex = state.reviews.findIndex(
@@ -52,16 +67,23 @@ const reviewsSlice = createSlice({
             if (updateReviewIndex !== -1) {
                 state.reviews[updateReviewIndex] = payload.data;
             }
+            state.ownReview = payload;
             state.isLoading = false;
             state.error = null;
         })
         .addCase(updateReview.rejected, handleRejected)
         .addCase(logOut.fulfilled, state => {
             state.reviews = [];
+            state.ownReview = {
+                rating: '',
+                review: ''
+              };
             state.error = null;
             state.isLoading = false;
           });
     }
 })
+
+export const { changeRating } = reviewsSlice.actions;
 
 export const reviewsReducer = reviewsSlice.reducer;
