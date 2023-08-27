@@ -6,11 +6,11 @@ const viewport = {
   };
 
 export const InfoBox = styled.div`
-  margin-top: 20px;
+  margin-bottom: 40px;
   width: 100%;
   ${viewport.tab} {
     margin-left: auto;
-    margin-top: 0;
+    margin-top: 6px;
     width: auto;
   }
 `;

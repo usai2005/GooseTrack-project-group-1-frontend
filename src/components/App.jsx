@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { ChoosedMonth } from './Calendar/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from './Calendar/ChoosedDay/ChoosedDay';
+import {FeedbackModal} from './Feedback/FeedbackModal';
 
 // import {StatisticPage} from './Statistics/StatisticsComp';
 
@@ -24,6 +25,7 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 const StatisticPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
+
 
 export const App = () => {
   // const isLoading = useSelector(selectIsLoading);
@@ -93,6 +95,7 @@ export const App = () => {
               <Route path="day/:currentDay" element={<ChoosedDay />} />
             </Route>
             <Route path="/statistics" element={<StatisticPage />}></Route>
+            <Route path="/feedback" element={<FeedbackModal />}></Route>
           </Route>
         </Routes>
       </HelmetProvider>

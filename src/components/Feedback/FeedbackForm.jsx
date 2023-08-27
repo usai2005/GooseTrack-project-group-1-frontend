@@ -51,26 +51,29 @@ const rateStyled = {
 
 export const FeedbackForm = ({ onClose }) => {
   const [isEditActive, setIsEditActive] = useState(false);
+  console.log(isEditActive);
 
-  // const userReview = useSelector(selectOwnReview);
-  // const dispatch = useDispatch();
+  const userReview = useSelector(selectOwnReview);
+  const dispatch = useDispatch();
+
+  console.log(userReview);
 
   const ratingChanged = newRating => {
-    // dispatch(changeRating(newRating))
+    dispatch(changeRating(newRating));
   };
 
   const handleSubmit = (values, actions) => {
-    // values.rating = Number(userReview.rating);
-    // if (isEditActive) {
-    //   const reviewRequest = { id: userReview._id, review: values };
-    //   // dispatch(updateReview(reviewRequest));
-    // } else {
-    //   // dispatch(addReview(values));
-    // }
-    // actions.resetForm();
-    // if (userReview.rating) {
-    //   onClose();
-    // }
+    values.rating = Number(userReview.rating);
+    if (isEditActive) {
+      const reviewRequest = { id: userReview._id, review: values };
+      dispatch(updateReview(reviewRequest));
+    } else {
+      dispatch(addReview(values));
+    }
+    actions.resetForm();
+    if (userReview.rating) {
+      onClose();
+    }
   };
 
   const handleEdit = () => {
@@ -78,19 +81,17 @@ export const FeedbackForm = ({ onClose }) => {
   };
 
   const handleDelete = () => {
-    // dispatch(deleteReview(userReview._id));
+    dispatch(deleteReview(userReview._id));
     onClose();
   };
 
   return (
     <Contain>
       <Formik
-        initialValues={
-          {
-            // rating: userReview.rating || '',
-            // review: userReview.review || '',
-          }
-        }
+        initialValues={{
+          rating: userReview.rating || '',
+          review: userReview.review || '',
+        }}
         validationSchema={ReviewSchema}
         onSubmit={handleSubmit}
       >
@@ -99,29 +100,29 @@ export const FeedbackForm = ({ onClose }) => {
           <Rating
             name="rating"
             component="div"
-            // value={Number(userReview.rating)}
+            value={Number(userReview.rating)}
             itemStyles={rateStyled}
             style={{ maxWidth: 110, gap: 4, marginBottom: '20px' }}
             onChange={ratingChanged}
-            // readOnly={Boolean(userReview.rating) && !isEditActive}
+            readOnly={Boolean(userReview.rating) && !isEditActive}
           />
           <FormWrapper>
             <AreaReview>
               <Label htmlFor="review">Review</Label>
-              {/* {Boolean(userReview.review) &&  */}
-              <AreaEdit>
-                <EditBtn
-                  onClick={handleEdit}
-                  isActive={isEditActive}
-                  type="button"
-                >
-                  <IconEdit />
-                </EditBtn>
-                <DeleteBtn type="button" onClick={handleDelete}>
-                  <IconTrash />
-                </DeleteBtn>
-              </AreaEdit>
-              {/* } */}
+              {Boolean(userReview.review) && (
+                <AreaEdit>
+                  <EditBtn
+                    onClick={handleEdit}
+                    isActive={isEditActive}
+                    type="button"
+                  >
+                    <IconEdit />
+                  </EditBtn>
+                  <DeleteBtn type="button" onClick={handleDelete}>
+                    <IconTrash />
+                  </DeleteBtn>
+                </AreaEdit>
+              )}
             </AreaReview>
 
             <Input
@@ -130,21 +131,21 @@ export const FeedbackForm = ({ onClose }) => {
               id="review"
               name="review"
               component="textarea"
-              // disabled={!isEditActive && Boolean(userReview.review)}
+              disabled={!isEditActive && Boolean(userReview.review)}
             />
             <ErrorMessage name="review" component="div" />
           </FormWrapper>
 
-          {/* {(!Boolean(userReview.review) || isEditActive )&&  */}
-          <AreaBtn>
-            <SubmitBtn type="submit">
-              {isEditActive ? 'Edit' : 'Save'}
-            </SubmitBtn>
-            <CancelBtn type="button" onClick={onClose}>
-              Cancel
-            </CancelBtn>
-          </AreaBtn>
-          {/* } */}
+          {(!Boolean(userReview.review) || isEditActive) && (
+            <AreaBtn>
+              <SubmitBtn type="submit">
+                {isEditActive ? 'Edit' : 'Save'}
+              </SubmitBtn>
+              <CancelBtn type="button" onClick={onClose}>
+                Cancel
+              </CancelBtn>
+            </AreaBtn>
+          )}
           <Close type="button" aria-label="close button" onClick={onClose}>
             <IconClose style={{ width: 24, height: 24 }} />
           </Close>
