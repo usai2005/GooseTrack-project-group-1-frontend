@@ -3,7 +3,7 @@ import { format, startOfWeek, addDays } from 'date-fns';
 import {
   WeekNames,
   WeekNamesContainer,
-} from 'components/Calendar/Calendar.styled';
+} from 'components/Calendar/ChoosedMonth/CalendarTable/CalendarTable.styled';
 
 export const MonthCalendarHead = () => {
   const weekStartDate = startOfWeek(new Date(), { weekStartsOn: 1 });
@@ -18,5 +18,5 @@ export const MonthCalendarHead = () => {
       </WeekNames>
     );
   }
-  return <WeekNamesContainer isWeekend>{weekDays}</WeekNamesContainer>;
+  return <WeekNamesContainer>{weekDays}</WeekNamesContainer>;
 };

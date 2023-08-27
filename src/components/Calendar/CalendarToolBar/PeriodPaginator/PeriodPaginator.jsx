@@ -1,89 +1,73 @@
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-// import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import {
-  format,
-  startOfWeek,
-  addDays,
-  startOfMonth,
-  endOfMonth,
-  endOfWeek,
-  isSameMonth,
-  isSameDay,
-  subMonths,
-  addMonths,
-} from 'date-fns';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMonths, format, parse, subMonths } from 'date-fns';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { MonthToggle } from 'components/Calendar/Calendar.styled';
 
-// import dayjs from 'dayjs';
-const Dater = () => {
-  const renderMonthContent = (month, shortMonth, longMonth) => {
-    const tooltipText = `Tooltip for month: ${longMonth}`;
-    return <span title={tooltipText}>{shortMonth}</span>;
-  };
-  return (
-    <ReactDatePicker
-      selected={new Date()}
-      renderMonthContent={renderMonthContent}
-      showMonthYearPicker
-      dateFormat="MMMM yyyy"
-    />
-  );
-};
+import {
+  ControlWrapper,
+  DatePickerWrapper,
+} from 'components/Calendar/CalendarToolBar/PeriodPaginator/PeriodPaginator.styled';
+import { Controls } from './PeriodPaginator.styled';
 
-export default function PeriodPaginator() {
-  const isMonth = true; // useSlector periodType
+import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
+import { useEffect } from 'react';
+import { fetchTasks } from 'redux/tasks/tasksOperations';
+import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
+// import { useParams } from 'react-router-dom';
+
+export const PeriodPaginator = () => {
+  const dispatch = useDispatch();
+
+  const periodType = useSelector(selectPeriodType);
+  const currentDate = useSelector(selectActiveDate);
+  const date = parse(currentDate, 'dd-MM-yyyy', new Date());
+
+  // console.log(currentDate);
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks(format(date, 'MM-yyyy')));
+  }, [dispatch, date]);
 
   return (
     <>
-      {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-        {isMonth ? (
-          <DesktopDatePicker
-            defaultValue={dayjs(format(new Date(), 'MMM yyyy'))}
-            // label={format(new Date(), 'MMMM yyyy')}
-            openTo="month"
-            views={['year', 'month']}
+      <ControlWrapper>
+        <DatePickerWrapper>
+          <ReactDatePicker
+            selected={date}
+            onChange={value => {
+              dispatch(setSelectedDate(format(value, 'dd-MM-yyyy')));
+              dispatch(setActiveDate(format(value, 'dd-MM-yyyy')));
+            }}
+            calendarStartDay={1}
+            // showMonthYearPicker
+            dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMMM yyyy'}
+            closeOnScroll={true}
+            formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+            // minDate={'02-01-2020'}
+            todayButton="Today"
           />
-        ) : (
-          <DesktopDatePicker
-            defaultValue={dayjs(format(new Date(), 'd MMMM yyyy'))}
-            // label={format(new Date(), 'MMMM yyyy')}
-            openTo="day"
-            views={['day', 'month', 'year']}
-          />
-        )}
-      </LocalizationProvider> */}
-
-      {/* <Dater /> */}
-      {/* {---------------------------------------------------------------------------} */}
-      {/* <div>
-        <button type="button">
-          <AiOutlineLeft />
-          onClick={() => setActiveDate(subMonths(activeDate, 1))}
-        </button>
-        <button type="button">
-          <AiOutlineRight />
-          onClick={() => setActiveDate(addMonths(activeDate, 1))}
-        </button>
-      </div> */}
-      <div>
-        <MonthToggle
-          type="button"
-          // onClick={() => setActiveDate(subMonths(activeDate, 1))}
-        >
-          Month
-        </MonthToggle>
-        <MonthToggle
-          type="button"
-          // onClick={() => setActiveDate(addMonths(activeDate, 1))}
-        >
-          Day
-        </MonthToggle>
-      </div>
+        </DatePickerWrapper>
+        <div>
+          <Controls
+            type="button"
+            onClick={() => {
+              dispatch(setActiveDate(format(subMonths(date, 1), 'dd-MM-yyyy')));
+            }}
+          >
+            <AiOutlineLeft />
+          </Controls>
+          <Controls
+            type="button"
+            onClick={() => {
+              dispatch(setActiveDate(format(addMonths(date, 1), 'dd-MM-yyyy')));
+            }}
+          >
+            <AiOutlineRight />
+          </Controls>
+        </div>
+      </ControlWrapper>
     </>
   );
-}
+};
