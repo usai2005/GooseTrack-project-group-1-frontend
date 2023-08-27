@@ -1,6 +1,13 @@
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMonths, format, parse, subMonths } from 'date-fns';
+import {
+  addDays,
+  addMonths,
+  format,
+  parse,
+  subDays,
+  subMonths,
+} from 'date-fns';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,7 +17,11 @@ import {
 } from 'components/Calendar/CalendarToolBar/PeriodPaginator/PeriodPaginator.styled';
 import { Controls } from './PeriodPaginator.styled';
 
-import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
+import {
+  selectActiveDate,
+  selectPeriodType,
+  selectSelectedDate,
+} from 'redux/date/selectors';
 import { useEffect } from 'react';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
 import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
@@ -21,7 +32,11 @@ export const PeriodPaginator = () => {
 
   const periodType = useSelector(selectPeriodType);
   const currentDate = useSelector(selectActiveDate);
-  const date = parse(currentDate, 'dd-MM-yyyy', new Date());
+  const selectedDate = useSelector(selectSelectedDate);
+  const date =
+    periodType === 'month'
+      ? parse(currentDate, 'dd-MM-yyyy', new Date())
+      : parse(selectedDate, 'dd-MM-yyyy', new Date());
 
   // console.log(currentDate);
   // const dispatch = useDispatch();
@@ -53,7 +68,16 @@ export const PeriodPaginator = () => {
           <Controls
             type="button"
             onClick={() => {
-              dispatch(setActiveDate(format(subMonths(date, 1), 'dd-MM-yyyy')));
+              console.log('periodType', periodType);
+              if (periodType === 'month') {
+                dispatch(
+                  setActiveDate(format(subMonths(date, 1), 'dd-MM-yyyy'))
+                );
+              } else {
+                dispatch(
+                  setSelectedDate(format(subDays(date, 1), 'dd-MM-yyyy'))
+                );
+              }
             }}
           >
             <AiOutlineLeft />
@@ -61,7 +85,16 @@ export const PeriodPaginator = () => {
           <Controls
             type="button"
             onClick={() => {
-              dispatch(setActiveDate(format(addMonths(date, 1), 'dd-MM-yyyy')));
+              if (periodType === 'month') {
+                console.log('periodType', periodType);
+                dispatch(
+                  setActiveDate(format(addMonths(date, 1), 'dd-MM-yyyy'))
+                );
+              } else {
+                dispatch(
+                  setSelectedDate(format(addDays(date, 1), 'dd-MM-yyyy'))
+                );
+              }
             }}
           >
             <AiOutlineRight />
