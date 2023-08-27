@@ -13,7 +13,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 
-const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/Calendar'));
@@ -51,36 +51,39 @@ export const App = () => {
 
     <Provider store={store}>
       <HelmetProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/calendar"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/calendar"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/calendar"
-            element={
-              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
-            }
-          />
-        </Route>
-      </Routes>
-    </HelmetProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/calendar"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/calendar"
+                  component={<LoginPage />}
+                />
+              }
+            />
+            <Route
+              path="/calendar"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<CalendarPage />}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </HelmetProvider>
     </Provider>
   );
 };
