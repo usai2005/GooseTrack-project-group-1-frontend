@@ -14,18 +14,17 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { ChoosedMonth } from './Calendar/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from './Calendar/ChoosedDay/ChoosedDay';
-import {FeedbackModal} from './Feedback/FeedbackModal';
+import { FeedbackModal } from './Feedback/FeedbackModal';
 
 // import {StatisticPage} from './Statistics/StatisticsComp';
 
-const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 const StatisticPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
-
 
 export const App = () => {
   // const isLoading = useSelector(selectIsLoading);
@@ -62,7 +61,7 @@ export const App = () => {
       <HelmetProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
+            <Route index element={<MainPage />} />
             <Route
               path="/register"
               element={
