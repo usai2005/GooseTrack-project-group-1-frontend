@@ -1,7 +1,11 @@
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+import { TasksColumnsList } from './TasksColumnsList/TasksColumnsList';
+
 export const ChoosedDay = () => {
   return (
     <>
-      <h2> РОзклад обраного дня</h2>
+      <DayCalendarHead />
+      <TasksColumnsList />
     </>
   );
 };
