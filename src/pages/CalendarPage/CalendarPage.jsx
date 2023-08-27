@@ -2,21 +2,26 @@ import CalendarToolBar from 'components/Calendar/CalendarToolBar/CalendarToolBar
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
+import {
+  selectActiveDate,
+  selectPeriodType,
+  selectSelectedDate,
+} from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
 
 export default function CalendarPage() {
-  console.log('Calendar');
   const navigate = useNavigate();
-  const currentDate = useSelector(selectActiveDate);
+  const currentDay = useSelector(selectActiveDate);
+  const selectedDate = useSelector(selectSelectedDate);
   const periodType = useSelector(selectPeriodType);
-  console.log(periodType, 'lllllll');
 
-  console.log(currentDate, 'calendar redirect date');
+  // console.log(currentDay, 'calendar redirect date');
+
+  const date = periodType === 'month' ? currentDay : selectedDate;
 
   useEffect(() => {
-    navigate(`${periodType}/${currentDate}`, {});
-  }, [currentDate, navigate, periodType]);
+    navigate(`${periodType}/${date}`, {});
+  }, [date, navigate, periodType]);
 
   return (
     <PageWrapper>
