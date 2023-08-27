@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTasks } from '../../redux/tasks/tasksOperations';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
-import { selectFilterDate } from '../../redux/date/selectors';
+import { selectPeriodType } from '../../redux/date/selectors';
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -18,22 +17,48 @@ import {
 import { Container, Title, Wrapper } from './StatisticsComp.styled';
 
 export const StatisticsComp = () => {
+  const dispatch = useDispatch();
+  const toDay = useSelector(selectPeriodType);
+  const tasks = useSelector(selectTasks);
+
+  useEffect(() => {
+    dispatch(getAllTasks());
+  }, [dispatch]);
+
+  console.log(toDay)
+  console.log(tasks)
+
+  let todoByDay = 10;
+  let inprogressByDay = 20;
+  let doneByDay = 10;
+  let todoByMonth = 30;
+  let inprogressByMonth = 20;
+  let doneByMonth = 10;
+
+  const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
+  const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
 
   const data = [
     {
       name: 'To Do',
-      day: 4,
-      month: 24,
+      day: todoByDay,
+      month: todoByMonth,
+      dayf: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
+      monthf: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}%`,
     },
     {
       name: 'In Progress',
-      day: 3,
-      month: 13,
+      day: inprogressByDay,
+      month: inprogressByMonth,
+      dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
+      monthf: `${Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0}%`,
     },
     {
       name: 'Done',
-      day: 2,
-      month: 9,
+      day: doneByDay,
+      month: doneByMonth,
+      dayf: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
+      monthf: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}%`,
     },
   ];
 
@@ -73,10 +98,10 @@ export const StatisticsComp = () => {
             />
             <Tooltip />
             <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
-              <LabelList dataKey="day" position="top" />
+              <LabelList dataKey="dayf" position="top" />
             </Bar>
             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
-              <LabelList dataKey="month" position="top" />
+              <LabelList dataKey="monthf" position="top" />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
