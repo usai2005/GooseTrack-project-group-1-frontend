@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -30,6 +30,7 @@ const validationSchema = Yup.object().shape({
 
 function FormRegister() {
   // const [formValues, setFormValues] = useState();
+  const dispatch = useDispatch(); 
 
   return (
     <Formik

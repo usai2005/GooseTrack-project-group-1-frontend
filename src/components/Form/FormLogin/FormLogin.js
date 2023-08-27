@@ -12,6 +12,8 @@ import {
   LoginIconPassword,
 } from './FormLogin.styled';
 import FormButton from '../FormButton/FormButton';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,6 +27,7 @@ const validationSchema = Yup.object().shape({
 
 function FormLogin() {
   const [formValues, setFormValues] = useState();
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -34,8 +37,10 @@ function FormLogin() {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
+        // console.log(values);
         setFormValues(values);
+
+        dispatch(logIn(values));
 
         const timeOut = setTimeout(() => {
           actions.setSubmitting(false);
