@@ -35,7 +35,7 @@ export default function HomePage() {
             </HeroTitle>
             <AuthList>
               <li>
-                <LoginLink href="#">
+                <LoginLink to="/login">
                   <span>Log in</span>
                   <LoginIcon>
                     <use href={icons + '#icon-log-in-01'}></use>
