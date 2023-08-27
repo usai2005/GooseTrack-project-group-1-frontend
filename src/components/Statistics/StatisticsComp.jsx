@@ -1,4 +1,8 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllTasks } from '../../redux/tasks/tasksOperations';
+import { selectTasks } from '../../redux/tasks/tasksSelectors';
+import { selectFilterDate } from '../../redux/date/selectors';
 import {
   BarChart,
   Bar,
@@ -13,25 +17,26 @@ import {
 
 import { Container, Title, Wrapper } from './StatisticsComp.styled';
 
-const data = [
-  {
-    name: 'To Do',
-    day: 4,
-    month: 24,
-  },
-  {
-    name: 'In Progress',
-    day: 3,
-    month: 13,
-  },
-  {
-    name: 'Done',
-    day: 2,
-    month: 9,
-  },
-];
-
 export const StatisticsComp = () => {
+
+  const data = [
+    {
+      name: 'To Do',
+      day: 4,
+      month: 24,
+    },
+    {
+      name: 'In Progress',
+      day: 3,
+      month: 13,
+    },
+    {
+      name: 'Done',
+      day: 2,
+      month: 9,
+    },
+  ];
+
   return (
     <Container>
       <Title>Tasks</Title>
