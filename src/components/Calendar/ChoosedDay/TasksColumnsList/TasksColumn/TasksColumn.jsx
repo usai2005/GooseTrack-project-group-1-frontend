@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import { ColumnHeadBar } from './ColumnHeadBar/ColumnHeadBar';
 import { ColumnsTasksList } from './ColumnsTasksList/ColumnsTasksList';
 import { AddTaskBtn } from './AddTaskBtn/AddTaskBtn';
@@ -11,3 +13,5 @@ export const TasksColumn = () => {
     </>
   );
 };
+
+//     {tasks.length > 0 ? <ColumnsTasksList /> : null}
