@@ -8,7 +8,6 @@ import { Field } from 'formik';
 // } from 'formik';
 
 export const FormContainer = styled.div`
-  box-sizing: border-box;
   position: relative;
   width: 303px;
   /* max-height: 420px; */
@@ -31,6 +30,11 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
+export const CloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -44,7 +48,6 @@ export const Label = styled.label`
 `;
 
 export const TitleField = styled(Field)`
-  box-sizing: border-box;
   width: 267px;
   height: 42px;
   flex-shrink: 0;
@@ -81,7 +84,6 @@ export const FieldContainer = styled.div`
 `;
 
 export const TimeField = styled(Field)`
-  box-sizing: border-box;
   width: 126px;
   height: 42px;
   flex-shrink: 0;
@@ -125,33 +127,6 @@ export const PriorityField = styled(Field)`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  /* outline: 1px solid
-    ${props => {
-    if (props.checked) {
-      switch (props.value) {
-        case 'low':
-          return '#36a1e8';
-        case 'medium':
-          return '#F3B249';
-        case 'high':
-          return '#EA3D65';
-        default:
-          return '';
-      }
-    }
-  }}; */
-  /* background-color: ${props => {
-    switch (props.value) {
-      case 'low':
-        return '#36a1e8';
-      case 'medium':
-        return '#F3B249';
-      case 'high':
-        return '#EA3D65';
-      default:
-        return 'transparent';
-    }
-  }}; */
   cursor: pointer;
 `;
 
@@ -160,7 +135,7 @@ export const ButtonContainer = styled.div`
   gap: 14px;
 `;
 
-export const ButtonAction = styled.button`
+export const ActionButton = styled.button`
   display: flex;
   width: 135px;
   height: 42px;
@@ -190,6 +165,11 @@ export const ButtonAction = styled.button`
     height: 48px;
     padding: 10px 20px;
   }
+`;
+
+export const AddIcon = styled.svg`
+  width: 18px;
+  height: 18px;
 `;
 
 export const CancelButton = styled.button`
