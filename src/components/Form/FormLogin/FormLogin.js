@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import icons from '../../../images/icons.svg';
@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormLogin() {
-  const [formValues, setFormValues] = useState();
+  // const [formValues, setFormValues] = useState();
   const dispatch = useDispatch();
 
   return (
@@ -39,7 +39,7 @@ function FormLogin() {
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
         // console.log(values);
-        setFormValues(values);
+        // setFormValues(values);
 
         dispatch(logIn(values));
 
