@@ -15,10 +15,14 @@ import { store } from 'redux/store';
 import { ChoosedMonth } from './Calendar/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from './Calendar/ChoosedDay/ChoosedDay';
 
+// import {StatisticPage} from './Statistics/StatisticsComp';
+
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
+const StatisticPage = lazy(() => import('../pages/StatisticsPage/StatisticsPage'));
+
 
 export const App = () => {
   // const isLoading = useSelector(selectIsLoading);
@@ -87,9 +91,12 @@ export const App = () => {
               <Route path="month/:currentDate" element={<ChoosedMonth />} />
               <Route path="day/:currentDay" element={<ChoosedDay />} />
             </Route>
+            <Route path="/statistics" element={<StatisticPage />}></Route>
           </Route>
         </Routes>
       </HelmetProvider>
     </Provider>
   );
 };
+
+
