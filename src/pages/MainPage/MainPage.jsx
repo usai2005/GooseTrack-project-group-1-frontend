@@ -22,7 +22,7 @@ import IMAGES from '../../images/mainPage/index';
 
 import { Container } from '../../styles/container';
 
-export default function HomePage() {
+export default function MainPage() {
   return (
     <body>
       <Container>
