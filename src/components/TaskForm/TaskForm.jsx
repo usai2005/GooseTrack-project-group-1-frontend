@@ -1,19 +1,20 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ReactComponent as CloseIcon } from './x-close.svg';
-import { ReactComponent as AddIcon } from './plus.svg';
+import icons from '../../images/icons.svg';
 import { ReactComponent as Orange } from './EllipseOrange.svg';
-import { ReactComponent as OrangeLine } from './EllipseOrangeLine.svg';
+import { ReactComponent as OrangeLine } from './Ellipse 281Orange.svg';
 import { ReactComponent as Blue } from './EllipseBlue.svg';
-import { ReactComponent as BlueLine } from './EllipseBlueLine.svg';
+import { ReactComponent as BlueLine } from './Ellipse 281Blue.svg';
 import { ReactComponent as Red } from './EllipseRed.svg';
-import { ReactComponent as RedLine } from './EllipseRedLine.svg';
+import { ReactComponent as RedLine } from './Ellipse 281Red.svg';
 import {
-  ButtonAction,
+  ActionButton,
+  AddIcon,
   ButtonContainer,
   CancelButton,
   CloseButton,
+  CloseIcon,
   FieldContainer,
   FormContainer,
   Label,
@@ -23,54 +24,64 @@ import {
   TimeField,
   TitleField,
 } from './TaskForm.styled';
+import { parse, isDate } from 'date-fns';
+import moment from 'moment';
+import { useState } from 'react';
 
 const schema = Yup.object().shape({
   title: Yup.string().max(250, 'Too Long!').required('Required'),
-  start: Yup.string().required('Required'),
+  start: Yup.string().required('start time cannot be empty'),
   end: Yup.string()
-    .required('Required')
-    .test(
-      'is-greater',
-      'End time should be greater than start time',
-      function (value) {
-        const { start } = this.parent;
-        if (start && value) {
-          const startTime = new Date(`2000-01-01T${start}`);
-          const endTime = new Date(`2000-01-01T${value}`);
-          return endTime > startTime;
-        }
-        return true;
-      }
-    ),
+    .required('end time cannot be empty')
+    .test('is-greater', 'end time should be greater', function (value) {
+      const { start } = this.parent;
+      return moment(value, 'HH:mm').isSameOrAfter(moment(start, 'HH:mm'));
+    }),
   priority: Yup.string().oneOf(['low', 'medium', 'high']).required('Required'),
   date: Yup.date()
     .required('Required')
     .transform((value, originalValue) => {
-      if (originalValue) {
-        const [year, month, day] = originalValue.split('-');
-        return new Date(
-          `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-        );
-      }
-      return value;
+      const values = isDate(originalValue)
+        ? originalValue
+        : parse(originalValue, 'yyyy-MM-dd', new Date());
+
+      return values;
     }),
+  // date: Yup.date()
+  //   .required('Date is required')
+  //   .transform((value, originalValue) => {
+  //     if (originalValue) {
+  //       const [year, month, day] = originalValue.split('-');
+  //       return new Date(
+  //         `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+  //       );
+  //     }
+  //     return value;
+  //   }),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
 });
 
-export const TaskForm = ({ onClose }) => {
-  const initialValues = {
-    title: '',
-    start: '09:00',
-    end: '09:30',
-    priority: 'low',
-    date: '',
-    category: 'to-do',
-  };
+const initialValues = {
+  title:  '',
+  start: '09:00',
+  end: '09:30',
+  priority: 'low',
+  date: new Date(),
+  category: 'to-do',
+};
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+
+export const TaskForm = ({ onClose }) => {
+  const [createTask, setCreateTask] = useState(initialValues);
+
+  const { title, start, end, priority, date } = createTask;
+
+  const handleSubmit = (values, {resetForm}) => {
+    // console.log(values);
+    setCreateTask(values);
+    console.log(createTask);
     resetForm();
   };
 
@@ -87,7 +98,9 @@ export const TaskForm = ({ onClose }) => {
             aria-label="close button"
             onClick={onClose}
           >
-            <CloseIcon />
+            <CloseIcon>
+              <use href={icons + '#icon-x-close'}></use>
+            </CloseIcon>
           </CloseButton>
           <Form>
             <Label>
@@ -109,39 +122,37 @@ export const TaskForm = ({ onClose }) => {
               </Label>
             </FieldContainer>
 
-            <div>priority: {values.priority}</div>
             <PriorityContainer role="group">
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="low" />
                 {values.priority === 'low' ? <BlueLine /> : <Blue />}
-                {/* <RadioSpan value="low" /> */}
                 Low
               </PriorityLabel>
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="medium" />
                 {values.priority === 'medium' ? <OrangeLine /> : <Orange />}
-                {/* <RadioSpan value="medium" /> */}
                 Medium
               </PriorityLabel>
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="high" />
                 {values.priority === 'high' ? <RedLine /> : <Red />}
-                {/* <RadioSpan value="high" /> */}
                 High
               </PriorityLabel>
             </PriorityContainer>
 
             <ButtonContainer>
               {/* {action === 'add' ? ( */}
-              <ButtonAction type="submit">
-                <AddIcon />
+              <ActionButton type="submit">
+                <AddIcon>
+                  <use href={icons + '#icon-plus'}></use>
+                </AddIcon>
                 Add
-              </ButtonAction>
+              </ActionButton>
               {/* ) : (
-              <ButtonAction type="submit">
+              <ActionButton type="submit">
                 <EditIcon stroke="#fff" />
                 Edit
-              </ButtonAction>
+              </ActionButton>
             )} */}
 
               <CancelButton type="button" onClick={onClose}>
