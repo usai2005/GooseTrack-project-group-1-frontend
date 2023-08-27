@@ -24,7 +24,7 @@ const FormTemplateLogin = () => {
           <FormTitle>Log In</FormTitle>
           <FormLogin />
         </ContainerForm>
-        <SignupLink to="/login">Sign up</SignupLink>
+        <SignupLink to="/register">Sign up</SignupLink>
       </Wrapper>
     </Container>
   );
