@@ -10,13 +10,10 @@ import {
   ContainerForm,
   LoginIcon,
   LoginIconPassword,
-} from './FormRegister.styled';
+} from './FormLogin.styled';
 import FormButton from '../FormButton/FormButton';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Your name is too short')
-    .required('Please enter your name'),
   email: Yup.string()
     .email('This is an ERROR email')
     .required('Please enter your email'),
@@ -26,13 +23,12 @@ const validationSchema = Yup.object().shape({
     .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 });
 
-function FormRegister() {
+function FormLogin() {
   const [formValues, setFormValues] = useState();
 
   return (
     <Formik
       initialValues={{
-        name: '',
         email: '',
         password: '',
       }}
@@ -60,26 +56,6 @@ function FormRegister() {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>
-              <Label htmlFor="name">
-                Name
-                <Input
-                  type="text"
-                  name="name"
-                  autoCorrect="off"
-                  autoComplete="name"
-                  placeholder="Enter your name"
-                  valid={touched.name && !errors.name}
-                  error={touched.name && errors.name}
-                />
-              </Label>
-              {errors.name && touched.name && (
-                <StyledInlineErrorMessage>
-                  {errors.name}
-                  <LoginIcon>
-                    <use href={icons + '#icon-log-in-01'}></use>
-                  </LoginIcon>
-                </StyledInlineErrorMessage>
-              )}
               <Label htmlFor="email">
                 Email
                 <Input
@@ -130,7 +106,7 @@ function FormRegister() {
                   <use href={icons + '#icon-log-in-01'}></use>
                 </LoginIcon>
               </Submit> */}
-              <FormButton isValid={isValid}>Sign up</FormButton>
+              <FormButton isValid={isValid}>Log in</FormButton>
             </Form>
           </ContainerForm>
         );
@@ -139,4 +115,4 @@ function FormRegister() {
   );
 }
 
-export default FormRegister;
+export default FormLogin;
