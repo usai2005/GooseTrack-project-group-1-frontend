@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
 import icons from '../../../images/icons.svg';
-import { register } from 'redux/auth/operations';
 
 import {
   Label,
@@ -12,13 +10,10 @@ import {
   ContainerForm,
   LoginIcon,
   LoginIconPassword,
-} from './FormRegister.styled';
+} from './FormLogin.styled';
 import FormButton from '../FormButton/FormButton';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Your name is too short')
-    .required('Please enter your name'),
   email: Yup.string()
     .email('This is an ERROR email')
     .required('Please enter your email'),
@@ -28,26 +23,25 @@ const validationSchema = Yup.object().shape({
     .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 });
 
-function FormRegister() {
-  // const [formValues, setFormValues] = useState();
+function FormLogin() {
+  const [formValues, setFormValues] = useState();
 
   return (
     <Formik
       initialValues={{
-        name: '',
         email: '',
         password: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { resetForm }) => {
-        try {
-          await dispatch(register(values));
-          resetForm();
+      onSubmit={(values, actions) => {
+        console.log(values);
+        setFormValues(values);
 
-          // console.log(values);
-        } catch (error) {
-          console.error('Registration failed', error);
-        }
+        const timeOut = setTimeout(() => {
+          actions.setSubmitting(false);
+
+          clearTimeout(timeOut);
+        }, 1000);
       }}
     >
       {({
@@ -62,26 +56,6 @@ function FormRegister() {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>
-              <Label htmlFor="name">
-                Name
-                <Input
-                  type="text"
-                  name="name"
-                  autoCorrect="off"
-                  autoComplete="name"
-                  placeholder="Enter your name"
-                  valid={touched.name && !errors.name}
-                  error={touched.name && errors.name}
-                />
-              </Label>
-              {errors.name && touched.name && (
-                <StyledInlineErrorMessage>
-                  {errors.name}
-                  <LoginIcon>
-                    <use href={icons + '#icon-log-in-01'}></use>
-                  </LoginIcon>
-                </StyledInlineErrorMessage>
-              )}
               <Label htmlFor="email">
                 Email
                 <Input
@@ -132,7 +106,7 @@ function FormRegister() {
                   <use href={icons + '#icon-log-in-01'}></use>
                 </LoginIcon>
               </Submit> */}
-              <FormButton isValid={isValid}>Sign up</FormButton>
+              <FormButton isValid={isValid}>Log in</FormButton>
             </Form>
           </ContainerForm>
         );
@@ -141,4 +115,4 @@ function FormRegister() {
   );
 }
 
-export default FormRegister;
+export default FormLogin;
