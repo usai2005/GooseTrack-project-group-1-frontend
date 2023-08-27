@@ -1,4 +1,7 @@
-import { TaskItem, TaskList } from 'components/Calendar/Calendar.styled';
+import {
+  TaskItem,
+  TaskList,
+} from 'components/Calendar/ChoosedMonth/CalendarTable/CalendarTable.styled';
 
 export const CalendarTasks = tasks => {
   return (

@@ -9,14 +9,16 @@ import {
 // import Loader from './Loader/Loader';
 import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRoute } from './PrivateRoute';
+// import { PrivateRoute } from './PrivateRoute';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
+import { ChoosedMonth } from './Calendar/ChoosedMonth/ChoosedMonth';
+import { ChoosedDay } from './Calendar/ChoosedDay/ChoosedDay';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
-const CalendarPage = lazy(() => import('../pages/Calendar'));
+const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 
 export const App = () => {
   // const isLoading = useSelector(selectIsLoading);
@@ -51,36 +53,43 @@ export const App = () => {
 
     <Provider store={store}>
       <HelmetProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/calendar"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/calendar"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/calendar"
-            element={
-              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
-            }
-          />
-        </Route>
-      </Routes>
-    </HelmetProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/calendar/month"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/calendar/month"
+                  component={<LoginPage />}
+                />
+              }
+            />
+            {/* <Route
+              path="/calendar"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<CalendarPage />}
+                />
+              }
+            /> */}
+            <Route path="/calendar" element={<CalendarPage />}>
+              <Route path="month/:currentDate" element={<ChoosedMonth />} />
+              <Route path="day/:currentDay" element={<ChoosedDay />} />
+            </Route>
+          </Route>
+        </Routes>
+      </HelmetProvider>
     </Provider>
   );
 };
