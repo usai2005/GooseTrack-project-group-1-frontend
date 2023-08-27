@@ -1,5 +1,5 @@
 import React from 'react';
-import FormRegister from '../FormRegister/FormRegister';
+import FormLogin from '../FormLogin/FormLogin';
 import FormTitle from '../FormTitle/FormTitle';
 import {
   Container,
@@ -7,11 +7,11 @@ import {
   Img,
   SignupLink,
   Wrapper,
-} from './FormTemplate.styled';
-import desk1x from '../../../images/register/desk@1.webp';
-import desk2x from '../../../images/register/desk@2.webp';
+} from './FormTemplateLogin.styled';
+import desk1x from '../../../images/login/desk@1.webp';
+import desk2x from '../../../images/login/desk@2.webp';
 
-const FormTemplate = () => {
+const FormTemplateLogin = () => {
   return (
     <Container>
       <Img
@@ -21,13 +21,13 @@ const FormTemplate = () => {
       />
       <Wrapper>
         <ContainerForm>
-          <FormTitle>Sign Up</FormTitle>
-          <FormRegister />
+          <FormTitle>Log In</FormTitle>
+          <FormLogin />
         </ContainerForm>
-        <SignupLink to="/login">Log in</SignupLink>
+        <SignupLink to="/login">Sign up</SignupLink>
       </Wrapper>
     </Container>
   );
 };
 
-export default FormTemplate;
+export default FormTemplateLogin;

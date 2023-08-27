@@ -28,9 +28,10 @@ export const Label = styled.label`
       color: #e74a3b;
     `}
 `;
-
-export const Input = styled(FilteredPropsInputField)`
+export const InputContainer = styled.div`
   position: relative;
+`;
+export const Input = styled(FilteredPropsInputField)`
   background-color: white;
   border: 1px solid #dce3e5;
   border-radius: 8px;
@@ -110,57 +111,18 @@ export const StyledInlineErrorMessage = styled.div`
   padding-left: 16px;
   white-space: pre-line;
 `;
-
-export const Submit = styled.button`
-  width: 100%;
-  margin-top: 1.5rem;
-
-  background-color: #3e85f3;
+export const StyledInlineMessage = styled.div`
+  color: #3cbc81;
   display: block;
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  color: #fff;
-  /* height: 3rem;
-  white-space: nowrap;
-  color: rgb(232, 243, 255) !important; */
-  padding: 16px;
-  border-radius: 16px;
 
-  &:active,
-  &:focus,
-  &:hover {
-    cursor: pointer;
-    background-color: #2b78ef;
-    box-shadow: rgb(244, 129, 116) 0px 0px 2px 1px,
-      rgb(251, 178, 174) 0px 0px 0px 3px;
-  }
-
-  &:disabled {
-    cursor: pointer;
-    background-color: rgb(163, 168, 173);
-    box-shadow: none;
-    color: rgb(255, 255, 255) !important;
-
-    &:hover,
-    &:focus {
-      cursor: not-allowed;
-    }
-  }
+  padding-left: 16px;
+  white-space: pre-line;
 `;
+
 export const LoginIcon = styled.svg`
   width: 20px;
   height: 20px;
-  position: relative;
+  position: absolute;
   bottom: 45px;
-  left: 180px;
-`;
-export const LoginIconPassword = styled.svg`
-  width: 20px;
-  height: 20px;
-  /* position: absolute;
-  bottom: 45px;
-  right: 280px; */
+  right: 20px;
 `;

@@ -7,6 +7,9 @@ export const ContainerForm = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
+export const InputContainer = styled.div`
+  position: relative;
+`;
 
 export const Label = styled.label`
   color: #000;
@@ -150,17 +153,17 @@ export const Submit = styled.button`
     }
   }
 `;
+export const StyledInlineMessage = styled.div`
+  color: #3cbc81;
+  display: block;
+
+  padding-left: 16px;
+  white-space: pre-line;
+`;
 export const LoginIcon = styled.svg`
   width: 20px;
   height: 20px;
-  position: relative;
+  position: absolute;
   bottom: 45px;
-  left: 180px;
-`;
-export const LoginIconPassword = styled.svg`
-  width: 20px;
-  height: 20px;
-  /* position: absolute;
-  bottom: 45px;
-  right: 280px; */
+  right: 20px;
 `;
