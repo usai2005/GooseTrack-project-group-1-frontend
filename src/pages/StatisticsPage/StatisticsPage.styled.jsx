@@ -11,7 +11,7 @@ export const Container = styled.section`
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 135px;
+  padding-bottom: 40px;
 
   background-color: #fff;
   ${viewport.tab} {
@@ -24,9 +24,21 @@ export const Container = styled.section`
 
 export const Pagination = styled.div`
   display: flex;
-  padding: 0px 50px;
+  flex-direction: column;
+  width: 307px;
+  margin: 0 auto;
+  ${viewport.tab} {
+    flex-direction: row;
+    width: 600px;
+  }
+  ${viewport.desk} {
+    width: 800px;
+  }
 `;
 
 export const Calendar = styled.div`
-  width: 220px;
+  width: 307px;
+  ${viewport.tab} {
+    width: 220px;
+  }
 `;
