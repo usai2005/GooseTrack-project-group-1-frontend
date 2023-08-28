@@ -31,6 +31,8 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
+  // console.log('isRefreshing', isRefreshing);
+
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
@@ -79,7 +81,13 @@ export const App = () => {
                 }
               />
             </Route>
-            <Route path="statistics" element={<StatisticPage />} />
+            <Route
+              path="statistics"
+              // element={
+              //   <PrivateRoute redirectTo="/" component={<StatisticPage />} />
+              // }
+              element={<StatisticPage />}
+            />
           </Route>
           <Route
             path="login"

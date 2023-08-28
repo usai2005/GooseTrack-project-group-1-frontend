@@ -8,6 +8,8 @@ export const PeriodTypeSelect = () => {
   let navigate = useNavigate();
 
   const periodType = useSelector(selectPeriodType);
+  const isMonthActive = periodType.includes('month');
+  const isDayActive = periodType.includes('day');
 
   const currentDate = useSelector(selectActiveDate);
   const dispatch = useDispatch();
@@ -28,14 +30,14 @@ export const PeriodTypeSelect = () => {
       <div>
         <MonthToggle
           type="button"
-          $currenttype={periodType}
+          $currenttype={isMonthActive}
           onClick={handleToggleMonth}
         >
           Month
         </MonthToggle>
         <MonthToggle
           type="button"
-          $currenttype={periodType}
+          $currenttype={isDayActive}
           onClick={handleToggleDay}
         >
           Day
