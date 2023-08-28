@@ -79,7 +79,6 @@ export const App = () => {
                 }
               />
             </Route>
-            <Route path="statistics" element={<StatisticPage />} />
           </Route>
           <Route
             path="login"
