@@ -33,11 +33,10 @@ import {
 } from 'redux/date/selectors';
 
 const tasks = [
-  { id: 1, date: '24-08-2023', text: 'To do something', priority: 'low' },
-  { id: 1111, date: '24-08-2023', text: 'To do something', priority: 'low' },
-
-  { id: 11, date: '23-08-2023', text: 'To do 2', priority: 'medium' },
-  { id: 111, date: '20-08-2023', text: 'To do 3', priority: 'Hight' },
+  { id: 1, date: '2023-08-24', title: 'To do something', priority: 'low' },
+  { id: 1111, date: '2023-08-24', title: 'To do something', priority: 'low' },
+  { id: 11, date: '2023-08-22', title: 'To do 2', priority: 'medium' },
+  { id: 111, date: '2023-08-21', title: 'To do 3', priority: 'Hight' },
 ];
 
 const WeekDayItem = ({ currentDate, activeDate, isToday, tasksToShow }) => {
@@ -72,7 +71,7 @@ const generateDatesForCurrentWeek = (
     const isToday = isSameDay(currentDate, new Date());
 
     const tasksToShow = tasks.filter(
-      task => task.date === format(cloneDate, 'dd-MM-yyyy')
+      task => task.date === format(cloneDate, 'yyyy-MM-dd')
     );
 
     week.push(
@@ -105,12 +104,12 @@ export const CalendarTable = () => {
 
   // const selectedDate = parse(
   //   useSelector(selectSelectedDate),
-  //   'dd-MM-yyyy',
+  //   'yyyy-MM-dd',
   //   new Date()
   // );
   const activeDate = parse(
     useSelector(selectActiveDate),
-    'dd-MM-yyyy',
+    'yyyy-MM-dd',
     new Date()
   );
 

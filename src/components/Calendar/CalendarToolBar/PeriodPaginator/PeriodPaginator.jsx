@@ -35,14 +35,14 @@ export const PeriodPaginator = () => {
   const selectedDate = useSelector(selectSelectedDate);
   const date =
     periodType === 'month'
-      ? parse(currentDate, 'dd-MM-yyyy', new Date())
-      : parse(selectedDate, 'dd-MM-yyyy', new Date());
+      ? parse(currentDate, 'yyyy-MM-dd', new Date())
+      : parse(selectedDate, 'yyyy-MM-dd', new Date());
 
   // console.log(currentDate);
   // const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTasks(format(date, 'MM-yyyy')));
+    dispatch(fetchTasks(format(date, 'yyyy-MM')));
   }, [dispatch, date]);
 
   return (
@@ -52,8 +52,8 @@ export const PeriodPaginator = () => {
           <ReactDatePicker
             selected={date}
             onChange={value => {
-              dispatch(setSelectedDate(format(value, 'dd-MM-yyyy')));
-              dispatch(setActiveDate(format(value, 'dd-MM-yyyy')));
+              dispatch(setSelectedDate(format(value, 'yyyy-MM-dd')));
+              dispatch(setActiveDate(format(value, 'yyyy-MM-dd')));
             }}
             calendarStartDay={1}
             // showMonthYearPicker
@@ -71,11 +71,11 @@ export const PeriodPaginator = () => {
               console.log('periodType', periodType);
               if (periodType === 'month') {
                 dispatch(
-                  setActiveDate(format(subMonths(date, 1), 'dd-MM-yyyy'))
+                  setActiveDate(format(subMonths(date, 1), 'yyyy-MM-dd'))
                 );
               } else {
                 dispatch(
-                  setSelectedDate(format(subDays(date, 1), 'dd-MM-yyyy'))
+                  setSelectedDate(format(subDays(date, 1), 'yyyy-MM-dd'))
                 );
               }
             }}
@@ -88,11 +88,11 @@ export const PeriodPaginator = () => {
               if (periodType === 'month') {
                 console.log('periodType', periodType);
                 dispatch(
-                  setActiveDate(format(addMonths(date, 1), 'dd-MM-yyyy'))
+                  setActiveDate(format(addMonths(date, 1), 'yyyy-MM-dd'))
                 );
               } else {
                 dispatch(
-                  setSelectedDate(format(addDays(date, 1), 'dd-MM-yyyy'))
+                  setSelectedDate(format(addDays(date, 1), 'yyyy-MM-dd'))
                 );
               }
             }}
