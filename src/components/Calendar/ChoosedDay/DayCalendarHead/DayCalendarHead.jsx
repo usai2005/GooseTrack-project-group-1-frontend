@@ -8,7 +8,7 @@ import { selectSelectedDate } from 'redux/date/selectors';
 export const DayCalendarHead = () => {
   const today = parse(
     useSelector(selectSelectedDate),
-    'dd-MM-yyyy',
+    'yyyy-MM-dd',
     new Date()
   );
   const weekStartDate = startOfWeek(today, { weekStartsOn: 1 });

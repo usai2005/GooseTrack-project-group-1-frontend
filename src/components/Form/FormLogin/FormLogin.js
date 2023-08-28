@@ -11,7 +11,7 @@ import {
   LoginIcon,
   InputContainer,
   StyledInlineMessage,
-} from './FormLogin.styled';
+} from '../FormRegister/FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
