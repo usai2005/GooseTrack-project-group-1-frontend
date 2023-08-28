@@ -2,7 +2,7 @@ import React, { useEffect }  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTasks } from '../../redux/tasks/tasksOperations';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
-import { selectPeriodType } from '../../redux/date/selectors';
+import { selectSelectedDate } from '../../redux/date/selectors';
 import {
   BarChart,
   Bar,
@@ -18,15 +18,16 @@ import { Container, Title, Wrapper } from './StatisticsComp.styled';
 
 export const StatisticsComp = () => {
   const dispatch = useDispatch();
-  const toDay = useSelector(selectPeriodType);
+  const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
+
+  console.log(toDay)
+  console.log(tasks)
 
   useEffect(() => {
     dispatch(getAllTasks());
   }, [dispatch]);
 
-  console.log(toDay)
-  console.log(tasks)
 
   let todoByDay = 10;
   let inprogressByDay = 20;
