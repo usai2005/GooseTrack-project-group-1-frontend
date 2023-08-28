@@ -16,6 +16,7 @@ import { authReducer } from './auth/authSlice';
 import { tasksReducer } from './tasks/tasksSlice';
 import { reviewsReducer } from './reviews/reviewsSlice';
 import { dateReducer } from './date/dateSlice';
+import { themeReducer } from './theme/themeSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -37,6 +38,7 @@ export const store = configureStore({
     tasks: tasksReducer,
     reviews: reviewsReducer,
     date: dateReducer,
+    theme: themeReducer,
   },
   middleware,
 });

@@ -17,3 +17,13 @@ export const MoonIcon = styled.svg`
         height: 32px;
     }
 `;
+
+export const SunIcon = styled.svg`
+    width: 24px;
+    height: 24px;
+
+    @media screen and (min-width: 768px) {
+        width: 32px;
+        height: 32px;
+    }
+`;
