@@ -115,6 +115,7 @@ export const LoginIcon = styled.svg`
   width: 20px;
   height: 20px;
   position: absolute;
-  bottom: 45px;
+  bottom: 40px;
   right: 20px;
+  overflow: visible;
 `;
