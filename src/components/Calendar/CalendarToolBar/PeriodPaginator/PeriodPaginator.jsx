@@ -33,13 +33,11 @@ export const PeriodPaginator = () => {
   const periodType = useSelector(selectPeriodType);
   const currentDate = useSelector(selectActiveDate);
   const selectedDate = useSelector(selectSelectedDate);
+
   const date =
     periodType === 'month'
       ? parse(currentDate, 'yyyy-MM-dd', new Date())
       : parse(selectedDate, 'yyyy-MM-dd', new Date());
-
-  // console.log(currentDate);
-  // const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTasks(format(date, 'yyyy-MM')));
@@ -68,7 +66,7 @@ export const PeriodPaginator = () => {
           <Controls
             type="button"
             onClick={() => {
-              console.log('periodType', periodType);
+              // console.log('periodType', periodType);
               if (periodType === 'month') {
                 dispatch(
                   setActiveDate(format(subMonths(date, 1), 'yyyy-MM-dd'))
@@ -86,7 +84,7 @@ export const PeriodPaginator = () => {
             type="button"
             onClick={() => {
               if (periodType === 'month') {
-                console.log('periodType', periodType);
+                // console.log('periodType', periodType);
                 dispatch(
                   setActiveDate(format(addMonths(date, 1), 'yyyy-MM-dd'))
                 );

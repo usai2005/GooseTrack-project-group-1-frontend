@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 
-export const TaskModal = ({ onClose, action, column, createTask }) => {
+export const TaskModal = ({ category, task, onClose }) => {
   return (
     <Modal onClose={onClose}>
-      <TaskForm onClose={onClose} createTask={createTask} />
+      <TaskForm onClose={onClose} category={category} task={task} />
     </Modal>
   );
 };
-
