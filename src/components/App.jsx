@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // import Loader from './Loader/Loader';
 import { Layout } from './Layout/Layout';
@@ -27,6 +27,8 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 const UserProfile = lazy(() => import('../pages/UserProfile'));
 
 export const App = () => {
+  const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
+
   // const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -43,7 +45,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route
             path="/"
-            element={selectIsLoggedIn ? <Layout /> : <MainPage />}
+            element={isLoggedIn ? <Layout /> : <MainPage />}
           >
             <Route
               index
