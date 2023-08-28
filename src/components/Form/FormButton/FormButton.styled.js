@@ -9,22 +9,17 @@ export const Button = styled.button`
   border-radius: 16px;
   padding: 16px;
   border-color: none;
-  margin-top: 30px;
+  margin-top: 8px;
   text-align: center;
-  font-family: Inter;
-  font-size: 18px;
-  line-height: 1.5px;
-  font-style: normal;
-  font-weight: 600;
   color: #fff;
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
   &:active,
   &:focus,
   &:hover {
     cursor: pointer;
     background-color: #2b78ef;
-    box-shadow: rgb(244, 129, 116) 0px 0px 2px 1px,
-      rgb(251, 178, 174) 0px 0px 0px 3px;
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 
   &:disabled {
