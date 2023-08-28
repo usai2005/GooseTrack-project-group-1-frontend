@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import icons from '../../images/icons.svg';
-import { MoonIcon, SunIcon } from './ThemeToggler.styled'; 
+import { MoonIcon, SunIcon, Wrapper } from './ThemeToggler.styled'; 
 import { toggleTheme } from 'redux/theme/themeSlice';
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
@@ -14,7 +14,7 @@ const ThemeToggler = () => {
   };
 
   return (
-    <div onClick={handleThemeToggle}>
+    <Wrapper onClick={handleThemeToggle}>
       {currentTheme === 'light' ? (
         <MoonIcon>
           <use href={icons + '#icon-moon'}></use>
@@ -24,7 +24,7 @@ const ThemeToggler = () => {
           <use href={icons + '#icon-sun'}></use>
         </SunIcon>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
