@@ -1,5 +1,4 @@
-const light = {
-
+export const light = {
   variable: {
     sideBar: "#FFFFFF", 
     primaryBg: "#F7F6F9", 
@@ -19,7 +18,7 @@ const light = {
     calendarTextColor: "#343434", 
     weekendTextColor: "#3E85F3", 
     bgCalendar: "#FFFFFF", 
-    borderСalendarColor: "rgba(220,	227,	229, 0.80)", 
+    borderCalendarColor: "rgba(220,	227,	229, 0.80)", 
     activeArrowColor: "#dce3e5", 
     borderColorSideBar: "1px solid #dce3e580", 
     gooseColor: "rgba(62, 133, 243, 1)", 
@@ -54,8 +53,7 @@ const light = {
   },
 };
 
-const dark = {
-
+export const dark = {
   variable: {
     sideBar: "#13151A", 
     primaryBg: "#171820", 
@@ -76,7 +74,7 @@ const dark = {
     calendarTextColor: "#FFFFFF", 
     weekendTextColor: "#3E85F3", 
     bgCalendar: "#21222C",
-    borderСalendarColor: "rgba(255, 255, 255, 0.15)", 
+    borderCalendarColor: "rgba(255, 255, 255, 0.15)", 
     activeArrowColor: "rgba(255, 255, 255, 0.15)", 
     gooseColor: "#E3F3FF",
     bgColorClose: "#13151A", 
