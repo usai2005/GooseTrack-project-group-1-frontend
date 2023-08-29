@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-// import {
-//   Form as FormikForm,
-//   Field,
-//   ErrorMessage as FormikErrorMessage,
-// } from 'formik';
 
 export const FormContainer = styled.div`
   position: relative;
   width: 303px;
   /* max-height: 420px; */
   padding: 48px 18px 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 227, 229, 0.8);
+  background: #fff;
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   @media (min-width: 768px) {
     width: 396px;
     padding: 40px 28px;
@@ -168,6 +167,11 @@ export const ActionButton = styled.button`
 `;
 
 export const AddIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+`;
+
+export const EditIcon = styled.svg`
   width: 18px;
   height: 18px;
 `;
