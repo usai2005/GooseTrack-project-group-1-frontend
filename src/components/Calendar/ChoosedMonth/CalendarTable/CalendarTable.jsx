@@ -22,48 +22,54 @@ import {
   setPeriodType,
   setSelectedDate,
 } from 'redux/date/dateSlice';
+import { selectTasks } from 'redux/tasks/tasksSelectors';
 
-const tasks = [
-  {
-    _id: 1,
-    date: '2023-08-24',
-    title: 'To do something',
-    start: '12:00',
-    end: '13:30',
-    priority: 'low',
-  },
-  {
-    _id: 1111,
-    date: '2023-08-24',
-    title: 'To do something',
-    start: '15:00',
-    end: '18:30',
-    priority: 'low',
-  },
-  {
-    _id: 11,
-    date: '2023-08-22',
-    title: 'To do 2',
-    start: '12:00',
-    end: '18:30',
-    priority: 'medium',
-  },
-  {
-    _id: 111,
-    date: '2023-08-21',
-    title: 'To do 3',
-    start: '12:00',
-    end: '20:30',
-    priority: 'Hight',
-  },
-];
+// export const tasks = [
+//   {
+//     _id: 1,
+//     date: '2023-08-29',
+//     title: 'To do something',
+//     start: '12:00',
+//     end: '13:30',
+//     priority: 'low',
+//     category: 'to-do',
+//   },
+//   {
+//     _id: 1111,
+//     date: '2023-08-29',
+//     title: 'To do something',
+//     start: '15:00',
+//     end: '18:30',
+//     priority: 'low',
+//     category: 'done',
+//   },
+//   {
+//     _id: 11,
+//     date: '2023-08-22',
+//     title: 'To do 2',
+//     start: '12:00',
+//     end: '18:30',
+//     priority: 'medium',
+//     category: 'in-progress',
+//   },
+//   {
+//     _id: 111,
+//     date: '2023-08-21',
+//     title: 'To do 3',
+//     start: '12:00',
+//     end: '20:30',
+//     priority: 'Hight',
+//     category: 'to-do',
+//   },
+// ];
 
 const generateDatesForCurrentWeek = (
   date,
   activeDate,
   handleClick,
   setIsOpen,
-  setTaskToEdit
+  setTaskToEdit,
+  tasks
 ) => {
   let currentDate = date;
   const week = [];
@@ -77,11 +83,9 @@ const generateDatesForCurrentWeek = (
       task => task.date === format(cloneDate, 'yyyy-MM-dd')
     );
 
-    if (tasksToShow.length > 0) {
-      console.log('tasksToShow', tasksToShow);
-    }
     week.push(
       <WeekDayItem
+        key={currentDate}
         currentDate={currentDate}
         activeDate={activeDate}
         isToday={isToday}
@@ -100,6 +104,7 @@ export const CalendarTable = () => {
   const [isOpened, setIsOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks);
 
   const handleClick = (e, date) => {
     const { currentTarget, target } = e;
@@ -113,7 +118,7 @@ export const CalendarTable = () => {
 
   const handleToggle = () => {
     setIsOpen(!isOpened);
-    console.log(isOpened);
+    // console.log(isOpened);
   };
 
   const activeDate = parse(
@@ -137,16 +142,17 @@ export const CalendarTable = () => {
         activeDate,
         handleClick,
         setIsOpen,
-        setTaskToEdit
+        setTaskToEdit,
+        tasks
       )
     );
     currentDate = addDays(currentDate, 7);
   }
-  console.log(taskToEdit, 'task to edit-3');
 
   return (
     <>
       <WeekContainer>{allWeeks}</WeekContainer>
+
       {isOpened && (
         <TaskModal
           task={taskToEdit}

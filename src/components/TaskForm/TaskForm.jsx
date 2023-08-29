@@ -81,7 +81,7 @@ const initialValues = {
 export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   // const [createTask, setCreateTask] = useState(initialValues);
 
-  console.log(task.id, 'task to edit');
+  // console.log(task.id, 'task to edit');
 
   const [action, setAction] = useState('create');
   const date = useSelector(selectSelectedDate);
@@ -90,13 +90,14 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   useEffect(() => {
     if (task?._id) setAction('edit');
   }, [task]);
-  console.log(action, 'form action');
+  // console.log(action, 'form action');
 
   // const { title, start, end, priority, date } = createTask;
 
-  const handleSubmit = values => {
-    // console.log(values);
+  const handleSubmit = async values => {
+    // console.log('values');
     // setCreateTask(values);
+
     const { start, end } = values;
     if (start > end) {
       console.log('Start time cannot be later than end time'); //// додати нотіфікашку

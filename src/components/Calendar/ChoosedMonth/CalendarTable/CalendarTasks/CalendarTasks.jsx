@@ -23,7 +23,7 @@ export const CalendarTasks = ({ tasks, setTaskToEdit, setOpening }) => {
           return (
             <TaskItem
               key={task._id}
-              priority={task.priority}
+              $priority={task.priority}
               onClick={() => {
                 setOpening(true);
                 setTaskToEdit(task);
