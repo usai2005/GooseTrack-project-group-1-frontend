@@ -28,5 +28,3 @@ export const TasksColumn = ({ title, tasks }) => {
     </>
   );
 };
-
-//     {tasks.length > 0 ? <ColumnsTasksList /> : null}

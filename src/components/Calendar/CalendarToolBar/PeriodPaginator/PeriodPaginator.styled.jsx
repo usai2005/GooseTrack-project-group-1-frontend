@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 export const DatePickerWrapper = styled.div`
   font-family: 'Inter', sans-serif;
+  margin-right: 8px;
   & .react-datepicker__today-button {
     border: none;
     background: none;
