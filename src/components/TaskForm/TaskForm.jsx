@@ -10,7 +10,7 @@ import { ReactComponent as Red } from './EllipseRed.svg';
 import { ReactComponent as RedLine } from './Ellipse 281Red.svg';
 import {
   ActionButton,
-  AddIcon,
+  // AddIcon,
   ButtonContainer,
   CancelButton,
   CloseButton,
