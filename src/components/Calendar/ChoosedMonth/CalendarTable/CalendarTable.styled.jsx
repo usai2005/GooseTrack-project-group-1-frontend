@@ -91,8 +91,8 @@ export const TaskItem = styled.li`
 
   /* height: 14px; */
   border-radius: 8px;
-  background-color: ${({ priority }) => priorityBg[priority]};
-  color: ${({ priority }) => priorityColor[priority]};
+  background-color: ${({ $priority }) => priorityBg[$priority]};
+  color: ${({ $priority }) => priorityColor[$priority]};
 
   font-size: 10px;
   font-weight: 700;
