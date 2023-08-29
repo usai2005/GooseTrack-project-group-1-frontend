@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllTasks } from '../../redux/tasks/tasksOperations';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
 import { selectSelectedDate } from '../../redux/date/selectors';
+
 import {
   BarChart,
   Bar,
@@ -21,23 +22,51 @@ export const StatisticsComp = () => {
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
 
-  console.log(toDay)
-  console.log(tasks)
-
   useEffect(() => {
     dispatch(getAllTasks());
   }, [dispatch]);
 
+  let filteredTasksByDay = null;
+  let filteredTasksByMonth = null;
+  let todoByDay = 0;
+  let inprogressByDay = 0;
+  let doneByDay = 0;
+  let todoByMonth = 0;
+  let inprogressByMonth = 0;
+  let doneByMonth = 0;
 
-  let todoByDay = 10;
-  let inprogressByDay = 20;
-  let doneByDay = 10;
-  let todoByMonth = 30;
-  let inprogressByMonth = 20;
-  let doneByMonth = 10;
+  function filteredTasks(tasks) {
+    filteredTasksByDay = tasks.filter(
+      task => new Date(task.date).getDate() === new Date(toDay).getDate()
+    );
+    filteredTasksByMonth = tasks.filter(
+      task => new Date(task.date).getMonth() === new Date(toDay).getMonth()
+    );
+    todoByDay = filteredTasksByDay.filter(
+      task => task.category === 'to-do'
+    ).length;
+    inprogressByDay = filteredTasksByDay.filter(
+      task => task.category === 'in-progress'
+    ).length;
+    doneByDay = filteredTasksByDay.filter(
+      task => task.category === 'done'
+    ).length;
+    todoByMonth = filteredTasksByMonth.filter(
+      task => task.category === 'to-do'
+    ).length;
+    inprogressByMonth = filteredTasksByMonth.filter(
+      task => task.category === 'in-progress'
+    ).length;
+    doneByMonth = filteredTasksByMonth.filter(
+      task => task.category === 'done'
+    ).length;
+  }
+  filteredTasks(tasks);
 
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
+
+  console.log(tasks)
 
   const data = [
     {
@@ -110,3 +139,127 @@ export const StatisticsComp = () => {
     </Container>
   );
 };
+
+//-------------------------------------------------------------------
+
+// import React, { useEffect }  from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { getAllTasks } from '../../redux/tasks/tasksOperations';
+// import { selectTasks } from '../../redux/tasks/tasksSelectors';
+// import { selectActiveDate } from '../../redux/date/selectors';
+// import {
+//   BarChart,
+//   Bar,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   LabelList,
+//   ResponsiveContainer,
+// } from 'recharts';
+
+// import { Container, Title, Wrapper } from './StatisticsComp.styled';
+
+// export const StatisticsComp = () => {
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(getAllTasks());
+//   }, [dispatch]);
+
+//   const toDay = useSelector(selectActiveDate);
+//   const tasksByMonth = useSelector(selectTasks);
+
+//   console.log("tasksByMonth", tasksByMonth)
+//   console.log("toDay", toDay)
+
+//   const tasksByDay = tasksByMonth.filter(task => task.date === toDay);
+
+//   const allTasksByDay = tasksByDay.length;
+//   const allTasksByMonth = tasksByMonth.length;
+//   const todoByDay = tasksByDay.filter(task => task.category === 'to-do').length;
+//   const inprogressByDay = tasksByDay.filter(
+//     task => task.category === 'in-progress'
+//   ).length;
+//   const doneByDay = tasksByDay.filter(task => task.category === 'done').length;
+//   const todoByMonth = tasksByMonth.filter(
+//     task => task.category === 'to-do'
+//   ).length;
+//   const inprogressByMonth = tasksByMonth.filter(
+//     task => task.category === 'in-progress'
+//   ).length;
+//   const doneByMonth = tasksByMonth.filter(
+//     task => task.category === 'done'
+//   ).length;
+
+//   const data = [
+//     {
+//       name: 'To Do',
+//       day: todoByDay,
+//       month: todoByMonth,
+//       dayf: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
+//       monthf: `${Math.round((todoByMonth / allTasksByMonth) * 100) || 0}%`,
+//     },
+//     {
+//       name: 'In Progress',
+//       day: inprogressByDay,
+//       month: inprogressByMonth,
+//       dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
+//       monthf: `${Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0}%`,
+//     },
+//     {
+//       name: 'Done',
+//       day: doneByDay,
+//       month: doneByMonth,
+//       dayf: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
+//       monthf: `${Math.round((doneByMonth / allTasksByMonth) * 100) || 0}%`,
+//     },
+//   ];
+
+//   return (
+//     <Container>
+//       <Title>Tasks</Title>
+//       <Wrapper>
+//         <ResponsiveContainer>
+//           <BarChart
+//             data={data}
+//             margin={{ top: 24, right: 10, left: 10, bottom: 10 }}
+//             barGap={14}
+//           >
+//             <defs>
+//               <linearGradient id="colorDay" x1="0" y1="0" x2="0" y2="1">
+//                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
+//                 <stop offset="95%" stopColor="#FFD2DD" stopOpacity={0.8} />
+//               </linearGradient>
+//               <linearGradient id="colorMonth" x1="0" y1="0" x2="0" y2="1">
+//                 <stop offset="5%" stopColor="#3E85F3" stopOpacity={0} />
+//                 <stop offset="95%" stopColor="#3E85F3" stopOpacity={0.8} />
+//               </linearGradient>
+//             </defs>
+//             <CartesianGrid vertical={false} stroke="#E3F3FF" />
+//             <XAxis
+//               dataKey="name"
+//               axisLine={false}
+//               tickLine={false}
+//               height={40}
+//             />
+//             <YAxis
+//               axisLine={false}
+//               tickLine={false}
+//               width={40}
+//               allowDecimals={false}
+//               tickMargin={20}
+//             />
+//             <Tooltip />
+//             <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
+//               <LabelList dataKey="dayf" position="top" />
+//             </Bar>
+//             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
+//               <LabelList dataKey="monthf" position="top" />
+//             </Bar>
+//           </BarChart>
+//         </ResponsiveContainer>
+//       </Wrapper>
+//     </Container>
+//   );
+// };
