@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    display: flex;
+  display: flex;
 
-    background: #F7F6F9;
+  background-color: ${props => props.theme.variable.primaryBg};
+  /* background: #f7f6f9; */
 `;
