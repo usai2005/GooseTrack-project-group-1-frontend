@@ -10,11 +10,12 @@ import { ReactComponent as Red } from './EllipseRed.svg';
 import { ReactComponent as RedLine } from './Ellipse 281Red.svg';
 import {
   ActionButton,
-  // AddIcon,
+  AddIcon,
   ButtonContainer,
   CancelButton,
   CloseButton,
   CloseIcon,
+  EditIcon,
   FieldContainer,
   FormContainer,
   Label,
@@ -48,12 +49,12 @@ const schema = Yup.object().shape({
         // value,
         originalValue
       ) => {
-        const values = isDate(originalValue)
+        const parsedDate = isDate(originalValue)
           ? originalValue
           : parse(originalValue, 'yyyy-MM-dd', new Date());
 
-        return values;
-      }
+        return parsedDate;
+      } 
     ),
   // date: Yup.date()
   //   .required('Date is required')
@@ -71,17 +72,16 @@ const schema = Yup.object().shape({
     .required('Required'),
 });
 
-const initialValues = {
-  title: '',
-  start: '09:00',
-  end: '09:30',
-  priority: 'low',
-};
+// const initialValues = {
+//   title: '',
+//   start: '09:00',
+//   end: '09:30',
+//   priority: 'low',
+//   date: format(new Date(), 'yyyy-MM-dd'),
+//   category: 'to-do',
+// };
 
 export const TaskForm = ({ category = 'to-do', task, onClose }) => {
-  // const [createTask, setCreateTask] = useState(initialValues);
-
-  // console.log(task.id, 'task to edit');
 
   const [action, setAction] = useState('create');
   const date = useSelector(selectSelectedDate);
@@ -92,17 +92,16 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   }, [task]);
   // console.log(action, 'form action');
 
-  // const { title, start, end, priority, date } = createTask;
 
-  const handleSubmit = async values => {
-    // console.log('values');
-    // setCreateTask(values);
 
-    const { start, end } = values;
-    if (start > end) {
-      console.log('Start time cannot be later than end time'); //// додати нотіфікашку
-      return;
-    }
+  const handleSubmit = values => {
+    console.log(values);
+    // const { start, end } = values;
+    // if (start > end) {
+    //   console.log('Start time cannot be later than end time'); //// додати нотіфікашку
+    //   return;
+    // }
+
 
     dispatch(
       action === 'edit'
@@ -122,7 +121,16 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
 
   return (
     <Formik
-      initialValues={task || initialValues}
+      initialValues={
+        task || {
+          title: '',
+          start: '09:00',
+          end: '09:30',
+          priority: 'low',
+          date: date,
+          category: category,
+        }
+      }
       validationSchema={schema}
       onSubmit={(values, action) => {
         handleSubmit(values);
@@ -180,12 +188,16 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
             <ButtonContainer>
               {action === 'edit' ? (
                 <ActionButton type="submit">
-                  {/* <EditIcon stroke="#fff" /> */}
+                  <EditIcon stroke="#fff" fill="none">
+                    <use href={icons + '#icon-pencil-01'}></use>
+                  </EditIcon>
                   Edit
                 </ActionButton>
               ) : (
                 <ActionButton type="submit">
-                  {/* <use href={icons + '#icon-plus'}></use> */}
+                  <AddIcon stroke="#fff">
+                    <use href={icons + '#icon-plus'}></use>
+                  </AddIcon>
                   Add
                 </ActionButton>
               )}
