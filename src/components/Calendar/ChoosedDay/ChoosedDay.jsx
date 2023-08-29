@@ -9,7 +9,7 @@ import { selectSelectedDate } from 'redux/date/selectors';
 import { selectTasks } from 'redux/tasks/tasksSelectors';
 
 export const ChoosedDay = () => {
-  const { tasks } = useSelector(selectTasks);
+  const tasks = useSelector(selectTasks);
 
   const date = useSelector(selectSelectedDate);
 

@@ -4,9 +4,10 @@ export const ColumnsTasksList = ({ tasks }) => {
   console.log(tasks);
   return (
     <ul>
-      {tasks.map(task => {
-        return <TaskColumnCard key={task._id} task={task} />;
-      })}
+      {tasks &&
+        tasks.map(task => {
+          return <TaskColumnCard key={task._id} task={task} />;
+        })}
     </ul>
   );
 };
