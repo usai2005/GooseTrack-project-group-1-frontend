@@ -6,9 +6,14 @@ export const MonthToggle = styled.button`
   align-items: center;
   width: 76px;
   height: 34px;
-  background-color: ${props => (props.$currenttype ? '#CAE8FF' : '#e3f3ff')};
+  //
+  background-color: ${props =>
+    props.$currenttype
+      ? props.theme.variable.activeCalendarLinkColor
+      : props.theme.variable.inactiveCalendarLinkColor};
   border: none;
-  color: #3e85f3;
+  color: ${props =>
+    props.$currenttype ? props.theme.variable.activeTextColorBtn : '#3e85f3'};
   font-weight: 500;
   font-size: 14px;
   line-height: calc(14 / 18);
