@@ -64,8 +64,8 @@ export const WeekNames = styled.li`
 export const WeekNamesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  padding: 16px;
-  margin: 0 0 14px;
+  padding: 14px;
+  margin: 0 0 15px;
   border: 1px solid #dce3e5;
   border-radius: 8px;
   background-color: #fff;
