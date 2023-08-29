@@ -26,7 +26,7 @@ import {
   TitleField,
 } from './TaskForm.styled';
 import { parse, isDate } from 'date-fns';
-import moment from 'moment';
+// import moment from 'moment';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedDate } from 'redux/date/selectors';
@@ -39,7 +39,7 @@ const schema = Yup.object().shape({
     .required('end time cannot be empty')
     .test('is-greater', 'end time should be greater', function (value) {
       const { start } = this.parent;
-      return moment(value, 'HH:mm').isSameOrAfter(moment(start, 'HH:mm'));
+      // return moment(value, 'HH:mm').isSameOrAfter(moment(start, 'HH:mm'));
     }),
   priority: Yup.string().oneOf(['low', 'medium', 'high']).required('Required'),
   date: Yup.date()

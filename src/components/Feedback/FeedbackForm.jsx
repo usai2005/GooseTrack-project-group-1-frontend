@@ -62,6 +62,8 @@ export const FeedbackForm = ({ onClose }) => {
 
   const handleSubmit = (values, actions) => {
     values.rating = Number(userReview.rating);
+    console.log(values.rating)
+
     if (isEditActive) {
       const reviewRequest = { id: userReview._id, review: values };
       dispatch(updateReview(reviewRequest));
