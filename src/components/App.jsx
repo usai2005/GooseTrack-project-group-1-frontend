@@ -45,10 +45,7 @@ export const App = () => {
     <HelmetProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            path="/"
-            element={isLoggedIn ? <Layout /> : <MainPage />}
-          >
+          <Route path="/" element={isLoggedIn ? <Layout /> : <MainPage />}>
             <Route
               index
               element={
@@ -86,12 +83,10 @@ export const App = () => {
 
             <Route
               path="statistics"
-               element={
+              element={
                 <PrivateRoute redirectTo="/" component={<StatisticPage />} />
               }
-              
             />
-
           </Route>
           <Route
             path="login"
@@ -102,7 +97,10 @@ export const App = () => {
           <Route
             path="register"
             element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              <RestrictedRoute
+                redirectTo="/login"
+                component={<RegisterPage />}
+              />
             }
           />
         </Route>
