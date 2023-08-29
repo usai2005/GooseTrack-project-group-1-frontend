@@ -1,13 +1,16 @@
-import {
-  FeedbackButton,
-} from './AddFeedbackBtn.styled';
+import { FeedbackButton } from './AddFeedbackBtn.styled';
 
-const AddFeedbackBtn = () => {
-    return (
-        <FeedbackButton type="button">
-            Feedback
-        </FeedbackButton>
-    )
+const AddFeedbackBtn = ({ setIsOpen }) => {
+  return (
+    <FeedbackButton
+      type="button"
+      onClick={() => {
+        setIsOpen(true);
+      }}
+    >
+      Feedback
+    </FeedbackButton>
+  );
 };
 
 export default AddFeedbackBtn;
