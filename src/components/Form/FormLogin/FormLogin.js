@@ -50,15 +50,7 @@ function FormLogin() {
         }, 1000);
       }}
     >
-      {({
-        values,
-        errors,
-        touched,
-        handleSubmit,
-        isSubmitting,
-
-        isValid,
-      }) => {
+      {({ errors, touched, handleSubmit, isValid }) => {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>

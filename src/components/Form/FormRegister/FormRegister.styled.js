@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { light, dark } from '../../../styles/theme';
 
 import FilteredPropsInputField from '../FilteredPropsInputField';
 
@@ -46,8 +47,18 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 export const Input = styled(FilteredPropsInputField)`
-  background-color: white;
-  border: 1px solid #dce3e5;
+  background-color: ${props =>
+    props.theme === 'light'
+      ? light.variable.bgCalendar
+      : dark.variable.bgCalendar};
+  color: ${props =>
+    props.theme === 'light' ? light.variable.text : dark.variable.text};
+  border: ${props =>
+    props.theme === 'light'
+      ? light.variable.activeArrowColor
+      : dark.variable.activeArrowColor};
+  border-width: 1px;
+  border-style: solid;
   border-radius: 8px;
   width: 100%;
   margin-top: 8px;
@@ -55,14 +66,19 @@ export const Input = styled(FilteredPropsInputField)`
   padding: 18px;
 
   &::placeholder {
-    color: #dce3e5;
+    color: ${props =>
+      props.theme === 'light'
+        ? light.variable.activeArrowColor
+        : dark.variable.activeArrowColor};
     font-size: 16px;
-    padding: 14px;
   }
 
   &:focus,
   &:active {
-    border: 1px solid #111111;
+    border: ${props =>
+      props.theme === 'light'
+        ? light.variable.borderUserForm
+        : dark.variable.borderUserForm};
     outline: none;
   }
 
@@ -92,6 +108,10 @@ export const Input = styled(FilteredPropsInputField)`
         outline: none;
       }
     `}
+
+     ${viewport.mob} {
+    padding: 14px;
+  }
 `;
 
 export const StyledInlineErrorMessage = styled.div`
