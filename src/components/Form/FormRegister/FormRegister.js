@@ -1,8 +1,12 @@
 import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import {
+  Formik,
+  Form,
+  //  ErrorMessage
+} from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import icons from '../../../images/icons.svg';
+// import icons from '../../../images/icons.svg';
 import { register } from 'redux/auth/operations';
 
 import {

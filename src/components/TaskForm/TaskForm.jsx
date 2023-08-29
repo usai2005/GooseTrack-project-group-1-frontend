@@ -82,8 +82,6 @@ const schema = Yup.object().shape({
 // };
 
 export const TaskForm = ({ category = 'to-do', task, onClose }) => {
-  
-  // console.log(task._id, 'task to edit');
 
   const [action, setAction] = useState('create');
   const date = useSelector(selectSelectedDate);
@@ -95,6 +93,7 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   // console.log(action, 'form action');
 
 
+
   const handleSubmit = values => {
     console.log(values);
     // const { start, end } = values;
@@ -102,6 +101,7 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
     //   console.log('Start time cannot be later than end time'); //// додати нотіфікашку
     //   return;
     // }
+
 
     dispatch(
       action === 'edit'
