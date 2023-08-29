@@ -1,5 +1,5 @@
 export const TaskColumnCard = ({ task }) => {
-  const avatarUrl = 'http//';
+  const avatarUrl = task.owner.avatarURL ?? 'default url';
   return (
     <div>
       <p>{task.title}</p>

@@ -1,7 +1,6 @@
 import { TaskColumnCard } from './TaskColumnCard/TaskColumnCard';
 
 export const ColumnsTasksList = ({ tasks }) => {
-  console.log(tasks);
   return (
     <ul>
       {tasks &&

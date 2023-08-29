@@ -124,7 +124,7 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
     <Formik
       initialValues={task || initialValues}
       validationSchema={schema}
-      handleSubmit={(values, action) => {
+      onSubmit={(values, action) => {
         handleSubmit(values);
       }}
     >

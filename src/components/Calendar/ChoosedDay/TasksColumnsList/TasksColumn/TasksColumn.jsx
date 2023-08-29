@@ -5,8 +5,6 @@ import { TaskModal } from 'components/TaskModal/TaskModal';
 import { useState } from 'react';
 
 export const TasksColumn = ({ title, tasks }) => {
-  // console.log(tasks, 'tasks', tasks.length, 'length');
-
   const [isOpened, setIsOpen] = useState(false);
 
   const handleToggle = () => {

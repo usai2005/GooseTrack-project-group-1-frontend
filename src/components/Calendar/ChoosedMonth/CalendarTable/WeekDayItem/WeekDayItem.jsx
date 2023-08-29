@@ -9,25 +9,26 @@ import {
 } from 'redux/date/dateSlice';
 import { Navigate } from 'react-router-dom';
 
-export function WeekDayItem({
+export const WeekDayItem = ({
   currentDate,
   activeDate,
   isToday,
-  handleClick,
   setOpening,
   tasksToShow,
   setTaskToEdit,
-}) {
-  // const dispatch = useDispatch();
-  // const handleClick = (e, date) => {
-  //   const { currentTarget, target } = e;
-  //   if (currentTarget === target) {
-  //     dispatch(setPeriodType('day'));
-  //     dispatch(setSelectedDate(date));
-  //     dispatch(setActiveDate(date));
-  //     Navigate(`/calendar/day/${date}`);
-  //   }
-  // };
+}) => {
+  const dispatch = useDispatch();
+
+  const handleClick = (e, date) => {
+    const { currentTarget, target } = e;
+    if (currentTarget === target) {
+      dispatch(setPeriodType('day'));
+      dispatch(setSelectedDate(date));
+      dispatch(setActiveDate(date));
+      Navigate(`/calendar/day/${date}`);
+    }
+  };
+
   return (
     <WeekDay
       key={currentDate}
@@ -50,4 +51,4 @@ export function WeekDayItem({
       )}
     </WeekDay>
   );
-}
+};
