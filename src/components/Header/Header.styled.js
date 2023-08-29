@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    width: 100vw;
+    
     padding: 24px 20px 95px 20px;
 
     
@@ -15,11 +18,17 @@ export const Container = styled.div`
     }
 `;
 
+export const ContainerHeader = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
+`;
+
 export const Wrapper = styled.div`
     margin-right: auto;
     stroke: #343434;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1440px) {
         position: absolute;
         width: 1px;
         height: 1px;
@@ -45,7 +54,7 @@ export const MenuIcon = styled.svg`
 `;
 
 export const UserTitle = styled.h1`
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1439px) {
         position: absolute;
         width: 1px;
         height: 1px;

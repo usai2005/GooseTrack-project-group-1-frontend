@@ -6,6 +6,7 @@ import icons from '../../images/icons.svg';
 
 import {
     Container,
+    ContainerHeader,
     Wrapper,
     MenuIcon,
     UserTitle,
@@ -13,22 +14,22 @@ import {
 
 const Header = () => {
     return (
-        <header>
-            <Container>
+        <Container>
+            <ContainerHeader>
                 <Wrapper>
                     <MenuIcon>
-                        <use href={ icons + "#icon-menu-01" }></use>
+                        <use href={icons + "#icon-menu-01"}></use>
                     </MenuIcon>
                 </Wrapper>
-                <UserTitle>
-                    User Profile
-                </UserTitle>
-                <AddFeedbackBt />
-                <ThemeToggler />
-                <UserInfo />
-            </Container>
-        </header>
-    )
+                    <UserTitle>
+                        User Profile
+                    </UserTitle>
+                    <AddFeedbackBt />
+                    <ThemeToggler />
+                    <UserInfo />
+            </ContainerHeader>
+        </Container>
+    );
 }
 
 export default Header;

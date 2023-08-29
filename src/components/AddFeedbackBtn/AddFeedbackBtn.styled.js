@@ -29,4 +29,8 @@ export const FeedbackButton = styled.button`
         font-size: 14px;
         line-height: calc(18 / 14);
     }
+
+    &:hover {
+        background-color: #2B78EF;
+    }
 `;

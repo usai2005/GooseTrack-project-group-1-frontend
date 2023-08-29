@@ -5,10 +5,9 @@ export const UserName = styled.h2`
 
   color: #343434;
   font-size: 14px;
-  font-style: normal;
   line-height: calc(18 / 14);
 
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: 768px) {
         margin-right: 14px;
 
         font-size: 18px;
