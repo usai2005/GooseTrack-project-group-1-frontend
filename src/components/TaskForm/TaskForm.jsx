@@ -44,68 +44,42 @@ const schema = Yup.object().shape({
   priority: Yup.string().oneOf(['low', 'medium', 'high']).required('Required'),
   date: Yup.date()
     .required('Required')
-    .transform(
-      (
-        // value,
-        originalValue
-      ) => {
-        const parsedDate = isDate(originalValue)
-          ? originalValue
-          : parse(originalValue, 'yyyy-MM-dd', new Date());
-
-        return parsedDate;
-      } 
-    ),
-  // date: Yup.date()
-  //   .required('Date is required')
-  //   .transform((value, originalValue) => {
-  //     if (originalValue) {
-  //       const [year, month, day] = originalValue.split('-');
-  //       return new Date(
-  //         `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-  //       );
-  //     }
-  //     return value;
-  //   }),
+    .transform(function parseDateString(value, originalValue) {
+      return isDate(originalValue)
+        ? originalValue
+        : parse(originalValue, 'yyyy-MM-dd', new Date());
+    }),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
 });
 
-// const initialValues = {
-//   title: '',
-//   start: '09:00',
-//   end: '09:30',
-//   priority: 'low',
-//   date: format(new Date(), 'yyyy-MM-dd'),
-//   category: 'to-do',
-// };
-
 export const TaskForm = ({ category = 'to-do', task, onClose }) => {
-
   const [action, setAction] = useState('create');
   const date = useSelector(selectSelectedDate);
   const dispatch = useDispatch();
+
+  const initialValues = {
+    title: '',
+    start: '09:00',
+    end: '09:30',
+    priority: 'low',
+    date: date,
+    category: category,
+  };
 
   useEffect(() => {
     if (task?._id) setAction('edit');
   }, [task]);
   // console.log(action, 'form action');
 
-
-
   const handleSubmit = values => {
     console.log(values);
-    // const { start, end } = values;
-    // if (start > end) {
-    //   console.log('Start time cannot be later than end time'); //// додати нотіфікашку
-    //   return;
-    // }
 
-
+    
     dispatch(
       action === 'edit'
-        ? updateTask(values)
+        ? updateTask({ task: values, id: task._id }) // Передача id
         : addTask({ ...values, date, category })
     )
       .then(data => {
@@ -115,22 +89,13 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
         onClose();
       })
       .catch(error => {
-        console.log(error.message); ////// додати нотіфікашку
+        console.log(error.message);
       });
   };
 
   return (
     <Formik
-      initialValues={
-        task || {
-          title: '',
-          start: '09:00',
-          end: '09:30',
-          priority: 'low',
-          date: date,
-          category: category,
-        }
-      }
+      initialValues={task || initialValues}
       validationSchema={schema}
       onSubmit={(values, action) => {
         handleSubmit(values);
