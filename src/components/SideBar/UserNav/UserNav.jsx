@@ -1,35 +1,34 @@
-import { Link } from 'react-router-dom';
 import icons from '../../../images/icons.svg';
 
-import { List, Item } from './UserNav.styled';
+import { List, ItemLink } from './UserNav.styled';
 
 const UserNav = () => {
   return (
     <List>
-      <Item>
-        <Link to="/account">
+      <li>
+        <ItemLink to="/account">
           <svg width="20" height="20">
             <use href={icons + '#icon-user-check-01'}></use>
           </svg>
           My account
-        </Link>
-      </Item>
-      <Item>
-        <Link to="/calendar">
+        </ItemLink>
+      </li>
+      <li>
+        <ItemLink to="/calendar">
           <svg width="20" height="20">
             <use href={icons + '#icon-calendar-check-02'}></use>
           </svg>
           Calendar
-        </Link>
-      </Item>
-      <Item>
-        <Link to="/statistics">
+        </ItemLink>
+      </li>
+      <li>
+        <ItemLink to="/statistics">
           <svg width="20" height="20">
             <use href={icons + '#icon-chart'}></use>
           </svg>
           Statistics
-        </Link>
-      </Item>
+        </ItemLink>
+      </li>
     </List>
   );
 };
