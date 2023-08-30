@@ -1,12 +1,7 @@
 import { format, isSameMonth } from 'date-fns';
 import { DateNum, DateWrap, WeekDay } from '../CalendarTable.styled';
 import { CalendarTasks } from '../CalendarTasks/CalendarTasks';
-// import { useDispatch } from 'react-redux';
-import // setActiveDate,
-// setPeriodType,
-// setSelectedDate,
-'redux/date/dateSlice';
-// import { Navigate } from 'react-router-dom';
+import 'redux/date/dateSlice';
 import { useNavigate } from 'react-router-dom';
 
 export const WeekDayItem = ({
@@ -17,16 +12,11 @@ export const WeekDayItem = ({
   tasksToShow,
   setTaskToEdit,
 }) => {
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClick = (e, date) => {
     const { currentTarget, target } = e;
     if (currentTarget === target) {
-      // dispatch(setPeriodType('day'));
-      // dispatch(setSelectedDate(date));
-      // dispatch(setActiveDate(date));
-      // Navigate(`/calendar/day/${date}`);
       navigate(`/calendar/day/${date}`, {});
     }
   };

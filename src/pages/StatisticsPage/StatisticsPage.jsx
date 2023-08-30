@@ -14,6 +14,9 @@ import {
 } from 'redux/date/dateSlice';
 
 const Statistics = () => {
+  //компонент отримує дату і тип періоду із параментів Url, валідує і записує в стейт, після чого робить перехід,
+  //якщо параметри відсутні, або не валідні, переходить на дату зі стейту
+  // статистика щоденна
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,8 +27,8 @@ const Statistics = () => {
   const normalizedDate = Object.values(currentDate)[0].split('/')[1];
 
   useEffect(() => {
-    if (periodType !== 'month') {
-      dispatch(setPeriodType('month'));
+    if (periodType === 'month') {
+      dispatch(setPeriodType('day'));
     }
 
     try {
