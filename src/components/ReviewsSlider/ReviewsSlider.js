@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { selectReviews } from '../../redux/reviews/reviewsSelectors';
+// import { selectReviews } from '../../redux/reviews/reviewsSelectors';
 import icons from '../../images/icons.svg';
 
 import {
