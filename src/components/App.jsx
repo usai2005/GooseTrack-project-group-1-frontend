@@ -15,6 +15,7 @@ import { useAuth } from 'hooks/useAuth';
 
 import Loader from './Loader/Loader';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { TaskModal } from './TaskModal/TaskModal';
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -44,7 +45,7 @@ export const App = () => {
   ) : (
     <HelmetProvider>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<TaskModal />}>
           <Route path="/" element={isLoggedIn ? <Layout /> : <MainPage />}>
             <Route
               index
