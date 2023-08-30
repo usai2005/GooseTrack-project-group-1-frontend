@@ -8,7 +8,6 @@ import {
   selectSelectedDate,
 } from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
-import { Container } from 'styles/container';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
@@ -25,11 +24,9 @@ export default function CalendarPage() {
   }, [date, navigate, periodType]);
 
   return (
-    <Container>
-      <PageWrapper>
-        <CalendarToolBar />
-        <Outlet />
-      </PageWrapper>
-    </Container>
+    <PageWrapper>
+      <CalendarToolBar />
+      <Outlet />
+    </PageWrapper>
   );
 }
