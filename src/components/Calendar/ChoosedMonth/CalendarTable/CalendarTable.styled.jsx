@@ -68,7 +68,7 @@ export const WeekNames = styled.li`
 export const WeekNamesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  padding: 14px;
+  padding: 14px 0 14px 0;
   margin: 0 0 15px;
   border: ${props => props.theme.variable.borderColorWeekCalendar};
 
