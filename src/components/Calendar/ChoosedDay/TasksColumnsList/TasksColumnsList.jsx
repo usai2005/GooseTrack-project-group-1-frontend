@@ -1,5 +1,7 @@
 import { TasksColumn } from './TasksColumn/TasksColumn';
 
+import { Container } from './TaskColumnList.styled';
+
 export const TasksColumnsList = ({ tasks, date }) => {
   const tasksByDay = tasks.filter(task => task.date === date);
 
@@ -12,10 +14,10 @@ export const TasksColumnsList = ({ tasks, date }) => {
   const tasksDone = tasksByDay.filter(task => task.category === 'done');
 
   return (
-    <>
+    <Container>
       <TasksColumn title={'to-do'} tasks={tasksToDo} />
       <TasksColumn title={'in-progress'} tasks={tasksInProgress} />
       <TasksColumn title={'done'} tasks={tasksDone} />
-    </>
+    </Container>
   );
 };
