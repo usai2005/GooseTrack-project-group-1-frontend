@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    width: 100vw;
+    
     padding: 24px 20px 95px 20px;
 
     
@@ -11,26 +14,23 @@ export const Container = styled.div`
     }
 
     @media screen and (min-width: 1440px) {
+        width: calc(100vw - 289px);
         padding: 40px 32px 32px 32px;
     }
+`;
+
+export const ContainerHeader = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
 `;
 
 export const Wrapper = styled.div`
     margin-right: auto;
     stroke: #343434;
 
-    @media screen and (min-width: 769px) {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        border: 0;
-        padding: 0;
-        
-        white-space: nowrap;
-        clip-path: inset(100%);
-        clip: rect(0 0 0 0);
-        overflow: hidden;
+    @media screen and (min-width: 1440px) {
+        display: none;
     }
 `;
 
@@ -45,7 +45,7 @@ export const MenuIcon = styled.svg`
 `;
 
 export const UserTitle = styled.h1`
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1439px) {
         position: absolute;
         width: 1px;
         height: 1px;

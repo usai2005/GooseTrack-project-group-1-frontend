@@ -11,7 +11,7 @@ import {
   LoginIcon,
   InputContainer,
   StyledInlineMessage,
-} from './FormLogin.styled';
+} from '../FormRegister/FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
@@ -50,23 +50,15 @@ function FormLogin() {
         }, 1000);
       }}
     >
-      {({
-        values,
-        errors,
-        touched,
-        handleSubmit,
-        isSubmitting,
-
-        isValid,
-      }) => {
+      {({ errors, touched, handleSubmit, isValid }) => {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>
               <InputContainer>
                 <Label
                   htmlFor="email"
-                  valid={touched.email && !errors.email}
-                  error={touched.email && errors.email}
+                  data-valid={touched.email && !errors.email}
+                  data-error={touched.email && errors.email}
                 >
                   Email
                   <Input
@@ -76,8 +68,8 @@ function FormLogin() {
                     autoCorrect="off"
                     autoComplete="email"
                     placeholder="Enter email"
-                    valid={touched.email && !errors.email}
-                    error={touched.email && errors.email}
+                    data-valid={touched.email && !errors.email}
+                    data-error={touched.email && errors.email}
                   />
                 </Label>
                 <ErrorMessage name="email">
@@ -104,8 +96,8 @@ function FormLogin() {
               <InputContainer>
                 <Label
                   htmlFor="password"
-                  valid={touched.password && !errors.password}
-                  error={touched.password && errors.password}
+                  data-valid={touched.password && !errors.password}
+                  data-error={touched.password && errors.password}
                 >
                   Password
                   <Input
@@ -114,8 +106,8 @@ function FormLogin() {
                     autoCorrect="off"
                     autoComplete="password"
                     placeholder="Enter password"
-                    valid={touched.password && !errors.password}
-                    error={touched.password && errors.password}
+                    data-valid={touched.password && !errors.password}
+                    data-error={touched.password && errors.password}
                   />
                 </Label>
                 {errors.password && touched.password && (

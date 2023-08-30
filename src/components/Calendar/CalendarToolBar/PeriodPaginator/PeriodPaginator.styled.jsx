@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 export const DatePickerWrapper = styled.div`
   font-family: 'Inter', sans-serif;
+  margin-right: 8px;
   & .react-datepicker__today-button {
     border: none;
     background: none;
@@ -96,8 +97,9 @@ export const Controls = styled.button`
   align-items: center;
   width: 36px;
   height: 30px;
-  background-color: white;
-  border: 1px solid #dce3e5;
+  background-color: ${props => props.theme.variable.CalendarLinkColor};
+  border: ${props => props.theme.variable.borderColorWeekCalendar};
+  color: ${props => props.theme.variable.calendarTextColor};
 
   &:first-of-type {
     border-top-left-radius: 8px;

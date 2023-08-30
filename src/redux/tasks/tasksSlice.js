@@ -1,3 +1,4 @@
+import { logOut } from "redux/auth/operations"
 import { handleFulfilled, handlePending, handleRejected } from "./handlers"
 
 const { createSlice } = require("@reduxjs/toolkit")
@@ -52,6 +53,11 @@ const tasksSlice = createSlice({
             state.error = null;
         })
         .addCase(updateTask.rejected, handleRejected)
+        .addCase(logOut, (state) => {
+            state.tasks = [];
+            state.isLoading = false;
+            state.error = null;
+        })
     }
 })
 

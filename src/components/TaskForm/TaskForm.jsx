@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import icons from '../../images/icons.svg';
@@ -15,6 +15,7 @@ import {
   CancelButton,
   CloseButton,
   CloseIcon,
+  EditIcon,
   FieldContainer,
   FormContainer,
   Label,
@@ -27,6 +28,9 @@ import {
 import { parse, isDate } from 'date-fns';
 import moment from 'moment';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSelectedDate } from 'redux/date/selectors';
+import { addTask, updateTask } from 'redux/tasks/tasksOperations';
 
 const schema = Yup.object().shape({
   title: Yup.string().max(250, 'Too Long!').required('Required'),
@@ -40,56 +44,62 @@ const schema = Yup.object().shape({
   priority: Yup.string().oneOf(['low', 'medium', 'high']).required('Required'),
   date: Yup.date()
     .required('Required')
-    .transform((value, originalValue) => {
-      const values = isDate(originalValue)
+    .transform(function parseDateString(value, originalValue) {
+      return isDate(originalValue)
         ? originalValue
         : parse(originalValue, 'yyyy-MM-dd', new Date());
-
-      return values;
     }),
-  // date: Yup.date()
-  //   .required('Date is required')
-  //   .transform((value, originalValue) => {
-  //     if (originalValue) {
-  //       const [year, month, day] = originalValue.split('-');
-  //       return new Date(
-  //         `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-  //       );
-  //     }
-  //     return value;
-  //   }),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
 });
 
-const initialValues = {
-  title:  '',
-  start: '09:00',
-  end: '09:30',
-  priority: 'low',
-  date: new Date(),
-  category: 'to-do',
-};
+export const TaskForm = ({ category = 'to-do', task, onClose }) => {
+  const [action, setAction] = useState('create');
+  const date = useSelector(selectSelectedDate);
+  const dispatch = useDispatch();
 
+  const initialValues = {
+    title: '',
+    start: '09:00',
+    end: '09:30',
+    priority: 'low',
+    date: date,
+    category: category,
+  };
 
-export const TaskForm = ({ onClose }) => {
-  const [createTask, setCreateTask] = useState(initialValues);
+  useEffect(() => {
+    if (task?._id) setAction('edit');
+  }, [task]);
+  // console.log(action, 'form action');
 
-  const { title, start, end, priority, date } = createTask;
+  const handleSubmit = values => {
+    console.log(values);
 
-  const handleSubmit = (values, {resetForm}) => {
-    // console.log(values);
-    setCreateTask(values);
-    console.log(createTask);
-    resetForm();
+    
+    dispatch(
+      action === 'edit'
+        ? updateTask({ task: values, id: task._id }) // Передача id
+        : addTask({ ...values, date, category })
+    )
+      .then(data => {
+        if (data.error) {
+          throw new Error(data.payload);
+        }
+        onClose();
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={task || initialValues}
       validationSchema={schema}
-      onSubmit={handleSubmit}
+      onSubmit={(values, action) => {
+        handleSubmit(values);
+      }}
     >
       {({ values }) => (
         <FormContainer>
@@ -141,19 +151,21 @@ export const TaskForm = ({ onClose }) => {
             </PriorityContainer>
 
             <ButtonContainer>
-              {/* {action === 'add' ? ( */}
-              <ActionButton type="submit">
-                <AddIcon>
-                  <use href={icons + '#icon-plus'}></use>
-                </AddIcon>
-                Add
-              </ActionButton>
-              {/* ) : (
-              <ActionButton type="submit">
-                <EditIcon stroke="#fff" />
-                Edit
-              </ActionButton>
-            )} */}
+              {action === 'edit' ? (
+                <ActionButton type="submit">
+                  <EditIcon stroke="#fff" fill="none">
+                    <use href={icons + '#icon-pencil-01'}></use>
+                  </EditIcon>
+                  Edit
+                </ActionButton>
+              ) : (
+                <ActionButton type="submit">
+                  <AddIcon stroke="#fff">
+                    <use href={icons + '#icon-plus'}></use>
+                  </AddIcon>
+                  Add
+                </ActionButton>
+              )}
 
               <CancelButton type="button" onClick={onClose}>
                 Cancel

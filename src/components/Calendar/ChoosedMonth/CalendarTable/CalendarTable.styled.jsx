@@ -6,14 +6,16 @@ export const WeekContainer = styled.ul`
   grid-auto-rows: 94px;
 
   padding: 0;
-  border: 0.5px solid #dce3e5;
+  border: ${props => props.theme.variable.borderColorCalendar};
   border-radius: 8px;
   overflow: hidden;
+  background-color: ${props => props.theme.variable.bgCalendar};
+  color: ${props => props.theme.variable.text};
 `;
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
-  border: 0.5px solid #dce3e5;
+  border: ${props => props.theme.variable.borderColorCalendar};
   cursor: pointer;
 
   &:first-of-type {
@@ -44,13 +46,15 @@ export const DateWrap = styled.div`
   border-radius: 6px;
   width: 20px;
   height: 22px;
-  background-color: ${props => (props.$istoday ? '#3e85f3' : 'white')};
-  color: ${props => (props.$istoday ? 'white' : '#343434')};
+  background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
+  color: ${props =>
+    props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
 `;
 
 export const WeekNames = styled.li`
   list-style: none;
-  color: #343434;
+  color: ${props => props.theme.variable.calendarTextColor};
+
   font-size: 16px;
   font-weight: 600;
   line-height: calc(18 / 16);
@@ -64,11 +68,12 @@ export const WeekNames = styled.li`
 export const WeekNamesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  padding: 16px;
-  margin: 0 0 14px;
-  border: 1px solid #dce3e5;
+  padding: 14px;
+  margin: 0 0 15px;
+  border: ${props => props.theme.variable.borderColorWeekCalendar};
+
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${props => props.theme.variable.bgCalendar};
 `;
 
 const priorityColor = { low: '#3E85F3', medium: '#F3B249', Hight: '#EA3D65' };
@@ -91,8 +96,8 @@ export const TaskItem = styled.li`
 
   /* height: 14px; */
   border-radius: 8px;
-  background-color: ${({ priority }) => priorityBg[priority]};
-  color: ${({ priority }) => priorityColor[priority]};
+  background-color: ${({ $priority }) => priorityBg[$priority]};
+  color: ${({ $priority }) => priorityColor[$priority]};
 
   font-size: 10px;
   font-weight: 700;

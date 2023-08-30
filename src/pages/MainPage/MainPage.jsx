@@ -23,6 +23,7 @@ import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
 import icons from '../../images/icons.svg';
 import IMAGES from '../../images/mainPage/index';
 import { Container } from '../../styles/container';
+import BackToTopButton from 'components/BackToTop/BackToTopButton';
 
 export default function MainPage() {
   return (
@@ -54,6 +55,7 @@ export default function MainPage() {
               <SignupLink to="/register">Sign up</SignupLink>
             </li>
           </AuthList>
+          <BackToTopButton />
         </AuthContainer>
       </section>
       <section>

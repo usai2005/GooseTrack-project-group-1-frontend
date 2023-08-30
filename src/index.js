@@ -8,14 +8,21 @@ import { Provider } from 'react-redux';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import ThemeProviderWrapper from 'components/ThemeToggler/ThemeProviderWrapper';
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/GooseTrack-project-group-1-frontend">
-          <GlobalStyle />
-          <App />
-        </BrowserRouter>
+
+        <ThemeProviderWrapper>
+          <BrowserRouter basename="/GooseTrack-project-group-1-frontend">
+            <GlobalStyle />
+            <App />
+          </BrowserRouter>
+        </ThemeProviderWrapper>
+
       </PersistGate>
     </Provider>
   </React.StrictMode>

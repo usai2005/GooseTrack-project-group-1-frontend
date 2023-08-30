@@ -1,12 +1,12 @@
 import { TaskColumnCard } from './TaskColumnCard/TaskColumnCard';
 
-export const ColumnsTasksList = () => {
+export const ColumnsTasksList = ({ tasks }) => {
   return (
-    <>
-      {/*
-      отримує колекцію завданнь
-       */}
-      <TaskColumnCard />
-    </>
+    <ul>
+      {tasks &&
+        tasks.map(task => {
+          return <TaskColumnCard key={task._id} task={task} />;
+        })}
+    </ul>
   );
 };

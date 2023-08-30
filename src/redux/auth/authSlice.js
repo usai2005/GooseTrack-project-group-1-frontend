@@ -9,14 +9,14 @@ import {
 } from './handlers';
 
 const initialState = {
-  user: { 
-    name: null, 
+  user: {
+    name: null,
     email: null,
     avatar: null,
     phone: null,
     skype: null,
     birthday: null,
-    }, 
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -25,6 +25,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    cleanAuthData(state) {
+      localStorage.removeItem('token');
+      state.isLoggedIn = false;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(logOut.fulfilled, handleLogOut)
@@ -37,5 +43,7 @@ const authSlice = createSlice({
       );
   },
 });
+
+export const { cleanAuthData } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

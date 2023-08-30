@@ -4,122 +4,77 @@ import {
   addDays,
   startOfMonth,
   endOfMonth,
-  // endOfWeek,
-  isSameMonth,
   isSameDay,
-  // subMonths,
-  // addMonths,
-  // set,
   parse,
 } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {
-  WeekContainer,
-  WeekDay,
-  DateNum,
-  DateWrap,
-} from './CalendarTable.styled';
+import { WeekContainer } from './CalendarTable.styled';
 
-// import { useState } from 'react';
-import { CalendarTasks } from './CalendarTasks/CalendarTasks';
-import {
-  // useDispatch,
-  useSelector,
-} from 'react-redux';
-import {
-  selectActiveDate,
-  //  selectSelectedDate
-} from 'redux/date/selectors';
+import { useSelector } from 'react-redux';
+import { selectActiveDate } from 'redux/date/selectors';
+import { WeekDayItem } from './WeekDayItem/WeekDayItem';
+import { useState } from 'react';
+import { TaskModal } from 'components/TaskModal/TaskModal';
+import {} from 'redux/date/dateSlice';
+import { selectTasks } from 'redux/tasks/tasksSelectors';
 
-const tasks = [
-  { id: 1, date: '24-08-2023', text: 'To do something', priority: 'low' },
-  { id: 1111, date: '24-08-2023', text: 'To do something', priority: 'low' },
-
-  { id: 11, date: '23-08-2023', text: 'To do 2', priority: 'medium' },
-  { id: 111, date: '20-08-2023', text: 'To do 3', priority: 'Hight' },
-];
-
-const WeekDayItem = ({ currentDate, activeDate, isToday, tasksToShow }) => {
-  return (
-    <WeekDay key={currentDate}>
-      {!isSameMonth(currentDate, activeDate) ? (
-        <span></span>
-      ) : (
-        <DateNum>
-          <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
-        </DateNum>
-      )}
-
-      {tasksToShow.length > 0 && CalendarTasks(tasksToShow)}
-    </WeekDay>
-  );
-};
-
-const generateDatesForCurrentWeek = (
-  date,
-  // selectedDate,
-  activeDate
-  // setSelectedDate
-) => {
-  let currentDate = date;
-  const week = [];
-  // const dispatch = useDispatch();
-
-  for (let day = 0; day < 7; day++) {
-    const cloneDate = currentDate;
-
-    const isToday = isSameDay(currentDate, new Date());
-
-    const tasksToShow = tasks.filter(
-      task => task.date === format(cloneDate, 'dd-MM-yyyy')
-    );
-
-    week.push(
-      // <WeekDay key={currentDate}>
-      //   {!isSameMonth(currentDate, activeDate) ? (
-      //     <span></span>
-      //   ) : (
-      //     <DateNum>
-      //       <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
-      //     </DateNum>
-      //   )}
-
-      //   {tasksToShow.length > 0 && CalendarTasks(tasksToShow)}
-      // </WeekDay>
-      <WeekDayItem
-        currentDate={currentDate}
-        activeDate={activeDate}
-        isToday={isToday}
-        tasksToShow={tasksToShow}
-      />
-    );
-    currentDate = addDays(currentDate, 1);
-  }
-  return week;
-};
-
-//////////
 export const CalendarTable = () => {
-  // const dispatch = useDispatch();
+  const [isOpened, setIsOpen] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState(null);
+  const tasks = useSelector(selectTasks);
 
-  // const selectedDate = parse(
-  //   useSelector(selectSelectedDate),
-  //   'dd-MM-yyyy',
-  //   new Date()
-  // );
+  const handleToggle = () => {
+    setIsOpen(!isOpened);
+  };
+
   const activeDate = parse(
     useSelector(selectActiveDate),
-    'dd-MM-yyyy',
+    'yyyy-MM-dd',
     new Date()
   );
+
+  const generateDatesForCurrentWeek = (
+    date,
+    activeDate,
+    // handleClick,
+    setIsOpen,
+    setTaskToEdit,
+    tasks
+  ) => {
+    let currentDate = date;
+    const week = [];
+
+    for (let day = 0; day < 7; day++) {
+      const cloneDate = currentDate;
+
+      const isToday = isSameDay(currentDate, new Date());
+
+      const tasksToShow = tasks.filter(
+        task => task.date === format(cloneDate, 'yyyy-MM-dd')
+      );
+
+      week.push(
+        <WeekDayItem
+          key={currentDate}
+          currentDate={currentDate}
+          activeDate={activeDate}
+          isToday={isToday}
+          setOpening={setIsOpen}
+          tasksToShow={tasksToShow}
+          setTaskToEdit={setTaskToEdit}
+        />
+      );
+      currentDate = addDays(currentDate, 1);
+    }
+    return week;
+  };
 
   const startOfTheSelectedMonth = startOfMonth(activeDate);
   const endOfTheSelectedMonth = endOfMonth(activeDate);
   const startDate = startOfWeek(startOfTheSelectedMonth, { weekStartsOn: 1 });
 
   let currentDate = startDate;
-  // console.log('currentDate', currentDate);
 
   const allWeeks = [];
 
@@ -127,18 +82,26 @@ export const CalendarTable = () => {
     allWeeks.push(
       generateDatesForCurrentWeek(
         currentDate,
-        // selectedDate,
-        activeDate
-        // setSelectedDate
+        activeDate,
+        setIsOpen,
+        setTaskToEdit,
+        tasks
       )
     );
     currentDate = addDays(currentDate, 7);
   }
-  // console.log(allWeeks);
 
   return (
     <>
       <WeekContainer>{allWeeks}</WeekContainer>
+
+      {isOpened && (
+        <TaskModal
+          task={taskToEdit}
+          onClose={handleToggle}
+          category={taskToEdit.category}
+        ></TaskModal>
+      )}
     </>
   );
 };

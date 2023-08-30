@@ -22,7 +22,10 @@ import {
   selectPeriodType,
   selectSelectedDate,
 } from 'redux/date/selectors';
-import { useEffect } from 'react';
+import {
+  useEffect,
+  // useRef
+} from 'react';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
 import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
 // import { useParams } from 'react-router-dom';
@@ -33,17 +36,23 @@ export const PeriodPaginator = () => {
   const periodType = useSelector(selectPeriodType);
   const currentDate = useSelector(selectActiveDate);
   const selectedDate = useSelector(selectSelectedDate);
+
+  // const prevDateRef = useRef(parse(currentDate, 'yyyy-MM-dd', new Date()));
+  // console.log(prevDateRef, 'prevDateRef-11');
   const date =
     periodType === 'month'
-      ? parse(currentDate, 'dd-MM-yyyy', new Date())
-      : parse(selectedDate, 'dd-MM-yyyy', new Date());
-
-  // console.log(currentDate);
-  // const dispatch = useDispatch();
+      ? parse(currentDate, 'yyyy-MM-dd', new Date())
+      : parse(selectedDate, 'yyyy-MM-dd', new Date());
 
   useEffect(() => {
-    dispatch(fetchTasks(format(date, 'MM-yyyy')));
-  }, [dispatch, date]);
+    // if (format(date, 'yyyy-MM') !== format(prevDateRef.current, 'yyyy-MM')) {
+    dispatch(fetchTasks(format(date, 'yyyy-MM')));
+    // }
+  }, [dispatch, date, currentDate]);
+
+  // useEffect(() => {
+  //   prevDateRef.current = parse(currentDate, 'yyyy-MM-dd', new Date());
+  // }, [currentDate]);
 
   return (
     <>
@@ -52,8 +61,8 @@ export const PeriodPaginator = () => {
           <ReactDatePicker
             selected={date}
             onChange={value => {
-              dispatch(setSelectedDate(format(value, 'dd-MM-yyyy')));
-              dispatch(setActiveDate(format(value, 'dd-MM-yyyy')));
+              dispatch(setSelectedDate(format(value, 'yyyy-MM-dd')));
+              dispatch(setActiveDate(format(value, 'yyyy-MM-dd')));
             }}
             calendarStartDay={1}
             // showMonthYearPicker
@@ -68,14 +77,13 @@ export const PeriodPaginator = () => {
           <Controls
             type="button"
             onClick={() => {
-              console.log('periodType', periodType);
               if (periodType === 'month') {
                 dispatch(
-                  setActiveDate(format(subMonths(date, 1), 'dd-MM-yyyy'))
+                  setActiveDate(format(subMonths(date, 1), 'yyyy-MM-dd'))
                 );
               } else {
                 dispatch(
-                  setSelectedDate(format(subDays(date, 1), 'dd-MM-yyyy'))
+                  setSelectedDate(format(subDays(date, 1), 'yyyy-MM-dd'))
                 );
               }
             }}
@@ -86,13 +94,12 @@ export const PeriodPaginator = () => {
             type="button"
             onClick={() => {
               if (periodType === 'month') {
-                console.log('periodType', periodType);
                 dispatch(
-                  setActiveDate(format(addMonths(date, 1), 'dd-MM-yyyy'))
+                  setActiveDate(format(addMonths(date, 1), 'yyyy-MM-dd'))
                 );
               } else {
                 dispatch(
-                  setSelectedDate(format(addDays(date, 1), 'dd-MM-yyyy'))
+                  setSelectedDate(format(addDays(date, 1), 'yyyy-MM-dd'))
                 );
               }
             }}

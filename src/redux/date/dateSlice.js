@@ -7,8 +7,8 @@ const PERIOD = {
 };
 
 const dateInitialState = {
-  selectedDate: format(new Date(), 'dd-MM-yyyy'),
-  activeDate: format(new Date(), 'dd-MM-yyyy'),
+  selectedDate: format(new Date(), 'yyyy-MM-dd'),
+  activeDate: format(new Date(), 'yyyy-MM-dd'),
   periodType: PERIOD.Month,
 };
 

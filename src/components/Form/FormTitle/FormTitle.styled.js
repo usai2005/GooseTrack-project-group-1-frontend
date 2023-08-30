@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-  color: #3e85f3;
-  /* fontFamily: "inter", */
-  font-size: 24px;
-  /* line-height: 24px, */
-  letter-spacing: 0.01;
+const viewport = {
+  mob: '@media screen and (max-width: 767px)',
+};
 
-  /* text-align: "center", */
-  margin-bottom: 40px;
+export const Title = styled.h2`
+  color: #3e85f3;
+  font-size: 24px;
+  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+    0px 47px 355px rgba(0, 0, 0, 0.07);
+
+  ${viewport.mob} {
+    font-size: 18px;
+  }
 `;

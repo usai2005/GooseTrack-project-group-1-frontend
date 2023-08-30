@@ -34,9 +34,9 @@ import {
 
 const ReviewSchema = Yup.object().shape({
   review: Yup.string()
-    .min(10, 'review short')
-    .max(300, 'review long')
-    .required('review is required'),
+  .min(10, 'This review is significantly short, it should be more than 10 characters.')
+  .max(300, 'This review is excessively long, it should not exceed 300 characters.')
+  .required('Review is required'),
 });
 
 const rateIcon = (
@@ -51,12 +51,10 @@ const rateStyled = {
 
 export const FeedbackForm = ({ onClose }) => {
   const [isEditActive, setIsEditActive] = useState(false);
-  console.log(isEditActive);
+  // console.log(isEditActive);
 
   const userReview = useSelector(selectOwnReview);
   const dispatch = useDispatch();
-
-  console.log(userReview);
 
   const ratingChanged = newRating => {
     dispatch(changeRating(newRating));
