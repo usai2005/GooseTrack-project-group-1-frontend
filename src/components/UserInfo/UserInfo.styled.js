@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const UserName = styled.h2`
     margin-right: 8px;
 
@@ -15,7 +17,8 @@ export const UserName = styled.h2`
     }
 `;
 
-export const UserAvatar = styled.div`
+export const UserAvatar = styled.img`
+
   width: 32px;
   height: 32px;
   flex-shrink: 0;

@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
 const UserInfo = () => {
-  const user = useSelector(selectUser);
+const user = useSelector(selectUser);
+
+console.log(user);
+
 
   return (
     <>
       <UserName>{user.name}</UserName>
-      <UserAvatar>
-        <img src={user.avatarUrl} alt={user.name} />
-      </UserAvatar>
+      <UserAvatar src={user.avatarURL} alt={user.name}/>
     </>
   );
 };
