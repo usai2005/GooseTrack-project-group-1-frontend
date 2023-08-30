@@ -22,6 +22,9 @@ export const fetchTasks = createAsyncThunk(
       const res = await axios.get(`/tasks?month=${month}`);
       return res.data;
     } catch (error) {
+      if (error.response.data.message.includes('have no any task')) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -1,6 +1,9 @@
-import React, { useEffect }  from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllTasks } from '../../redux/tasks/tasksOperations';
+// import React, { useEffect } from 'react';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+// import { getAllTasks } from '../../redux/tasks/tasksOperations';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
 import { selectSelectedDate } from '../../redux/date/selectors';
 
@@ -18,13 +21,13 @@ import {
 import { Container, Title, Wrapper } from './StatisticsComp.styled';
 
 export const StatisticsComp = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
 
-  useEffect(() => {
-    dispatch(getAllTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllTasks());
+  // }, [dispatch]);
 
   let filteredTasksByDay = null;
   let filteredTasksByMonth = null;
@@ -66,7 +69,7 @@ export const StatisticsComp = () => {
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
 
-  console.log(tasks)
+  // console.log(tasks)
 
   const data = [
     {
@@ -81,7 +84,9 @@ export const StatisticsComp = () => {
       day: inprogressByDay,
       month: inprogressByMonth,
       dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
-      monthf: `${Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0}%`,
+      monthf: `${
+        Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
+      }%`,
     },
     {
       name: 'Done',

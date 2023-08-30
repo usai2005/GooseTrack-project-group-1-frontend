@@ -11,7 +11,8 @@ console.log(user);
   return (
     <>
       <UserName>{user.name}</UserName>
-      <UserAvatar src={user.avatarURL} alt={user.name}/>
+
+      <UserAvatar img={'user.avatarUrl'} src={user.avatarURL} alt={user.name}/>
     </>
   );
 };
