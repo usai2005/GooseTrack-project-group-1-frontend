@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { light, dark } from '../../../styles/theme';
+
 import { Link } from 'react-router-dom';
 
 const viewport = {
@@ -13,19 +13,13 @@ export const Container = styled.section`
   flex-direction: row;
   justify-content: center;
   align-items: start;
-  background-color: ${props =>
-    props.theme === 'light'
-      ? light.variable.bgColorForm
-      : dark.variable.bgColorForm};
+  background-color: #dcebf7;
   height: 770px;
   font-family: InterSemiBold;
   font-size: 18px;
   font-style: normal;
   line-height: calc(18 / 16);
-  color: ${props =>
-    props.theme === 'light'
-      ? light.variable.labelUserFormText
-      : dark.variable.labelUserFormText};
+  color: #111;
 `;
 
 export const ContainerForm = styled.div`
@@ -34,10 +28,7 @@ export const ContainerForm = styled.div`
   align-items: start;
   width: 480px;
   height: 424px;
-  background-color: ${props =>
-    props.theme === 'light'
-      ? light.variable.bgCalendar
-      : dark.variable.bgCalendar};
+  background-color: #fff;
   margin-left: auto;
   margin-right: auto;
   margin-top: 174px;
@@ -73,10 +64,7 @@ export const Img = styled.img`
 `;
 
 export const SignupLink = styled(Link)`
-  color: ${props =>
-    props.theme === 'light'
-      ? light.variable.weekendTextColor
-      : dark.variable.weekendTextColor};
+  color: #3e85f3;
   line-height: calc(24 / 18);
   text-decoration: underline;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),

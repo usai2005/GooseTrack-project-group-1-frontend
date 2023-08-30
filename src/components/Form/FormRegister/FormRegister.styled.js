@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { light, dark } from '../../../styles/theme';
 
 import FilteredPropsInputField from '../FilteredPropsInputField';
 
@@ -47,38 +46,25 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 export const Input = styled(FilteredPropsInputField)`
-  background-color: ${props =>
-    props.theme === 'light'
-      ? light.variable.bgCalendar
-      : dark.variable.bgCalendar};
-  color: ${props =>
-    props.theme === 'light' ? light.variable.text : dark.variable.text};
-  border: ${props =>
-    props.theme === 'light'
-      ? light.variable.activeArrowColor
-      : dark.variable.activeArrowColor};
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #dce3e5;
   border-width: 1px;
   border-style: solid;
   border-radius: 8px;
   width: 100%;
   margin-top: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   padding: 18px;
 
   &::placeholder {
-    color: ${props =>
-      props.theme === 'light'
-        ? light.variable.activeArrowColor
-        : dark.variable.activeArrowColor};
+    color: #dce3e5;
     font-size: 16px;
   }
 
   &:focus,
   &:active {
-    border: ${props =>
-      props.theme === 'light'
-        ? light.variable.borderUserForm
-        : dark.variable.borderUserForm};
+    border: 1px solid #111111;
     outline: none;
   }
 
