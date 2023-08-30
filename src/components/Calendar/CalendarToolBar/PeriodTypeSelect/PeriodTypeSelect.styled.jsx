@@ -17,7 +17,7 @@ export const MonthToggle = styled.button`
   font-weight: 500;
   font-size: 14px;
   line-height: calc(14 / 18);
-  margin-bottom: 24px;
+  // margin-bottom: 24px;
 
   &:first-of-type {
     border-top-left-radius: 8px;
