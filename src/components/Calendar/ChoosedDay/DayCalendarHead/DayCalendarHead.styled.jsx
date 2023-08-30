@@ -2,16 +2,13 @@ import { styled } from 'styled-components';
 
 export const WeekNames = styled.li`
   list-style: none;
-  color: ${props => props.theme.variable.calendarTextColor};
-  // font-size: 16px;
-  // font-weight: 600;
-  // line-height: calc(18 / 16);
   text-transform: uppercase;
   text-align: center;
+  color: ${props => props.theme.variable.textAvatar};
 
-  // /* &:nth-last-of-type(-n + 2) {
-  //   color: #3e85f3;
-  // } */
+  &:nth-last-of-type(-n + 2) {
+    color: #3e85f3;
+  }
 `;
 
 export const WeekNamesContainer = styled.ul`
@@ -27,6 +24,7 @@ export const WeekNamesContainer = styled.ul`
 
 export const ContainerWeekDay = styled.div`
   color: ${props => props.theme.variable.textAvatar};
+
   font-size: 14px;
   font-weight: 600;
   line-height: calc(18 / 14);
@@ -53,4 +51,5 @@ export const WeekDayNum = styled.div`
   color: ${props =>
     props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
   background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
+
 `;
