@@ -12,6 +12,7 @@ import { Container } from 'styles/container';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
+
   const currentDay = useSelector(selectActiveDate);
   const selectedDate = useSelector(selectSelectedDate);
   const periodType = useSelector(selectPeriodType);
@@ -19,10 +20,9 @@ export default function CalendarPage() {
   // console.log(currentDay, 'calendar redirect date');
 
   const date = periodType === 'month' ? currentDay : selectedDate;
-
   useEffect(() => {
     navigate(`${periodType}/${date}`, {});
-  }, [date, navigate, periodType]);
+  }, [currentDay, date, navigate, periodType]);
 
   return (
     <Container>
