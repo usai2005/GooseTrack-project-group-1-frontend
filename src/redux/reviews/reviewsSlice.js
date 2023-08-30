@@ -13,7 +13,7 @@ const initialState = {
     reviews: [], 
     ownReview: {
         rating: '',
-        review: '',
+        content: '',
       },
     isLoading: false, 
     error: null
@@ -52,7 +52,7 @@ const reviewsSlice = createSlice({
             state.reviews = state.reviews.filter(review => review._id !== payload);
             state.ownReview = {
                 rating: '',
-                review: ''
+                content: ''
               };
             state.isLoading = false;
             state.error = null;
@@ -76,7 +76,7 @@ const reviewsSlice = createSlice({
             state.reviews = [];
             state.ownReview = {
                 rating: '',
-                review: ''
+                content: ''
               };
             state.error = null;
             state.isLoading = false;
