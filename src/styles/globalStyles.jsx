@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 import PoppinsMedium from '../fonts/Poppins-Medium.ttf';
 import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
