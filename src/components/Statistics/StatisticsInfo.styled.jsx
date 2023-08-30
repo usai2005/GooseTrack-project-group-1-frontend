@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 
 const viewport = {
@@ -6,6 +7,7 @@ const viewport = {
   };
 
 export const InfoBox = styled.div`
+background-color: ${props => props.theme.variable.bgStatistic};
   margin-bottom: 40px;
   width: 100%;
   ${viewport.tab} {
