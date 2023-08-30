@@ -1,10 +1,11 @@
 import {
   AuthContainer,
+  SliderContainer,
   LogoImg,
   DescriptionContainer,
   DescriptionList,
   DescriptionListItem,
-  HeroTitle,
+  AuthTitle,
   AuthList,
   LoginLink,
   SignupLink,
@@ -14,13 +15,15 @@ import {
   ItemTitle,
   ItemDescription,
   LoginIcon,
+  Span,
+  ReviewsTitle,
 } from './MainPage.styled';
 
+import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
 import icons from '../../images/icons.svg';
-
 import IMAGES from '../../images/mainPage/index';
-
 import { Container } from '../../styles/container';
+import BackToTopButton from 'components/BackToTop/BackToTopButton';
 
 export default function MainPage() {
   return (
@@ -35,9 +38,10 @@ export default function MainPage() {
             alt="Main page logo"
             loading="lazy"
           />
-          <HeroTitle>
-            G<span>oo</span>seTrack
-          </HeroTitle>
+          <AuthTitle>
+            G<Span className="firstSpan">o</Span>
+            <Span className="secondSpan">o</Span>seTrack
+          </AuthTitle>
           <AuthList>
             <li>
               <LoginLink to="/login">
@@ -51,6 +55,7 @@ export default function MainPage() {
               <SignupLink to="/register">Sign up</SignupLink>
             </li>
           </AuthList>
+          <BackToTopButton />
         </AuthContainer>
       </section>
       <section>
@@ -166,6 +171,12 @@ export default function MainPage() {
             </DescriptionListItem>
           </DescriptionList>
         </DescriptionContainer>
+      </section>
+      <section>
+        <SliderContainer>
+          <ReviewsTitle>Reviews</ReviewsTitle>
+          <ReviewsSlider />
+        </SliderContainer>
       </section>
     </Container>
   );

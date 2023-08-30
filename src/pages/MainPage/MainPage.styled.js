@@ -10,6 +10,8 @@ export const AuthContainer = styled.div`
 
   height: 100vh;
 
+  margin-bottom: 64px;
+
   background-color: #3e85f3;
 `;
 
@@ -27,7 +29,7 @@ export const LogoImg = styled.img`
   }
 `;
 
-export const HeroTitle = styled.h1`
+export const AuthTitle = styled.h1`
   margin: 0 0 32px;
   padding: 0;
 
@@ -49,9 +51,16 @@ export const HeroTitle = styled.h1`
     font-size: 120px;
     line-height: calc(150 / 120);
   }
+`;
 
-  span {
+export const Span = styled.span`
+  &.secondSpan {
     font-style: italic;
+  }
+  @media screen and (min-width: 768px) {
+    &.firstSpan {
+      font-style: italic;
+    }
   }
 `;
 
@@ -129,14 +138,29 @@ export const SignupLink = styled(Link)`
 `;
 
 export const DescriptionContainer = styled.div`
-  padding: 64px 20px;
+  padding: 0 20px;
+  margin-bottom: 64px;
 
   @media screen and (min-width: 768px) {
-    padding: 64px 32px 100px;
+    padding: 0 32px;
+    margin-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 64px 128px 118px;
+    padding: 0 128px;
+    margin-bottom: 100px;
+  }
+`;
+
+export const SliderContainer = styled.div`
+  padding: 0 20px 64px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 94px 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 128px 118px;
   }
 `;
 
@@ -159,8 +183,6 @@ export const DescriptionListItem = styled.li`
   margin: 0;
   padding: 0;
 
-  margin-bottom: 64px;
-
   @media screen and (min-width: 768px) {
     &.middle {
       display: flex;
@@ -182,10 +204,6 @@ export const DescriptionListItem = styled.li`
       align-items: center;
 
       margin-right: 77px;
-    }
-
-    &.last {
-      margin-bottom: 100px;
     }
   }
 `;
@@ -287,4 +305,25 @@ export const LoginIcon = styled.svg`
   height: 18px;
 
   stroke: #3e85f3;
+`;
+
+export const ReviewsTitle = styled.h2`
+  margin-bottom: 40px;
+
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: calc(32 / 28);
+
+  text-transform: uppercase;
+
+  color: #3e85f3;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 50px;
+
+    font-size: 40px;
+    line-height: calc(44 / 40);
+  }
 `;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
+
 import { Container } from 'styles/container';
 import { format, parseISO } from 'date-fns';
 import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
@@ -31,11 +32,9 @@ export default function CalendarPage() {
   }, [periodType, today, currentDate, navigate, dispatch]);
 
   return (
-    <Container>
-      <PageWrapper>
-        <CalendarToolBar />
-        <Outlet />
-      </PageWrapper>
-    </Container>
+    <PageWrapper>
+      <CalendarToolBar />
+      <Outlet />
+    </PageWrapper>
   );
 }
