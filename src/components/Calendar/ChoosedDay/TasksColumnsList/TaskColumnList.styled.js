@@ -6,13 +6,15 @@ const viewport = {
 };
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 27px;
   background-color: #f7f6f9;
-  /* 
-  ${viewport.mob} {
-    width: 287px;
-    font-size: 14px;
-    margin: 32px auto;
-  } */
+
+  ${viewport.tab} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${viewport.desk} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;

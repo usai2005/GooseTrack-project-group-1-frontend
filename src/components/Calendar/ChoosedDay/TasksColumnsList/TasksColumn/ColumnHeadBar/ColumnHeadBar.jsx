@@ -21,7 +21,7 @@ export const ColumnHeadBar = ({ title, setIsOpen }) => {
         }}
       >
         <IconPlus>
-          <use href={icons + '#icon-moon'}></use>
+          <use href={icons + '#icon-icon'}></use>
         </IconPlus>
       </IconWrapper>
     </Wrapper>

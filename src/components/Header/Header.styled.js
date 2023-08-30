@@ -44,7 +44,7 @@ export const MenuIcon = styled.svg`
     }
 `;
 
-export const UserTitle = styled.h1`
+export const PageTitle = styled.h1`
     @media screen and (max-width: 1439px) {
         position: absolute;
         width: 1px;

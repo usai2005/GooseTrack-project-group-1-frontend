@@ -11,6 +11,7 @@ export const ContainerForm = styled.div`
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   background: #fff;
+  min-height: 165px;
 
   /* ${viewport.mob} {
     width: 287px;
