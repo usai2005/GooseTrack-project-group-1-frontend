@@ -46,7 +46,3 @@ export const ContainerDateCell = styled.li`
     color: #3e85f3;
   } */
 `;
-
-// background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
-// color: ${props =>
-//   props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
