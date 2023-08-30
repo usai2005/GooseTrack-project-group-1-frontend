@@ -12,9 +12,9 @@ import { ChoosedDay } from './Calendar/ChoosedDay/ChoosedDay';
 import { FeedbackModal } from './Feedback/FeedbackModal';
 import { currentUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 import Loader from './Loader/Loader';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
 import MainLayout from './MainLayout/MainLayout';
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -29,15 +29,23 @@ const UserProfile = lazy(() => import('../pages/UserProfile'));
 
 export const App = () => {
   const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
-
-  // const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-
-  // console.log('isRefreshing', isRefreshing);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(currentUser());
+    const fetchData = async () => {
+      try {
+        await dispatch(currentUser());
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          console.error("Unauthorized: The user is not authenticated.");
+        } else {
+          console.error("An error occurred while fetching current user:", error);
+        }
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
 
   return isRefreshing ? (
