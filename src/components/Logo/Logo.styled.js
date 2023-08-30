@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
     width: 136px;
     height: 35px;
     margin-right: 25px;
+
+     @media screen and (min-width: 768px) {
+        width: 160px;
+        height: 58px;
+    }
 `;
 
 export const LogoLink = styled(Link)`
@@ -31,6 +36,10 @@ export const LogoLink = styled(Link)`
     @media screen and (min-width: 768px) {
         font-size: 18px;
         line-height: calc(24 /18);
+
+        img {
+            margin-right: 10px;  
+        }
     }
 
     @media screen and (min-width: 1440px) {

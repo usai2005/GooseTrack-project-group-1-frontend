@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
     // Common
@@ -8,7 +9,7 @@ export const List = styled.ul`
     //
 ;`
 
-export const Item = styled.li`
+export const ItemLink = styled(Link)`
     box-sizing: border-box;
     display: flex;
     align-items: center;
