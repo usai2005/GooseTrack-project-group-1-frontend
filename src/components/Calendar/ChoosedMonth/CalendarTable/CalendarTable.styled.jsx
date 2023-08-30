@@ -76,8 +76,8 @@ export const WeekNamesContainer = styled.ul`
   background-color: ${props => props.theme.variable.bgCalendar};
 `;
 
-const priorityColor = { low: '#3E85F3', medium: '#F3B249', Hight: '#EA3D65' };
-const priorityBg = { low: '#CEEEFD', medium: '#FCF0D4', Hight: '#FFD2DD' };
+const priorityColor = { low: '#3E85F3', medium: '#F3B249', high: '#EA3D65' };
+const priorityBg = { low: '#CEEEFD', medium: '#FCF0D4', high: '#FFD2DD' };
 
 export const TaskList = styled.ul`
   padding: 0;

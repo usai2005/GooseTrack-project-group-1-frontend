@@ -1,28 +1,34 @@
 import CalendarToolBar from 'components/Calendar/CalendarToolBar/CalendarToolBar';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
-import {
-  selectActiveDate,
-  selectPeriodType,
-  selectSelectedDate,
-} from 'redux/date/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
 import { Container } from 'styles/container';
+import { format, parseISO } from 'date-fns';
+import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const currentDay = useSelector(selectActiveDate);
-  const selectedDate = useSelector(selectSelectedDate);
+  const today = useSelector(selectActiveDate);
   const periodType = useSelector(selectPeriodType);
 
-  // console.log(currentDay, 'calendar redirect date');
-
-  const date = periodType === 'month' ? currentDay : selectedDate;
+  const { currentDate } = useParams();
   useEffect(() => {
-    navigate(`${periodType}/${date}`, {});
-  }, [currentDay, date, navigate, periodType]);
+    try {
+      const date = format(parseISO(currentDate), 'yyyy-MM-dd');
+      console.log('date', date);
+      console.log('today', today);
+      if (today !== date) {
+        dispatch(setSelectedDate(date));
+        dispatch(setActiveDate(date));
+      }
+    } catch (error) {
+      navigate(`${periodType}/${today}`, {});
+    }
+  }, [periodType, today, currentDate, navigate, dispatch]);
 
   return (
     <Container>

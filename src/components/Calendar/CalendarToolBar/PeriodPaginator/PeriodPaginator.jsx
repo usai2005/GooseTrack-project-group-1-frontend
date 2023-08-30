@@ -17,29 +17,21 @@ import {
 } from 'components/Calendar/CalendarToolBar/PeriodPaginator/PeriodPaginator.styled';
 import { Controls } from './PeriodPaginator.styled';
 
-import {
-  selectActiveDate,
-  selectPeriodType,
-  selectSelectedDate,
-} from 'redux/date/selectors';
+import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { useEffect, useRef } from 'react';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
-import { setActiveDate, setSelectedDate } from 'redux/date/dateSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const PeriodPaginator = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const periodType = useSelector(selectPeriodType);
   const currentDate = useSelector(selectActiveDate);
-  const selectedDate = useSelector(selectSelectedDate);
 
   const prevDateRef = useRef(parse(currentDate, 'yyyy-MM-dd', new Date()));
-  // console.log(prevDateRef, 'prevDateRef-11');
 
-  const date =
-    periodType === 'month'
-      ? parse(currentDate, 'yyyy-MM-dd', new Date())
-      : parse(selectedDate, 'yyyy-MM-dd', new Date());
+  const date = parse(currentDate, 'yyyy-MM-dd', new Date());
 
   useEffect(() => {
     if (format(date, 'yyyy-MM') !== format(prevDateRef.current, 'yyyy-MM')) {
@@ -58,15 +50,16 @@ export const PeriodPaginator = () => {
           <ReactDatePicker
             selected={date}
             onChange={value => {
-              dispatch(setSelectedDate(format(value, 'yyyy-MM-dd')));
-              dispatch(setActiveDate(format(value, 'yyyy-MM-dd')));
+              if (periodType === 'month') {
+                navigate(`${periodType}/${format(value, 'yyyy-MM-dd')}`, {});
+              } else {
+                navigate(`${periodType}/${format(value, 'yyyy-MM-dd')}`, {});
+              }
             }}
             calendarStartDay={1}
-            // showMonthYearPicker
             dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMMM yyyy'}
             closeOnScroll={true}
             formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-            // minDate={'02-01-2020'}
             todayButton="Today"
           />
         </DatePickerWrapper>
@@ -75,12 +68,14 @@ export const PeriodPaginator = () => {
             type="button"
             onClick={() => {
               if (periodType === 'month') {
-                dispatch(
-                  setActiveDate(format(subMonths(date, 1), 'yyyy-MM-dd'))
+                navigate(
+                  `${periodType}/${format(subMonths(date, 1), 'yyyy-MM-dd')}`,
+                  {}
                 );
               } else {
-                dispatch(
-                  setSelectedDate(format(subDays(date, 1), 'yyyy-MM-dd'))
+                navigate(
+                  `${periodType}/${format(subDays(date, 1), 'yyyy-MM-dd')}`,
+                  {}
                 );
               }
             }}
@@ -91,12 +86,14 @@ export const PeriodPaginator = () => {
             type="button"
             onClick={() => {
               if (periodType === 'month') {
-                dispatch(
-                  setActiveDate(format(addMonths(date, 1), 'yyyy-MM-dd'))
+                navigate(
+                  `${periodType}/${format(addMonths(date, 1), 'yyyy-MM-dd')}`,
+                  {}
                 );
               } else {
-                dispatch(
-                  setSelectedDate(format(addDays(date, 1), 'yyyy-MM-dd'))
+                navigate(
+                  `${periodType}/${format(addDays(date, 1), 'yyyy-MM-dd')}`,
+                  {}
                 );
               }
             }}

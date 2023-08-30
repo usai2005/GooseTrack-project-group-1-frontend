@@ -8,8 +8,8 @@ const UserInfo = () => {
   return (
     <>
       <UserName>{user.name}</UserName>
-      <UserAvatar>
-        <img src={user.avatarUrl} alt={user.name} />
+      <UserAvatar img={'user.avatarUrl'}>
+        {/* <img src={user.avatarUrl} alt={user.name} /> */}
       </UserAvatar>
     </>
   );
