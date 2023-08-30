@@ -43,6 +43,7 @@ export const logOut = createAsyncThunk(
     try {
       await axios.post('/users/logout');
       clearAuthHeader();
+      window.location.href = '/GooseTrack-project-group-1-frontend/';
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

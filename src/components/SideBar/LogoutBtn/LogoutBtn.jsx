@@ -9,13 +9,25 @@ import { logOut } from 'redux/auth/operations';
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
+    // const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logOut());
+    try {
+      dispatch(logOut());
     //   dispatch(setActiveDate(format(new Date(), 'yyyy-MM-dd')));
     //   dispatch(setSelectedDate(format(new Date(), 'yyyy-MM-dd')));
-    //   navigate('/login', {});
+      // navigate('/login', {});
+      
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.error('Unauthorized: The user is not authenticated.');
+      } else {
+        console.error(
+          'An error occurred while fetching current user:',
+          error
+        );
+        }
+    }
   };
 
   return (
