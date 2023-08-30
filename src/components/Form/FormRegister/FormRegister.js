@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import icons from '../../../images/icons.svg';
-import { register } from 'redux/auth/operations';
+import { logIn, register } from 'redux/auth/operations';
 
 import {
   Label,
@@ -43,13 +43,19 @@ function FormRegister() {
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
         try {
-          await dispatch(register(values));
-          resetForm();
+          const response = await dispatch(register(values));
+          if (register.fulfilled.match(response)) {
+            await dispatch(logIn({ email: values.email, password: values.password }));
+          }
 
-          // console.log(values);
+          resetForm();
         } catch (error) {
-          console.error('Registration failed', error);
+        if (error.response && error.response.status === 401) {
+          console.error("Unauthorized: The user is not authenticated.");
+        } else {
+          console.error("An error occurred while fetching current user:", error);
         }
+      }
       }}
     >
       {({ errors, touched, handleSubmit, isValid }) => {
