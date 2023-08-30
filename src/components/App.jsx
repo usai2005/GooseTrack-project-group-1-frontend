@@ -68,7 +68,7 @@ export const App = () => {
               }
             />
             <Route
-              path="account"
+              path="account/*"
               element={
                 <PrivateRoute redirectTo="/" component={<UserProfile />} />
               }

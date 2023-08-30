@@ -101,6 +101,14 @@ export const Controls = styled.button`
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   color: ${props => props.theme.variable.calendarTextColor};
 
+  &:disabled {
+    background-color: ${({ theme }) => theme.variable.mainBackgroundColor};
+    color: ${({ theme }) => theme.variable.activeArrowColor};
+  }
+
+  @media (min-width: 768px) {
+    width: 38px;
+  }
   &:first-of-type {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;

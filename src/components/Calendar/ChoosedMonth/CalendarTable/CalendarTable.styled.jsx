@@ -11,12 +11,29 @@ export const WeekContainer = styled.ul`
   overflow: hidden;
   background-color: ${props => props.theme.variable.bgCalendar};
   color: ${props => props.theme.variable.text};
+
+  @media (min-width: 768px) {
+    grid-auto-rows: 144px;
+
+    /* padding-top: 50px; */
+  }
+
+  @media (min-width: 1440px) {
+    grid-auto-rows: 125px;
+
+    /* padding-top: 40px; */
+  }
 `;
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
   border: ${props => props.theme.variable.borderColorCalendar};
   cursor: pointer;
+  transition: border 250ms linear;
+  &:hover,
+  &:focus {
+    border: 1px solid #ceeefd;
+  }
 
   &:first-of-type {
     border-top-left-radius: 8px;
@@ -46,6 +63,7 @@ export const DateWrap = styled.div`
   border-radius: 6px;
   width: 20px;
   height: 22px;
+  margin-bottom: 8px;
   background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
   color: ${props =>
     props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
@@ -74,6 +92,13 @@ export const WeekNamesContainer = styled.ul`
 
   border-radius: 8px;
   background-color: ${props => props.theme.variable.bgCalendar};
+
+  @media (min-width: 768px) {
+    margin-bottom: 18px;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const priorityColor = { low: '#3E85F3', medium: '#F3B249', high: '#EA3D65' };

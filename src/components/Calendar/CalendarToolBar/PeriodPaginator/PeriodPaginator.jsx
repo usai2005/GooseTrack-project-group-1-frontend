@@ -21,16 +21,18 @@ import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { useEffect, useRef } from 'react';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
 import { useNavigate } from 'react-router-dom';
+import { selectUser } from 'redux/auth/selectors';
 
 export const PeriodPaginator = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { createdAt } = useSelector(selectUser);
 
   const periodType = useSelector(selectPeriodType);
   const currentDate = useSelector(selectActiveDate);
 
   const prevDateRef = useRef(parse(currentDate, 'yyyy-MM-dd', new Date()));
-
+  const isDisable = new Date(currentDate) <= new Date(createdAt);
   const date = parse(currentDate, 'yyyy-MM-dd', new Date());
 
   useEffect(() => {
@@ -61,11 +63,13 @@ export const PeriodPaginator = () => {
             closeOnScroll={true}
             formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
             todayButton="Today"
+            minDate={new Date(createdAt)}
           />
         </DatePickerWrapper>
         <div>
           <Controls
             type="button"
+            disabled={isDisable}
             onClick={() => {
               if (periodType === 'month') {
                 navigate(
