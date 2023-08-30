@@ -76,6 +76,7 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   const handleSubmit = values => {
     console.log(values);
 
+    
     dispatch(
       action === 'edit'
         ? updateTask({ task: values, id: task._id }) // Передача id
