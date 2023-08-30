@@ -59,8 +59,8 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="name"
-                  valid={touched.email && !errors.name}
-                  error={touched.email && errors.name}
+                  data-valid={touched.email && !errors.name}
+                  data-error={touched.email && errors.name}
                 >
                   Name
                   <Input
@@ -69,8 +69,8 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="name"
                     placeholder="Enter your name"
-                    valid={touched.name && !errors.name}
-                    error={touched.name && errors.name}
+                    data-valid={touched.name && !errors.name}
+                    data-error={touched.name && errors.name}
                   />
                 </Label>
                 {errors.name && touched.name && (
@@ -85,8 +85,8 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="email"
-                  valid={touched.email && !errors.email}
-                  error={touched.email && errors.email}
+                  data-valid={touched.email && !errors.email}
+                  data-error={touched.email && errors.email}
                 >
                   Email
                   <Input
@@ -96,8 +96,8 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="email"
                     placeholder="Enter email"
-                    valid={touched.email && !errors.email}
-                    error={touched.email && errors.email}
+                    data-valid={touched.email && !errors.email}
+                    data-error={touched.email && errors.email}
                   />
                 </Label>
                 {errors.email && touched.email && (
@@ -120,8 +120,8 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="password"
-                  valid={touched.password && !errors.password}
-                  error={touched.password && errors.password}
+                  data-valid={touched.password && !errors.password}
+                  data-error={touched.password && errors.password}
                 >
                   Password
                   <Input
@@ -130,8 +130,8 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="password"
                     placeholder="Enter password"
-                    valid={touched.password && !errors.password}
-                    error={touched.password && errors.password}
+                    data-valid={touched.password && !errors.password}
+                    data-error={touched.password && errors.password}
                   />
                 </Label>
                 {errors.password && touched.password && (
