@@ -14,6 +14,7 @@ export const Container = styled.div`
     }
 
     @media screen and (min-width: 1440px) {
+        width: calc(100vw - 289px);
         padding: 40px 32px 32px 32px;
     }
 `;
@@ -29,17 +30,7 @@ export const Wrapper = styled.div`
     stroke: #343434;
 
     @media screen and (min-width: 1440px) {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        border: 0;
-        padding: 0;
-        
-        white-space: nowrap;
-        clip-path: inset(100%);
-        clip: rect(0 0 0 0);
-        overflow: hidden;
+        display: none;
     }
 `;
 
