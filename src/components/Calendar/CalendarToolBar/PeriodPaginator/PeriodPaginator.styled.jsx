@@ -85,10 +85,19 @@ export const DatePickerWrapper = styled.div`
     font-size: 14px;
   }
 `;
+
+const viewport = {
+  mob: '@media screen and (max-width: 767px)',
+};
+
 export const ControlWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+
+  ${viewport.mob} {
+    margin-bottom: 18px;
+  }
 `;
 
 export const Controls = styled.button`

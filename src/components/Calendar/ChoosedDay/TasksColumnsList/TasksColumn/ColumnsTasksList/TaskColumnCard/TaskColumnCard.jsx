@@ -1,12 +1,20 @@
+import {
+  ContainerColumnCard,
+  TextCard,
+  ContainerAvatar,
+  ContainerData,
+  Priority,
+} from './TaskColumnCard.styled';
+
 export const TaskColumnCard = ({ task }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
   return (
-    <div>
-      <p>{task.title}</p>
-      <img src={avatarUrl} alt="user name" />
-      <p>{task.priority}</p>
-      {/* <TaskToolbar />
-      <TaskModal />  */}
-    </div>
+    <ContainerColumnCard>
+      <TextCard>{task.title}</TextCard>
+      <ContainerData>
+        <ContainerAvatar src={avatarUrl} alt="user name" />
+        <Priority>{task.priority}</Priority>
+      </ContainerData>
+    </ContainerColumnCard>
   );
 };

@@ -1,5 +1,3 @@
-
-
 export const light = {
   variable: {
     sideBar: '#FFFFFF',
@@ -64,7 +62,7 @@ export const light = {
     inactiveCalendarLinkColor: '#E3F3FF',
     strokeBg: '#010101',
     btnRevers: '#E5EDFA',
-    bgStatistic:'#ffffff',
+    bgStatistic: '#ffffff',
   },
 };
 
@@ -129,7 +127,8 @@ export const dark = {
     btnDisActive: 'rgb(255, 255, 255)',
     reviewLabel: 'rgba(255, 255, 255, 0.15)',
     strokeBg: '#ffffff',
-    btnRevers:'#21222C',
-    bgStatistic:'#21222C',
+    btnRevers: '#21222C',
+    bgStatistic: '#21222C',
+    bgColorTask: 'rgba(23, 24, 32, 1)',
   },
 };
