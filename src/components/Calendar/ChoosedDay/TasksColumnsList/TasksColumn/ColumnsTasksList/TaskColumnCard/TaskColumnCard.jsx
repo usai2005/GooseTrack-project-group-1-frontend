@@ -9,8 +9,6 @@ import {
 
 // --------------------
 
-// const dispatch = useDispatch();
-
 import {
   AreaEdit,
   EditBtn,
@@ -19,20 +17,25 @@ import {
 
 import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
 import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from 'redux/tasks/tasksOperations';
 
 // const handleEdit = () => {
 //   setIsEditActive(!isEditActive);
 // };
 
-// const handleDelete = () => {
-//   dispatch(deleteReview(userReview._id));
-//   onClose();
-// };
+
 
 // ----------------
 
 export const TaskColumnCard = ({ task }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task._id));
+  };
+
   return (
     <ContainerColumnCard>
       <TextCard>{task.title}</TextCard>
@@ -47,7 +50,7 @@ export const TaskColumnCard = ({ task }) => {
             <IconEdit />
           </EditBtn>
           {/* <DeleteBtn type="button" onClick={handleDelete}> */}
-          <DeleteBtn>
+          <DeleteBtn onClick={handleDelete}>
             <IconTrash />
           </DeleteBtn>
         </AreaEdit>
