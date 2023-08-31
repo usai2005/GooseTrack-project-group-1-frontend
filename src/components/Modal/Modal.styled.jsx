@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #DCEBF7;
+  background-color: transparent;
   z-index: 1200;
 `;
 
