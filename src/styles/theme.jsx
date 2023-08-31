@@ -63,6 +63,7 @@ export const light = {
     strokeBg: '#010101',
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
+    statsBorder: '#E3F3FF',
   },
 };
 
@@ -130,5 +131,6 @@ export const dark = {
     btnRevers: '#21222C',
     bgStatistic: '#21222C',
     bgColorTask: 'rgba(23, 24, 32, 1)',
+    statsBorder: 'rgba(255, 255, 255, 0.15);',
   },
 };

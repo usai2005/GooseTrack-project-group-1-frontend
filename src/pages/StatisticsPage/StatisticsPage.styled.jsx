@@ -8,17 +8,20 @@ const viewport = {
 export const Container = styled.section`
   border-radius: 16px;
   margin-top: 30px;
-  max-width: 860px;
+  max-width: 335px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 40px;
-
-  background-color: #fff;
+  padding: 135px 14px;
+  padding-top: 28px;
+  background-color: ${props => props.theme.variable.bgStatistic};
+ 
   ${viewport.tab} {
-    padding-bottom: 224px;
+    padding: 104px 32px;
+    max-width: 704px;
   }
   ${viewport.desk} {
-    padding-bottom: 104px;
+    padding: 104px 114px;
+    max-width: 1087px;
   }
 `;
 
@@ -39,6 +42,6 @@ export const Pagination = styled.div`
 export const Calendar = styled.div`
   width: 307px;
   ${viewport.tab} {
-    width: 220px;
+    width: 230px;
   }
 `;
