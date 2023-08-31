@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 27px;
-  background-color: #f7f6f9;
+  background-color: ${props => props.theme.variable.primaryBg};
 
   ${viewport.tab} {
     grid-template-columns: repeat(2, 1fr);
