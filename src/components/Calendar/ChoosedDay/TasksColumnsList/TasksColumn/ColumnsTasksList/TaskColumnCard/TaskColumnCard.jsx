@@ -5,34 +5,37 @@ import {
   ContainerData,
   Priority,
   WrapperData,
-  DeleteBtn,
-  MoveBtn,
 } from './TaskColumnCard.styled';
 
 // --------------------
 
-// const dispatch = useDispatch();
+import {
+  AreaEdit,
+  EditBtn,
+  DeleteBtn,
+} from 'components/Feedback/FeedbackForm.styled';
 
-import { AreaEdit, EditBtn } from 'components/Feedback/FeedbackForm.styled';
-
-import { ReactComponent as IconArrow } from 'images/task/arrow.svg';
 import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
-import { ReactComponent as IconDelete } from 'images/task/delete.svg';
-// import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
+import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from 'redux/tasks/tasksOperations';
 
 // const handleEdit = () => {
 //   setIsEditActive(!isEditActive);
 // };
 
-// const handleDelete = () => {
-//   dispatch(deleteReview(userReview._id));
-//   onClose();
-// };
+
 
 // ----------------
 
 export const TaskColumnCard = ({ task }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task._id));
+  };
+
   return (
     <ContainerColumnCard>
       <TextCard>{task.title}</TextCard>
@@ -42,16 +45,13 @@ export const TaskColumnCard = ({ task }) => {
           <Priority>{task.priority}</Priority>
         </WrapperData>
         <AreaEdit>
-          <MoveBtn>
-            <IconArrow />
-          </MoveBtn>
           <EditBtn>
             {/* <EditBtn onClick={handleEdit} isActive={isEditActive} type="button"> */}
             <IconEdit />
           </EditBtn>
           {/* <DeleteBtn type="button" onClick={handleDelete}> */}
-          <DeleteBtn>
-            <IconDelete />
+          <DeleteBtn onClick={handleDelete}>
+            <IconTrash />
           </DeleteBtn>
         </AreaEdit>
       </ContainerData>
