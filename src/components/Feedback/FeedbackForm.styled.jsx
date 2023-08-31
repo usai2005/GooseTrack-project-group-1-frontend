@@ -22,6 +22,17 @@ export const Contain = styled.div`
   }
 `;
 
+export const CloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
+export const EditIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
+
 export const Label = styled.label`
   color: ${props => props.theme.variable.bgReversLabel};
   display: block;
