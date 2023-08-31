@@ -57,8 +57,14 @@ function FormLogin() {
               <InputContainer>
                 <Label
                   htmlFor="email"
-                  data-valid={touched.email && !errors.email}
-                  data-error={touched.email && errors.email}
+                  style={{
+                    color:
+                      touched.email && !errors.email
+                        ? '#3cbc81'
+                        : touched.email && errors.email
+                        ? '#e74a3b'
+                        : 'initial',
+                  }}
                 >
                   Email
                   <Input
@@ -68,8 +74,14 @@ function FormLogin() {
                     autoCorrect="off"
                     autoComplete="email"
                     placeholder="Enter email"
-                    data-valid={touched.email && !errors.email}
-                    data-error={touched.email && errors.email}
+                    style={{
+                      borderColor:
+                        touched.email && !errors.email
+                          ? '#3cbc81'
+                          : touched.email && errors.email
+                          ? '#e74a3b'
+                          : '#dce3e5',
+                    }}
                   />
                 </Label>
                 <ErrorMessage name="email">
@@ -96,8 +108,14 @@ function FormLogin() {
               <InputContainer>
                 <Label
                   htmlFor="password"
-                  data-valid={touched.password && !errors.password}
-                  data-error={touched.password && errors.password}
+                  style={{
+                    color:
+                      touched.password && !errors.password
+                        ? '#3cbc81'
+                        : touched.password && errors.password
+                        ? '#e74a3b'
+                        : 'initial',
+                  }}
                 >
                   Password
                   <Input
@@ -106,8 +124,14 @@ function FormLogin() {
                     autoCorrect="off"
                     autoComplete="password"
                     placeholder="Enter password"
-                    data-valid={touched.password && !errors.password}
-                    data-error={touched.password && errors.password}
+                    style={{
+                      borderColor:
+                        touched.password && !errors.password
+                          ? '#3cbc81'
+                          : touched.password && errors.password
+                          ? '#e74a3b'
+                          : '#dce3e5',
+                    }}
                   />
                 </Label>
                 {errors.password && touched.password && (
