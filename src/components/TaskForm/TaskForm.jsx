@@ -88,21 +88,29 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
       },
     };
 
-    dispatch(
-      action === 'edit'
-        ? // ? updateTask({ task: values, id: task._id }) // Передача id
-          updateTask(payload)
-        : addTask({ ...values, date, category })
-    )
-      .then(data => {
-        if (data.error) {
-          throw new Error(data.payload);
-        }
-        onClose();
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
+    if (action === 'edit') {
+      dispatch(updateTask(payload))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    } else {
+      dispatch(addTask({ ...values, date, category }))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    }
   };
 
   return (

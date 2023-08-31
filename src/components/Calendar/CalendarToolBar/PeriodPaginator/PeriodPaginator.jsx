@@ -59,7 +59,7 @@ export const PeriodPaginator = () => {
               }
             }}
             calendarStartDay={1}
-            dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMMM yyyy'}
+            dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMM yyyy'}
             closeOnScroll={true}
             formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
             todayButton="Today"

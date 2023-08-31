@@ -1,11 +1,13 @@
 import { styled } from 'styled-components';
 
 export const ContainerColumnCard = styled.div`
+  position: relative;
   width: 100%;
   padding: 14px 14px 18px;
   border-radius: 8px;
   margin-bottom: 18px;
-  background-color: ${props => props.theme.variable.bgColorTask};
+  background-color: ${props => props.theme.variable.primaryBg};
+
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   // bordercalendarcolor: 'rgba(220,	227,	229, 0.80)';
 `;
@@ -15,7 +17,7 @@ export const TextCard = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
-  color: ${props => props.theme.variable.textAvatar};
+  /* color: ${props => props.theme.variable.textAvatar}; */
 `;
 
 export const ContainerAvatar = styled.img`
@@ -43,12 +45,37 @@ export const WrapperData = styled.div`
   justify-content: space-between;
 `;
 
+const priorityColor = { low: '#3E85F3', medium: '#F3B249', high: '#EA3D65' };
+
 export const Priority = styled.p`
   padding: 2px 12px;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.25;
   color: rgb(255, 255, 255);
-  background-color: rgb(114, 194, 248);
+  background-color: ${({ $priority }) => priorityColor[$priority]};
   border-radius: 4px;
+`;
+
+export const ControlBtn = styled.button`
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 16px;
+  height: 16px; */
+  border: none;
+  fill: none;
+  cursor: pointer;
+  /* background-color: ${props => props.theme.variable.bgColorTask}; */
+
+  & svg {
+    background-color: ${props => props.theme.variable.primaryBg};
+  }
+
+  stroke: ${props => props.theme.variable.arrowIconColor};
+  &:hover,
+  &:focus {
+    stroke: #3e85f3;
+  }
 `;

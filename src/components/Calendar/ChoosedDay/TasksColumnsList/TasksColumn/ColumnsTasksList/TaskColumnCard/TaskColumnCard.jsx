@@ -5,20 +5,26 @@ import {
   ContainerData,
   Priority,
   WrapperData,
+  ControlBtn,
 } from './TaskColumnCard.styled';
 
 // --------------------
+// import { ReactComponent as IconClose } from '../../images/feedback/close.svg';
 
 // const dispatch = useDispatch();
-
+import sprite from '../../../../../../../images/icons.svg';
+import { AreaEdit } from 'components/Feedback/FeedbackForm.styled';
+import { useDispatch } from 'react-redux';
+import { deleteTask, updateTask } from 'redux/tasks/tasksOperations';
+import { useState } from 'react';
+import { CategoryModal } from './CategoryModal/CategoryModal';
 import {
-  AreaEdit,
-  EditBtn,
-  DeleteBtn,
-} from 'components/Feedback/FeedbackForm.styled';
+  ControModalBtn,
+  ModalOverlay,
+} from './CategoryModal/CategoryModal.styled';
 
-import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
-import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
+// import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
+// import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
 
 // const handleEdit = () => {
 //   setIsEditActive(!isEditActive);
@@ -31,25 +37,100 @@ import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
 
 // ----------------
 
-export const TaskColumnCard = ({ task }) => {
+export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
+  const dispatch = useDispatch();
+  const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
+
+  const handleModalToggle = () => {
+    setIsChangeDirOpened(prevState => !prevState);
+  };
+  const onOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      handleModalToggle();
+    }
+  };
+
+  const handleDeleteTask = task => {
+    dispatch(deleteTask(task));
+  };
+
+  const categories = ['to-do', 'in-progress', 'done'];
+  const allowedCategory = categories.filter(item => item !== task.category);
+
   return (
     <ContainerColumnCard>
       <TextCard>{task.title}</TextCard>
       <ContainerData>
         <WrapperData>
           <ContainerAvatar src={avatarUrl} alt="user name" />
-          <Priority>{task.priority}</Priority>
+          <Priority $priority={task.priority}>{task.priority}</Priority>
         </WrapperData>
+
         <AreaEdit>
-          <EditBtn>
-            {/* <EditBtn onClick={handleEdit} isActive={isEditActive} type="button"> */}
-            <IconEdit />
-          </EditBtn>
-          {/* <DeleteBtn type="button" onClick={handleDelete}> */}
-          <DeleteBtn>
-            <IconTrash />
-          </DeleteBtn>
+          <li>
+            <ControlBtn type="button" onClick={handleModalToggle}>
+              <svg width={16} height={16}>
+                <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
+              </svg>
+            </ControlBtn>
+            {isChangeDirOpened && (
+              <div>
+                <ModalOverlay onClick={onOverlayClick} />
+                <CategoryModal>
+                  {allowedCategory.map(item => (
+                    <li key={item}>
+                      <ControModalBtn
+                        onClick={() =>
+                          dispatch(
+                            updateTask({
+                              id: task._id,
+                              updatedTask: { category: item },
+                            })
+                            // modifyCategory(item)
+                          )
+                        }
+                      >
+                        <span>{item.split('-').join(' ')}</span>
+                        <svg width={16} height={16}>
+                          <use
+                            href={sprite + '#icon-arrow-circle-broken-right'}
+                          ></use>
+                        </svg>
+                      </ControModalBtn>
+                    </li>
+                  ))}
+                </CategoryModal>
+              </div>
+            )}
+          </li>
+          <li>
+            <ControlBtn
+              type="button"
+              onClick={() => {
+                console.log('edit btn');
+                setIsOpen(true);
+                setTaskToEdit(task);
+              }}
+            >
+              <svg width={16} height={16}>
+                <use href={sprite + '#icon-pencil-01'}></use>
+              </svg>
+            </ControlBtn>
+          </li>
+          <li>
+            <ControlBtn
+              type="button"
+              onClick={() => {
+                console.log('delete btn');
+                handleDeleteTask(task._id);
+              }}
+            >
+              <svg width={16} height={16}>
+                <use href={sprite + '#icon-trash-04'}></use>
+              </svg>
+            </ControlBtn>
+          </li>
         </AreaEdit>
       </ContainerData>
     </ContainerColumnCard>

@@ -42,7 +42,7 @@ export const AreaReview = styled.div`
   margin-bottom: 8px;
 `;
 
-export const AreaEdit = styled.div`
+export const AreaEdit = styled.ul`
   display: flex;
   gap: 8px;
 `;

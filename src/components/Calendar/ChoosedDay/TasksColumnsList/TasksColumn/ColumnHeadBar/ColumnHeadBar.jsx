@@ -6,6 +6,7 @@ import {
 } from './ColumnHeaderBar.styled';
 import icons from '../../../../../../images/icons.svg';
 
+//title.split('-').join(' ')
 export const ColumnHeadBar = ({ title, setIsOpen }) => {
   const normalizedTitle = title.split('-').join(' ');
   const capitalizetTitle =
