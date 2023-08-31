@@ -73,22 +73,42 @@ export const TaskForm = ({ category, task, onClose }) => {
   }, [task]);
 
   const handleSubmit = values => {
-    console.log(values);
+  
+    const payload = {
+      id: values._id,
+      updatedTask: {
+        title: values.title,
+        start: values.start,
+        end: values.end,
+        priority: values.priority,
+        date: values.date,
+        category: values.category,
+      },
+    };
 
-    dispatch(
-      action === 'edit'
-        ? updateTask({ task: values, id: task._id }) // Передача id
-        : addTask({ ...values, date, category })
-    )
-      .then(data => {
-        if (data.error) {
-          throw new Error(data.payload);
-        }
-        onClose();
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
+    if (action === 'edit') {
+      dispatch(updateTask(payload))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    } else {
+      dispatch(addTask({ ...values, date, category }))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    }
   };
 
   return (

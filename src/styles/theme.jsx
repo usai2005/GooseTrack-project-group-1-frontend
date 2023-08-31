@@ -64,7 +64,6 @@ export const light = {
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
     borderFormColor: 'rgba(220, 227, 229, 0.8)',
-
   },
 };
 
@@ -111,7 +110,7 @@ export const dark = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#171820',
-    reviewLabel: '#FAFAFA4D',
+    reviewLabel1: '#FAFAFA4D',
     reviewBorder: 'rgba(255, 255, 255, 0.15)',
     reviewTextBg: '#21222C',
     scrollColor: '#e7e5e5',
@@ -135,6 +134,5 @@ export const dark = {
     bgColorTask: 'rgba(23, 24, 32, 1)',
 
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
-
   },
 };

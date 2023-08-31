@@ -1,20 +1,23 @@
 import { styled } from 'styled-components';
-const viewport = {
-  mob: '@media screen and (max-width: 767px)',
-  tab: '@media screen and (min-width: 768px)',
-  desk: '@media screen and (min-width: 1440px)',
-};
+// const viewport = {
+//   mob: '@media screen and (max-width: 767px)',
+//   tab: '@media screen and (min-width: 768px)',
+//   desk: '@media screen and (min-width: 1440px)',
+// };
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 27px;
-  background-color: ${props => props.theme.variable.primaryBg};
 
-  ${viewport.tab} {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  list-style: none;
+  color: ${props => props.theme.variable.calendarTextColor};
 
-  ${viewport.desk} {
-    grid-template-columns: repeat(3, 1fr);
+
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  @media screen and (min-width: 1440px) {
+    gap: 27px;
   }
 `;

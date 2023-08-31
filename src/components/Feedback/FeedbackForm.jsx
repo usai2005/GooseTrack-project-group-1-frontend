@@ -11,7 +11,7 @@ import {
   deleteReview,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
-import sprite from '../../images/icons.svg';
+// import sprite from '../../images/icons.svg';
 
 import { ReactComponent as IconEdit } from '../../images/feedback/edit.svg';
 import { ReactComponent as IconTrash } from '../../images/feedback/trash.svg';
@@ -31,7 +31,7 @@ import {
   DeleteBtn,
   Close,
   ErrorMessage,
-  EditIcon,
+  // EditIcon,
 } from './FeedbackForm.styled';
 
 const ReviewSchema = Yup.object().shape({
@@ -130,7 +130,8 @@ export const FeedbackForm = ({ onClose }) => {
                   <EditBtn
                     onClick={handleEdit}
                     isActive={isEditActive}
-                    type="button">
+                    type="button"
+                  >
                     <IconEdit />
                     {/* <EditIcon>
                       <use href={sprite + '#icon-pencil-01'}></use>
