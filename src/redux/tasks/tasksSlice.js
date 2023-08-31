@@ -29,7 +29,7 @@ const tasksSlice = createSlice({
       .addCase(fetchTasks.rejected, handleRejected)
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, { payload }) => {
-        state.tasks.tasks.push(payload.tasks);
+        // state.tasks.push(payload.tasks); // не працює бо відсутнє id payload
         state.isLoading = false;
         state.error = null;
       })
@@ -37,7 +37,7 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.pending, handlePending)
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         console.log(payload);
-        state.tasks = state.tasks.tasks.filter(task => task._id !== payload.id);
+        state.tasks = state.tasks.filter(task => task._id !== payload.id);
         state.isLoading = false;
         state.error = null;
       })
