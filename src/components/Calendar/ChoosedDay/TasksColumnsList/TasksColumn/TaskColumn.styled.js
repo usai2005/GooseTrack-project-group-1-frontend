@@ -16,13 +16,20 @@ export const ContainerForm = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 8px;
+
   color: ${props => props.theme.variable.calendarTextColor};
-  border: ${props => props.theme.variable.borderColorWeekCalendar};
+
   background-color: ${props => props.theme.variable.bgCalendar};
 
   @media (min-width: 768px) {
     min-width: 344px;
   }
+
+  border: 1px solid rgba(220, 227, 229, 0.8);
+  border-color: ${props => props.theme.variable.borderFormColor};
+
+  min-height: 165px;
+
 
   @media (min-width: 1440px) {
     min-width: 344px;

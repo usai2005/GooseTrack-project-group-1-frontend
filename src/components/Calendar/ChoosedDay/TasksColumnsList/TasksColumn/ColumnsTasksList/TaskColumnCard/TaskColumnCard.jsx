@@ -8,38 +8,17 @@ import {
   ControlBtn,
 } from './TaskColumnCard.styled';
 
-// --------------------
-// import { ReactComponent as IconClose } from '../../images/feedback/close.svg';
-
-// const dispatch = useDispatch();
 import sprite from '../../../../../../../images/icons.svg';
 import { AreaEdit } from 'components/Feedback/FeedbackForm.styled';
 import { useDispatch } from 'react-redux';
 import { deleteTask, updateTask } from 'redux/tasks/tasksOperations';
 import { useState } from 'react';
 import { CategoryModal } from './CategoryModal/CategoryModal';
-import {
-  ControModalBtn,
-  ModalOverlay,
-} from './CategoryModal/CategoryModal.styled';
-
-// import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
-// import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
-
-// const handleEdit = () => {
-//   setIsEditActive(!isEditActive);
-// };
-
-// const handleDelete = () => {
-//   dispatch(deleteReview(userReview._id));
-//   onClose();
-// };
-
-// ----------------
 
 export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
   const dispatch = useDispatch();
+
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
 
   const handleModalToggle = () => {
@@ -68,6 +47,7 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
         </WrapperData>
 
         <AreaEdit>
+
           <li>
             <ControlBtn type="button" onClick={handleModalToggle}>
               <svg width={16} height={16}>
@@ -87,7 +67,6 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
                               id: task._id,
                               updatedTask: { category: item },
                             })
-                            // modifyCategory(item)
                           )
                         }
                       >
@@ -131,6 +110,7 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
               </svg>
             </ControlBtn>
           </li>
+
         </AreaEdit>
       </ContainerData>
     </ContainerColumnCard>

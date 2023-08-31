@@ -45,17 +45,22 @@ function FormRegister() {
         try {
           const response = await dispatch(register(values));
           if (register.fulfilled.match(response)) {
-            await dispatch(logIn({ email: values.email, password: values.password }));
+            await dispatch(
+              logIn({ email: values.email, password: values.password })
+            );
           }
 
           resetForm();
         } catch (error) {
-        if (error.response && error.response.status === 401) {
-          console.error("Unauthorized: The user is not authenticated.");
-        } else {
-          console.error("An error occurred while fetching current user:", error);
+          if (error.response && error.response.status === 401) {
+            console.error('Unauthorized: The user is not authenticated.');
+          } else {
+            console.error(
+              'An error occurred while fetching current user:',
+              error
+            );
+          }
         }
-      }
       }}
     >
       {({ errors, touched, handleSubmit, isValid }) => {
@@ -65,8 +70,14 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="name"
-                  data-valid={touched.email && !errors.name}
-                  data-error={touched.email && errors.name}
+                  style={{
+                    color:
+                      touched.name && !errors.name
+                        ? '#3cbc81'
+                        : touched.name && errors.name
+                        ? '#e74a3b'
+                        : 'initial',
+                  }}
                 >
                   Name
                   <Input
@@ -75,8 +86,14 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="name"
                     placeholder="Enter your name"
-                    data-valid={touched.name && !errors.name}
-                    data-error={touched.name && errors.name}
+                    style={{
+                      borderColor:
+                        touched.name && !errors.name
+                          ? '#3cbc81'
+                          : touched.name && errors.name
+                          ? '#e74a3b'
+                          : '#dce3e5',
+                    }}
                   />
                 </Label>
                 {errors.name && touched.name && (
@@ -91,8 +108,14 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="email"
-                  data-valid={touched.email && !errors.email}
-                  data-error={touched.email && errors.email}
+                  style={{
+                    color:
+                      touched.email && !errors.email
+                        ? '#3cbc81'
+                        : touched.email && errors.email
+                        ? '#e74a3b'
+                        : 'initial',
+                  }}
                 >
                   Email
                   <Input
@@ -102,8 +125,14 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="email"
                     placeholder="Enter email"
-                    data-valid={touched.email && !errors.email}
-                    data-error={touched.email && errors.email}
+                    style={{
+                      borderColor:
+                        touched.email && !errors.email
+                          ? '#3cbc81'
+                          : touched.email && errors.email
+                          ? '#e74a3b'
+                          : '#dce3e5',
+                    }}
                   />
                 </Label>
                 {errors.email && touched.email && (
@@ -126,8 +155,14 @@ function FormRegister() {
               <InputContainer>
                 <Label
                   htmlFor="password"
-                  data-valid={touched.password && !errors.password}
-                  data-error={touched.password && errors.password}
+                  style={{
+                    color:
+                      touched.password && !errors.password
+                        ? '#3cbc81'
+                        : touched.password && errors.password
+                        ? '#e74a3b'
+                        : 'initial',
+                  }}
                 >
                   Password
                   <Input
@@ -136,8 +171,14 @@ function FormRegister() {
                     autoCorrect="off"
                     autoComplete="password"
                     placeholder="Enter password"
-                    data-valid={touched.password && !errors.password}
-                    data-error={touched.password && errors.password}
+                    style={{
+                      borderColor:
+                        touched.password && !errors.password
+                          ? '#3cbc81'
+                          : touched.password && errors.password
+                          ? '#e74a3b'
+                          : '#dce3e5',
+                    }}
                   />
                 </Label>
                 {errors.password && touched.password && (
