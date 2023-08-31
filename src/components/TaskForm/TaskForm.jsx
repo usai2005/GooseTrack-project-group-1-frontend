@@ -76,10 +76,22 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   const handleSubmit = values => {
     console.log(values);
 
-    
+    const payload = {
+      id: values._id,
+      updatedTask: {
+        title: values.title,
+        start: values.start,
+        end: values.end,
+        priority: values.priority,
+        date: values.date,
+        category: values.category,
+      },
+    };
+
     dispatch(
       action === 'edit'
-        ? updateTask({ task: values, id: task._id }) // Передача id
+        ? // ? updateTask({ task: values, id: task._id }) // Передача id
+          updateTask(payload)
         : addTask({ ...values, date, category })
     )
       .then(data => {
