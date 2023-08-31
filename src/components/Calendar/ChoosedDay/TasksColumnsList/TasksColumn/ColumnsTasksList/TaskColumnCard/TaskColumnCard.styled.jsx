@@ -52,3 +52,37 @@ export const Priority = styled.p`
   background-color: rgb(114, 194, 248);
   border-radius: 4px;
 `;
+
+export const DeleteBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #ea3d6533;
+  stroke: #ea3d65;
+  &:hover,
+  &:focus {
+    stroke: #ffffff;
+    background-color: #ea3d65;
+  }
+`;
+
+export const MoveBtn = styled.button`
+  display: flex;
+  -webkit-box-align: end;
+  align-items: end;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  color: rgb(0, 0, 0);
+`;

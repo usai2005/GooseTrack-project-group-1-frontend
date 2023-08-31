@@ -5,20 +5,20 @@ import {
   ContainerData,
   Priority,
   WrapperData,
+  DeleteBtn,
+  MoveBtn,
 } from './TaskColumnCard.styled';
 
 // --------------------
 
 // const dispatch = useDispatch();
 
-import {
-  AreaEdit,
-  EditBtn,
-  DeleteBtn,
-} from 'components/Feedback/FeedbackForm.styled';
+import { AreaEdit, EditBtn } from 'components/Feedback/FeedbackForm.styled';
 
+import { ReactComponent as IconArrow } from 'images/task/arrow.svg';
 import { ReactComponent as IconEdit } from 'images/feedback/edit.svg';
-import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
+import { ReactComponent as IconDelete } from 'images/task/delete.svg';
+// import { ReactComponent as IconTrash } from 'images/feedback/trash.svg';
 
 // const handleEdit = () => {
 //   setIsEditActive(!isEditActive);
@@ -42,13 +42,16 @@ export const TaskColumnCard = ({ task }) => {
           <Priority>{task.priority}</Priority>
         </WrapperData>
         <AreaEdit>
+          <MoveBtn>
+            <IconArrow />
+          </MoveBtn>
           <EditBtn>
             {/* <EditBtn onClick={handleEdit} isActive={isEditActive} type="button"> */}
             <IconEdit />
           </EditBtn>
           {/* <DeleteBtn type="button" onClick={handleDelete}> */}
           <DeleteBtn>
-            <IconTrash />
+            <IconDelete />
           </DeleteBtn>
         </AreaEdit>
       </ContainerData>
