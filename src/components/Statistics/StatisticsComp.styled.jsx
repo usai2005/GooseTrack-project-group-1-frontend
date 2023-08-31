@@ -7,7 +7,9 @@ const viewport = {
 };
 
 export const Container = styled.div`
-  border: solid 1px #E3F3FF;
+  
+  border: solid 1px ${props => props.theme.variable.statsBorder};
+
   margin-right: auto;
   margin-left: auto;
   border-radius: 20px;

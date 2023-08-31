@@ -10,7 +10,8 @@ export const ContainerForm = styled.div`
   padding: 20px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background: #fff;
+  border-color: ${props => props.theme.variable.borderFormColor};
+  background: ${props => props.theme.variable.bgCalendar};
   min-height: 165px;
 
   /* ${viewport.mob} {
