@@ -14,6 +14,10 @@ import { useDispatch } from 'react-redux';
 import { deleteTask, updateTask } from 'redux/tasks/tasksOperations';
 import { useState } from 'react';
 import { CategoryModal } from './CategoryModal/CategoryModal';
+import {
+  ControModalBtn,
+  ModalOverlay,
+} from './CategoryModal/CategoryModal.styled';
 
 export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
   const avatarUrl = task.owner.avatarURL ?? 'default url';
@@ -47,7 +51,6 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
         </WrapperData>
 
         <AreaEdit>
-
           <li>
             <ControlBtn type="button" onClick={handleModalToggle}>
               <svg width={16} height={16}>
@@ -110,7 +113,6 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
               </svg>
             </ControlBtn>
           </li>
-
         </AreaEdit>
       </ContainerData>
     </ContainerColumnCard>
