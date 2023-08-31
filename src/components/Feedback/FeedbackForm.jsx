@@ -66,7 +66,17 @@ export const FeedbackForm = ({ onClose }) => {
       const reviewRequest = { id: userReview._id, content: values };
       dispatch(updateReview(reviewRequest));
     } else {
-      dispatch(addReview(values));
+      const reviewRequest = { id: userReview._id, content: values };
+      dispatch(addReview(reviewRequest));
+
+      // dispatch(addReview(values));
+
+      // dispatch(
+      //   addReview({
+      //     rating: values.rating,
+      //     content: values,
+      //   })
+      // )
     }
     actions.resetForm();
     if (userReview.rating) {
@@ -107,7 +117,7 @@ export const FeedbackForm = ({ onClose }) => {
           <FormWrapper>
             <AreaReview>
               <Label htmlFor="content">Review</Label>
-              {Boolean(userReview.content) && (
+              {!Boolean(userReview.content) && (
                 <AreaEdit>
                   <EditBtn
                     onClick={handleEdit}
@@ -134,7 +144,7 @@ export const FeedbackForm = ({ onClose }) => {
             <ErrorMessage name="content" component="div" />
           </FormWrapper>
 
-          {(!Boolean(userReview.review) || isEditActive) && (
+          {(!Boolean(userReview.content) || isEditActive) && (
             <AreaBtn>
               <SubmitBtn type="submit">
                 {isEditActive ? 'Edit' : 'Save'}
@@ -151,4 +161,4 @@ export const FeedbackForm = ({ onClose }) => {
       </Formik>
     </Contain>
   );
-};
+}
