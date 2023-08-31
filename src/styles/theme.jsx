@@ -20,7 +20,7 @@ export const light = {
     calendarTextColor: '#343434',
     weekendTextColor: '#3E85F3',
     bgCalendar: '#FFFFFF',
-    borderCalendarColor: 'rgba(220,	227,	229, 0.80)',
+    borderCalendarColor: 'transparent',
     activeArrowColor: '#dce3e5',
     borderColorSideBar: '1px solid #fffff',
     borderColorCalendar: '0.5px solid #dce3e580',
@@ -63,6 +63,8 @@ export const light = {
     strokeBg: '#010101',
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
+    borderFormColor: 'rgba(220, 227, 229, 0.8)',
+
   },
 };
 
@@ -109,6 +111,7 @@ export const dark = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#171820',
+    reviewLabel: '#FAFAFA4D',
     reviewBorder: 'rgba(255, 255, 255, 0.15)',
     reviewTextBg: '#21222C',
     scrollColor: '#e7e5e5',
@@ -130,5 +133,8 @@ export const dark = {
     btnRevers: '#21222C',
     bgStatistic: '#21222C',
     bgColorTask: 'rgba(23, 24, 32, 1)',
+
+    borderFormColor: 'rgba(255, 255, 255, 0.15)',
+
   },
 };

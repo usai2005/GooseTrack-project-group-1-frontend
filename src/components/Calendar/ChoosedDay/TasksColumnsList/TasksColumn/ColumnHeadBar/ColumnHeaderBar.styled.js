@@ -18,13 +18,10 @@ export const Wrapper = styled.div`
   }  */
 `;
 export const Title = styled.h3`
-  color: #111;
+  color: ${props => props.theme.variable.text};
   font-size: 20px;
   font-family: InterBold;
   line-height: calc(24 / 20);
-  /* ${viewport.mob} {
-    font-size: 18px;
-  } */
 `;
 
 export const IconWrapper = styled.div`
@@ -35,4 +32,6 @@ export const IconWrapper = styled.div`
 export const IconPlus = styled.svg`
   width: 24px;
   height: 24px;
+  stroke: ${props => props.theme.variable.text};
+  fill: ${props => props.theme.variable.secondaryBg};
 `;

@@ -9,16 +9,17 @@ export const Button = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #e3f3ff;
+  background-color: ${props => props.theme.variable.btnBlue};
   width: 100%;
   border-radius: 8px;
   padding: 17px;
   border: 1px dashed #cae8ff;
+  border-color: ${props => props.theme.variable.activeBtnBlue};
   margin-top: 8px;
   text-align: center;
   font-size: 14px;
   font-family: InterSemiBold;
-  color: #111;
+  color: ${props => props.theme.variable.text};
 
   &:active,
   &:focus,
@@ -47,5 +48,5 @@ export const Span = styled.span`
 export const Icon = styled.svg`
   width: 20px;
   height: 20px;
-  stroke: #111;
+  stroke: ${props => props.theme.variable.text};
 `;

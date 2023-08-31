@@ -57,6 +57,7 @@ export const Priority = styled.p`
   border-radius: 4px;
 `;
 
+
 export const ControlBtn = styled.button`
   padding: 0;
   display: flex;
@@ -79,3 +80,4 @@ export const ControlBtn = styled.button`
     stroke: #3e85f3;
   }
 `;
+
