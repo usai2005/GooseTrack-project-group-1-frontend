@@ -7,6 +7,7 @@ export const ContainerColumnCard = styled.div`
   margin-bottom: 18px;
   background-color: ${props => props.theme.variable.bgColorTask};
   border: ${props => props.theme.variable.borderColorWeekCalendar};
+  // bordercalendarcolor: 'rgba(220,	227,	229, 0.80)';
 `;
 
 export const TextCard = styled.div`
@@ -30,9 +31,16 @@ export const ContainerAvatar = styled.img`
 
 export const ContainerData = styled.div`
   display: flex;
-  // justify-content: space-between;
   align-items: end;
   gap: 8px;
+  justify-content: space-between;
+`;
+
+export const WrapperData = styled.div`
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  justify-content: space-between;
 `;
 
 export const Priority = styled.p`
