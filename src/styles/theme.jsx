@@ -64,7 +64,7 @@ export const light = {
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
     borderFormColor: '1px solid rgba(220, 227, 229, 0.8)',
-
+    borderProfileColor: 'rgba(17, 17, 17, 0.15)',
   },
 };
 
@@ -75,7 +75,7 @@ export const dark = {
     bgRevers: '#171820',
     bgReversLabel: 'rgba(250, 250, 250, 0.30)',
     secondaryBg: '#21222C',
-    btnBlue: '#3E85F3',
+    btnBlue: '#07090b',
     buttonBg: '#3E85F3',
     textBtn: '#FFFFFF',
     activeBtnBlue: '#3E85F3',
@@ -134,8 +134,7 @@ export const dark = {
     bgColorTask: 'rgba(23, 24, 32, 1)',
 
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
-
+    borderProfileColor: 'rgba(255, 255, 255, 0.15)',
     icon: '#353647',
-
   },
 };
