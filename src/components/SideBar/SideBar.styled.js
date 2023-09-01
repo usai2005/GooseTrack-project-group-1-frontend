@@ -4,6 +4,12 @@ export const Container = styled.div`
   // Common
   box-sizing: border-box;
   //
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
   display: flex;
   flex-direction: column;
 
@@ -14,27 +20,24 @@ export const Container = styled.div`
   background-color: ${props => props.theme.variable.sideBar};
   stroke: #343434;
 
+  z-index: 999;
+
+    &.open {
+      transform: translateX(100%);
+    }
+
   @media screen and (min-width: 768px) {
+    position: static;
     width: 289px;
     padding: 32px 24px;
-  }
 
-  @media screen and (max-width: 1439px) {
-    position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        border: 0;
-        padding: 0;
-        
-        white-space: nowrap;
-        clip-path: inset(100%);
-        clip: rect(0 0 0 0);
-        overflow: hidden;
+    // transform: translateX(0);
   }
 
   @media screen and (min-width: 1440px) {
     padding: 32px 24px 24px 24px;
+
+    transform: translateX(0);
   }
 `;
 
@@ -42,6 +45,18 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 64px;
+`;
+
+export const MenuCloseBtn = styled.button`
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 50%
 `;
 
 export const CloseIcon = styled.svg`

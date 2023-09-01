@@ -19,7 +19,9 @@ import {
   ReviewsTitle,
 } from './MainPage.styled';
 
-import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
+// import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
+import { ReviewsSlider } from '../../components/ReviewsSlider/ReviewsSlider';
+
 import icons from '../../images/icons.svg';
 import IMAGES from '../../images/mainPage/index';
 import { Container } from '../../styles/container';

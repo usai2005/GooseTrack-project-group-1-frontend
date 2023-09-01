@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import amount from './ReviewsSlider';
+// import allProfiles from './data';
 // export const LeftArrow = styled.div`
 //   width: 100px;
 //   height: 30px;
@@ -47,8 +47,6 @@ import amount from './ReviewsSlider';
 
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
-console.log(amount);
-
 export const SliderContainer = styled.div`
   position: relative;
   box-sizing: border-box;
@@ -72,8 +70,8 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const SliderMenuProfileWrapper = styled.div`
-  ${'' /* text-align: center; */}
+export const SliderWrapper = styled.div`
+  text-align: left;
   ${'' /* padding: 1rem 0; */}
   display: flex;
   flex-direction: column;
@@ -86,7 +84,7 @@ export const SliderMenuProfileWrapper = styled.div`
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 8px;
 
-  &.current {
+  /* &.current {
     transition: all 0.5s linear;
     position: relative;
     top: 0;
@@ -106,9 +104,9 @@ export const SliderMenuProfileWrapper = styled.div`
     left: 120%;
     transition: all 0.3s linear;
     opacity: 0;
-  }
+  } */
 `;
-export const AvatarImage = styled.div`
+export const AvatarImageContainer = styled.div`
   width: 50px;
   height: 50px;
 
@@ -213,46 +211,39 @@ export const StarIcon = styled.svg`
   width: 14px;
   height: 14px;
   fill: #cec9c1;
+  &.active {
+    fill: #ffac33;
+  }
 `;
 
 export const StarsList = styled.ul`
   display: flex;
 
+  justify-content: flex-end;
+
+  flex-direction: row-reverse;
+
+  li {
+    &:not(:first-child) {
+      margin-right: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
   li {
     &:not(:last-child) {
+      margin-left: 0;
       margin-right: 10px;
     }
   }
 `;
 
 export const ListItem = styled.li`
-  &.oneStar {
-    &:nth-child(-n + ${props => props.amount}) {
-      fill: red;
-    }
-  }
-
-  &.twoStars {
-    &:nth-child(-n + 2) {
-      fill: red;
-    }
-  }
-
-  &.threeStars {
-    &:nth-child(-n + 3) {
-      fill: red;
-    }
-  }
-
-  &.fourStars {
-    &:nth-child(-n + 4) {
-      fill: red;
-    }
-  }
-
-  &.fiveStars {
-    &:nth-child(-n + 5) {
-      fill: red;
-    }
-  }
+  /* &.slide {
+    text-align: left !important;
+  } */
 `;

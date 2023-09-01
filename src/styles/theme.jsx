@@ -63,7 +63,8 @@ export const light = {
     strokeBg: '#010101',
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
-    borderFormColor: 'rgba(220, 227, 229, 0.8)',
+    borderFormColor: '1px solid rgba(220, 227, 229, 0.8)',
+
   },
 };
 
@@ -127,12 +128,14 @@ export const dark = {
     btnColorActive: '#2b78ef',
     bgColorForm: '#13151A',
     btnDisActive: 'rgb(255, 255, 255)',
-    reviewLabel: 'rgba(255, 255, 255, 0.15)',
     strokeBg: '#ffffff',
     btnRevers: '#21222C',
     bgStatistic: '#21222C',
     bgColorTask: 'rgba(23, 24, 32, 1)',
 
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
+
+    icon: '#353647',
+
   },
 };

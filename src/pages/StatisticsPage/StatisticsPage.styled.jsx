@@ -5,23 +5,33 @@ const viewport = {
   desk: '@media screen and (min-width: 1440px)',
 };
 
-export const Container = styled.section`
-  border-radius: 16px;
-  margin-top: 30px;
-  max-width: 335px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 135px 14px;
-  padding-top: 28px;
-  background-color: ${props => props.theme.variable.bgStatistic};
- 
+export const PageWrapper = styled.div`
+  width: 100vw;
+
+  padding: 0 20px 95px 20px;
+
   ${viewport.tab} {
-    padding: 104px 32px;
-    max-width: 704px;
+    padding: 0 32px 64px 32px;
   }
+
   ${viewport.desk} {
-    padding: 104px 114px;
-    max-width: 1087px;
+    width: calc(100vw - 289px);
+    padding: 0 32px 32px 32px;
+  }
+`;
+
+export const StatisticWrapper = styled.div`
+  background-color: ${props => props.theme.variable.secondaryBg};
+  border-radius: 16px;
+
+  padding: 28px 14px 135px 14px;
+
+  ${viewport.tab} {
+    padding: 132px 32px 224px 32px;
+  }
+
+  ${viewport.desk} {
+    padding: 134px 113px 104px 113px;
   }
 `;
 
