@@ -1,6 +1,8 @@
 export const light = {
   variable: {
     sideBar: '#FFFFFF',
+    bgRevers: '#fff',
+    bgReversLabel: 'rgba(52, 52, 52, 0.80)',
     primaryBg: '#F7F6F9',
     secondaryBg: '#FFFFFF',
     btnBlue: '#E3F3FF',
@@ -18,7 +20,7 @@ export const light = {
     calendarTextColor: '#343434',
     weekendTextColor: '#3E85F3',
     bgCalendar: '#FFFFFF',
-    borderCalendarColor: 'rgba(220,	227,	229, 0.80)',
+    borderCalendarColor: 'transparent',
     activeArrowColor: '#dce3e5',
     borderColorSideBar: '1px solid #fffff',
     borderColorCalendar: '0.5px solid #dce3e580',
@@ -39,12 +41,12 @@ export const light = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#f8f8f8',
-    reviewLabel: 'rgba(52, 52, 52, 0.80)',
+    reviewLabel: 'rgba(52, 52, 52, 1)',
     reviewBorder: '#F6F6F6',
     reviewTextBg: '#F6F6F6',
     scrollColor: '#e7e5e5',
     scrollTrackColor: '#f2f2f2',
-    columnScrollThumbColor: 'rgba(231, 229, 229, 1)',
+    columnScrollThumbColor: 'rgba(246, 246, 246, 1)',
     columnScrollTrackColor: 'rgba(242, 242, 242, 1)',
     columnScrollThumbHoverColor: '#c0c0c0',
     notActiveCalendar: '#E3F3FF',
@@ -58,6 +60,11 @@ export const light = {
     CalendarLinkColor: '#FFFFFF',
     activeCalendarLinkColor: '#CAE8FF',
     inactiveCalendarLinkColor: '#E3F3FF',
+    strokeBg: '#010101',
+    btnRevers: '#E5EDFA',
+    bgStatistic: '#ffffff',
+    borderFormColor: '1px solid rgba(220, 227, 229, 0.8)',
+
   },
 };
 
@@ -65,6 +72,8 @@ export const dark = {
   variable: {
     sideBar: '#13151A',
     primaryBg: '#171820',
+    bgRevers: '#171820',
+    bgReversLabel: 'rgba(250, 250, 250, 0.30)',
     secondaryBg: '#21222C',
     btnBlue: '#3E85F3',
     buttonBg: '#3E85F3',
@@ -102,6 +111,7 @@ export const dark = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#171820',
+    reviewLabel1: '#FAFAFA4D',
     reviewBorder: 'rgba(255, 255, 255, 0.15)',
     reviewTextBg: '#21222C',
     scrollColor: '#e7e5e5',
@@ -118,5 +128,14 @@ export const dark = {
     btnColorActive: '#2b78ef',
     bgColorForm: '#13151A',
     btnDisActive: 'rgb(255, 255, 255)',
+    strokeBg: '#ffffff',
+    btnRevers: '#21222C',
+    bgStatistic: '#21222C',
+    bgColorTask: 'rgba(23, 24, 32, 1)',
+
+    borderFormColor: 'rgba(255, 255, 255, 0.15)',
+
+    icon: '#353647',
+
   },
 };

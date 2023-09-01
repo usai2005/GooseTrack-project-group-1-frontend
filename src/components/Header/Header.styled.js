@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 
-export const Container = styled.div`
-    display: flex;
-    align-items: flex-start;
-    width: 100vw;
-    
+export const ContainerHeader = styled.div`
+
     padding: 24px 20px 95px 20px;
 
     
@@ -19,14 +16,17 @@ export const Container = styled.div`
     }
 `;
 
-export const ContainerHeader = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
 `;
 
-export const Wrapper = styled.div`
+export const MenuBtn = styled.button`
     margin-right: auto;
+
+    background-color: transparent;
+
     stroke: #343434;
 
     @media screen and (min-width: 1440px) {
@@ -44,7 +44,7 @@ export const MenuIcon = styled.svg`
     }
 `;
 
-export const UserTitle = styled.h1`
+export const PageTitle = styled.h1`
     @media screen and (max-width: 1439px) {
         position: absolute;
         width: 1px;

@@ -38,9 +38,12 @@ export const App = () => {
         await dispatch(currentUser());
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          console.error("Unauthorized: The user is not authenticated.");
+          console.error('Unauthorized: The user is not authenticated.');
         } else {
-          console.error("An error occurred while fetching current user:", error);
+          console.error(
+            'An error occurred while fetching current user:',
+            error
+          );
         }
       }
     };
@@ -65,7 +68,7 @@ export const App = () => {
               }
             />
             <Route
-              path="account"
+              path="account/*"
               element={
                 <PrivateRoute redirectTo="/" component={<UserProfile />} />
               }
@@ -91,7 +94,7 @@ export const App = () => {
             </Route>
 
             <Route
-              path="statistics"
+              path="statistics/*"
               element={
                 <PrivateRoute redirectTo="/" component={<StatisticPage />} />
               }

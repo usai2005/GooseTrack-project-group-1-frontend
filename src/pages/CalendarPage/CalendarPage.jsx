@@ -1,35 +1,54 @@
 import CalendarToolBar from 'components/Calendar/CalendarToolBar/CalendarToolBar';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
-import {
-  selectActiveDate,
-  selectPeriodType,
-  selectSelectedDate,
-} from 'redux/date/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
-import { Container } from 'styles/container';
+
+// import { Container } from 'styles/container';
+import { format, parseISO } from 'date-fns';
+import {
+  setActiveDate,
+  setPeriodType,
+  setSelectedDate,
+} from 'redux/date/dateSlice';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
-  const currentDay = useSelector(selectActiveDate);
-  const selectedDate = useSelector(selectSelectedDate);
+  const dispatch = useDispatch();
+
+  const today = useSelector(selectActiveDate);
   const periodType = useSelector(selectPeriodType);
 
-  // console.log(currentDay, 'calendar redirect date');
-
-  const date = periodType === 'month' ? currentDay : selectedDate;
+  const { currentDate } = useParams();
+  const params = useParams();
+  const paramsPeriod = Object.values(params)[0].split('/')[0];
 
   useEffect(() => {
-    navigate(`${periodType}/${date}`, {});
-  }, [date, navigate, periodType]);
+    try {
+      const date = format(parseISO(currentDate), 'yyyy-MM-dd');
+
+      // console.log('date', date);
+      // console.log('today', today);
+      if (today !== date) {
+        dispatch(setSelectedDate(date));
+        dispatch(setActiveDate(date));
+      }
+      if (
+        periodType !== paramsPeriod &&
+        (paramsPeriod === 'day' || paramsPeriod === 'month')
+      ) {
+        dispatch(setPeriodType(paramsPeriod));
+      }
+    } catch (error) {
+      navigate(`${periodType}/${today}`, {});
+    }
+  }, [periodType, today, currentDate, navigate, dispatch, paramsPeriod]);
 
   return (
-    <Container>
-      <PageWrapper>
-        <CalendarToolBar />
-        <Outlet />
-      </PageWrapper>
-    </Container>
+    <PageWrapper>
+      <CalendarToolBar />
+      <Outlet />
+    </PageWrapper>
   );
 }

@@ -43,6 +43,7 @@ export const logOut = createAsyncThunk(
     try {
       await axios.post('/users/logout');
       clearAuthHeader();
+      window.location.href = '/GooseTrack-project-group-1-frontend/';
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -72,7 +73,7 @@ export const updateUser = createAsyncThunk(
   'users/update',
   async (user, thunkAPI) => {
     try {
-      const res = await axios.patch('/users/user', user);
+      const res = await axios.patch('/users/edit', user);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

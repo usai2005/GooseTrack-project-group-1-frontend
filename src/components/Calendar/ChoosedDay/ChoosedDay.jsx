@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksColumnsList/TasksColumnsList';
-import { Container } from 'styles/container';
+
 // import { selectTasks } from 'redux/tasks/tasksSelectors';
 import { selectSelectedDate } from 'redux/date/selectors';
 
@@ -14,9 +14,9 @@ export const ChoosedDay = () => {
   const date = useSelector(selectSelectedDate);
 
   return (
-    <Container>
+    <>
       <DayCalendarHead />
       <TasksColumnsList tasks={tasks} date={date} />
-    </Container>
+    </>
   );
 };

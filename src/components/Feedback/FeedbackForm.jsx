@@ -11,6 +11,7 @@ import {
   deleteReview,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
+// import sprite from '../../images/icons.svg';
 
 import { ReactComponent as IconEdit } from '../../images/feedback/edit.svg';
 import { ReactComponent as IconTrash } from '../../images/feedback/trash.svg';
@@ -30,13 +31,20 @@ import {
   DeleteBtn,
   Close,
   ErrorMessage,
+  // EditIcon,
 } from './FeedbackForm.styled';
 
 const ReviewSchema = Yup.object().shape({
-  review: Yup.string()
-  .min(10, 'This review is significantly short, it should be more than 10 characters.')
-  .max(300, 'This review is excessively long, it should not exceed 300 characters.')
-  .required('Review is required'),
+  content: Yup.string()
+    .min(
+      10,
+      'This review is significantly short, it should be more than 10 characters.'
+    )
+    .max(
+      300,
+      'This review is excessively long, it should not exceed 300 characters.'
+    )
+    .required('Review is required'),
 });
 
 const rateIcon = (
@@ -63,10 +71,20 @@ export const FeedbackForm = ({ onClose }) => {
   const handleSubmit = (values, actions) => {
     values.rating = Number(userReview.rating);
     if (isEditActive) {
-      const reviewRequest = { id: userReview._id, review: values };
+      const reviewRequest = { id: userReview._id, content: values };
       dispatch(updateReview(reviewRequest));
     } else {
-      dispatch(addReview(values));
+      const reviewRequest = { id: userReview._id, content: values };
+      dispatch(addReview(reviewRequest));
+
+      // dispatch(addReview(values));
+
+      // dispatch(
+      //   addReview({
+      //     rating: values.rating,
+      //     content: values,
+      //   })
+      // )
     }
     actions.resetForm();
     if (userReview.rating) {
@@ -88,7 +106,7 @@ export const FeedbackForm = ({ onClose }) => {
       <Formik
         initialValues={{
           rating: userReview.rating || '',
-          review: userReview.review || '',
+          content: userReview.content || '',
         }}
         validationSchema={ReviewSchema}
         onSubmit={handleSubmit}
@@ -106,8 +124,8 @@ export const FeedbackForm = ({ onClose }) => {
           />
           <FormWrapper>
             <AreaReview>
-              <Label htmlFor="review">Review</Label>
-              {Boolean(userReview.review) && (
+              <Label htmlFor="content">Review</Label>
+              {!Boolean(userReview.content) && (
                 <AreaEdit>
                   <EditBtn
                     onClick={handleEdit}
@@ -115,9 +133,15 @@ export const FeedbackForm = ({ onClose }) => {
                     type="button"
                   >
                     <IconEdit />
+                    {/* <EditIcon>
+                      <use href={sprite + '#icon-pencil-01'}></use>
+                    </EditIcon> */}
                   </EditBtn>
                   <DeleteBtn type="button" onClick={handleDelete}>
                     <IconTrash />
+                    {/* <svg>
+                      <use href={sprite + '#icon-trash-2'}></use>
+                    </svg> */}
                   </DeleteBtn>
                 </AreaEdit>
               )}
@@ -126,15 +150,15 @@ export const FeedbackForm = ({ onClose }) => {
             <Input
               type="text"
               placeholder="Enter text"
-              id="review"
-              name="review"
+              id="content"
+              name="content"
               component="textarea"
-              disabled={!isEditActive && Boolean(userReview.review)}
+              disabled={!isEditActive && Boolean(userReview.content)}
             />
-            <ErrorMessage name="review" component="div" />
+            <ErrorMessage name="content" component="div" />
           </FormWrapper>
 
-          {(!Boolean(userReview.review) || isEditActive) && (
+          {(!Boolean(userReview.content) || isEditActive) && (
             <AreaBtn>
               <SubmitBtn type="submit">
                 {isEditActive ? 'Edit' : 'Save'}

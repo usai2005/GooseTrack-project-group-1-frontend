@@ -1,20 +1,31 @@
+import {
+  Wrapper,
+  IconPlus,
+  Title,
+  IconWrapper,
+} from './ColumnHeaderBar.styled';
+import icons from '../../../../../../images/icons.svg';
+
+//title.split('-').join(' ')
 export const ColumnHeadBar = ({ title, setIsOpen }) => {
   const normalizedTitle = title.split('-').join(' ');
   const capitalizetTitle =
     normalizedTitle[0].toUpperCase() + normalizedTitle.slice(1);
 
   return (
-    <div>
-      <h2>{capitalizetTitle}</h2>
-      <button
-        type="button"
+    <Wrapper>
+      <Title>{capitalizetTitle}</Title>
+      <IconWrapper
+        // type="button"
         onClick={() => {
           setIsOpen(true);
         }}
       >
-        +
-      </button>
-    </div>
+        <IconPlus>
+          <use href={icons + '#icon-icon'}></use>
+        </IconPlus>
+      </IconWrapper>
+    </Wrapper>
   );
 };
 

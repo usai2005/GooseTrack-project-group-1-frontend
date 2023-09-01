@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-
-import FilteredPropsInputField from '../FilteredPropsInputField';
+// import styled, { css } from 'styled-components';
+import { Field } from 'formik';
+import { styled } from 'styled-components';
 
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
@@ -26,26 +26,15 @@ export const Label = styled.label`
   line-height: normal;
   width: 100%;
 
-  ${({ valid }) =>
-    valid &&
-    css`
-      color: #3cbc81;
-    `}
-
-  ${({ error }) =>
-    error &&
-    css`
-      color: #e74a3b;
-    `}
-
-    ${viewport.mob} {
+  ${viewport.mob} {
     font-size: 12px;
   }
 `;
 export const InputContainer = styled.div`
   position: relative;
 `;
-export const Input = styled(FilteredPropsInputField)`
+
+export const Input = styled(Field)`
   background-color: #fff;
   color: #111;
   border: 1px solid #dce3e5;
@@ -54,7 +43,7 @@ export const Input = styled(FilteredPropsInputField)`
   border-radius: 8px;
   width: 100%;
   margin-top: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   padding: 18px;
 
   &::placeholder {
@@ -68,34 +57,7 @@ export const Input = styled(FilteredPropsInputField)`
     outline: none;
   }
 
-  ${({ valid }) =>
-    valid &&
-    css`
-      border: 1px solid #3cbc81;
-      margin-bottom: 8px;
-
-      &:focus,
-      &:active {
-        border: 1px solid #3cbc81;
-        outline: none;
-      }
-    `}
-
-  ${({ error }) =>
-    error &&
-    css`
-      border: 1px solid #e74a3b;
-      margin-bottom: 8px;
-      outline: none;
-
-      &:focus,
-      &:active {
-        border: 1px solid #e74a3b;
-        outline: none;
-      }
-    `}
-
-     ${viewport.mob} {
+  ${viewport.mob} {
     padding: 14px;
   }
 `;
@@ -104,6 +66,7 @@ export const StyledInlineErrorMessage = styled.div`
   color: #e74a3b;
   display: block;
   font-size: 12px;
+  margin-top: -10px;
 
   padding-left: 16px;
   white-space: pre-line;
@@ -112,7 +75,7 @@ export const StyledInlineMessage = styled.div`
   color: #3cbc81;
   display: block;
   font-size: 12px;
-
+  margin-top: -10px;
   padding-left: 16px;
   white-space: pre-line;
 `;

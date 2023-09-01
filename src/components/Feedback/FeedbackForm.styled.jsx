@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
 
 const viewport = {
-    tab: '@media screen and (min-width: 768px)',
-    desk: '@media screen and (min-width: 1440px)',
-  };
+  tab: '@media screen and (min-width: 768px)',
+  desk: '@media screen and (min-width: 1440px)',
+};
 
 export const Contain = styled.div`
   position: relative;
@@ -12,7 +12,8 @@ export const Contain = styled.div`
   padding: 28px 20px;
   border-radius: 16px;
   width: 335px;
-  background: #fff;
+
+  background-color: ${props => props.theme.variable.bgRevers};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   ${viewport.tab} {
@@ -21,8 +22,18 @@ export const Contain = styled.div`
   }
 `;
 
+export const CloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
+export const EditIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
 export const Label = styled.label`
-  color: rgba(52, 52, 52, 0.8);
+  color: ${props => props.theme.variable.bgReversLabel};
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
@@ -41,7 +52,7 @@ export const AreaReview = styled.div`
   margin-bottom: 8px;
 `;
 
-export const AreaEdit = styled.div`
+export const AreaEdit = styled.ul`
   display: flex;
   gap: 8px;
 `;
@@ -50,7 +61,7 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e3f3ff;
+  background-color: ${props => props.theme.variable.icon};
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -91,15 +102,16 @@ export const Input = styled(Field)`
   font-weight: 600;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
-  color: rgba(52, 52, 52, 1);
-  background-color: rgba(246, 246, 246, 1);
+  color: ${props => props.theme.variable.bgReversLabel};
+
+  background-color: ${props => props.theme.variable.primaryBg};
   border-radius: 8px;
   border: 1px solid rgba(246, 246, 246, 1);
 
   ${viewport.tab} {
     width: 404px;
   }
-  
+
   ${viewport.desk} {
     margin-bottom: 18px;
   }
@@ -137,7 +149,7 @@ export const AreaBtn = styled.div`
 
 export const SubmitBtn = styled.button`
   color: #ffffff;
-  background-color: #3E85F3;
+  background-color: #3e85f3;
   text-transform: none;
   width: 262px;
   height: 48px;
@@ -149,7 +161,7 @@ export const SubmitBtn = styled.button`
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background-color: #2B78EF;
+    background-color: #2b78ef;
   }
   &:disabled {
     cursor: not-allowed;
@@ -157,8 +169,8 @@ export const SubmitBtn = styled.button`
 `;
 
 export const CancelBtn = styled.button`
-color: rgba(52, 52, 52, 1);
-background-color: #E5EDFA;
+  color: ${props => props.theme.variable.reviewLabel};
+  background-color: ${props => props.theme.variable.btnRevers};
   text-transform: none;
   width: 262px;
   height: 48px;
@@ -170,7 +182,7 @@ background-color: #E5EDFA;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    color: #2B78EF;
+    color: #2b78ef;
   }
 `;
 
@@ -184,10 +196,11 @@ export const Close = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  stroke: #010101;
+
+  stroke: ${props => props.theme.variable.strokeBg};
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    stroke: #2B78EF;
+    stroke: #2b78ef;
   }
 `;

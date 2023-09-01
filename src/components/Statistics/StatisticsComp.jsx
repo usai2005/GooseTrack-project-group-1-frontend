@@ -1,6 +1,9 @@
-import React, { useEffect }  from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllTasks } from '../../redux/tasks/tasksOperations';
+// import React, { useEffect } from 'react';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+// import { getAllTasks } from '../../redux/tasks/tasksOperations';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
 import { selectSelectedDate } from '../../redux/date/selectors';
 
@@ -16,15 +19,18 @@ import {
 } from 'recharts';
 
 import { Container, Title, Wrapper } from './StatisticsComp.styled';
+import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
 export const StatisticsComp = () => {
-  const dispatch = useDispatch();
+  const theme = useSelector(selectCurrentTheme);
+  console.log(theme);
+  // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
 
-  useEffect(() => {
-    dispatch(getAllTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllTasks());
+  // }, [dispatch]);
 
   let filteredTasksByDay = null;
   let filteredTasksByMonth = null;
@@ -66,7 +72,7 @@ export const StatisticsComp = () => {
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
 
-  console.log(tasks)
+  // console.log(tasks)
 
   const data = [
     {
@@ -81,7 +87,9 @@ export const StatisticsComp = () => {
       day: inprogressByDay,
       month: inprogressByMonth,
       dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
-      monthf: `${Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0}%`,
+      monthf: `${
+        Math.round((inprogressByMonth / allTasksByMonth) * 100) || 0
+      }%`,
     },
     {
       name: 'Done',
@@ -112,7 +120,13 @@ export const StatisticsComp = () => {
                 <stop offset="95%" stopColor="#3E85F3" stopOpacity={0.8} />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} stroke="#E3F3FF" />
+            <CartesianGrid
+              vertical={false}
+              style={{
+                stroke:
+                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)',
+              }}
+            />
             <XAxis
               dataKey="name"
               axisLine={false}

@@ -11,12 +11,29 @@ export const WeekContainer = styled.ul`
   overflow: hidden;
   background-color: ${props => props.theme.variable.bgCalendar};
   color: ${props => props.theme.variable.text};
+
+  @media (min-width: 768px) {
+    grid-auto-rows: 144px;
+
+    /* padding-top: 50px; */
+  }
+
+  @media (min-width: 1440px) {
+    grid-auto-rows: 125px;
+
+    /* padding-top: 40px; */
+  }
 `;
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
   border: ${props => props.theme.variable.borderColorCalendar};
   cursor: pointer;
+  transition: border 250ms linear;
+  &:hover,
+  &:focus {
+    border: 1px solid #ceeefd;
+  }
 
   &:first-of-type {
     border-top-left-radius: 8px;
@@ -46,6 +63,7 @@ export const DateWrap = styled.div`
   border-radius: 6px;
   width: 20px;
   height: 22px;
+  margin-bottom: 8px;
   background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
   color: ${props =>
     props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
@@ -68,16 +86,23 @@ export const WeekNames = styled.li`
 export const WeekNamesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  padding: 14px;
+  padding: 14px 0 14px 0;
   margin: 0 0 15px;
   border: ${props => props.theme.variable.borderColorWeekCalendar};
 
   border-radius: 8px;
   background-color: ${props => props.theme.variable.bgCalendar};
+
+  @media (min-width: 768px) {
+    margin-bottom: 18px;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 15px;
+  }
 `;
 
-const priorityColor = { low: '#3E85F3', medium: '#F3B249', Hight: '#EA3D65' };
-const priorityBg = { low: '#CEEEFD', medium: '#FCF0D4', Hight: '#FFD2DD' };
+const priorityColor = { low: '#3E85F3', medium: '#F3B249', high: '#EA3D65' };
+const priorityBg = { low: '#CEEEFD', medium: '#FCF0D4', high: '#FFD2DD' };
 
 export const TaskList = styled.ul`
   padding: 0;
