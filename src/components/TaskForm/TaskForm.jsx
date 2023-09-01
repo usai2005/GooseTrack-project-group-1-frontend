@@ -33,7 +33,7 @@ import {
 } from './TaskForm.styled';
 
 const schema = Yup.object().shape({
-  title: Yup.string().max(250, 'Too Long!').required('Required'),
+  title: Yup.string().max(250, 'Too Long!').required('Title is required'),
   start: Yup.string().required('start time cannot be empty'),
   end: Yup.string()
     .required('end time cannot be empty')
@@ -77,7 +77,7 @@ export const TaskForm = ({ category, task, onClose }) => {
 
     dispatch(
       action === 'edit'
-        ? updateTask({ task: values, id: task._id }) // Передача id
+        ? updateTask({ task: values, id: task._id })
         : addTask({ ...values, date, category })
     )
       .then(data => {
@@ -113,20 +113,20 @@ export const TaskForm = ({ category, task, onClose }) => {
           <Form>
             <Label>
               Title
-              <TitleField type="text" name="title" placeholder="Enter text" />
               <ErrorMessage name="title" component="div" />
+              <TitleField type="text" name="title" placeholder="Enter text" />
             </Label>
 
             <FieldContainer>
               <Label>
                 Start
-                <TimeField type="time" name="start" />
                 <ErrorMessage name="start" component="div" />
+                <TimeField type="time" name="start" />
               </Label>
               <Label>
                 End
-                <TimeField type="time" name="end" />
                 <ErrorMessage name="end" component="div" />
+                <TimeField type="time" name="end" />
               </Label>
             </FieldContainer>
 
