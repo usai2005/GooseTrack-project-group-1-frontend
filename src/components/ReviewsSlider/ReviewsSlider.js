@@ -59,7 +59,7 @@ export const ReviewsSlider = () => {
         <SliderWrapper>
           <AboutReviewerContainer>
             <AvatarImageContainer>
-              <img src={review.image} />
+              // <img src={review.image} />
             </AvatarImageContainer>
             <NameContainer>
               <ReviewersName>{review.name}</ReviewersName>
