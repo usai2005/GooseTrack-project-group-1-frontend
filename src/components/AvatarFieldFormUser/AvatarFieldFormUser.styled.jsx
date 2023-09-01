@@ -27,7 +27,7 @@ export const Label = styled.label`
 
   border-radius: 50%;
   border: 2px solid #3e85f3;
-  background-color: ;
+  background-color: none;
   overflow: hidden;
 
   & img {
@@ -62,7 +62,7 @@ export const HiddenInput = styled.input`
   padding: 0;
 
   border-radius: 50%;
-  background-color: ;
+  background-color: #3e85f3;
 
   :before {
     position: absolute;
@@ -78,8 +78,8 @@ export const HiddenInput = styled.input`
     justify-content: center;
     align-items: center;
 
-    color: ;
-    background-color: ;
+    /* color: ; */
+    background-color: #3e85f3;
   }
 
   @media (min-width: 768px) {
@@ -92,15 +92,16 @@ export const HiddenInput = styled.input`
     :before {
       position: absolute;
       content: '+';
-      color: ;
-      font-size: 1.5625rem;
+      /* color: ; */
+      font-family: Inter;
+      font-size: 18px;
       line-height: 1.375rem;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 24px;
       height: 24px;
-      background-color: ;
+      /* background-color: ; */
     }
   }
 
@@ -113,10 +114,10 @@ export const InfoWrapper = styled.div`
   position: relative;
   padding-top: 10px;
   > h3 {
-    font-weight: 700;
-    font-size: 0.875rem;
+    color: ${props => props.theme.variable.text};
+    font-family: InterBold;
+    font-size: 18px;
     line-height: 1.125rem;
-    color: ;
 
     margin-bottom: 0.25rem;
 
@@ -127,10 +128,10 @@ export const InfoWrapper = styled.div`
   }
 
   > p {
-    font-weight: 600;
-    font-size: 0.75rem;
+    color: ${props => props.theme.variable.textAvatar};
+    font-family: InterSemiBold;
+    font-size: 14px;
     line-height: 0.875rem;
-    color: ;
 
     @media (min-width: 768px) {
       font-size: 0.875rem;

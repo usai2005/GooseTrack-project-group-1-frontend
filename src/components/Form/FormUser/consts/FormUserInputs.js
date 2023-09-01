@@ -27,7 +27,7 @@ export const userFormInputs = [
     type: 'string',
     id: nanoid(),
     label: 'Skype',
-    placeholder: 'Enter skype',
+    placeholder: 'Add a skype number',
   },
   {
     inputName: 'email',

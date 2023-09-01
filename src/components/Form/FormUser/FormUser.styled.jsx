@@ -6,7 +6,7 @@ export const Form = styled.form`
   align-items: center;
 
   border-radius: 16px;
-  background-color: ;
+  background-color: ${props => props.theme.variable.secondaryBg};
 
   & > button {
     padding: 14px 50px;
@@ -152,28 +152,25 @@ export const Controls = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 30px;
-  background-color: ;
-  border: ;
-  color: ;
+  font-family: InterRegular;
+  font-size: 14px;
+  width: 262px;
+  height: 48px;
+  padding: 15px, 83px;
+  background-color: ${props => props.theme.variable.buttonBg};
+  border-radius: 16px;
+  color: #fff;
 
   &:disabled {
-    background-color: ;
-    color: ;
+    background-color: rgb(163, 168, 173);
+    color: ${props => props.theme.variable.btndisActive};
   }
 
-  @media (min-width: 768px) {
-    width: 38px;
-  }
-  &:first-of-type {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-right-width: 0.5px;
-  }
-  &:last-of-type {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-left-width: 0.5px;
+  &:active,
+  &:focus,
+  &:hover {
+    cursor: pointer;
+    background-color: ${props => props.theme.variable.btnColorActive};
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;

@@ -22,13 +22,13 @@ import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
 import { AvatarFieldFormUser } from '../../AvatarFieldFormUser/AvatarFieldFormUser';
 
-import { Form, FormBody, DatePickerWrapper } from './FormUser.styled';
+import { Form, FormBody, DatePickerWrapper, Controls } from './FormUser.styled';
 
 import ReactDatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import FormUserButton from '../FormUserButton/FormUserButton';
+// import FormUserButton from '../FormUserButton/FormUserButton';
 
 const today = new Date();
 
@@ -135,7 +135,7 @@ export const FormUser = () => {
           ) : (
             <DatePickerWrapper>
               <ReactDatePicker
-               key={input.id}
+                key={input.id}
                 onChange={value => {}}
                 // calendarStartDay={1}
                 // closeOnScroll={true}
@@ -145,9 +145,9 @@ export const FormUser = () => {
           )
         )}
       </FormBody>
-      <FormUserButton type="submit" function="save" disabled={isDisabled}>
+      <Controls type="submit" function="save" disabled={isDisabled}>
         Save changes
-      </FormUserButton>
+      </Controls>
     </Form>
   );
 };
