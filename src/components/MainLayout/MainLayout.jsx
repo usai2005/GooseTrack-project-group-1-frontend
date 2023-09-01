@@ -1,11 +1,13 @@
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { getAllTasks } from 'redux/tasks/tasksOperations';
+
 import Header from '../Header/Header';
 import SideBar from '../SideBar/SideBar';
 
 import { Container } from './MainLayout.styled';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getAllTasks } from 'redux/tasks/tasksOperations';
 
 const MainLayout = () => {
   const dispatch = useDispatch();

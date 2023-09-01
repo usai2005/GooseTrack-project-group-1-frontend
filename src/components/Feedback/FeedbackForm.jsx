@@ -11,6 +11,7 @@ import {
   deleteReview,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
+// import sprite from '../../images/icons.svg';
 
 import { ReactComponent as IconEdit } from '../../images/feedback/edit.svg';
 import { ReactComponent as IconTrash } from '../../images/feedback/trash.svg';
@@ -30,13 +31,20 @@ import {
   DeleteBtn,
   Close,
   ErrorMessage,
+  // EditIcon,
 } from './FeedbackForm.styled';
 
 const ReviewSchema = Yup.object().shape({
   content: Yup.string()
-  .min(10, 'This review is significantly short, it should be more than 10 characters.')
-  .max(300, 'This review is excessively long, it should not exceed 300 characters.')
-  .required('Review is required'),
+    .min(
+      10,
+      'This review is significantly short, it should be more than 10 characters.'
+    )
+    .max(
+      300,
+      'This review is excessively long, it should not exceed 300 characters.'
+    )
+    .required('Review is required'),
 });
 
 const rateIcon = (
@@ -125,9 +133,15 @@ export const FeedbackForm = ({ onClose }) => {
                     type="button"
                   >
                     <IconEdit />
+                    {/* <EditIcon>
+                      <use href={sprite + '#icon-pencil-01'}></use>
+                    </EditIcon> */}
                   </EditBtn>
                   <DeleteBtn type="button" onClick={handleDelete}>
                     <IconTrash />
+                    {/* <svg>
+                      <use href={sprite + '#icon-trash-2'}></use>
+                    </svg> */}
                   </DeleteBtn>
                 </AreaEdit>
               )}
@@ -161,4 +175,4 @@ export const FeedbackForm = ({ onClose }) => {
       </Formik>
     </Contain>
   );
-}
+};

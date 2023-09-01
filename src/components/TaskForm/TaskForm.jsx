@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { parse, isDate } from 'date-fns';
+import moment from 'moment';
 import icons from '../../images/icons.svg';
-import { ReactComponent as Orange } from './EllipseOrange.svg';
-import { ReactComponent as OrangeLine } from './Ellipse 281Orange.svg';
-import { ReactComponent as Blue } from './EllipseBlue.svg';
-import { ReactComponent as BlueLine } from './Ellipse 281Blue.svg';
-import { ReactComponent as Red } from './EllipseRed.svg';
-import { ReactComponent as RedLine } from './Ellipse 281Red.svg';
+import { selectSelectedDate } from 'redux/date/selectors';
+import { addTask, updateTask } from 'redux/tasks/tasksOperations';
 import {
   ActionButton,
   AddIcon,
+  Blue,
+  BlueLine,
   ButtonContainer,
   CancelButton,
   CloseButton,
@@ -19,21 +21,19 @@ import {
   FieldContainer,
   FormContainer,
   Label,
+  Orange,
+  OrangeLine,
   PriorityContainer,
   PriorityField,
   PriorityLabel,
+  Red,
+  RedLine,
   TimeField,
   TitleField,
 } from './TaskForm.styled';
-import { parse, isDate } from 'date-fns';
-import moment from 'moment';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectSelectedDate } from 'redux/date/selectors';
-import { addTask, updateTask } from 'redux/tasks/tasksOperations';
 
 const schema = Yup.object().shape({
-  title: Yup.string().max(250, 'Too Long!').required('Required'),
+  title: Yup.string().max(250, 'Too Long!').required('Title is required'),
   start: Yup.string().required('start time cannot be empty'),
   end: Yup.string()
     .required('end time cannot be empty')
@@ -54,7 +54,7 @@ const schema = Yup.object().shape({
     .required('Required'),
 });
 
-export const TaskForm = ({ category = 'to-do', task, onClose }) => {
+export const TaskForm = ({ category, task, onClose }) => {
   const [action, setAction] = useState('create');
   const date = useSelector(selectSelectedDate);
   const dispatch = useDispatch();
@@ -71,26 +71,46 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
   useEffect(() => {
     if (task?._id) setAction('edit');
   }, [task]);
-  // console.log(action, 'form action');
 
   const handleSubmit = values => {
-    console.log(values);
+  
+    const payload = {
+      id: values._id,
+      updatedTask: {
+        title: values.title,
+        start: values.start,
+        end: values.end,
+        priority: values.priority,
+        date: values.date,
+        category: values.category,
+      },
+    };
 
-    
-    dispatch(
-      action === 'edit'
-        ? updateTask({ task: values, id: task._id }) // Передача id
-        : addTask({ ...values, date, category })
-    )
-      .then(data => {
-        if (data.error) {
-          throw new Error(data.payload);
-        }
-        onClose();
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
+
+    if (action === 'edit') {
+      dispatch(updateTask(payload))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    } else {
+      dispatch(addTask({ ...values, date, category }))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    }
+
   };
 
   return (
@@ -115,37 +135,61 @@ export const TaskForm = ({ category = 'to-do', task, onClose }) => {
           <Form>
             <Label>
               Title
-              <TitleField type="text" name="title" placeholder="Enter text" />
               <ErrorMessage name="title" component="div" />
+              <TitleField type="text" name="title" placeholder="Enter text" />
             </Label>
 
             <FieldContainer>
               <Label>
                 Start
-                <TimeField type="time" name="start" />
                 <ErrorMessage name="start" component="div" />
+                <TimeField type="time" name="start" />
               </Label>
               <Label>
                 End
-                <TimeField type="time" name="end" />
                 <ErrorMessage name="end" component="div" />
+                <TimeField type="time" name="end" />
               </Label>
             </FieldContainer>
 
             <PriorityContainer role="group">
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="low" />
-                {values.priority === 'low' ? <BlueLine /> : <Blue />}
+                {values.priority === 'low' ? (
+                  <BlueLine>
+                    <use href={icons + '#icon-ellipse-blue-stroke'}></use>
+                  </BlueLine>
+                ) : (
+                  <Blue>
+                    <use href={icons + '#icon-ellipse-blue'}></use>
+                  </Blue>
+                )}
                 Low
               </PriorityLabel>
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="medium" />
-                {values.priority === 'medium' ? <OrangeLine /> : <Orange />}
+                {values.priority === 'medium' ? (
+                  <OrangeLine>
+                    <use href={icons + '#icon-ellipse-orange-stroke'}></use>
+                  </OrangeLine>
+                ) : (
+                  <Orange>
+                    <use href={icons + '#icon-ellipse-orange'}></use>
+                  </Orange>
+                )}
                 Medium
               </PriorityLabel>
               <PriorityLabel>
                 <PriorityField type="radio" name="priority" value="high" />
-                {values.priority === 'high' ? <RedLine /> : <Red />}
+                {values.priority === 'high' ? (
+                  <RedLine>
+                    <use href={icons + '#icon-ellipse-pink-stroke'}></use>
+                  </RedLine>
+                ) : (
+                  <Red>
+                    <use href={icons + '#icon-ellipse-pink'}></use>
+                  </Red>
+                )}
                 High
               </PriorityLabel>
             </PriorityContainer>

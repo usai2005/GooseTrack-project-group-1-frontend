@@ -18,7 +18,7 @@ const UserInfo = () => {
       <UserName>{user.name}</UserName>
 
       <UserAvatar
-        img={'user.avatarUrl'}
+        img={user.avatarUrl}
         src={user.avatarURL}
         alt={user.name}
         onClick={handleClick}

@@ -1,5 +1,9 @@
 import { styled } from 'styled-components';
 
+const viewport = {
+  mob: '@media screen and (max-width: 767px)',
+};
+
 export const WeekNames = styled.li`
   list-style: none;
   text-transform: uppercase;
@@ -29,6 +33,11 @@ export const ContainerWeekDay = styled.div`
   font-weight: 600;
   line-height: calc(18 / 14);
   margin-bottom: 4px;
+
+  ${viewport.mob} {
+    font-size: 16px;
+    line-height: calc(16 / 16);
+  }
 `;
 
 export const ContainerDateCell = styled.div`
@@ -51,5 +60,4 @@ export const WeekDayNum = styled.div`
   color: ${props =>
     props.$istoday ? 'white' : props.theme.variable.calendarTextColor};
   background-color: ${props => (props.$istoday ? '#3e85f3' : 'none')};
-
 `;
