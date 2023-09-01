@@ -12,8 +12,10 @@ import {
   PageTitle,
 } from './Header.styled';
 import { useState, useEffect } from 'react';
-import { useLocation,  } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FeedbackModal } from 'components/Feedback/FeedbackModal';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 let pageTitle = 'User Profile';
 
@@ -25,7 +27,7 @@ const Header = () => {
   };
 
   const location = useLocation();
-  
+
   useEffect(() => {
     const { pathname } = location;
     if (pathname.includes('/statistics')) {
@@ -38,6 +40,8 @@ const Header = () => {
     }
   }, [location]);
 
+  const user = useSelector(selectUser);
+
   return (
     <Container>
       <ContainerHeader>
@@ -46,12 +50,14 @@ const Header = () => {
             <use href={icons + '#icon-menu-01'}></use>
           </MenuIcon>
         </Wrapper>
-        <PageTitle>{ pageTitle }</PageTitle>
+        <PageTitle>{pageTitle}</PageTitle>
         <AddFeedbackBt setIsOpen={setIsOpen} />
         <ThemeToggler />
-        <UserInfo />
+        <UserInfo user={user} />
       </ContainerHeader>
-      {isOpened && <FeedbackModal onClose={handleToggle}></FeedbackModal>}
+      {isOpened && (
+        <FeedbackModal onClose={handleToggle} user={user}></FeedbackModal>
+      )}
     </Container>
   );
 };

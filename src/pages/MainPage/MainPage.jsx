@@ -24,8 +24,16 @@ import icons from '../../images/icons.svg';
 import IMAGES from '../../images/mainPage/index';
 import { Container } from '../../styles/container';
 import BackToTopButton from 'components/BackToTop/BackToTopButton';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchReviews } from 'redux/reviews/reviewsOperations';
 
 export default function MainPage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
+
   return (
     <Container>
       <section>

@@ -1,10 +1,7 @@
 import { UserName, UserAvatar } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from 'redux/auth/selectors';
 
-const UserInfo = () => {
-  const user = useSelector(selectUser);
+const UserInfo = ({ user }) => {
   const navigate = useNavigate();
 
   const handleClick = e => {
