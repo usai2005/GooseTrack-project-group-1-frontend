@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CartesianGrid } from 'recharts';
+// import { CartesianGrid } from 'recharts';
 
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
@@ -8,7 +8,7 @@ const viewport = {
 };
 
 export const Container = styled.div`
-  border: solid 1px ${props => props.theme.variable.statsBorder};
+  border: solid 1px ${props => props.theme.variable.borderColor};
 
   margin-right: auto;
   margin-left: auto;
