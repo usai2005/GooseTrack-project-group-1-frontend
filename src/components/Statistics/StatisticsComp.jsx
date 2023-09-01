@@ -19,8 +19,11 @@ import {
 } from 'recharts';
 
 import { Container, Title, Wrapper } from './StatisticsComp.styled';
+import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
 export const StatisticsComp = () => {
+  const theme = useSelector(selectCurrentTheme);
+  console.log(theme);
   // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
@@ -117,7 +120,13 @@ export const StatisticsComp = () => {
                 <stop offset="95%" stopColor="#3E85F3" stopOpacity={0.8} />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} stroke="#E3F3FF" />
+            <CartesianGrid
+              vertical={false}
+              style={{
+                stroke:
+                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)',
+              }}
+            />
             <XAxis
               dataKey="name"
               axisLine={false}

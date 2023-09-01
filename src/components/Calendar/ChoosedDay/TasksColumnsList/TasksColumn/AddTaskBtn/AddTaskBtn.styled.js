@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
-const viewport = {
-  mob: '@media screen and (max-width: 767px)',
-  tab: '@media screen and (min-width: 768px)',
-  desk: '@media screen and (min-width: 1440px)',
-};
+// const viewport = {
+//   mob: '@media screen and (max-width: 767px)',
+//   tab: '@media screen and (min-width: 768px)',
+//   desk: '@media screen and (min-width: 1440px)',
+// };
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
