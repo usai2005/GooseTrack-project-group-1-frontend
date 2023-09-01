@@ -111,7 +111,7 @@ export const dark = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#171820',
-    reviewLabel1: '#FAFAFA4D',
+    reviewLabel: '#FAFAFA4D',
     reviewBorder: 'rgba(255, 255, 255, 0.15)',
     reviewTextBg: '#21222C',
     scrollColor: '#e7e5e5',
