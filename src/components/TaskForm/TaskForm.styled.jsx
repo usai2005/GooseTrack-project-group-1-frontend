@@ -6,7 +6,7 @@ export const FormContainer = styled.div`
   width: 303px;
   padding: 48px 18px 40px;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: ${props => props.theme.variable.borderFormColor};
   background-color: ${props => props.theme.variable.bgColorTaskModal};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   @media (min-width: 768px) {
@@ -97,6 +97,9 @@ export const TimeField = styled(Field)`
     padding: 14px 18px;
     margin-bottom: 32px;
   }
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
 `;
 
 export const PriorityContainer = styled.div`
@@ -125,9 +128,6 @@ export const PriorityField = styled(Field)`
   position: absolute;
   top: 0;
   left: 0;
-  /* width: 14px; */
-  /* height: 14px; */
-  /* border-radius: 50%; */
   cursor: pointer;
 `;
 
