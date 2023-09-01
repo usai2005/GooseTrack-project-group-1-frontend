@@ -9,7 +9,7 @@ import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
 import {
   addReview,
   deleteReview,
-  fetchOwnReviews,
+  // fetchOwnReviews,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
 // import sprite from '../../images/icons.svg';
