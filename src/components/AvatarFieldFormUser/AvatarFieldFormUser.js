@@ -1,4 +1,4 @@
-import icons from '../../images/icons.svg';
+import sprite from '../../images/icons.svg';
 
 import {
   HiddenInput,
@@ -33,7 +33,7 @@ export const AvatarFieldFormUser = ({
         {!currentAvatarURL ? (
           <p>
             <Svg>
-              <use href={icons + '#icon-plus-form'} />
+            <use href={`${sprite}#icon-user`} />
             </Svg>
           </p>
         ) : (
