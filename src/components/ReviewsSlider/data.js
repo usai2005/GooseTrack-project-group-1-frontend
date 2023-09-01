@@ -1,4 +1,4 @@
-const allProfiles = [
+const reviewsArr = [
   {
     id: 1,
     rating: 4,
@@ -63,4 +63,4 @@ const allProfiles = [
   },
 ];
 
-export default allProfiles;
+export default reviewsArr;
