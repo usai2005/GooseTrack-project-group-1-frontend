@@ -23,10 +23,13 @@ const reviewsSlice = createSlice({
     name: 'reviews',
     initialState,
     reducers: {
-        changeRating(state, { payload }) {
-          state.ownReview.rating = payload;
-        },
+      changeRating(state, { payload }) {
+        state.ownReview.rating = payload;
       },
+      updateOwnReviewContent(state, { payload }) {
+        state.ownReview.content = payload.content;
+      },
+    },
     extraReducers: builder => {
         builder
         .addCase(fetchReviews.pending, handlePending)
@@ -34,60 +37,65 @@ const reviewsSlice = createSlice({
         .addCase(fetchReviews.rejected, handleRejected)
         .addCase(fetchOwnReviews.pending, handlePending)
         .addCase(fetchOwnReviews.fulfilled, (state, { payload }) => {
-            state.ownReview = payload;
-            state.isLoading = false;
-            state.error = null;
+          state.ownReview = payload.ownReview;
+          state.isLoading = false;
+          state.error = null;
           })
         .addCase(fetchOwnReviews.rejected, handleRejected)
         .addCase(addReview.pending, handlePending)
         .addCase(addReview.fulfilled, (state, { payload }) => {
-            state.reviews.push(payload.reviews);
-            state.ownReview = payload;
-            state.isLoading = false;
-            state.error = null;
+          state.reviews.push(payload.ownReview);
+          state.ownReview = payload.ownReview;
+          state.isLoading = false;
+          state.error = null;
         })
         .addCase(addReview.rejected, handleRejected)
         .addCase(deleteReview.pending, handlePending)
         .addCase(deleteReview.fulfilled, (state, { payload }) => {
-          state.reviews = state.reviews.filter(review => review._id !== payload.id);
-          state.ownReview = {
+          state.reviews = state.reviews.filter((review) => review._id !== payload.id);
+          if (state.ownReview._id === payload.id) {
+            state.ownReview = {
               rating: '',
-              content: ''
+              content: '',
             };
+          }
           state.isLoading = false;
           state.error = null;
         })
         .addCase(deleteReview.rejected, handleRejected)
         .addCase(updateReview.pending, handlePending)
         .addCase(updateReview.fulfilled, (state, { payload }) => {
-
+          const updatedReview = payload.review;
+  
           const updateReviewIndex = state.reviews.findIndex(
-            review => review._id === payload.review.id
+            (review) => review._id === updatedReview.id
           );
   
           if (updateReviewIndex >= 0) {
             state.reviews[updateReviewIndex] = {
               ...state.reviews[updateReviewIndex],
-              ...payload.review,
+              ...updatedReview,
             };
           }
-          state.ownReview = payload;
+  
+          state.ownReview = updatedReview;
+  
           state.isLoading = false;
           state.error = null;
-        })
+        })     
         .addCase(updateReview.rejected, handleRejected)
-        .addCase(logOut.fulfilled, (state, {payload}) => {
+        .addCase(logOut.fulfilled, (state, { payload }) => {
           state.reviews = payload.reviews;
           state.ownReview = {
-              rating: '',
-              content: ''
-            };
+            rating: '',
+            content: '',
+          };
           state.error = null;
           state.isLoading = false;
         });
-    }
-})
+    },
+});
 
-export const { changeRating } = reviewsSlice.actions;
+export const { changeRating, updateOwnReviewContent } = reviewsSlice.actions;
 
 export const reviewsReducer = reviewsSlice.reducer;
