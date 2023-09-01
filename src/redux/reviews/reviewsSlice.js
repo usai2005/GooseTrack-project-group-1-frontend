@@ -1,25 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { addReview, 
-    deleteReview, 
-    fetchOwnReviews, 
-    fetchReviews, 
-    updateReview 
-} from "./reviewsOperations";
-import { handleFulfilled, handlePending, handleRejected } from "./handlers";
-import { logOut } from "redux/auth/operations";
-
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  addReview,
+  deleteReview,
+  fetchOwnReviews,
+  fetchReviews,
+  updateReview,
+} from './reviewsOperations';
+import { handleFulfilled, handlePending, handleRejected } from './handlers';
+import { logOut } from 'redux/auth/operations';
 
 const initialState = {
-    reviews: [], 
-    ownReview: {
-        rating: '',
-        content: '',
-      },
-    isLoading: false, 
-    error: null
-}
+  reviews: [],
+  ownReview: {
+    rating: '',
+    content: '',
+  },
+  isLoading: false,
+  error: null,
+};
 
 const reviewsSlice = createSlice({
+
     name: 'reviews',
     initialState,
     reducers: {
@@ -87,6 +88,7 @@ const reviewsSlice = createSlice({
         });
     }
 })
+
 
 export const { changeRating } = reviewsSlice.actions;
 

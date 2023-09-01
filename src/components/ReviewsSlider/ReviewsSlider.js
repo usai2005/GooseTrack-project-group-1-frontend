@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectReviews } from '../../redux/reviews/reviewsSelectors';
@@ -9,6 +10,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 import reviewsArr from './data';
+
 import icons from '../../images/icons.svg';
 
 import {
@@ -35,17 +37,21 @@ import {
 export const ReviewsSlider = () => {
   const dispatch = useDispatch();
 
+
   const receivedReviews = useSelector(selectReviews);
 
   useEffect(() => {
     dispatch(fetchReviews());
   }, [dispatch]);
 
+
   const reviews = receivedReviews.reviews;
   console.log(reviews);
   // console.log(receivedReviews);
 
+
   const ratingStars = new Array(5).fill(1);
+
 
   return (
     <Carousel
