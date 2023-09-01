@@ -9,9 +9,8 @@ export const handleRejected = (state, { payload }) => {
 };
 
 export const handleFulfilled = (state, { payload }) => {
-
-    state.reviews = payload.reviews;
-    state.isLoading = false;
-    state.error = null;
+  state.reviews = payload.reviews;
+  state.isLoading = false;
+  state.error = null;
 }
 

@@ -6,7 +6,6 @@ export const fetchReviews = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/reviews');
-
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -28,9 +27,9 @@ export const fetchOwnReviews = createAsyncThunk(
 
 export const addReview = createAsyncThunk(
   'reviews/addReview',
-  async (reviewData, thunkAPI) => {
+  async (review, thunkAPI) => {
     try {
-      const res = await axios.post('/reviews/own', reviewData);
+      const res = await axios.post('/reviews/own', review);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -40,11 +39,9 @@ export const addReview = createAsyncThunk(
 
 export const deleteReview = createAsyncThunk(
   'reviews/deleteReview',
-  async (id, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-
-      const res = await axios.delete(`/reviews/own/`);
-//  res.data.id = id;
+      const res = await axios.delete(`/reviews/own`);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,14 +51,9 @@ export const deleteReview = createAsyncThunk(
 
 export const updateReview = createAsyncThunk(
   'reviews/updateReview',
-
-  async (payload, thunkAPI) => {
-    const { id, updatedTask } = payload;
-
+  async (review, thunkAPI) => {
     try {
-      const res = await axios.patch(`/reviews/own/`, updatedTask);
-      res.data.id = id;
-
+      const res = await axios.patch(`/reviews/own`, review);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
