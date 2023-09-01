@@ -22,9 +22,9 @@ export const Container = styled.div`
 
   z-index: 999;
 
-    &.open {
-      transform: translateX(100%);
-    }
+  &.open {
+    transform: translateX(100%);
+  }
 
   @media screen and (min-width: 768px) {
     position: static;
@@ -48,7 +48,6 @@ export const Wrapper = styled.div`
 `;
 
 export const MenuCloseBtn = styled.button`
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +55,7 @@ export const MenuCloseBtn = styled.button`
   height: 40px;
   padding: 0;
   background-color: transparent;
-  border-radius: 50%
+  border-radius: 50%;
 `;
 
 export const CloseIcon = styled.svg`
@@ -69,14 +68,19 @@ export const CloseIcon = styled.svg`
   }
 
   @media screen and (min-width: 1440px) {
-        display: none;
-    }
+    display: none;
+  }
 `;
 
 export const TitleSideBar = styled.h2`
   margin-bottom: 36px;
 
   color: rgba(52, 52, 52, 0.5);
+
+  color: ${props =>
+    props.$currenttype
+      ? props.theme.variable.bgReversLabel
+      : props.theme.variable.navText};
   font-size: 12px;
   font-weight: 600;
   line-height: normal;
