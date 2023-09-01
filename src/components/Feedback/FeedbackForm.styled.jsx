@@ -32,7 +32,6 @@ export const EditIcon = styled.svg`
   height: 24px;
 `;
 
-
 export const Label = styled.label`
   color: ${props => props.theme.variable.bgReversLabel};
   display: block;
@@ -62,7 +61,7 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e3f3ff;
+  background-color: ${props => props.theme.variable.icon};
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -105,7 +104,7 @@ export const Input = styled(Field)`
   line-height: calc((18 / 14) * 100%);
   color: ${props => props.theme.variable.bgReversLabel};
 
-  background-color: rgba(246, 246, 246, 1);
+  background-color: ${props => props.theme.variable.primaryBg};
   border-radius: 8px;
   border: 1px solid rgba(246, 246, 246, 1);
 
