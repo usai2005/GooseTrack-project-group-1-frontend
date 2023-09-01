@@ -6,14 +6,16 @@ import icons from '../../images/icons.svg';
 
 import {
   ContainerHeader,
-  Wrapper,
   MenuBtn,
   MenuIcon,
   PageTitle,
 } from './Header.styled';
 
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import {
+  useState,
+  // useEffect
+} from 'react';
+// import { useLocation } from 'react-router-dom';
 
 import { FeedbackModal } from 'components/Feedback/FeedbackModal';
 import { useSelector } from 'react-redux';
@@ -66,21 +68,19 @@ const Header = () => {
 
   return (
     <ContainerHeader>
-      <Wrapper>
-        <MenuBtn
-          type='button'
-          onClick={handleOpenMenu}
-        >
-          <MenuIcon>
-            <use href={icons + '#icon-menu-01'}></use>
-          </MenuIcon>
-        </MenuBtn>
-        <PageTitle>{ pageTitle }</PageTitle>
-        <AddFeedbackBt setIsOpen={setIsOpen} />
-        <ThemeToggler />
-        <UserInfo user={user}/>
-      </Wrapper>
-          {isOpened && (
+      <MenuBtn
+        type='button'
+        onClick={handleOpenMenu}
+      >
+        <MenuIcon>
+          <use href={icons + '#icon-menu-01'}></use>
+        </MenuIcon>
+      </MenuBtn>
+      <PageTitle>{ pageTitle }</PageTitle>
+      <AddFeedbackBt setIsOpen={setIsOpen} />
+      <ThemeToggler />
+      <UserInfo user={user}/>
+        {isOpened && (
         <FeedbackModal onClose={handleToggle} user={user}></FeedbackModal>
       )}
     </ContainerHeader>

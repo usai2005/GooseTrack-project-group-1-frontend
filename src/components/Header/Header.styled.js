@@ -2,24 +2,17 @@ import styled from 'styled-components';
 
 
 export const ContainerHeader = styled.div`
-
+    display: flex;
+    align-items: center;
     padding: 24px 20px 95px 20px;
-
     
     @media screen and (min-width: 768px) {
         padding: 24px 32px 64px 32px;
     }
 
     @media screen and (min-width: 1440px) {
-        width: calc(100vw - 289px);
         padding: 40px 32px 32px 32px;
     }
-`;
-
-export const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
 `;
 
 export const MenuBtn = styled.button`
