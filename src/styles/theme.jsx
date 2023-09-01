@@ -64,6 +64,7 @@ export const light = {
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
     borderFormColor: 'rgba(220, 227, 229, 0.8)',
+    icon: '#E3F3FF',
   },
 };
 
@@ -134,5 +135,6 @@ export const dark = {
     bgColorTask: 'rgba(23, 24, 32, 1)',
 
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
+    icon: '#353647',
   },
 };

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CartesianGrid } from 'recharts';
 
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
@@ -7,7 +8,6 @@ const viewport = {
 };
 
 export const Container = styled.div`
-  
   border: solid 1px ${props => props.theme.variable.statsBorder};
 
   margin-right: auto;
@@ -32,26 +32,24 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
-color: #343434;
-font-size: 14px;
-font-weight: 600;
-line-height: 150%;
-margin: 0;
+  color: #343434;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+  margin: 0;
 `;
 
 export const Wrapper = styled.div`
-${viewport.mob} {
-  width: 279px;
-  height: 333px;
-}
-${viewport.tab} {
-  width: 576px;
-  height: 360px;
-}
-${viewport.desk} {
-  width: 780px;
-  height: 360px;
-}
+  ${viewport.mob} {
+    width: 279px;
+    height: 333px;
+  }
+  ${viewport.tab} {
+    width: 576px;
+    height: 360px;
+  }
+  ${viewport.desk} {
+    width: 780px;
+    height: 360px;
+  }
 `;
-
-

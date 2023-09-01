@@ -14,7 +14,7 @@ export const Container = styled.section`
   padding: 135px 14px;
   padding-top: 28px;
   background-color: ${props => props.theme.variable.bgStatistic};
- 
+
   ${viewport.tab} {
     padding: 104px 32px;
     max-width: 704px;
