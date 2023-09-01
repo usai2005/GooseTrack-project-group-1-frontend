@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatisticsComp } from '../../components/Statistics/StatisticsComp';
-import { Container, Pagination, Calendar } from './StatisticsPage.styled';
+import { Pagination, Calendar, PageWrapper, StatisticWrapper } from './StatisticsPage.styled';
 import { PeriodPaginator } from '../../components/Calendar/CalendarToolBar/PeriodPaginator/PeriodPaginator';
 import StatisticsBtn from '../../components/Statistics/StatisticsInfo';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -44,15 +44,17 @@ const Statistics = () => {
     }
   }, [periodType, today, normalizedDate, navigate, dispatch]);
   return (
-    <Container>
+    <PageWrapper>
+      <StatisticWrapper>
       <Pagination>
         <Calendar>
           <PeriodPaginator />
         </Calendar>
         <StatisticsBtn />
-      </Pagination>
+      </Pagination>      
       <StatisticsComp />
-    </Container>
+      </StatisticWrapper>
+    </PageWrapper>
   );
 };
 
