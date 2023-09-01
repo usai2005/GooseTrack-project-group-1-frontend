@@ -78,7 +78,7 @@ const Header = () => {
         <PageTitle>{ pageTitle }</PageTitle>
         <AddFeedbackBt setIsOpen={setIsOpen} />
         <ThemeToggler />
-        <UserInfo user={user/>
+        <UserInfo user={user}/>
       </Wrapper>
           {isOpened && (
         <FeedbackModal onClose={handleToggle} user={user}></FeedbackModal>
