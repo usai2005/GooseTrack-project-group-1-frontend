@@ -12,5 +12,4 @@ export const handleFulfilled = (state, { payload }) => {
   state.reviews = payload.reviews;
   state.isLoading = false;
   state.error = null;
-}
-
+};

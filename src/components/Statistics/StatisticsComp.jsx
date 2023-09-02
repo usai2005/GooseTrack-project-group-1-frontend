@@ -23,7 +23,7 @@ import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
 export const StatisticsComp = () => {
   const theme = useSelector(selectCurrentTheme);
-  console.log(theme);
+  // console.log(theme);
   // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);

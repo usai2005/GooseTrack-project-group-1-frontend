@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { StatisticsComp } from '../../components/Statistics/StatisticsComp';
-import { Pagination, Calendar, PageWrapper, StatisticWrapper } from './StatisticsPage.styled';
+import {
+  Pagination,
+  Calendar,
+  PageWrapper,
+  StatisticWrapper,
+} from './StatisticsPage.styled';
 import { PeriodPaginator } from '../../components/Calendar/CalendarToolBar/PeriodPaginator/PeriodPaginator';
 import StatisticsBtn from '../../components/Statistics/StatisticsInfo';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -32,7 +37,6 @@ const Statistics = () => {
     }
 
     try {
-      console.log('test');
       const date = format(parseISO(normalizedDate), 'yyyy-MM-dd');
 
       if (today !== date) {
@@ -46,13 +50,13 @@ const Statistics = () => {
   return (
     <PageWrapper>
       <StatisticWrapper>
-      <Pagination>
-        <Calendar>
-          <PeriodPaginator />
-        </Calendar>
-        <StatisticsBtn />
-      </Pagination>      
-      <StatisticsComp />
+        <Pagination>
+          <Calendar>
+            <PeriodPaginator />
+          </Calendar>
+          <StatisticsBtn />
+        </Pagination>
+        <StatisticsComp />
       </StatisticWrapper>
     </PageWrapper>
   );
