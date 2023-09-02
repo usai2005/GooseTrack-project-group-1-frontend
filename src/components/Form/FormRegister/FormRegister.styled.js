@@ -54,6 +54,7 @@ export const Input = styled(Field)`
   &:focus,
   &:active {
     border: 1px solid #111111;
+    background-color: #fff;
     outline: none;
   }
 
@@ -67,7 +68,6 @@ export const StyledInlineErrorMessage = styled.div`
   display: block;
   font-size: 12px;
   margin-top: -10px;
-
   padding-left: 16px;
   white-space: pre-line;
 `;

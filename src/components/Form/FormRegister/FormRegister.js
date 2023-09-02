@@ -121,7 +121,7 @@ function FormRegister() {
                   <Input
                     type="email"
                     name="email"
-                    autoCapitalize="off"
+                    autoCapitalize="on"
                     autoCorrect="off"
                     autoComplete="email"
                     placeholder="Enter email"

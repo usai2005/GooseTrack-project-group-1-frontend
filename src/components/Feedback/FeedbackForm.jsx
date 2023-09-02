@@ -85,7 +85,9 @@ export const FeedbackForm = ({ onClose, user }) => {
     }
   }, [dispatch, ownReview]);
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values, actions, show) => {
+    setIsEditActive(!show);
+    setAction('edit');
     if (action === 'edit') {
       const { content } = values;
 
@@ -118,15 +120,16 @@ export const FeedbackForm = ({ onClose, user }) => {
     }
   };
 
-  const handleEdit = () => {
-    setIsEditActive(!isEditActive);
+  const handleEdit = show => {
+    setIsEditActive(!show);
   };
 
   const handleDelete = () => {
     dispatch(deleteReview(ownReview._id));
     onClose();
   };
-
+  console.log(action);
+  console.log(isEditActive);
   return (
     <Formik
       initialValues={ownReview || initialValues}
@@ -155,7 +158,7 @@ export const FeedbackForm = ({ onClose, user }) => {
                   <AreaEdit>
                     <EditBtn
                       onClick={handleEdit}
-                      isActive={isEditActive}
+                      // isActive={isEditActive}
                       type="button"
                     >
                       <IconEdit />
@@ -184,10 +187,10 @@ export const FeedbackForm = ({ onClose, user }) => {
               <ErrorMessage name="content" component="div" />
             </FormWrapper>
 
-            {(!Boolean(ownReview.content) || isEditActive) && (
+            {!isEditActive && (
               <AreaBtn>
                 <SubmitBtn type="submit">
-                  {isEditActive ? 'Edit' : 'Save'}
+                  {action === 'edit' ? 'Edit' : 'Save'}
                 </SubmitBtn>
                 <CancelBtn type="button" onClick={onClose}>
                   Cancel
