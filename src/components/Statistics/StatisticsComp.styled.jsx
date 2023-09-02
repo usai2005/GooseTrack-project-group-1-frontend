@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { CartesianGrid } from 'recharts';
 
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
