@@ -1,8 +1,7 @@
-
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
+import { format } from 'date-fns';
 
 export  const DatePickerFormUser = ( {setFormBirthday}
 
@@ -13,7 +12,7 @@ export  const DatePickerFormUser = ( {setFormBirthday}
         <>
           <ReactDatePicker
           onChange = {value => {
-            setFormBirthday(value)
+            setFormBirthday((format(value, 'yyyy-MM-dd')))
             console.log("Info value")
             console.log(value)
             console.log("Info value")
