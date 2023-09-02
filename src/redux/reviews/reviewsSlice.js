@@ -61,10 +61,7 @@ const reviewsSlice = createSlice({
       .addCase(updateReview.rejected, handleRejected)
       .addCase(logOut.fulfilled, (state, { payload }) => {
         state.reviews = payload.reviews;
-        state.ownReview = {
-          rating: '',
-          content: '',
-        };
+        state.ownReview = {};
         state.error = null;
         state.isLoading = false;
       })
