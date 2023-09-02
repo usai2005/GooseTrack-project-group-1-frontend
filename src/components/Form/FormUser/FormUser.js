@@ -14,7 +14,7 @@ import { FormUserSchema } from './consts/FormUserSchema';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { parse } from 'date-fns';
+// import {  parse} from 'date-fns';
 
 import { FormField } from './FormField/FormField';
 
@@ -35,7 +35,7 @@ import { DatePickerFormUser } from './DatePickerFormUser/DatePickerFormUser';
 
 // import FormUserButton from '../FormUserButton/FormUserButton';
 
-const today = new Date();
+// const today = new Date();
 
 export const FormUser = () => {
   const { name, email, avatarURL, phone, skype, birthday } =
@@ -58,7 +58,7 @@ export const FormUser = () => {
       name,
       email,
       phone: !phone ? '' : phone,
-      birthday: !birthday ? today : parse(birthday, 'yyyy-MM-dd', today),
+      birthday: birthday ? birthday : "1900-01-01",
       skype: !skype ? '' : skype,
       avatarURL: !avatarURL ? '' : avatarURL,
     },
@@ -66,7 +66,7 @@ export const FormUser = () => {
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentAvatarURL, setCurrentAvatarURL] = useState(avatarURL);
-  const [formBirthday, setFormBirthday] = useState();
+  const [formBirthday, setFormBirthday] = useState("1990-01-01");
 
 
   console.log("Info birthday")
@@ -74,28 +74,37 @@ export const FormUser = () => {
   console.log("Info birthday")
 
 
+
+
   // const [] = useAuth();
 
   // const navigate = useNavigate();
 
-  const formatDate = date => {
-    if (typeof date === 'string') return date;
-    const y = date.getFullYear();
-    const m = date.getMonth();
-    const d = date.getDate();
+  // const formatDate = date => {
+  //   if (typeof date === 'string') return date;
+  //   const y = date.getFullYear();
+  //   const m = date.getMonth();
+  //   const d = date.getDate();
 
-    return `${y}-${(m + 1).toString().padStart(2, '0')}-${d
-      .toString()
-      .padStart(2, '0')}`;
-  };
+  //   return `${y}-${(m + 1).toString().padStart(2, '0')}-${d
+  //     .toString()
+  //     .padStart(2, '0')}`;
+  // };
 
   // useEffect(() => {
   //   if () navigate(0);
   // }, []);
+  useEffect(() => {
+    if (birthday) {
+      setFormBirthday(birthday);
+    } else {
+    }
+  }, [birthday]);
+
+
 
   const onSubmit = async data => {
-    const preparedBirthday =
-    formatDate(formBirthday);
+    const preparedBirthday = formBirthday;
     const preparedAvatarURL = data.avatarURL === '' ? null : currentAvatarURL;
     const preparedEmail = data.email === '' ? email : data.email;
     const preparedPhone = data.phone === '' ? null : data.phone;
