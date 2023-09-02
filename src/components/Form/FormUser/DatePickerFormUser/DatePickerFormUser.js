@@ -1,21 +1,23 @@
+
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {DatePickerFormUserWrapper, ControlWrapper, Label} from './DatePickerFormUser.styled';
 
 
-export  const DatePickerFormUser = ( 
+export  const DatePickerFormUser = ( {setFormBirthday}
 
   ) => {
 
 
-
     return (
         <>
-      <ControlWrapper>
-        <DatePickerFormUserWrapper>
-        <Label >Birthday</Label>
           <ReactDatePicker
+          onChange = {value => {
+            setFormBirthday(value)
+            console.log("Info value")
+            console.log(value)
+            console.log("Info value")
+          }}
             // selected={date}
             // onChange={value => {
             //   if (periodType === 'month') {
@@ -31,10 +33,6 @@ export  const DatePickerFormUser = (
             todayButton="Today"
             // minDate={new Date(createdAt)}
           />
-        </DatePickerFormUserWrapper>
-        <div>
-        </div>
-      </ControlWrapper>
         </>
       );
 
