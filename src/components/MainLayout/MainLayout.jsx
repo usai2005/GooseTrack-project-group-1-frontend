@@ -7,7 +7,8 @@ import { getAllTasks } from 'redux/tasks/tasksOperations';
 import Header from '../Header/Header';
 import SideBar from '../SideBar/SideBar';
 
-import { Container } from './MainLayout.styled';
+import { Container } from '../../styles/container';
+import { MainLayoutContainer, Wrapper } from './MainLayout.styled';
 
 const MainLayout = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,13 @@ const MainLayout = () => {
 
   return (
     <Container>
-      <SideBar />
-      <div>
-        <Header />
-        <Outlet />
-      </div>
+      <MainLayoutContainer>
+        <SideBar />
+          <Wrapper>
+            <Header />
+            <Outlet />
+          </Wrapper>
+      </MainLayoutContainer>
     </Container>
   );
 };
