@@ -6,7 +6,6 @@ const viewport = {
 };
 
 export const PageWrapper = styled.div`
-  width: 100vw;
 
   padding: 0 20px 95px 20px;
 
@@ -15,7 +14,6 @@ export const PageWrapper = styled.div`
   }
 
   ${viewport.desk} {
-    width: calc(100vw - 289px);
     padding: 0 32px 32px 32px;
   }
 `;
