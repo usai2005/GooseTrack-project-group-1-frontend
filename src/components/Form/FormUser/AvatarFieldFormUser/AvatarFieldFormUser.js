@@ -1,9 +1,10 @@
-import sprite from '../../images/icons.svg';
+import sprite from '../../../../images/icons.svg';
 
 import {
   HiddenInput,
   Label,
-  Svg,
+  DefaultAvatarSvg,
+  PlusSvgOnAvatar,
   UserAvatarWrapper,
   InfoWrapper,
 } from './AvatarFieldFormUser.styled';
@@ -32,9 +33,9 @@ export const AvatarFieldFormUser = ({
       <Label htmlFor={id}>
         {!currentAvatarURL ? (
           <p>
-            <Svg>
+            <DefaultAvatarSvg>
             <use href={`${sprite}#icon-user`} />
-            </Svg>
+            </DefaultAvatarSvg>
           </p>
         ) : (
           <img src={currentAvatarURL} alt="user_photo" />
@@ -52,6 +53,12 @@ export const AvatarFieldFormUser = ({
           return e;
         }}
       />
+              <p>
+            <PlusSvgOnAvatar>
+             <use href={sprite + '#icon-plus'}></use>
+            {/* <use href={`${sprite}#icon-plus`} /> */}
+            </PlusSvgOnAvatar>
+          </p>
       <InfoWrapper>
         <h3>{userName}</h3>
         <p>User</p>

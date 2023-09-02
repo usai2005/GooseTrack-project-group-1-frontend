@@ -39,7 +39,7 @@ export const userFormInputs = [
 ];
 
 export const userAvatarInput = {
-  inputName: 'userImgUrl',
+  inputName: 'avatarURL',
   type: 'file',
   id: nanoid(),
   label: '',
