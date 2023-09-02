@@ -36,7 +36,7 @@ export const FormUserSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email format')
     .required('This field is required'),
-  userImgUrl: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
+  avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
     return value === '' || isValidFileType(value);
   }),
 });

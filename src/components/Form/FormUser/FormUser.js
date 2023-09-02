@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { useSelector } from 'react-redux';
+
+import { useSelector,useDispatch } from 'react-redux';
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -20,28 +21,26 @@ import { FormField } from './FormField/FormField';
 
 import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
-import { AvatarFieldFormUser } from '../../AvatarFieldFormUser/AvatarFieldFormUser';
+import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
 
-import { Form, FormBody, DatePickerWrapper, Controls } from './FormUser.styled';
+import { Form, FormBody, Controls } from './FormUser.styled';
 
-import ReactDatePicker from 'react-datepicker';
+import {DatePickerFormUser} from './DatePickerFormUser/DatePickerFormUser';
 
-import 'react-datepicker/dist/react-datepicker.css';
 
 // import FormUserButton from '../FormUserButton/FormUserButton';
 
 const today = new Date();
 
+
+
+
 export const FormUser = () => {
   const { name, email, avatarURL, phone, skype, birthday } =
     useSelector(selectUser);
 
-  console.log(name);
-  console.log(email);
-  console.log(avatarURL);
-  console.log(phone);
-  console.log(skype);
-  console.log(birthday);
+    const dispatch= useDispatch()
+
 
   const {
     register: reg,
@@ -91,7 +90,7 @@ export const FormUser = () => {
       formatDate(data.birthday) === formatDate(today)
         ? null
         : formatDate(data.birthday);
-    const preparedUserImgUrl = data.userImgUrl === '' ? null : currentAvatarURL;
+    const preparedAvatarURL = data.avatarURL === '' ? null : currentAvatarURL;
     const preparedPhone = data.phone === '' ? null : Number(data.phone);
     const preparedSkype = data.skype === '' ? null : data.skype;
     const preparedData = {
@@ -99,9 +98,9 @@ export const FormUser = () => {
       phone: preparedPhone,
       skype: preparedSkype,
       birthday: preparedBirthday,
-      userImgUrl: preparedUserImgUrl,
+      avatarURL: preparedAvatarURL,
     };
-    updateUser(preparedData);
+    dispatch(updateUser(preparedData));
     setIsDisabled(true);
   };
 
@@ -133,15 +132,11 @@ export const FormUser = () => {
           input.type !== 'date' ? (
             <FormField key={input.id} {...input} register={reg} />
           ) : (
-            <DatePickerWrapper>
-              <ReactDatePicker
-                key={input.id}
-                onChange={value => {}}
-                // calendarStartDay={1}
-                // closeOnScroll={true}
-                // formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-              />
-            </DatePickerWrapper>
+            <DatePickerFormUser key={input.id}
+            {...input}
+            // control={control}
+            // errors={errors}
+            />
           )
         )}
       </FormBody>

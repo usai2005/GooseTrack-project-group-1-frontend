@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+
+const viewport = {
+  mob: '@media screen and (max-width: 767px)',
+};
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -23,7 +28,18 @@ export const Input = styled.input`
   color: ${props => props.theme.variable.text};
   padding: 0.875rem;
 
-  width: 100%;
+  height: 42px;
+
+  width: 299px;
+
+
+
+  ${viewport.mob} {
+    height: 46px;
+
+    width: 354px;
+  
+  }
 
   &::placeholder {
     font-family: 'InterRegularr';
@@ -35,4 +51,6 @@ export const Input = styled.input`
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;
   }
+
+
 `;
