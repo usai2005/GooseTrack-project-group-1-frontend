@@ -34,10 +34,10 @@ import {
 
 const schema = Yup.object().shape({
   title: Yup.string().max(250, 'Too Long!').required('Title is required'),
-  start: Yup.string().required('start time cannot be empty'),
+  start: Yup.string().required('Start time cannot be empty'),
   end: Yup.string()
-    .required('end time cannot be empty')
-    .test('is-greater', 'end time should be greater', function (value) {
+    .required('End time cannot be empty')
+    .test('is-greater', 'End time should be greater', function (value) {
       const { start } = this.parent;
       return moment(value, 'HH:mm').isSameOrAfter(moment(start, 'HH:mm'));
     }),
@@ -48,7 +48,8 @@ const schema = Yup.object().shape({
       return isDate(originalValue)
         ? originalValue
         : parse(originalValue, 'yyyy-MM-dd', new Date());
-    }),
+    })
+    .min(new Date(), 'Date must be in future'),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
@@ -73,7 +74,6 @@ export const TaskForm = ({ category, task, onClose }) => {
   }, [task]);
 
   const handleSubmit = values => {
-  
     const payload = {
       id: values._id,
       updatedTask: {
@@ -85,7 +85,6 @@ export const TaskForm = ({ category, task, onClose }) => {
         category: values.category,
       },
     };
-
 
     if (action === 'edit') {
       dispatch(updateTask(payload))
@@ -110,14 +109,13 @@ export const TaskForm = ({ category, task, onClose }) => {
           console.log(error.message);
         });
     }
-
   };
 
   return (
     <Formik
       initialValues={task || initialValues}
       validationSchema={schema}
-      onSubmit={(values, action) => {
+      onSubmit={values => {
         handleSubmit(values);
       }}
     >
