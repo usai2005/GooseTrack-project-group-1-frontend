@@ -1,20 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   addReview,
   deleteReview,
   fetchOwnReviews,
   fetchReviews,
   updateReview,
-} from "./reviewsOperations";
-import { handleFulfilled, handlePending, handleRejected } from "./handlers";
-import { logOut } from "../auth/operations";
+} from './reviewsOperations';
+import { handleFulfilled, handlePending, handleRejected } from './handlers';
+import { logOut } from '../auth/operations';
 
 const initialState = {
   reviews: [],
-  ownReview: {
-    rating: '',
-    content: '',
-  },
+  ownReview: {},
   isLoading: false,
   error: null,
 };
@@ -25,16 +22,16 @@ const reviewsSlice = createSlice({
   reducers: {
     changeRating(state, { payload }) {
       state.ownReview.rating = payload;
-    }
+    },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(fetchReviews.pending, handlePending)
       .addCase(fetchReviews.fulfilled, handleFulfilled)
       .addCase(fetchReviews.rejected, handleRejected)
       .addCase(fetchOwnReviews.pending, handlePending)
       .addCase(fetchOwnReviews.fulfilled, (state, { payload }) => {
-        state.ownReview = payload.ownReview; 
+        state.ownReview = payload.review;
         state.isLoading = false;
         state.error = null;
       })
@@ -42,19 +39,18 @@ const reviewsSlice = createSlice({
       .addCase(addReview.pending, handlePending)
       .addCase(addReview.fulfilled, (state, { payload }) => {
         state.reviews.push(payload.ownReview);
-        state.ownReview = payload.ownReview; 
+        state.ownReview = payload.review;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(addReview.rejected, handleRejected)
       .addCase(deleteReview.pending, handlePending)
-      .addCase(deleteReview.fulfilled, (state, { payload }) => {
-        state.reviews = state.reviews.filter((review) => review._id !== payload.id);
-      
+      .addCase(deleteReview.fulfilled, (state, _) => {
+        state.ownReview = {};
         state.isLoading = false;
         state.error = null;
       })
-      
+
       .addCase(deleteReview.rejected, handleRejected)
       .addCase(updateReview.pending, handlePending)
       .addCase(updateReview.fulfilled, (state, { payload }) => {

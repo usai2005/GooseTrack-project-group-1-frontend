@@ -4,14 +4,12 @@ import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  // selectOwnReview,
-  selectReviews,
-} from '../../redux/reviews/reviewsSelectors';
-import { changeRating } from '../../redux/reviews/reviewsSlice';
+import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
+// import { changeRating } from '../../redux/reviews/reviewsSlice';
 import {
   addReview,
   deleteReview,
+  // fetchOwnReviews,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
 // import sprite from '../../images/icons.svg';
@@ -48,6 +46,10 @@ const ReviewSchema = Yup.object().shape({
       'This review is excessively long, it should not exceed 300 characters.'
     )
     .required('Review is required'),
+  // raiting: Yup.number()
+  //   .min(1, 'Must be more than 1 characters')
+  //   .max(5, 'Must be less than 5 characters')
+  //   .required(),
 });
 
 const rateIcon = (
@@ -66,31 +68,28 @@ export const FeedbackForm = ({ onClose, user }) => {
     rating: 4,
   };
   const [isEditActive, setIsEditActive] = useState(false);
-  // console.log(isEditActive);
-  const dispatch = useDispatch();
   const [action, setAction] = useState('create');
 
-  const reviews = useSelector(selectReviews);
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchOwnReviews());
+  // }, [dispatch]);
 
-  const userReview = reviews?.find(review => review.owner.email === user.email);
+  const ownReview = useSelector(selectOwnReview);
+  const [newRating, setNewRating] = useState(ownReview.rating);
 
   useEffect(() => {
-    if (userReview?._id) {
+    if (ownReview?._id) {
       setAction('edit');
+    } else {
     }
-  }, [userReview]);
-
-  console.log(action);
-  const ratingChanged = newRating => {
-    dispatch(changeRating(newRating));
-  };
+  }, [dispatch, ownReview]);
 
   const handleSubmit = (values, actions) => {
-    // values.rating = Number(userReview.rating);
     if (action === 'edit') {
-      const reviewRequest = { id: userReview._id, content: values };
+      const { content } = values;
 
-      dispatch(updateReview(reviewRequest))
+      dispatch(updateReview({ content, rating: newRating }))
         .then(data => {
           if (data.error) {
             throw new Error(data.payload);
@@ -101,9 +100,8 @@ export const FeedbackForm = ({ onClose, user }) => {
           console.log(error.message);
         });
     } else {
-      const reviewRequest = { id: user._id, content: values };
-
-      dispatch(addReview(reviewRequest))
+      const { content } = values;
+      dispatch(addReview({ content, rating: newRating }))
         .then(data => {
           if (data.error) {
             throw new Error(data.payload);
@@ -113,18 +111,9 @@ export const FeedbackForm = ({ onClose, user }) => {
         .catch(error => {
           console.log(error.message);
         });
-
-      // dispatch(addReview(values));
-
-      // dispatch(
-      //   addReview({
-      //     rating: values.rating,
-      //     content: values,
-      //   })
-      // )
     }
     actions.resetForm();
-    if (userReview.rating) {
+    if (ownReview.rating) {
       onClose();
     }
   };
@@ -134,13 +123,13 @@ export const FeedbackForm = ({ onClose, user }) => {
   };
 
   const handleDelete = () => {
-    dispatch(deleteReview(userReview._id));
+    dispatch(deleteReview(ownReview._id));
     onClose();
   };
 
   return (
     <Formik
-      initialValues={userReview || initialValues}
+      initialValues={ownReview || initialValues}
       validationSchema={ReviewSchema}
       onSubmit={handleSubmit}
     >
@@ -150,13 +139,14 @@ export const FeedbackForm = ({ onClose, user }) => {
             <Label name="rating">Rating</Label>
             <Rating
               name="rating"
-              component="div"
-              // value={Number(userReview.rating)}
+              component="input"
               value={values.rating}
               itemStyles={rateStyled}
               style={{ maxWidth: 110, gap: 4, marginBottom: '20px' }}
-              onChange={ratingChanged}
-              // readOnly={Boolean(userReview.rating) && !isEditActive}
+              onChange={value => {
+                setNewRating(value);
+              }}
+              readOnly={Boolean(ownReview.rating) && !isEditActive}
             />
             <FormWrapper>
               <AreaReview>
@@ -189,12 +179,12 @@ export const FeedbackForm = ({ onClose, user }) => {
                 id="content"
                 name="content"
                 component="textarea"
-                // disabled={!isEditActive && Boolean(userReview.content)}
+                disabled={!isEditActive && Boolean(ownReview.content)}
               />
               <ErrorMessage name="content" component="div" />
             </FormWrapper>
 
-            {(!Boolean(userReview.content) || isEditActive) && (
+            {(!Boolean(ownReview.content) || isEditActive) && (
               <AreaBtn>
                 <SubmitBtn type="submit">
                   {isEditActive ? 'Edit' : 'Save'}
