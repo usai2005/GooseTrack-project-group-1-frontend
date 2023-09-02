@@ -8,6 +8,7 @@ import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { selectSelectedDate } from 'redux/date/selectors';
 import { addTask, updateTask } from 'redux/tasks/tasksOperations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   ActionButton,
   AddIcon,
@@ -88,6 +89,7 @@ export const TaskForm = ({ category, task, onClose }) => {
 
 
     if (action === 'edit') {
+      Notify.info('Task has been edited.');
       dispatch(updateTask(payload))
         .then(data => {
           if (data.error) {
@@ -99,6 +101,7 @@ export const TaskForm = ({ category, task, onClose }) => {
           console.log(error.message);
         });
     } else {
+      Notify.success('Task has been successfully created.');
       dispatch(addTask({ ...values, date, category }))
         .then(data => {
           if (data.error) {
@@ -107,6 +110,7 @@ export const TaskForm = ({ category, task, onClose }) => {
           onClose();
         })
         .catch(error => {
+          Notify.failure('Something went wrong.');
           console.log(error.message);
         });
     }
