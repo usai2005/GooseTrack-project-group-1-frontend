@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-
-
 export const UserName = styled.h2`
   margin-right: 8px;
 
-  color: #343434;
+  color: ${props => props.theme.variable.calendarTextColor};
   font-size: 14px;
   line-height: calc(18 / 14);
 
@@ -18,7 +16,6 @@ export const UserName = styled.h2`
 `;
 
 export const UserAvatar = styled.img`
-
   width: 32px;
   height: 32px;
   flex-shrink: 0;
