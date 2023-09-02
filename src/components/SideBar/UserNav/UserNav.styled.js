@@ -67,7 +67,7 @@ export const ItemLink = styled(Link)`
 
   // active
   &:hover {
-    background-color: ${props => props.theme.variable.btnBlue};
+    background-color: ${props => props.theme.variable.btnNav};
 
     color: ${props =>
       props.$currenttype

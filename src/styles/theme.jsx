@@ -64,9 +64,10 @@ export const light = {
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
     borderFormColor: '1px solid rgba(220, 227, 229, 0.8)',
-
     borderProfileColor: 'rgba(17, 17, 17, 0.15)',
-
+    btnNavText: 'rgba(52, 52, 52, 0.5)',
+    btnNav: '#E3F3FF',
+    headerText: '#111111',
   },
 };
 
@@ -134,10 +135,13 @@ export const dark = {
     btnRevers: '#21222C',
     bgStatistic: '#21222C',
     bgColorTask: 'rgba(23, 24, 32, 1)',
-
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
-
     borderProfileColor: 'rgba(255, 255, 255, 0.15)',
+    btnNavText: 'rgba(255, 255, 255, 1)',
+    gooseColorNav: 'rgba(227, 243, 255, 1)',
+    navText: 'rgba(250, 250, 250, 0.3)',
+    btnNav: '#3E85F3',
+    headerText: '#FFFFFF',
 
     icon: '#353647',
   },

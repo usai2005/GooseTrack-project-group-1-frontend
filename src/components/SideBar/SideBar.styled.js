@@ -62,6 +62,7 @@ export const TitleSideBar = styled.h2`
     props.$currenttype
       ? props.theme.variable.bgReversLabel
       : props.theme.variable.navText};
+
   font-size: 12px;
   font-weight: 600;
   line-height: normal;
