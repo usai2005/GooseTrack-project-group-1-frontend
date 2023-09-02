@@ -6,7 +6,7 @@ export const handlePending = state => {
 export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   if (payload.includes('have no any review')) {
-    state.reviews = {};
+    state.ownReview = {};
   }
   state.error = payload;
 };
