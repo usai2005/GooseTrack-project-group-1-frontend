@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -23,24 +22,26 @@ import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
 import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
 
-import { Form, FormBody, Controls } from './FormUser.styled';
+import {
+  Form,
+  FormBody,
+  FormUserButton,
+  Label,
+  DatePickerFormUserWrapper,
+  ControlWrapper,
+} from './FormUser.styled';
 
-import {DatePickerFormUser} from './DatePickerFormUser/DatePickerFormUser';
-
+import { DatePickerFormUser } from './DatePickerFormUser/DatePickerFormUser';
 
 // import FormUserButton from '../FormUserButton/FormUserButton';
 
 const today = new Date();
 
-
-
-
 export const FormUser = () => {
   const { name, email, avatarURL, phone, skype, birthday } =
     useSelector(selectUser);
 
-    const dispatch= useDispatch()
-
+  const dispatch = useDispatch();
 
   const {
     register: reg,
@@ -65,6 +66,13 @@ export const FormUser = () => {
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentAvatarURL, setCurrentAvatarURL] = useState(avatarURL);
+  const [formBirthday, setFormBirthday] = useState();
+
+
+  console.log("Info birthday")
+  console.log(formBirthday)
+  console.log("Info birthday")
+
 
   // const [] = useAuth();
 
@@ -87,19 +95,26 @@ export const FormUser = () => {
 
   const onSubmit = async data => {
     const preparedBirthday =
-      formatDate(data.birthday) === formatDate(today)
-        ? null
-        : formatDate(data.birthday);
+    formatDate(formBirthday);
     const preparedAvatarURL = data.avatarURL === '' ? null : currentAvatarURL;
-    const preparedPhone = data.phone === '' ? null : Number(data.phone);
+    const preparedEmail = data.email === '' ? email : data.email;
+    const preparedPhone = data.phone === '' ? null : data.phone;
     const preparedSkype = data.skype === '' ? null : data.skype;
     const preparedData = {
       ...data,
+      email:preparedEmail,
       phone: preparedPhone,
       skype: preparedSkype,
       birthday: preparedBirthday,
       avatarURL: preparedAvatarURL,
     };
+
+
+    
+  console.log("Info prepared data")
+  console.log(preparedData)
+  console.log("Info prepared data")
+
     dispatch(updateUser(preparedData));
     setIsDisabled(true);
   };
@@ -132,17 +147,25 @@ export const FormUser = () => {
           input.type !== 'date' ? (
             <FormField key={input.id} {...input} register={reg} />
           ) : (
-            <DatePickerFormUser key={input.id}
-            {...input}
-            // control={control}
-            // errors={errors}
-            />
+            <ControlWrapper>
+              <DatePickerFormUserWrapper>
+                <Label>Birthday</Label>
+                <DatePickerFormUser
+                setFormBirthday = {setFormBirthday}
+
+                  key={input.id}
+                  {...input}
+                  // control={control}
+                  // errors={errors}
+                />
+              </DatePickerFormUserWrapper>
+            </ControlWrapper>
           )
         )}
       </FormBody>
-      <Controls type="submit" function="save" disabled={isDisabled}>
+      <FormUserButton type="submit" function="save" disabled={isDisabled}>
         Save changes
-      </Controls>
+      </FormUserButton>
     </Form>
   );
 };
