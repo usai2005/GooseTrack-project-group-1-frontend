@@ -18,9 +18,8 @@ import {
 // import { useLocation } from 'react-router-dom';
 
 import { FeedbackModal } from 'components/Feedback/FeedbackModal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { fetchOwnReviews } from 'redux/reviews/reviewsOperations';
 
 let pageTitle = 'User Profile';
 
@@ -28,22 +27,17 @@ const Header = () => {
   const [isOpened, setIsOpen] = useState(false);
   const [openedMenu, setOpenMenu] = useState(false);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchOwnReviews());
-  }, [dispatch]);
-
   const handleToggle = () => {
-    // dispatch(fetchOwnReviews());
-
     setIsOpen(!isOpened);
   };
 
-  // const location = useLocation();
+  const handleOpenMenu = () => {
+    setOpenMenu(!openedMenu);
+  };
 
+  // const { pathname } = useLocation();
+  
   // useEffect(() => {
-  //   const { pathname } = location;
   //   if (pathname.includes('/statistics')) {
   //     pageTitle = 'Statistics';
   //     return;
@@ -52,24 +46,8 @@ const Header = () => {
   //   } else {
   //     pageTitle = 'Calendar';
   //   }
-  // }, [location]);
+  // }, [pathname]);
 
-  const handleOpenMenu = () => {
-    setOpenMenu(!openedMenu);
-  };
-
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (pathname.includes('/statistics')) {
-      pageTitle = 'Statistics';
-      return;
-    } else if (pathname.includes('/account')) {
-      pageTitle = 'User Profile';
-    } else {
-      pageTitle = 'Calendar';
-    }
-  }, [pathname]);
 
   const user = useSelector(selectUser);
 
@@ -88,10 +66,10 @@ const Header = () => {
       <ThemeToggler />
       <UserInfo user={user}/>
         {isOpened && (
-
         <FeedbackModal onClose={handleToggle} user={user}></FeedbackModal>
       )}
     </ContainerHeader>
+
   );
 };
 
