@@ -109,9 +109,10 @@ export const StatisticsComp = () => {
             data={data}
             margin={{ top: 24, right: 10, left: 10, bottom: 10 }}
             barGap={14}
+            
           >
-            <defs>
-              <linearGradient id="colorDay" x1="0" y1="0" x2="0" y2="1">
+            <defs  >
+              <linearGradient  id="colorDay" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
                 <stop offset="95%" stopColor="#FFD2DD" stopOpacity={0.8} />
               </linearGradient>
@@ -124,10 +125,10 @@ export const StatisticsComp = () => {
               vertical={false}
               style={{
                 stroke:
-                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)',
+                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)', 
               }}
             />
-            <XAxis
+            <XAxis 
               dataKey="name"
               axisLine={false}
               tickLine={false}
@@ -141,7 +142,7 @@ export const StatisticsComp = () => {
               tickMargin={20}
             />
             <Tooltip />
-            <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
+            <Bar dataKey="day" fill="url(#colorDay)" barSize={27} >
               <LabelList dataKey="dayf" position="top" />
             </Bar>
             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
