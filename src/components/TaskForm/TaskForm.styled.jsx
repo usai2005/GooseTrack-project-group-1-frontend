@@ -90,15 +90,19 @@ export const TimeField = styled(Field)`
   font-family: InterSemiBold;
   font-size: 14px;
   line-height: calc(18 / 14);
-  cursor: pointer;
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+    width: 35px;
+  }
   @media (min-width: 768px) {
     width: 163px;
     height: 46px;
     padding: 14px 18px;
     margin-bottom: 32px;
-  }
-  &::-webkit-calendar-picker-indicator {
-    opacity: 0;
+    &::-webkit-calendar-picker-indicator {
+      width: 60px;
+    }
   }
 `;
 

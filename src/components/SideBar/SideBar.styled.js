@@ -1,43 +1,24 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  // Common
-  box-sizing: border-box;
-  //
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
   display: flex;
   flex-direction: column;
 
   width: 225px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px 24px;
 
   background-color: ${props => props.theme.variable.sideBar};
   stroke: #343434;
 
-  z-index: 999;
-
-  &.open {
-    transform: translateX(100%);
-  }
-
   @media screen and (min-width: 768px) {
     position: static;
     width: 289px;
     padding: 32px 24px;
-
-    // transform: translateX(0);
   }
 
   @media screen and (min-width: 1440px) {
     padding: 32px 24px 24px 24px;
-
-    transform: translateX(0);
   }
 `;
 

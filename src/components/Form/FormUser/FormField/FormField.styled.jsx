@@ -1,40 +1,56 @@
 import styled from 'styled-components';
 
+
+const viewport = {
+  mob: '@media screen and (max-width: 767px)',
+};
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
+  font-family: 'InterRegular';
+  font-size: 14px;
   line-height: 15px;
 
-  color: ;
+  color: ${props => props.theme.variable.bgReversLabel};
 `;
 
 export const Input = styled.input`
-  background-color: ;
+  font-family: 'InterSemiBold';
+  font-size: 16px;
+  background-color: ${props => props.theme.variable.secondaryBg};
   outline: none;
-  border: 1px solid ;
+  border: 1px solid;
   border-radius: 8px;
-  color: ;
+  border-color: ${props => props.theme.variable.borderProfileColor};
+  color: ${props => props.theme.variable.text};
   padding: 0.875rem;
 
-  width: 100%;
+  height: 42px;
+
+  width: 299px;
+
+
+
+  ${viewport.mob} {
+    height: 46px;
+
+    width: 354px;
+  
+  }
 
   &::placeholder {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+    font-family: 'InterRegularr';
     font-size: 16px;
     line-height: 18px;
-
-    color: ;
+    color: 'inherit';
   }
 
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;
   }
+
+
 `;
