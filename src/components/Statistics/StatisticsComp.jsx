@@ -28,8 +28,6 @@ import {
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
 const CustomTooltip = ({ active, payload, label }) => {
-  console.log(label);
-  console.log(payload);
   if (active && payload && payload.length) {
     return (
       <LabelContainer className="custom-tooltip">

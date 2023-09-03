@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import icons from '../../../images/icons.svg';
 import { logIn, register } from 'redux/auth/operations';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 import {
   Label,
@@ -13,6 +14,7 @@ import {
   ContainerForm,
   LoginIcon,
   InputContainer,
+  IconEye,
 } from './FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
 
@@ -30,7 +32,9 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormRegister() {
-  // const [formValues, setFormValues] = useState();
+  const [passwordVissible, setPasswordVissible] = useState(true);
+  const [passwordType, setPasswordType] = useState('password');
+
   const dispatch = useDispatch();
 
   return (
@@ -166,7 +170,7 @@ function FormRegister() {
                 >
                   Password
                   <Input
-                    type="text"
+                    type={passwordType}
                     name="password"
                     autoCorrect="off"
                     autoComplete="password"
@@ -189,6 +193,26 @@ function FormRegister() {
                     </LoginIcon>
                   </StyledInlineErrorMessage>
                 )}
+                <IconEye
+                  onClick={() => {
+                    passwordType === 'password'
+                      ? setPasswordType('text')
+                      : setPasswordType('password');
+                  }}
+                >
+                  {passwordType === 'password' ? (
+                    <AiFillEyeInvisible
+                      style={{
+                        visibility:
+                          touched.password && !errors.password
+                            ? 'visible'
+                            : 'hidden',
+                      }}
+                    />
+                  ) : (
+                    <AiFillEye />
+                  )}
+                </IconEye>
               </InputContainer>
               <FormButton isValid={isValid}>Sign up</FormButton>
             </Form>
