@@ -19,7 +19,7 @@ export const MenuBtn = styled.button`
 
   background-color: transparent;
 
-  stroke: ${props => props.theme.variable.headerText};
+  stroke: ${props => props.theme.variable.arrowColor};
 
   @media screen and (min-width: 1440px) {
     display: none;
