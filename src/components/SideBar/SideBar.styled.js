@@ -1,43 +1,48 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  // Common
-  box-sizing: border-box;
-  //
+  @media screen and (max-width: 1439px) {
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    z-index: 999;
 
-  position: fixed;
+    width: 100%;
+    height: 100%;
 
-  top: 0;
-  left: 0;
+    transform: translateX(-100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media screen and (min-width: 1440px) {
+        width: 289px;
+  }
+
+  &.is-open {
+    transform: translateX(0%);
+  }
+`;
+
+export const SideBarContainer = styled.div`
+  position: relative;
 
   display: flex;
   flex-direction: column;
 
   width: 225px;
-  height: 100vh;
+  height: 100%;
   padding: 20px 24px;
 
   background-color: ${props => props.theme.variable.sideBar};
   stroke: #343434;
 
-  z-index: 999;
-
-    &.open {
-      transform: translateX(100%);
-    }
-
   @media screen and (min-width: 768px) {
-    position: static;
     width: 289px;
     padding: 32px 24px;
-
-    // transform: translateX(0);
   }
 
   @media screen and (min-width: 1440px) {
     padding: 32px 24px 24px 24px;
-
-    transform: translateX(0);
   }
 `;
 
@@ -48,15 +53,18 @@ export const Wrapper = styled.div`
 `;
 
 export const MenuCloseBtn = styled.button`
-  
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 40px;
   height: 40px;
+
   padding: 0;
   background-color: transparent;
-  border-radius: 50%
+  border-radius: 50%;
+
+  stroke: ${props => props.theme.variable.arrowColor};
 `;
 
 export const CloseIcon = styled.svg`
@@ -69,14 +77,19 @@ export const CloseIcon = styled.svg`
   }
 
   @media screen and (min-width: 1440px) {
-        display: none;
-    }
+    display: none;
+  }
 `;
 
 export const TitleSideBar = styled.h2`
   margin-bottom: 36px;
 
   color: rgba(52, 52, 52, 0.5);
+
+  color: ${props =>
+    props.$currenttype
+      ? props.theme.variable.bgReversLabel
+      : props.theme.variable.navText};
   font-size: 12px;
   font-weight: 600;
   line-height: normal;

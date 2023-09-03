@@ -1,10 +1,8 @@
-import { UserName, UserAvatar } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
+import { UserName, DefaultAvatarSvg,UserAvatarImg } from './UserInfo.styled';
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from 'redux/auth/selectors';
+import sprite from '../../images/icons.svg';
 
-const UserInfo = () => {
-  const user = useSelector(selectUser);
+const UserInfo = ({ user }) => {
   const navigate = useNavigate();
 
   const handleClick = e => {
@@ -13,16 +11,32 @@ const UserInfo = () => {
       navigate(`/account/user=${user.name}`, {});
     }
   };
+
+const {avatarURL,name} = user
+
+
   return (
     <>
-      <UserName>{user.name}</UserName>
+ 
 
-      <UserAvatar
-        img={user.avatarUrl}
-        src={user.avatarURL}
-        alt={user.name}
+      <UserName>{user.name}</UserName>
+        {!avatarURL ? (
+          <p>
+            <DefaultAvatarSvg         onClick={handleClick}>
+            <use href={`${sprite}#icon-user`} />
+            </DefaultAvatarSvg>
+          </p>
+
+        ) : (
+          <UserAvatarImg
+        src={avatarURL}
+        alt={name}
         onClick={handleClick}
       />
+  
+        )}
+
+
     </>
   );
 };

@@ -90,7 +90,6 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
             <ControlBtn
               type="button"
               onClick={() => {
-                console.log('edit btn');
                 setIsOpen(true);
                 setTaskToEdit(task);
               }}
@@ -104,7 +103,6 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
             <ControlBtn
               type="button"
               onClick={() => {
-                console.log('delete btn');
                 handleDeleteTask(task._id);
               }}
             >

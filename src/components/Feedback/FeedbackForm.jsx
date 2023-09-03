@@ -2,13 +2,14 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
-import { changeRating } from '../../redux/reviews/reviewsSlice';
+// import { changeRating } from '../../redux/reviews/reviewsSlice';
 import {
   addReview,
   deleteReview,
+  // fetchOwnReviews,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
 // import sprite from '../../images/icons.svg';
@@ -45,6 +46,10 @@ const ReviewSchema = Yup.object().shape({
       'This review is excessively long, it should not exceed 300 characters.'
     )
     .required('Review is required'),
+  // raiting: Yup.number()
+  //   .min(1, 'Must be more than 1 characters')
+  //   .max(5, 'Must be less than 5 characters')
+  //   .required(),
 });
 
 const rateIcon = (
@@ -57,122 +62,147 @@ const rateStyled = {
   inactiveFillColor: '#CEC9C1',
 };
 
-export const FeedbackForm = ({ onClose }) => {
-  const [isEditActive, setIsEditActive] = useState(false);
-  // console.log(isEditActive);
-
-  const userReview = useSelector(selectOwnReview);
-  const dispatch = useDispatch();
-
-  const ratingChanged = newRating => {
-    dispatch(changeRating(newRating));
+export const FeedbackForm = ({ onClose, user }) => {
+  const initialValues = {
+    content: '',
+    rating: 4,
   };
+  const [isEditActive, setIsEditActive] = useState(false);
+  const [action, setAction] = useState('create');
 
-  const handleSubmit = (values, actions) => {
-    values.rating = Number(userReview.rating);
-    if (isEditActive) {
-      const reviewRequest = { id: userReview._id, content: values };
-      dispatch(updateReview(reviewRequest));
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchOwnReviews());
+  // }, [dispatch]);
+
+  const ownReview = useSelector(selectOwnReview);
+  const [newRating, setNewRating] = useState(ownReview.rating);
+
+  useEffect(() => {
+    if (ownReview?._id) {
+      setAction('edit');
     } else {
-      const reviewRequest = { id: userReview._id, content: values };
-      dispatch(addReview(reviewRequest));
+    }
+  }, [dispatch, ownReview]);
 
-      // dispatch(addReview(values));
+  const handleSubmit = (values, actions, show) => {
+    setIsEditActive(!show);
+    setAction('edit');
+    if (action === 'edit') {
+      const { content } = values;
 
-      // dispatch(
-      //   addReview({
-      //     rating: values.rating,
-      //     content: values,
-      //   })
-      // )
+      dispatch(updateReview({ content, rating: newRating }))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    } else {
+      const { content } = values;
+      dispatch(addReview({ content, rating: newRating }))
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.payload);
+          }
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
     }
     actions.resetForm();
-    if (userReview.rating) {
+    if (ownReview.rating) {
       onClose();
     }
   };
 
-  const handleEdit = () => {
-    setIsEditActive(!isEditActive);
+  const handleEdit = show => {
+    setIsEditActive(!show);
   };
 
   const handleDelete = () => {
-    dispatch(deleteReview(userReview._id));
+    dispatch(deleteReview(ownReview._id));
     onClose();
   };
-
+  console.log(action);
+  console.log(isEditActive);
   return (
-    <Contain>
-      <Formik
-        initialValues={{
-          rating: userReview.rating || '',
-          content: userReview.content || '',
-        }}
-        validationSchema={ReviewSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form>
-          <Label name="rating">Rating</Label>
-          <Rating
-            name="rating"
-            component="div"
-            value={Number(userReview.rating)}
-            itemStyles={rateStyled}
-            style={{ maxWidth: 110, gap: 4, marginBottom: '20px' }}
-            onChange={ratingChanged}
-            readOnly={Boolean(userReview.rating) && !isEditActive}
-          />
-          <FormWrapper>
-            <AreaReview>
-              <Label htmlFor="content">Review</Label>
-              {!Boolean(userReview.content) && (
-                <AreaEdit>
-                  <EditBtn
-                    onClick={handleEdit}
-                    isActive={isEditActive}
-                    type="button"
-                  >
-                    <IconEdit />
-                    {/* <EditIcon>
+    <Formik
+      initialValues={ownReview || initialValues}
+      validationSchema={ReviewSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values }) => (
+        <Contain>
+          <Form>
+            <Label name="rating">Rating</Label>
+            <Rating
+              name="rating"
+              component="input"
+              value={values.rating}
+              itemStyles={rateStyled}
+              style={{ maxWidth: 110, gap: 4, marginBottom: '20px' }}
+              onChange={value => {
+                setNewRating(value);
+              }}
+              readOnly={Boolean(ownReview.rating) && !isEditActive}
+            />
+            <FormWrapper>
+              <AreaReview>
+                <Label htmlFor="content">Review</Label>
+                {action === 'edit' && (
+                  <AreaEdit>
+                    <EditBtn
+                      onClick={handleEdit}
+                      // isActive={isEditActive}
+                      type="button"
+                    >
+                      <IconEdit />
+                      {/* <EditIcon>
                       <use href={sprite + '#icon-pencil-01'}></use>
                     </EditIcon> */}
-                  </EditBtn>
-                  <DeleteBtn type="button" onClick={handleDelete}>
-                    <IconTrash />
-                    {/* <svg>
+                    </EditBtn>
+                    <DeleteBtn type="button" onClick={handleDelete}>
+                      <IconTrash />
+                      {/* <svg>
                       <use href={sprite + '#icon-trash-2'}></use>
                     </svg> */}
-                  </DeleteBtn>
-                </AreaEdit>
-              )}
-            </AreaReview>
+                    </DeleteBtn>
+                  </AreaEdit>
+                )}
+              </AreaReview>
 
-            <Input
-              type="text"
-              placeholder="Enter text"
-              id="content"
-              name="content"
-              component="textarea"
-              disabled={!isEditActive && Boolean(userReview.content)}
-            />
-            <ErrorMessage name="content" component="div" />
-          </FormWrapper>
+              <Input
+                type="text"
+                placeholder="Enter text"
+                id="content"
+                name="content"
+                component="textarea"
+                disabled={!isEditActive && Boolean(ownReview.content)}
+              />
+              <ErrorMessage name="content" component="div" />
+            </FormWrapper>
 
-          {(!Boolean(userReview.content) || isEditActive) && (
-            <AreaBtn>
-              <SubmitBtn type="submit">
-                {isEditActive ? 'Edit' : 'Save'}
-              </SubmitBtn>
-              <CancelBtn type="button" onClick={onClose}>
-                Cancel
-              </CancelBtn>
-            </AreaBtn>
-          )}
-          <Close type="button" aria-label="close button" onClick={onClose}>
-            <IconClose style={{ width: 24, height: 24 }} />
-          </Close>
-        </Form>
-      </Formik>
-    </Contain>
+            {!isEditActive && (
+              <AreaBtn>
+                <SubmitBtn type="submit">
+                  {action === 'edit' ? 'Edit' : 'Save'}
+                </SubmitBtn>
+                <CancelBtn type="button" onClick={onClose}>
+                  Cancel
+                </CancelBtn>
+              </AreaBtn>
+            )}
+            <Close type="button" aria-label="close button" onClick={onClose}>
+              <IconClose style={{ width: 24, height: 24 }} />
+            </Close>
+          </Form>
+        </Contain>
+      )}
+    </Formik>
   );
 };

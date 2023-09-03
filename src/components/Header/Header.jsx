@@ -6,30 +6,35 @@ import icons from '../../images/icons.svg';
 
 import {
   ContainerHeader,
-  Wrapper,
   MenuBtn,
   MenuIcon,
   PageTitle,
 } from './Header.styled';
+
 import {
   useState,
   // useEffect
 } from 'react';
-// import { useLocation,  } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+
+import { toggleSideBar } from '../../redux/side-bar/sideBarSlice';
+
 import { FeedbackModal } from 'components/Feedback/FeedbackModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 let pageTitle = 'User Profile';
 
 const Header = () => {
   const [isOpened, setIsOpen] = useState(false);
-  const [openedMenu, setOpenMenu] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpened);
   };
 
-  const handleOpenMenu = () => {
-    setOpenMenu(!openedMenu);
+  const dispatch = useDispatch();
+  const handleToggleSideBar = () => {
+    dispatch(toggleSideBar());
   };
 
   // const { pathname } = useLocation();
@@ -45,24 +50,28 @@ const Header = () => {
   //   }
   // }, [pathname]);
 
+
+  const user = useSelector(selectUser);
+
   return (
     <ContainerHeader>
-      <Wrapper>
-        <MenuBtn
-          type='button'
-          onClick={handleOpenMenu}
-        >
-          <MenuIcon>
-            <use href={icons + '#icon-menu-01'}></use>
-          </MenuIcon>
-        </MenuBtn>
-        <PageTitle>{ pageTitle }</PageTitle>
-        <AddFeedbackBt setIsOpen={setIsOpen} />
-        <ThemeToggler />
-        <UserInfo />
-      </Wrapper>
-      {isOpened && <FeedbackModal onClose={handleToggle}></FeedbackModal>}
+      <MenuBtn
+        type='button'
+        onClick={handleToggleSideBar}
+      >
+        <MenuIcon>
+          <use href={icons + '#icon-menu-01'}></use>
+        </MenuIcon>
+      </MenuBtn>
+      <PageTitle>{ pageTitle }</PageTitle>
+      <AddFeedbackBt setIsOpen={setIsOpen} />
+      <ThemeToggler />
+      <UserInfo user={user}/>
+        {isOpened && (
+        <FeedbackModal onClose={handleToggle} user={user}></FeedbackModal>
+      )}
     </ContainerHeader>
+
   );
 };
 

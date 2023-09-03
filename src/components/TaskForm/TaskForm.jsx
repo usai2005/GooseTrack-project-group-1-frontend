@@ -8,6 +8,7 @@ import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { selectSelectedDate } from 'redux/date/selectors';
 import { addTask, updateTask } from 'redux/tasks/tasksOperations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   ActionButton,
   AddIcon,
@@ -34,10 +35,10 @@ import {
 
 const schema = Yup.object().shape({
   title: Yup.string().max(250, 'Too Long!').required('Title is required'),
-  start: Yup.string().required('start time cannot be empty'),
+  start: Yup.string().required('Start time cannot be empty'),
   end: Yup.string()
-    .required('end time cannot be empty')
-    .test('is-greater', 'end time should be greater', function (value) {
+    .required('End time cannot be empty')
+    .test('is-greater', 'End time should be greater', function (value) {
       const { start } = this.parent;
       return moment(value, 'HH:mm').isSameOrAfter(moment(start, 'HH:mm'));
     }),
@@ -48,7 +49,8 @@ const schema = Yup.object().shape({
       return isDate(originalValue)
         ? originalValue
         : parse(originalValue, 'yyyy-MM-dd', new Date());
-    }),
+    })
+    .min(new Date(), 'Date must be in future'),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
@@ -73,7 +75,6 @@ export const TaskForm = ({ category, task, onClose }) => {
   }, [task]);
 
   const handleSubmit = values => {
-  
     const payload = {
       id: values._id,
       updatedTask: {
@@ -86,8 +87,8 @@ export const TaskForm = ({ category, task, onClose }) => {
       },
     };
 
-
     if (action === 'edit') {
+      Notify.info('Task has been edited.');
       dispatch(updateTask(payload))
         .then(data => {
           if (data.error) {
@@ -99,6 +100,7 @@ export const TaskForm = ({ category, task, onClose }) => {
           console.log(error.message);
         });
     } else {
+      Notify.success('Task has been successfully created.');
       dispatch(addTask({ ...values, date, category }))
         .then(data => {
           if (data.error) {
@@ -107,17 +109,17 @@ export const TaskForm = ({ category, task, onClose }) => {
           onClose();
         })
         .catch(error => {
+          Notify.failure('Something went wrong.');
           console.log(error.message);
         });
     }
-
   };
 
   return (
     <Formik
       initialValues={task || initialValues}
       validationSchema={schema}
-      onSubmit={(values, action) => {
+      onSubmit={values => {
         handleSubmit(values);
       }}
     >

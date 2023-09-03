@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const PageWrapper = styled.div`
-  // width: 100vw;
+
 
   padding: 0 20px 95px 20px;
 
@@ -10,7 +10,6 @@ export const PageWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    // width: calc(100vw - 289px);
     padding: 0 32px 32px 32px;
   }
 `;

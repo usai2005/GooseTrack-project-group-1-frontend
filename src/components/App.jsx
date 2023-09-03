@@ -21,11 +21,14 @@ const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
+
+const AccountPage = lazy(() => import('../pages/AccountPage/AccountPage'));
+// const UserProfile = lazy(() => import('../pages/UserProfile'));
+
 const StatisticPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
 const NotFound = lazy(() => import('../pages/NotFound'));
-const UserProfile = lazy(() => import('../pages/UserProfile'));
 
 export const App = () => {
   const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
@@ -70,7 +73,7 @@ export const App = () => {
             <Route
               path="account/*"
               element={
-                <PrivateRoute redirectTo="/" component={<UserProfile />} />
+                <PrivateRoute redirectTo="/" component={<AccountPage />} />
               }
             />
             <Route

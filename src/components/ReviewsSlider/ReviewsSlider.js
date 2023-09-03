@@ -49,7 +49,10 @@ const ReviewsSlider = () => {
     ],
   };
 
+
+
   const ratingStars = new Array(5).fill(1);
+
 
   return (
     <SliderThumb>

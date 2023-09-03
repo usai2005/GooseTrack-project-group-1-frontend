@@ -64,7 +64,10 @@ export const light = {
     btnRevers: '#E5EDFA',
     bgStatistic: '#ffffff',
     borderFormColor: '1px solid rgba(220, 227, 229, 0.8)',
-
+    borderProfileColor: 'rgba(17, 17, 17, 0.15)',
+    btnNavText: 'rgba(52, 52, 52, 0.5)',
+    btnNav: '#E3F3FF',
+    headerText: '#111111',
   },
 };
 
@@ -75,7 +78,7 @@ export const dark = {
     bgRevers: '#171820',
     bgReversLabel: 'rgba(250, 250, 250, 0.30)',
     secondaryBg: '#21222C',
-    btnBlue: '#3E85F3',
+    btnBlue: '#07090b',
     buttonBg: '#3E85F3',
     textBtn: '#FFFFFF',
     activeBtnBlue: '#3E85F3',
@@ -111,7 +114,7 @@ export const dark = {
     bgColorHighTask: '#FFD2DD',
     textColorHighTask: '#EA3D65',
     avatarBgColor: '#171820',
-    reviewLabel1: '#FAFAFA4D',
+    reviewLabel: '#FAFAFA4D',
     reviewBorder: 'rgba(255, 255, 255, 0.15)',
     reviewTextBg: '#21222C',
     scrollColor: '#e7e5e5',
@@ -132,10 +135,14 @@ export const dark = {
     btnRevers: '#21222C',
     bgStatistic: '#21222C',
     bgColorTask: 'rgba(23, 24, 32, 1)',
-
     borderFormColor: 'rgba(255, 255, 255, 0.15)',
+    borderProfileColor: 'rgba(255, 255, 255, 0.15)',
+    btnNavText: 'rgba(255, 255, 255, 1)',
+    gooseColorNav: 'rgba(227, 243, 255, 1)',
+    navText: 'rgba(250, 250, 250, 0.3)',
+    btnNav: '#3E85F3',
+    headerText: '#FFFFFF',
 
     icon: '#353647',
-
   },
 };
