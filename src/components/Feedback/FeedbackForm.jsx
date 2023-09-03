@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
 // import { changeRating } from '../../redux/reviews/reviewsSlice';
+import { Notify, Report } from 'notiflix/build/notiflix-notify-aio';
 import {
   addReview,
   deleteReview,
@@ -90,7 +91,7 @@ export const FeedbackForm = ({ onClose, user }) => {
     setAction('edit');
     if (action === 'edit') {
       const { content } = values;
-
+      Notify.info('Your review has been edited.');
       dispatch(updateReview({ content, rating: newRating }))
         .then(data => {
           if (data.error) {
@@ -99,10 +100,12 @@ export const FeedbackForm = ({ onClose, user }) => {
           onClose();
         })
         .catch(error => {
+          Notify.failure('Something went wrong.');
           console.log(error.message);
         });
     } else {
       const { content } = values;
+      Notify.success('Thank you, your review has been added.');
       dispatch(addReview({ content, rating: newRating }))
         .then(data => {
           if (data.error) {
@@ -111,6 +114,7 @@ export const FeedbackForm = ({ onClose, user }) => {
           onClose();
         })
         .catch(error => {
+          Notify.failure('Something went wrong.');
           console.log(error.message);
         });
     }
@@ -125,6 +129,12 @@ export const FeedbackForm = ({ onClose, user }) => {
   };
 
   const handleDelete = () => {
+    // Report.warning(
+    //   'Warning',
+    //   '"Do you really want to delete the review?" <br/><br/>Press Okey',
+    //   'Okay'
+    // );
+    Notify.info('Your review has been delete.');
     dispatch(deleteReview(ownReview._id));
     onClose();
   };

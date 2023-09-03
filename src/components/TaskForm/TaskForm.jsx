@@ -97,6 +97,7 @@ export const TaskForm = ({ category, task, onClose }) => {
           onClose();
         })
         .catch(error => {
+          Notify.failure('Something went wrong.');
           console.log(error.message);
         });
     } else {
