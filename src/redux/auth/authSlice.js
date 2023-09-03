@@ -41,16 +41,12 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.isLoading = false;
-      })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
       .addMatcher(
-        isAnyOf(register.fulfilled, logIn.fulfilled),
+        isAnyOf(register.fulfilled, logIn.fulfilled, updateUser.fulfilled),
         handleFulfilled
       );
   },
