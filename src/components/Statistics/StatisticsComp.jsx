@@ -27,7 +27,7 @@ import {
 } from './StatisticsComp.styled';
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, x, y }) => {
   if (active && payload && payload.length) {
     return (
       <LabelContainer className="custom-tooltip">
@@ -95,6 +95,7 @@ export const StatisticsComp = () => {
   const data = [
     {
       name: 'To Do',
+      percentage: '100',
       day: todoByDay,
       month: todoByMonth,
       dayf: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
@@ -102,6 +103,7 @@ export const StatisticsComp = () => {
     },
     {
       name: 'In Progress',
+      percentage: '100',
       day: inprogressByDay,
       month: inprogressByMonth,
       dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
@@ -111,6 +113,7 @@ export const StatisticsComp = () => {
     },
     {
       name: 'Done',
+      percentage: '100',
       day: doneByDay,
       month: doneByMonth,
       dayf: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
@@ -146,12 +149,15 @@ export const StatisticsComp = () => {
               }}
             />
             <XAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
               dataKey="name"
               axisLine={false}
               tickLine={false}
               height={40}
             />
             <YAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
+              dataKey="percentage"
               axisLine={false}
               tickLine={false}
               width={40}
@@ -160,10 +166,18 @@ export const StatisticsComp = () => {
             />
             <Tooltip cursor={false} content={<CustomTooltip />} />
             <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
-              <LabelList dataKey="dayf" position="top" />
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="dayf"
+                position="top"
+              />
             </Bar>
             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
-              <LabelList dataKey="monthf" position="top" />
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="monthf"
+                position="top"
+              />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
