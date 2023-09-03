@@ -153,14 +153,23 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const SliderContainer = styled.div`
-  padding: 0 20px 64px;
+  margin: 0 auto 64px;
+
+  width: 335px;
+
+  box-sizing: border-box;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    padding: 0 94px 100px;
+    width: 580px;
+
+    margin-bottom: 100px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 0 128px 118px;
+    width: 1184px;
+
+    margin-bottom: 118px;
   }
 `;
 

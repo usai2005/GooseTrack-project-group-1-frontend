@@ -1,110 +1,35 @@
 import styled from 'styled-components';
-// import allProfiles from './data';
-// export const LeftArrow = styled.div`
-//   width: 100px;
-//   height: 30px;
-//   background-color: red;
-// `;
 
-// export const RightArrow = styled.div`
-//   width: 100px;
-//   height: 30px;
-//   background-color: green;
-// `;
-
-// export const Wrapper = styled.div`
-//   position: relative;
-//   display: flex;
-// `;
-
-// export const SliderContentWrapper = styled.div`
-//   text-align: center;
-//   padding: 1rem 0;
-//   display: flex;
-//   flex-direction: column;
-//   &.current {
-//     transition: all 0.5s linear;
-//     position: relative;
-//     top: 0;
-//     left: 0;
-//     opacity: 1;
-//   }
-//   &.previous {
-//     position: absolute;
-//     top: 0;
-//     left: -120%;
-//     transition: all 0.3s linear;
-//     opacity: 0;
-//   }
-//   &.next {
-//     position: absolute;
-//     top: 0;
-//     left: 120%;
-//     transition: all 0.3s linear;
-//     opacity: 0;
-//   }
-// `;
-
-import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
-
-export const SliderContainer = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
-`;
-
-export const Wrapper = styled.div`
-  position: relative;
-
-  width: 100%;
-  ${'' /* height: 194px; */}
-  ${'' /* max-height: 194px; */}
-
-  ${'' /* box-sizing: border-box; */}
-  overflow: hidden;
-
-  @media screen and (min-width: 1440px) {
-    height: 187px;
-    max-height: 187px;
-    background-color: green;
-  }
-`;
+export const SliderThumb = styled.div``;
 
 export const SliderWrapper = styled.div`
-  text-align: left;
-  ${'' /* padding: 1rem 0; */}
   display: flex;
   flex-direction: column;
-
-  height: 194px;
-  max-height: 194px;
 
   padding: 24px 20px;
 
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 8px;
 
-  /* &.current {
-    transition: all 0.5s linear;
-    position: relative;
-    top: 0;
-    left: 0;
-    opacity: 1;
+  text-align: left;
+
+  margin-bottom: 8px;
+
+  &.slide {
+    margin-right: 24px;
   }
-  &.previous {
-    position: absolute;
-    top: 0;
-    left: -120%;
-    transition: all 0.3s linear;
-    opacity: 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+    margin-bottom: 18px;
   }
-  &.future {
-    position: absolute;
-    top: 0;
-    left: 120%;
-    transition: all 0.3s linear;
-    opacity: 0;
-  } */
+
+  @media screen and (min-width: 1440px) {
+    max-width: 580px;
+
+    margin-right: 24px;
+    margin-bottom: 32px;
+  }
 `;
 export const AvatarImageContainer = styled.div`
   width: 50px;
@@ -114,15 +39,7 @@ export const AvatarImageContainer = styled.div`
 
   border-radius: 50%;
 
-  background-color: aquamarine;
-
-  ${'' /* background-image: url(${({ src }) => src}); */}
-  ${'' /* background-repeat: no-repeat; */}
-  ${'' /* background-size: cover; */}
-  ${'' /* background-position: top; */}
-  ${'' /* border: 2px solid #abd3f2; */}
-  ${'' /* box-shadow: 0px 0px 5px grey; */}
-  ${'' /* margin: auto; */}
+  overflow: hidden;
 `;
 
 export const AboutReviewerContainer = styled.div`
@@ -132,13 +49,6 @@ export const AboutReviewerContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 19px;
-  }
-
-  ${
-    '' /* @media screen and (min-width: 1440px) {
-    background-color: red;
-    width: 50%;
-  } */
   }
 `;
 
@@ -156,55 +66,40 @@ export const ReviewersName = styled.h3`
   line-height: 1;
 `;
 
-export const SliderOccupation = styled.h4`
-  font-size: 0.8rem;
-  padding: 0;
-  margin: 0;
-  font-weight: 300;
-  color: #636363;
-  letter-spacing: 0.7px;
-  font-family: sans-serif;
-  text-transform: capitalize;
+export const ReviewWrapper = styled.div`
+  height: 72px;
+  max-height: 72px;
+
+  overflow: auto;
 `;
 
 export const Review = styled.p`
   margin-left: 68px;
+
   color: rgba(17, 17, 17, 0.7);
   font-size: 14px;
   font-weight: 500;
   line-height: calc(18 / 14);
 `;
 
-export const SliderMenuLeftSlider = styled(AiOutlineDoubleLeft)`
-  position: absolute;
-  left: 0;
-  top: 215px;
-  transform: translateY(-50%);
-  padding: 10px;
-  z-index: 10;
-  &:hover {
-    color: #ba5d2c;
-    cursor: pointer;
-    border: 1px solid #ba5d2c;
-    border-radius: 10px;
-    padding: 9px;
+export const ArrowLeftIcon = styled.svg`
+  width: 50px;
+  height: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 61px;
+    height: 61px;
   }
 `;
 
-export const SliderMenuRightSlider = styled(AiOutlineDoubleRight)`
-  position: absolute;
-  right: 0;
-  top: 215px;
-  transform: translateY(-50%);
-  padding: 10px;
-  &:hover {
-    color: #ba5d2c;
-    cursor: pointer;
-    border: 1px solid #ba5d2c;
-    border-radius: 10px;
-    padding: 9px;
+export const ArrowRightIcon = styled.svg`
+  width: 50px;
+  height: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 61px;
+    height: 61px;
   }
-  z-index: 10;
 `;
 
 export const StarIcon = styled.svg`
@@ -242,8 +137,20 @@ export const StarsList = styled.ul`
   }
 `;
 
-export const ListItem = styled.li`
-  /* &.slide {
-    text-align: left !important;
-  } */
+export const ArrowsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Arrows = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 125px;
+
+  margin-top: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 147px;
+  }
 `;
