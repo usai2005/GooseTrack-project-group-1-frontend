@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
 // import { changeRating } from '../../redux/reviews/reviewsSlice';
-import { Notify, Report } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   addReview,
   deleteReview,
