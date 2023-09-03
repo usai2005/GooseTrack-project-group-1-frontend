@@ -42,6 +42,10 @@ export const MenuCloseBtn = styled.button`
 export const CloseIcon = styled.svg`
   width: 24px;
   height: 24px;
+  stroke: ${props =>
+    props.$currenttype
+      ? props.theme.variable.gooseColor
+      : props.theme.variable.gooseColorNav};
 
   @media screen and (min-width: 768px) {
     width: 32px;
