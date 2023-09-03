@@ -56,3 +56,18 @@ export const Wrapper = styled.div`
     height: 360px;
   }
 `;
+
+export const LabelContainer = styled.div`
+  color: ${props => props.theme.variable.text};
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+export const LabelTitle = styled.p`
+  color: ${props => props.theme.variable.activeTextColorBtn};
+  font-family: InterMedium;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 150%;
+  margin: 0;
+`;
