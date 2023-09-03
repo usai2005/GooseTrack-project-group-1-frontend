@@ -1,18 +1,42 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media screen and (max-width: 1439px) {
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+
+    transform: translateX(-100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media screen and (min-width: 1440px) {
+        width: 289px;
+  }
+
+  &.is-open {
+    transform: translateX(0%);
+  }
+`;
+
+export const SideBarContainer = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
   width: 225px;
-  min-height: 100vh;
+  height: 100%;
   padding: 20px 24px;
 
   background-color: ${props => props.theme.variable.sideBar};
   stroke: #343434;
 
   @media screen and (min-width: 768px) {
-    position: static;
     width: 289px;
     padding: 32px 24px;
   }
@@ -42,10 +66,6 @@ export const MenuCloseBtn = styled.button`
 export const CloseIcon = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: ${props =>
-    props.$currenttype
-      ? props.theme.variable.gooseColor
-      : props.theme.variable.gooseColorNav};
 
   @media screen and (min-width: 768px) {
     width: 32px;
@@ -66,7 +86,6 @@ export const TitleSideBar = styled.h2`
     props.$currenttype
       ? props.theme.variable.bgReversLabel
       : props.theme.variable.navText};
-
   font-size: 12px;
   font-weight: 600;
   line-height: normal;

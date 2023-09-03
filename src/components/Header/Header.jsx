@@ -17,22 +17,24 @@ import {
 } from 'react';
 // import { useLocation } from 'react-router-dom';
 
+import { toggleSideBar } from '../../redux/side-bar/sideBarSlice';
+
 import { FeedbackModal } from 'components/Feedback/FeedbackModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
 let pageTitle = 'User Profile';
 
 const Header = () => {
   const [isOpened, setIsOpen] = useState(false);
-  const [openedMenu, setOpenMenu] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpened);
   };
 
-  const handleOpenMenu = () => {
-    setOpenMenu(!openedMenu);
+  const dispatch = useDispatch();
+  const handleToggleSideBar = () => {
+    dispatch(toggleSideBar());
   };
 
   // const { pathname } = useLocation();
@@ -55,7 +57,7 @@ const Header = () => {
     <ContainerHeader>
       <MenuBtn
         type='button'
-        onClick={handleOpenMenu}
+        onClick={handleToggleSideBar}
       >
         <MenuIcon>
           <use href={icons + '#icon-menu-01'}></use>

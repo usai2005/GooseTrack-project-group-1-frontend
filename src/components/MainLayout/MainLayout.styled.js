@@ -11,5 +11,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: calc(100% - 289px);
+  width: 100%;
+
+  @media screen and (min-width: 1440px) {
+    width: calc(100% - 289px);
+  }
 `;
