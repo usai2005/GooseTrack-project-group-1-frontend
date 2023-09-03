@@ -23,6 +23,7 @@ export const AvatarFieldFormUser = ({
   inputName,
   type,
   id,
+  avatarURL,
   currentAvatarURL,
   setCurrentAvatarURL,
   setIsDisabled,
@@ -31,14 +32,14 @@ export const AvatarFieldFormUser = ({
   return (
     <UserAvatarWrapper>
       <Label htmlFor={id}>
-        {!currentAvatarURL ? (
+        {!avatarURL ? (
           <p>
             <DefaultAvatarSvg>
             <use href={`${sprite}#icon-user`} />
             </DefaultAvatarSvg>
           </p>
         ) : (
-          <img src={currentAvatarURL} alt="user_photo" />
+          <img src={avatarURL} alt="user_photo" />
         )}
       </Label>
       <HiddenInput
