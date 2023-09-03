@@ -24,6 +24,10 @@ export const WeekNamesContainer = styled.ul`
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   border-radius: 8px;
   background-color: ${props => props.theme.variable.bgCalendar};
+
+  @media (min-width: 1440px) {
+    margin-top: 8px;
+  }
 `;
 
 export const ContainerWeekDay = styled.div`
