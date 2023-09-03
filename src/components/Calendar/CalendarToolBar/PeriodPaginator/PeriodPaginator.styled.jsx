@@ -93,7 +93,6 @@ const viewport = {
 export const ControlWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
 
   ${viewport.mob} {
     margin-bottom: 18px;

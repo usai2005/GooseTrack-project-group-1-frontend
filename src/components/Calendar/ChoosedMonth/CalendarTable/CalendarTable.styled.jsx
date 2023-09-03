@@ -95,6 +95,7 @@ export const WeekNamesContainer = styled.ul`
 
   @media (min-width: 768px) {
     margin-bottom: 18px;
+    margin-top: 8px;
   }
   @media (min-width: 1440px) {
     margin-bottom: 15px;
