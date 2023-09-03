@@ -37,10 +37,6 @@ const authSlice = createSlice({
       .addCase(currentUser.pending, handlePending)
       .addCase(currentUser.fulfilled, handleRefresh)
       .addCase(currentUser.rejected, handleRefreshReject)
-      .addMatcher(
-        isAnyOf(register.fulfilled, logIn.fulfilled),
-        handleFulfilled
-      )
       .addCase(updateUser.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -52,7 +48,11 @@ const authSlice = createSlice({
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      });
+      })
+      .addMatcher(
+        isAnyOf(register.fulfilled, logIn.fulfilled),
+        handleFulfilled
+      );
   },
 });
 
