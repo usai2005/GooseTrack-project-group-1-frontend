@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const LoaderStyles = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 calc(20px - (100vw - 100%)) 0 0;
-  max-width: 700px;
+  align-items: center;
+  height: 100vh;
+  max-width: 100vw;
   margin: 0 auto;
 `;

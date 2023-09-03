@@ -20,14 +20,23 @@ import {
 } from './MainPage.styled';
 
 // import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
-import { ReviewsSlider } from '../../components/ReviewsSlider/ReviewsSlider';
+import ReviewsSlider from '../../components/ReviewsSlider/ReviewsSlider';
 
 import icons from '../../images/icons.svg';
 import IMAGES from '../../images/mainPage/index';
 import { Container } from '../../styles/container';
 import BackToTopButton from 'components/BackToTop/BackToTopButton';
+import { fetchReviews } from 'redux/reviews/reviewsOperations';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function MainPage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
+
   return (
     <Container>
       <section>
