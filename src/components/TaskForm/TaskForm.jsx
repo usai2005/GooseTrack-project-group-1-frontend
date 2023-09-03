@@ -49,8 +49,7 @@ const schema = Yup.object().shape({
       return isDate(originalValue)
         ? originalValue
         : parse(originalValue, 'yyyy-MM-dd', new Date());
-    })
-    .min(new Date(), 'Date must be in future'),
+    }),
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Required'),
