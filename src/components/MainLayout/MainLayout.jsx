@@ -9,21 +9,23 @@ import SideBar from '../SideBar/SideBar';
 
 import { Container } from '../../styles/container';
 import { MainLayoutContainer, Wrapper } from './MainLayout.styled';
+import { fetchOwnReviews } from 'redux/reviews/reviewsOperations';
 
 const MainLayout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTasks());
+    dispatch(fetchOwnReviews());
   }, [dispatch]);
 
   return (
     <Container>
       <MainLayoutContainer>
         <SideBar />
-          <Wrapper>
-            <Header />
-            <Outlet />
-          </Wrapper>
+        <Wrapper>
+          <Header />
+          <Outlet />
+        </Wrapper>
       </MainLayoutContainer>
     </Container>
   );

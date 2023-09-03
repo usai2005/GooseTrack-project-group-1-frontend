@@ -2,8 +2,14 @@ import {
   TaskItem,
   TaskList,
 } from 'components/Calendar/ChoosedMonth/CalendarTable/CalendarTable.styled';
-
-export const CalendarTasks = ({ tasks, setTaskToEdit, setOpening }) => {
+import { AiOutlineCheck } from 'react-icons/ai';
+// import { useMediaQuery } from 'react-responsive';
+export const CalendarTasks = ({
+  tasks,
+  setTaskToEdit,
+  setOpening,
+  isOverdue,
+}) => {
   const shortTitle = title => {
     if (window.innerWidth < 767) {
       return title.length > 3 ? title.substring(0, 3) + '...' : title;
@@ -14,7 +20,7 @@ export const CalendarTasks = ({ tasks, setTaskToEdit, setOpening }) => {
     return title;
   };
   const shortList =
-    window.innerWidth < 767 ? tasks.slice(0, 2) : tasks.slice(0, 3);
+    window.innerWidth < 767 ? tasks.slice(0, 2) : tasks.slice(0, 4);
 
   return (
     tasks.length > 0 && (
@@ -24,12 +30,16 @@ export const CalendarTasks = ({ tasks, setTaskToEdit, setOpening }) => {
             <TaskItem
               key={task._id}
               $priority={task.priority}
+              $isOverdue={isOverdue(task)}
               onClick={() => {
                 setOpening(true);
                 setTaskToEdit(task);
               }}
             >
-              <p priority={tasks.priority}>{shortTitle(task.title)}</p>
+              <p priority={tasks.priority}>
+                {!isOverdue(task) && <AiOutlineCheck />}
+                {shortTitle(task.title)}
+              </p>
             </TaskItem>
           );
         })}
