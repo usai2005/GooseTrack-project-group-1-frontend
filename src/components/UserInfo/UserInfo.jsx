@@ -1,4 +1,4 @@
-import { UserName, UserAvatar,DefaultAvatarSvg,UserAvatarImg } from './UserInfo.styled';
+import { UserName, DefaultAvatarSvg,UserAvatarImg } from './UserInfo.styled';
 import { useNavigate } from 'react-router-dom';
 import sprite from '../../images/icons.svg';
 
