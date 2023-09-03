@@ -25,16 +25,15 @@ export const Input = styled.input`
   border-radius: 8px;
   border-color: ${props => props.theme.variable.borderProfileColor};
   color: ${props => props.theme.variable.text};
-  padding: 0.875rem;
-
-  height: 42px;
-
-  width: 299px;
+  padding: 14px 18px;
+  height: 46px;
+  width: 354px;
 
   ${viewport.mob} {
-    height: 46px;
-
-    width: 354px;
+    height: 42px;
+    width: 300px;
+    padding: 12px 14px;
+    font-size: 14px;
   }
 
   &::placeholder {
