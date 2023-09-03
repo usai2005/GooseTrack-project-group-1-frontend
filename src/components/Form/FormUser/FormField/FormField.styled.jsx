@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
 };
@@ -32,17 +31,14 @@ export const Input = styled.input`
 
   width: 299px;
 
-
-
   ${viewport.mob} {
     height: 46px;
 
     width: 354px;
-  
   }
 
   &::placeholder {
-    font-family: 'InterRegularr';
+    font-family: 'InterRegular';
     font-size: 16px;
     line-height: 18px;
     color: 'inherit';
@@ -51,6 +47,4 @@ export const Input = styled.input`
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;
   }
-
-
 `;
