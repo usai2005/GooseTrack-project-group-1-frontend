@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { toggleSideBar } from '../../redux/side-bar/sideBarSlice';
+import { selectOpenSideBar } from '../../redux/side-bar/sideBarSelectors';
 
 import Logo from '../Logo/Logo';
 import UserNav from './UserNav/UserNav';
@@ -7,6 +10,7 @@ import icons from '../../images/icons.svg';
 
 import {
     Container,
+    SideBarContainer,
     Wrapper,
     MenuCloseBtn,
     CloseIcon,
@@ -14,28 +18,30 @@ import {
 } from './SideBar.styled';
 
 const SideBar = () => {
+    const dispatch = useDispatch();
+    const currentState = useSelector(selectOpenSideBar);
 
-    const [closedMenu, setCloseMenu] = useState(true);
-
-    const handleCloseMenu = () => {
-        setCloseMenu(!closedMenu);
+    const handleToggleSideBar = () => {
+        dispatch(toggleSideBar());
     };
     
     return (
-        <Container>
-            <Wrapper>
-                <Logo />
-                <MenuCloseBtn type="button" onClick={handleCloseMenu}>
-                    <CloseIcon>
-                        <use href={ icons + "#icon-x-close" }></use>
-                    </CloseIcon>
-                </MenuCloseBtn>
-            </Wrapper>
-            <TitleSideBar>
-                User Panel
-            </TitleSideBar>
-            <UserNav />
-            <LogoutBtn />
+        <Container className={!currentState && "is-open"}>
+            <SideBarContainer>
+                <Wrapper>
+                    <Logo />
+                    <MenuCloseBtn type="button" onClick={handleToggleSideBar}>
+                        <CloseIcon>
+                            <use href={ icons + "#icon-x-close" }></use>
+                        </CloseIcon>
+                    </MenuCloseBtn>
+                </Wrapper>
+                <TitleSideBar>
+                    User Panel
+                </TitleSideBar>
+                <UserNav />
+                <LogoutBtn />
+            </SideBarContainer>
         </Container>
     );
 };
