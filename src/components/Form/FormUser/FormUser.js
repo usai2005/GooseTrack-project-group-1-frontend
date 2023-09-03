@@ -146,6 +146,7 @@ export const FormUser = () => {
         userName={name}
         // errors={errors}
         register={reg}
+        avatarURL={avatarURL}
         currentAvatarURL={currentAvatarURL}
         setCurrentAvatarURL={setCurrentAvatarURL}
         setIsDisabled={setIsDisabled}
