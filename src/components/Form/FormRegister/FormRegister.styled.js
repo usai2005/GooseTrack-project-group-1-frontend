@@ -88,3 +88,11 @@ export const LoginIcon = styled.svg`
   right: 20px;
   overflow: visible;
 `;
+export const IconEye = styled.svg`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  overflow: visible;
+`;

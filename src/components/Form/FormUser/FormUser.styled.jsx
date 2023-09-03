@@ -39,16 +39,11 @@ export const FormBody = styled.div`
     padding: 0px;
   }
 
-  @media (min-width: 1078px) {
-    max-width: 758px;
-
+  @media (min-width: 1440px) {
+    max-width: 1080px;
     grid-template-columns: 1fr 1fr;
     column-gap: 50px;
     row-gap: 24px;
-  }
-
-  @media (min-width: 1440px) {
-    max-width: 1080px;
     padding-left: 164px;
     padding-right: 164px;
     margin-top: 44px;
