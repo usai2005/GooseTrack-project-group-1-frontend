@@ -37,7 +37,7 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    font-family: 'InterRegularr';
+    font-family: 'InterRegular';
     font-size: 16px;
     line-height: 18px;
     color: 'inherit';
