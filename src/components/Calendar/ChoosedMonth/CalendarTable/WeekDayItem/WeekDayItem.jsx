@@ -1,4 +1,4 @@
-import { format, isSameMonth } from 'date-fns';
+import { format, isSameMonth, parse } from 'date-fns';
 import { DateNum, DateWrap, WeekDay } from '../CalendarTable.styled';
 import { CalendarTasks } from '../CalendarTasks/CalendarTasks';
 import 'redux/date/dateSlice';
@@ -20,26 +20,35 @@ export const WeekDayItem = ({
       navigate(`/calendar/day/${date}`, {});
     }
   };
-
+  const isOverdue = task => {
+    const { date, category } = task;
+    return (
+      parse(date, 'yyyy-MM-dd', new Date()) <= currentDate &&
+      category !== 'done'
+    );
+  };
   return (
     <WeekDay
       key={currentDate}
       onClick={e => handleClick(e, format(currentDate, 'yyyy-MM-dd'))}
+      $isOverdue={isOverdue}
     >
       {!isSameMonth(currentDate, activeDate) ? (
         <span></span>
       ) : (
-        <DateNum>
-          <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
-        </DateNum>
-      )}
-
-      {tasksToShow.length > 0 && (
-        <CalendarTasks
-          tasks={tasksToShow}
-          setTaskToEdit={setTaskToEdit}
-          setOpening={setOpening}
-        />
+        <>
+          <DateNum>
+            <DateWrap $istoday={isToday}>{format(currentDate, 'd')}</DateWrap>
+          </DateNum>
+          {tasksToShow.length > 0 && (
+            <CalendarTasks
+              tasks={tasksToShow}
+              setTaskToEdit={setTaskToEdit}
+              setOpening={setOpening}
+              isOverdue={isOverdue}
+            />
+          )}
+        </>
       )}
     </WeekDay>
   );

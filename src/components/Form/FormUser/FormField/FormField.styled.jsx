@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const viewport = {
   mob: '@media screen and (max-width: 767px)',
 };
@@ -26,23 +25,19 @@ export const Input = styled.input`
   border-radius: 8px;
   border-color: ${props => props.theme.variable.borderProfileColor};
   color: ${props => props.theme.variable.text};
-  padding: 0.875rem;
-
-  height: 42px;
-
-  width: 299px;
-
-
+  padding: 14px 18px;
+  height: 46px;
+  width: 354px;
 
   ${viewport.mob} {
-    height: 46px;
-
-    width: 354px;
-  
+    height: 42px;
+    width: 300px;
+    padding: 12px 14px;
+    font-size: 14px;
   }
 
   &::placeholder {
-    font-family: 'InterRegularr';
+    font-family: 'InterRegular';
     font-size: 16px;
     line-height: 18px;
     color: 'inherit';
@@ -51,6 +46,4 @@ export const Input = styled.input`
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;
   }
-
-
 `;

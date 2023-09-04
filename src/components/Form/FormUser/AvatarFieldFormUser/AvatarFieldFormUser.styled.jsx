@@ -24,8 +24,9 @@ justify-content: center;
 align-items: center;
 width: 14px;
 height: 14px;
-top: 1.4375rem;
-right: 0.875rem;
+
+top: 30px;
+  right: 60px;
 pointer-events: none;
 
 @media (min-width: 768px) {
@@ -33,7 +34,7 @@ pointer-events: none;
   height: 1.5rem;
 
   top: 9.0625rem;
-  right: 1.5rem;
+  right: 45px;
   pointer-events: none;
 
 
@@ -50,11 +51,15 @@ pointer-events: none;
 export const UserAvatarWrapper = styled.div`
   position: relative;
   text-align: center;
-  margin-right:60px
+
+  @media (min-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const Label = styled.label`
-  position: relative;
+position:relative;
+
 
   display: flex;
   justify-content: center;
@@ -63,24 +68,33 @@ export const Label = styled.label`
   width: 72px;
   height: 72px;
 
-  margin-bottom: 1.125rem;
-  margin-top: -37px;
+  margin-bottom: 18px;
+  margin-top: -30px;
 
   border-radius: 50%;
   border: 2px solid #3e85f3;
   background-color: none;
   overflow: hidden;
+  down: 60px;
+  left: 45px;
+
+  
+
 
   & img {
     object-fit: cover;
+    align-items:center;
     height: 100%;
     width: 100%;
   }
+
 
   @media (min-width: 768px) {
     margin-top: 40px;
     width: 124px;
     height: 124px;
+  
+    left: 17px;
   }
 
   @media (min-width: 1087px) {
@@ -89,65 +103,61 @@ export const Label = styled.label`
 `;
 
 export const HiddenInput = styled.input`
-  position: absolute;
-  top: 1.4375rem;
-  right: 0.875rem;
+  position: relative;
+  top: -29px;
+  left: 92px;
 
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 12px;
+  height: 12px;
   border: 0;
   padding: 0;
 
   border-radius: 50%;
   background-color: #3e85f3;
 
-  :before {
-    position: absolute;
-    content: '+';
+  // :before {
+  //   position: absolute;
+  //   content: '+';
 
-    width: 14px;
-    height: 14px;
+  //   width: 14px;
+  //   height: 14px;
 
-    font-size: 0.9375rem;
-    line-height: 0.8125rem;
+  //   font-size: 0.9375rem;
+  //   line-height: 0.8125rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    /* color: ; */
-    background-color: #3e85f3;
-  }
+  //   /* color: ; */
+  //   background-color: #3e85f3;
+  // }
 
   @media (min-width: 768px) {
     width: 1.5rem;
     height: 1.5rem;
 
-    top: 9.0625rem;
-    right: 1.5rem;
+    top: -37px;
+    left: 97px;
 
-    :before {
-      position: absolute;
-      content: '+';
-      /* color: ; */
-      font-family: Inter;
-      font-size: 18px;
-      line-height: 1.375rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 24px;
-      height: 24px;
-      /* background-color: ; */
-    }
+    // :before {
+    //   position: absolute;
+    //   content: '+';
+    //   color: ${props => props.theme.componentPrimary};
+    //   font-size: 1.5625rem;
+    //   line-height: 1.375rem;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   width: 24px;
+    //   height: 24px;
+    //   background-color: ${props => props.theme.componentAccent};
+    // }
   }
 
   @media (min-width: 1087px) {
-    top: 10.3125rem;
+    top: -37px;
   }
 `;
 

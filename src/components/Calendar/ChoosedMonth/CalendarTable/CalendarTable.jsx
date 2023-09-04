@@ -18,12 +18,14 @@ import { useState } from 'react';
 import { TaskModal } from 'components/TaskModal/TaskModal';
 import {} from 'redux/date/dateSlice';
 import { selectTasks } from 'redux/tasks/tasksSelectors';
+// import { Notify } from 'notiflix';
 
 export const CalendarTable = () => {
   const [isOpened, setIsOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const tasks = useSelector(selectTasks);
 
+  // if (tasks.length === 0) Notify.info('You have no any tasks for this period.');
   const handleToggle = () => {
     setIsOpen(!isOpened);
   };

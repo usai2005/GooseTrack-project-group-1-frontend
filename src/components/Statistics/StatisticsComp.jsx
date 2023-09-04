@@ -27,9 +27,7 @@ import {
 } from './StatisticsComp.styled';
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
-const CustomTooltip = ({ active, payload, label }) => {
-  console.log(label);
-  console.log(payload);
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <LabelContainer className="custom-tooltip">
@@ -60,6 +58,7 @@ export const StatisticsComp = () => {
   let todoByMonth = 0;
   let inprogressByMonth = 0;
   let doneByMonth = 0;
+  let allTasks = 0;
 
   function filteredTasks(tasks) {
     filteredTasksByDay = tasks.filter(
@@ -88,11 +87,8 @@ export const StatisticsComp = () => {
     ).length;
   }
   filteredTasks(tasks);
-
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
-
-  // console.log(tasks)
 
   const data = [
     {
@@ -131,7 +127,14 @@ export const StatisticsComp = () => {
             barGap={14}
           >
             <defs>
-              <linearGradient id="colorDay" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient
+                id="colorDay"
+                viewBox="0 0 27 211"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
                 <stop offset="95%" stopColor="#FFD2DD" stopOpacity={0.8} />
               </linearGradient>
@@ -148,12 +151,14 @@ export const StatisticsComp = () => {
               }}
             />
             <XAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
               dataKey="name"
               axisLine={false}
               tickLine={false}
               height={40}
             />
             <YAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
               axisLine={false}
               tickLine={false}
               width={40}
@@ -162,10 +167,18 @@ export const StatisticsComp = () => {
             />
             <Tooltip cursor={false} content={<CustomTooltip />} />
             <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
-              <LabelList dataKey="dayf" position="top" />
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="dayf"
+                position="top"
+              />
             </Bar>
             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
-              <LabelList dataKey="monthf" position="top" />
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="monthf"
+                position="top"
+              />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

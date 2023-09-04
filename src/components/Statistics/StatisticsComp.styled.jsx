@@ -9,7 +9,6 @@ const viewport = {
 export const Container = styled.div`
   border: solid 1px ${props => props.theme.variable.borderColor};
   stroke: rgba(52, 52, 52, 0.5);
-  stroke: ${props => props.theme.variable.titleAvatar};
 
   margin-right: auto;
   margin-left: auto;
@@ -41,8 +40,6 @@ export const Title = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  stroke: ${props => props.theme.variable.titleAvatar};
-
   ${viewport.mob} {
     width: 279px;
     height: 333px;
