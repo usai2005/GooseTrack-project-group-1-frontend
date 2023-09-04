@@ -381,7 +381,7 @@ export const Controls = styled.button`
 export const DatePickerChevronDown = styled.svg`
 
 fill:none;
-stroke:#111111;
+stroke:${props => props.theme.variable.calendarTextColor};
 pointer-events:none;
 
 position:relative;
@@ -397,7 +397,7 @@ right:-270px;
 }
 
 @media (min-width: 1078px) {
- 
+  right:-320px;
 }
 
 
