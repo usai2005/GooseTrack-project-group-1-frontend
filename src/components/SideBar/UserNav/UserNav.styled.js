@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const List = styled.ul`
   // Common
@@ -9,7 +9,7 @@ export const List = styled.ul`
   //
 `;
 
-export const ItemLink = styled(Link)`
+export const ItemLink = styled(NavLink)`
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -18,7 +18,6 @@ export const ItemLink = styled(Link)`
   gap: 8px;
   padding: 10px 12px;
 
-  // add :not(last-child)
   margin-bottom: 18px;
 
   border-radius: 8px;
@@ -63,10 +62,27 @@ export const ItemLink = styled(Link)`
   stroke: ${props =>
     props.$currenttype
       ? props.theme.variable.bgReversLabel
-      : props.theme.variable.btnNavText};
+    : props.theme.variable.btnNavText};
 
-  // active
   &:hover {
+    background-color: ${props => props.theme.variable.btnNav};
+
+    color: ${props =>
+      props.$currenttype
+        ? props.theme.variable.btnDisActive
+        : props.theme.variable.gooseColor};
+    fill: ${props =>
+      props.$currenttype
+        ? props.theme.variable.btnDisActive
+        : props.theme.variable.gooseColor};
+    stroke: ${props =>
+      props.$currenttype
+        ? props.theme.variable.btnDisActive
+        : props.theme.variable.gooseColor};
+    // color: #3e85f3;
+  }
+
+  &.is-active {
     background-color: ${props => props.theme.variable.btnNav};
 
     color: ${props =>

@@ -5,6 +5,7 @@ export const FeedbackButton = styled.button`
   height: 32px;
   padding: 8px 20px;
   margin-right: 18px;
+  margin-left: auto;
 
   cursor: pointer;
 
