@@ -27,7 +27,7 @@ import {
 } from './StatisticsComp.styled';
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
 
-const CustomTooltip = ({ active, payload, label, x, y }) => {
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <LabelContainer className="custom-tooltip">
@@ -58,6 +58,7 @@ export const StatisticsComp = () => {
   let todoByMonth = 0;
   let inprogressByMonth = 0;
   let doneByMonth = 0;
+  let allTasks = 0;
 
   function filteredTasks(tasks) {
     filteredTasksByDay = tasks.filter(
@@ -86,16 +87,12 @@ export const StatisticsComp = () => {
     ).length;
   }
   filteredTasks(tasks);
-
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
-
-  // console.log(tasks)
 
   const data = [
     {
       name: 'To Do',
-      percentage: '100',
       day: todoByDay,
       month: todoByMonth,
       dayf: `${Math.round((todoByDay / allTasksByDay) * 100) || 0}%`,
@@ -103,7 +100,6 @@ export const StatisticsComp = () => {
     },
     {
       name: 'In Progress',
-      percentage: '100',
       day: inprogressByDay,
       month: inprogressByMonth,
       dayf: `${Math.round((inprogressByDay / allTasksByDay) * 100) || 0}%`,
@@ -113,7 +109,6 @@ export const StatisticsComp = () => {
     },
     {
       name: 'Done',
-      percentage: '100',
       day: doneByDay,
       month: doneByMonth,
       dayf: `${Math.round((doneByDay / allTasksByDay) * 100) || 0}%`,
@@ -132,7 +127,14 @@ export const StatisticsComp = () => {
             barGap={14}
           >
             <defs>
-              <linearGradient id="colorDay" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient
+                id="colorDay"
+                viewBox="0 0 27 211"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
                 <stop offset="95%" stopColor="#FFD2DD" stopOpacity={0.8} />
               </linearGradient>
@@ -157,7 +159,6 @@ export const StatisticsComp = () => {
             />
             <YAxis
               stroke={theme === 'light' ? '#343434' : '#fff'}
-              dataKey="percentage"
               axisLine={false}
               tickLine={false}
               width={40}
