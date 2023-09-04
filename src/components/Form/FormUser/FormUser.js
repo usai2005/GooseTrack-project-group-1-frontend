@@ -16,7 +16,7 @@ import {
   Label,
   DatePickerFormUserWrapper,
   ControlWrapper,
-  DatePickerChevronDown
+  DatePickerChevronDown,
 } from './FormUser.styled';
 import { DatePickerFormUser } from './DatePickerFormUser/DatePickerFormUser';
 import { Notify } from 'notiflix';
@@ -33,21 +33,20 @@ export const FormUser = () => {
     reset,
   } = useForm({
     resolver: yupResolver(FormUserSchema),
-    mode: 'onSubmit', 
+    mode: 'onSubmit',
     defaultValues: {
       name,
       email,
       phone: !phone ? '' : phone,
-      birthday: birthday ? birthday : "1900-01-01",
+      birthday: birthday ? birthday : '1900-01-01',
       skype: !skype ? '' : skype,
       avatarURL: !avatarURL ? '' : avatarURL,
     },
   });
-  
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentAvatarURL, setCurrentAvatarURL] = useState(avatarURL);
-  const [formBirthday, setFormBirthday] = useState("1990-01-01");
+  const [formBirthday, setFormBirthday] = useState('1990-01-01');
 
   useEffect(() => {
     if (birthday) {
@@ -56,31 +55,34 @@ export const FormUser = () => {
   }, [birthday]);
 
   const onSubmit = async data => {
-    const preparedBirthday = formBirthday === '' ? null : formBirthday;
+    // const preparedBirthday = formBirthday === '' ? formBirthday : formBirthday;
     const preparedEmail = data.email === '' ? email : data.email;
-    const preparedPhone = data.phone === '' ? null : data.phone;
-    const preparedSkype = data.skype === '' ? null : data.skype;
-  
-    const formData = new FormData(); 
-  
+    const preparedPhone = data.phone === '' ? ' ' : data.phone;
+    const preparedSkype = data.skype === '' ? '   ' : data.skype;
+
+    const formData = new FormData();
+
     formData.append('name', data.name);
     formData.append('email', preparedEmail);
     formData.append('phone', preparedPhone);
     formData.append('skype', preparedSkype);
-    formData.append('birthday', preparedBirthday);
-    formData.append('avatarURL', data.avatarURL); 
-  
-    console.log(formData); 
-  
-    dispatch(updateUser(formData)); 
-  
+    formData.append('birthday', formBirthday);
+    formData.append('avatarURL', currentAvatarURL);
+
+    console.log(formData);
+
+    dispatch(updateUser(formData));
+
     Notify.success('Changes saved successfully');
-    reset(); 
+    reset();
   };
-  
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off" encType="multipart/form-data">
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
+      encType="multipart/form-data"
+    >
       <AvatarFieldFormUser
         type="file"
         userName={name}
