@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import sprite from '../../../../images/icons.svg';
 
 import {
