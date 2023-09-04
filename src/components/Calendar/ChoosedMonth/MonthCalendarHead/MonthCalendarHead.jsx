@@ -8,7 +8,7 @@ import {
 export const MonthCalendarHead = () => {
   const weekStartDate = startOfWeek(new Date(), { weekStartsOn: 1 });
   const weekDays = [];
-  // console.log(window.innerWidth);
+
   for (let day = 0; day < 7; day++) {
     weekDays.push(
       <WeekNames key={format(addDays(weekStartDate, day), 'EE')}>

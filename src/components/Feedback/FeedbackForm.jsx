@@ -95,7 +95,7 @@ export const FeedbackForm = ({ onClose, user }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          console.log(error.message);
+          // console.log(error.message);
         });
     } else {
       const { content } = values;
@@ -109,7 +109,7 @@ export const FeedbackForm = ({ onClose, user }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          console.log(error.message);
+          // console.log(error.message);
         });
     }
     actions.resetForm();
@@ -127,8 +127,7 @@ export const FeedbackForm = ({ onClose, user }) => {
     dispatch(deleteReview(ownReview._id));
     onClose();
   };
-  console.log(action);
-  console.log(isEditActive);
+
   return (
     <Formik
       initialValues={ownReview || initialValues}
