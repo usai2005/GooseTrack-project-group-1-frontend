@@ -342,3 +342,18 @@ export const ReviewsTitle = styled.h2`
     line-height: calc(44 / 40);
   }
 `;
+
+export const Picture = styled.picture`
+  width: 335px;
+  height: 457px;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 700px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 604px;
+    height: 700px;
+  }
+`;
