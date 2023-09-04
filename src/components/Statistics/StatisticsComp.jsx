@@ -41,14 +41,8 @@ const CustomTooltip = ({ active, payload }) => {
 
 export const StatisticsComp = () => {
   const theme = useSelector(selectCurrentTheme);
-  // console.log(theme);
-  // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
-
-  // useEffect(() => {
-  //   dispatch(getAllTasks());
-  // }, [dispatch]);
 
   let filteredTasksByDay = null;
   let filteredTasksByMonth = null;
@@ -216,9 +210,6 @@ export const StatisticsComp = () => {
 
 //   const toDay = useSelector(selectActiveDate);
 //   const tasksByMonth = useSelector(selectTasks);
-
-//   console.log("tasksByMonth", tasksByMonth)
-//   console.log("toDay", toDay)
 
 //   const tasksByDay = tasksByMonth.filter(task => task.date === toDay);
 

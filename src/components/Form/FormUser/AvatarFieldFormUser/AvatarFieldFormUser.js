@@ -53,9 +53,7 @@ export const AvatarFieldFormUser = ({
         accept="image/*"
         onChange={e => {
           setCurrentAvatarURL(e.target.files[0]);
-          console.log(currentAvatarURL, 'new file');
           setIsDisabled(false);
-          // return e;
         }}
       />
       <p>

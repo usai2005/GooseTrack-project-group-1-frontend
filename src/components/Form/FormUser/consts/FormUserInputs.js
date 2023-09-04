@@ -13,7 +13,8 @@ export const userFormInputs = [
     type: 'tel',
     id: nanoid(),
     label: 'Phone',
-    placeholder: 'Enter phone',
+    placeholder: '+38 000 000 0000',
+    mask: '+38 000 000 0000',
   },
   {
     inputName: 'birthday',
