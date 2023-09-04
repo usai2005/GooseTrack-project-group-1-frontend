@@ -12,10 +12,8 @@ import {
   deleteReview,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
-// import sprite from '../../images/icons.svg';
+import sprite from '../../images/icons.svg';
 
-import { ReactComponent as IconEdit } from '../../images/feedback/edit.svg';
-import { ReactComponent as IconTrash } from '../../images/feedback/trash.svg';
 import { ReactComponent as IconClose } from '../../images/feedback/close.svg';
 
 import {
@@ -32,7 +30,8 @@ import {
   DeleteBtn,
   Close,
   ErrorMessage,
-  // EditIcon,
+  EditIcon,
+  DeleteIcon,
 } from './FeedbackForm.styled';
 
 const ReviewSchema = Yup.object().shape({
@@ -124,11 +123,6 @@ export const FeedbackForm = ({ onClose, user }) => {
   };
 
   const handleDelete = () => {
-    // Report.warning(
-    //   'Warning',
-    //   '"Do you really want to delete the review?" <br/><br/>Press Okey',
-    //   'Okay'
-    // );
     Notify.info('Your review has been delete.');
     dispatch(deleteReview(ownReview._id));
     onClose();
@@ -166,16 +160,15 @@ export const FeedbackForm = ({ onClose, user }) => {
                       isActive={isEditActive}
                       type="button"
                     >
-                      <IconEdit />
-                      {/* <EditIcon>
-                      <use href={sprite + '#icon-pencil-01'}></use>
-                    </EditIcon> */}
+                      <EditIcon fill="none">
+                        <use href={sprite + '#icon-pencil-01'}></use>
+                      </EditIcon>
                     </EditBtn>
-                    <DeleteBtn type="button" onClick={handleDelete}>
-                      <IconTrash />
-                      {/* <svg>
-                      <use href={sprite + '#icon-trash-2'}></use>
-                    </svg> */}
+
+                    <DeleteBtn onClick={handleDelete}>
+                      <DeleteIcon fill="none">
+                        <use href={sprite + '#icon-trash-3'}></use>
+                      </DeleteIcon>
                     </DeleteBtn>
                   </AreaEdit>
                 )}
