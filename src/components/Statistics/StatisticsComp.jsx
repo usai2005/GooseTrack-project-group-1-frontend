@@ -58,7 +58,7 @@ export const StatisticsComp = () => {
   let todoByMonth = 0;
   let inprogressByMonth = 0;
   let doneByMonth = 0;
-  let allTasks = 0;
+  // let allTasks = 0;
 
   function filteredTasks(tasks) {
     filteredTasksByDay = tasks.filter(
