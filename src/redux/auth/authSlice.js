@@ -53,10 +53,9 @@ const authSlice = createSlice({
       .addMatcher(
         isAnyOf(register.fulfilled, logIn.fulfilled),
         handleFulfilled
-      );  
-    },
-  }
-);
+      );
+  },
+});
 
 export const { cleanAuthData } = authSlice.actions;
 

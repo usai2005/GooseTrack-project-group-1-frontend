@@ -35,7 +35,7 @@ export const AvatarFieldFormUser = ({
         {!avatarURL ? (
           <p>
             <DefaultAvatarSvg>
-            <use href={`${sprite}#icon-user`} />
+              <use href={`${sprite}#icon-user`} />
             </DefaultAvatarSvg>
           </p>
         ) : (
@@ -48,18 +48,18 @@ export const AvatarFieldFormUser = ({
         type={type}
         accept="image/*"
         onChange={e => {
-          const file = e.target.files[0];
-          setFileUrl(file, setCurrentAvatarURL);
+          setCurrentAvatarURL(e.target.files[0]);
+          console.log(currentAvatarURL);
           setIsDisabled(false);
           return e;
         }}
       />
-              <p>
-            <PlusSvgOnAvatar>
-             <use href={sprite + '#icon-plus'}></use>
-            {/* <use href={`${sprite}#icon-plus`} /> */}
-            </PlusSvgOnAvatar>
-          </p>
+      <p>
+        <PlusSvgOnAvatar>
+          <use href={sprite + '#icon-plus'}></use>
+          {/* <use href={`${sprite}#icon-plus`} /> */}
+        </PlusSvgOnAvatar>
+      </p>
       <InfoWrapper>
         <h3>{userName}</h3>
         <p>User</p>
