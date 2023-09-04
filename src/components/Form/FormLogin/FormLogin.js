@@ -29,7 +29,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormLogin() {
-  const [passwordVissible, setPasswordVissible] = useState(true);
+  // const [passwordVissible, setPasswordVissible] = useState(true);
   const [passwordType, setPasswordType] = useState('password');
   const dispatch = useDispatch();
 

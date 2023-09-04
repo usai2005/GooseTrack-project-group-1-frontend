@@ -50,11 +50,11 @@ export const FormUser = () => {
     register: reg,
     // control,
     handleSubmit,
-    formState: {
-      // errors,
-      isDirty,
-      dirtyFields,
-    },
+    // formState: {
+    //   errors,
+    //   isDirty,
+    //   dirtyFields,
+    // },
   } = useForm({
     resolver: yupResolver(FormUserSchema),
     defaultValues: {
