@@ -32,7 +32,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormRegister() {
-  const [passwordVissible, setPasswordVissible] = useState(true);
+  // const [passwordVissible, setPasswordVissible] = useState(true);
   const [passwordType, setPasswordType] = useState('password');
 
   const dispatch = useDispatch();
