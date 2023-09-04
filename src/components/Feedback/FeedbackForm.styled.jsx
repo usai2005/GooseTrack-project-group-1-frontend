@@ -32,6 +32,11 @@ export const EditIcon = styled.svg`
   height: 24px;
 `;
 
+export const DeleteIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+
 export const Label = styled.label`
   color: ${props => props.theme.variable.bgReversLabel};
   display: block;

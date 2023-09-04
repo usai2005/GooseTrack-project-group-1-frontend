@@ -87,6 +87,8 @@ const GlobalStyle = createGlobalStyle`
 body {
   margin: 0; 
   padding: 0;
+  background-color: ${props => props.theme.variable.primaryBg};
+  /* background: #f7f6f9; */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
   'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;

@@ -5,7 +5,7 @@ export const handleRejected = state => {
   state.isRefreshing = false;
 };
 export const handleFulfilled = (state, action) => {
-  state.user = { ...state.user, ...action.payload.user };
+  state.user = action.payload.user;
   state.token = action.payload.token;
   state.isLoggedIn = true;
 };
@@ -13,7 +13,7 @@ export const handleLogOut = state => {
   state.user = {
     name: null,
     email: null,
-    avatar: null,
+    // avatar: null,
     phone: null,
     skype: null,
     birthday: null,

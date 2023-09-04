@@ -85,7 +85,9 @@ export default function MainPage() {
                     appointments in a visually appealing and intuitive layout.
                   </ItemDescription>
                 </InfoThumb>
+
                 <Picture>
+
                   <source
                     srcSet={`${IMAGES.calendarViewDesk1x604} 604w, ${IMAGES.calendarViewDesk2x1208} 1208w`}
                     media="(min-width: 1440px)"
@@ -106,7 +108,9 @@ export default function MainPage() {
                     alt="Calendar view"
                     loading="lazy"
                   />
+
                 </Picture>
+
               </DescriptionListItem>
               <DescriptionListItem className="middle">
                 <InfoThumb className="middle">

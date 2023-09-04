@@ -12,7 +12,7 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    avatar: null,
+    // avatar: null,
     phone: null,
     skype: null,
     birthday: null,
@@ -42,7 +42,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = { ...state.user, ...payload.user };
+        state.user = payload.user;
         state.isLoading = true;
         state.error = null;
       })
