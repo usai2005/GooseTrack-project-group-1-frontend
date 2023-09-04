@@ -116,20 +116,25 @@ export const TaskItem = styled.li`
   padding: 4px;
   margin: 0;
   overflow: hidden;
-  text-decoration: ${({ $isOverdue }) => $isOverdue && 'line-through'};
+  /* text-decoration: ${({ $isOverdue }) => $isOverdue && 'line-through'}; */
   display: flex;
   align-items: center;
   justify-content: space-around;
 
   /* height: 14px; */
   border-radius: 8px;
-  background-color: ${({ $priority }) => priorityBg[$priority]};
+  background-color: ${({ $priority, $isOverdue }) =>
+    $isOverdue ? '#DCE3E5' : priorityBg[$priority]};
   color: ${({ $priority, $isOverdue }) =>
     $isOverdue ? 'grey' : priorityColor[$priority]};
 
   font-size: 10px;
   font-weight: 700;
   line-height: calc(10 / 14);
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 
   &:not(:last-of-type) {
     margin-bottom: 4px;
