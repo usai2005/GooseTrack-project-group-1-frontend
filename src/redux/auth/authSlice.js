@@ -41,16 +41,22 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload.user };
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
       .addMatcher(
-        isAnyOf(register.fulfilled, logIn.fulfilled, updateUser.fulfilled),
+        isAnyOf(register.fulfilled, logIn.fulfilled),
         handleFulfilled
-      );
-  },
-});
+      );  
+    },
+  }
+);
 
 export const { cleanAuthData } = authSlice.actions;
 
