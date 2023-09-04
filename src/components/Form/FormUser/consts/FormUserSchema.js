@@ -14,7 +14,7 @@ const validFileExtensions = {
 const isValidFileType = value => {
   if (typeof value === 'string' && value.includes('image')) return true;
   if (value.length === 0) return true;
-  const fileName = value[0].name.toLowerCase();
+  const fileName = value[0]?.name.toLowerCase();
   return validFileExtensions['image'].indexOf(fileName.split('.').pop()) > -1;
 };
 
@@ -36,7 +36,7 @@ export const FormUserSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email format')
     .required('This field is required'),
-  avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
-    return value === '' || isValidFileType(value);
-  }),
+  // avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
+  //   return value === '' || isValidFileType(value);
+  // }),
 });

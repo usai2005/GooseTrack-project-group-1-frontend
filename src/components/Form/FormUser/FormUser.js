@@ -45,7 +45,7 @@ export const FormUser = () => {
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
-  const [currentAvatarURL, setCurrentAvatarURL] = useState(avatarURL);
+  const [currentAvatarURL, setCurrentAvatarURL] = useState(null);
   const [formBirthday, setFormBirthday] = useState('1990-01-01');
 
   useEffect(() => {

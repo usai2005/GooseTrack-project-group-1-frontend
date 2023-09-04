@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 import { Label, Input } from './FormField.styled';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 export const FormField = ({
   id,
