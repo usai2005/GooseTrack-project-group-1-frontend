@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'https://goosetrack-18hi.onrender.com/api/v1';
 
@@ -17,8 +18,10 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/register', credentials);
       setAuthHeader(res.data.token);
+      Notify.success(`Welcome. Your account has been created.`);
       return res.data;
     } catch (error) {
+      Notify.failure(`This email is already in use`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,8 +33,10 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+      Notify.success(`Welcome!`);
       return res.data;
     } catch (error) {
+      Notify.failure(`Login or password failed. Try again`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -74,6 +79,7 @@ export const updateUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const res = await axios.patch('users/edit', user);
+      Notify.success(`Your profile has been updated`);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
