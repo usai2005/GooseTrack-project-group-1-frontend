@@ -20,6 +20,8 @@ import { FormField } from './FormField/FormField';
 
 import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
+import sprite from '../../../images/icons.svg';
+
 import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
 
 import {
@@ -29,6 +31,7 @@ import {
   Label,
   DatePickerFormUserWrapper,
   ControlWrapper,
+  DatePickerChevronDown
 } from './FormUser.styled';
 
 import { DatePickerFormUser } from './DatePickerFormUser/DatePickerFormUser';
@@ -104,8 +107,8 @@ export const FormUser = () => {
 
 
   const onSubmit = async data => {
-    const preparedBirthday = formBirthday;
-    const preparedAvatarURL = data.avatarURL === '' ? null : currentAvatarURL;
+    const preparedBirthday = formBirthday === '' ? null : formBirthday;
+    // const preparedAvatarURL = data.avatarURL=== '' ? null : data.avatarURL;
     const preparedEmail = data.email === '' ? email : data.email;
     const preparedPhone = data.phone === '' ? null : data.phone;
     const preparedSkype = data.skype === '' ? null : data.skype;
@@ -115,7 +118,7 @@ export const FormUser = () => {
       phone: preparedPhone,
       skype: preparedSkype,
       birthday: preparedBirthday,
-      avatarURL: preparedAvatarURL,
+      // avatarURL: preparedAvatarURL,
     };
 
 
@@ -125,20 +128,20 @@ export const FormUser = () => {
   console.log("Info prepared data")
 
     dispatch(updateUser(preparedData));
-    setIsDisabled(true);
+    // setIsDisabled(true);
   };
 
-  useEffect(() => {
-    const checkIsDirty = () => {
-      if (currentAvatarURL === avatarURL) {
-        if (isDirty) setIsDisabled(false);
-        if (!isDirty) setIsDisabled(true);
-        // if (isError && error?.status !== 413) setIsDisabled(true);
-      }
-    };
+  // useEffect(() => {
+  //   const checkIsDirty = () => {
+  //     if (currentAvatarURL === avatarURL) {
+  //       if (isDirty) setIsDisabled(false);
+  //       if (!isDirty) setIsDisabled(true);
+  //       // if (isError && error?.status !== 413) setIsDisabled(true);
+  //     }
+  //   };
 
-    checkIsDirty();
-  }, [isDirty, dirtyFields, currentAvatarURL, avatarURL]);
+  //   checkIsDirty();
+  // }, [isDirty, dirtyFields, currentAvatarURL, avatarURL]);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
@@ -162,12 +165,16 @@ export const FormUser = () => {
                 <Label>Birthday</Label>
                 <DatePickerFormUser
                 setFormBirthday = {setFormBirthday}
+                formBirthday = {formBirthday}
 
                   key={input.id}
                   {...input}
                   // control={control}
                   // errors={errors}
                 />
+                 <DatePickerChevronDown>
+            <use href={`${sprite}#chevron-down`} />
+            </DatePickerChevronDown>
               </DatePickerFormUserWrapper>
             </ControlWrapper>
           )
