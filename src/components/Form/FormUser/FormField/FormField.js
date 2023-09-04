@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { Label, Input } from './FormField.styled';
-
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 export const FormField = ({
   id,
@@ -10,6 +10,7 @@ export const FormField = ({
   placeholder,
   label,
   register,
+  setIsDisabled,
 }) => {
   return (
     <div>
@@ -19,6 +20,10 @@ export const FormField = ({
         type={type}
         placeholder={placeholder}
         {...register(inputName)}
+        onChange={() => {
+          console.log('edit input');
+          setIsDisabled(false);
+        }}
       />
     </div>
   );

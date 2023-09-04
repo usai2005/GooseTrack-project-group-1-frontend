@@ -39,7 +39,7 @@ export const AvatarFieldFormUser = ({
             </DefaultAvatarSvg>
           </p>
         ) : (
-          <img src={avatarURL} alt="user_photo" />
+          <img src={URL.createObjectURL(currentAvatarURL)} alt="user_photo" />
         )}
       </Label>
       <HiddenInput
