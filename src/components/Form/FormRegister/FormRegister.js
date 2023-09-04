@@ -32,7 +32,6 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormRegister() {
-  // const [passwordVissible, setPasswordVissible] = useState(true);
   const [passwordType, setPasswordType] = useState('password');
 
   const dispatch = useDispatch();
@@ -188,9 +187,6 @@ function FormRegister() {
                 {errors.password && touched.password && (
                   <StyledInlineErrorMessage>
                     {errors.password}
-                    <LoginIcon>
-                      <use href={icons + '#icon-baseline-error-outline'}></use>
-                    </LoginIcon>
                   </StyledInlineErrorMessage>
                 )}
                 <IconEye
@@ -201,14 +197,7 @@ function FormRegister() {
                   }}
                 >
                   {passwordType === 'password' ? (
-                    <AiFillEyeInvisible
-                      style={{
-                        visibility:
-                          touched.password && !errors.password
-                            ? 'visible'
-                            : 'hidden',
-                      }}
-                    />
+                    <AiFillEyeInvisible />
                   ) : (
                     <AiFillEye />
                   )}
