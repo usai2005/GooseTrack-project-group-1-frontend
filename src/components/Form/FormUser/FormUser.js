@@ -27,11 +27,7 @@ export const FormUser = () => {
 
   const dispatch = useDispatch();
 
-  const {
-    register: reg,
-    handleSubmit,
-    reset,
-  } = useForm({
+  const { register: reg, handleSubmit } = useForm({
     resolver: yupResolver(FormUserSchema),
     mode: 'onSubmit',
     defaultValues: {
@@ -58,23 +54,23 @@ export const FormUser = () => {
     // const preparedBirthday = formBirthday === '' ? formBirthday : formBirthday;
     const preparedEmail = data.email === '' ? email : data.email;
     const preparedPhone = data.phone === '' ? ' ' : data.phone;
-    const preparedSkype = data.skype === '' ? '   ' : data.skype;
+    const preparedSkype = data.skype === '' ? '' : data.skype;
 
     const formData = new FormData();
 
-    formData.append('name', data.name);
-    formData.append('email', preparedEmail);
-    formData.append('phone', preparedPhone);
-    formData.append('skype', preparedSkype);
-    formData.append('birthday', formBirthday);
-    formData.append('avatarURL', currentAvatarURL);
+    if (name !== data.name) formData.append('name', data.name);
+    if (email !== preparedEmail) formData.append('email', preparedEmail.trim());
+    if (phone !== preparedPhone) formData.append('phone', preparedPhone.trim());
+    if (skype !== preparedSkype) formData.append('skype', preparedSkype.trim());
+    if (birthday !== formBirthday)
+      formData.append('birthday', formBirthday.trim());
+    if (currentAvatarURL) formData.append('avatarURL', currentAvatarURL);
 
     console.log(formData);
 
     dispatch(updateUser(formData));
 
     Notify.success('Changes saved successfully');
-    reset();
   };
 
   return (
