@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const SliderThumb = styled.div``;
-
 export const SliderWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  min-width: 335px;
+  max-width: 335px;
 
   padding: 24px 20px;
 
@@ -15,18 +16,15 @@ export const SliderWrapper = styled.div`
 
   margin-bottom: 8px;
 
-  &.slide {
-    margin-right: 24px;
-  }
-
   @media screen and (min-width: 768px) {
+    min-width: 580px;
+    max-width: 580px;
+
     padding: 32px;
     margin-bottom: 18px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 580px;
-
     margin-right: 24px;
     margin-bottom: 32px;
   }
@@ -82,23 +80,23 @@ export const Review = styled.p`
   line-height: calc(18 / 14);
 `;
 
-export const ArrowLeftIcon = styled.svg`
+export const Arrow = styled.svg`
   width: 50px;
   height: 50px;
 
-  @media screen and (min-width: 768px) {
-    width: 61px;
-    height: 61px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: ${props => props.theme.variable.bgColorForm};
+
+    transition: background-color 250ms;
   }
-`;
-
-export const ArrowRightIcon = styled.svg`
-  width: 50px;
-  height: 50px;
 
   @media screen and (min-width: 768px) {
     width: 61px;
     height: 61px;
+
+    border-radius: 10px;
   }
 `;
 
