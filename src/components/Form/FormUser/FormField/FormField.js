@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 import { Label, Input } from './FormField.styled';
 
-
 export const FormField = ({
   id,
   inputName,
@@ -10,6 +9,7 @@ export const FormField = ({
   placeholder,
   label,
   register,
+  setIsDisabled,
 }) => {
   return (
     <div>
@@ -19,6 +19,10 @@ export const FormField = ({
         type={type}
         placeholder={placeholder}
         {...register(inputName)}
+        onChange={() => {
+          console.log('edit input');
+          setIsDisabled(false);
+        }}
       />
     </div>
   );

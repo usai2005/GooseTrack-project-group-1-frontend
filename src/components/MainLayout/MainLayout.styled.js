@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
+  min-width: 100vh;
 
   @media screen and (min-width: 1440px) {
     width: calc(100% - 289px);

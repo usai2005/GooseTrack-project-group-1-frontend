@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const AuthSection = styled.section`
+  width: 100vw;
+
+  margin: 0 auto 64px;
+
+  background-color: ${props => props.theme.variable.buttonBg};
+`;
+
 export const AuthContainer = styled.div`
   display: flex;
 
@@ -9,10 +17,6 @@ export const AuthContainer = styled.div`
   align-items: center;
 
   height: 100vh;
-
-  margin-bottom: 64px;
-
-  background-color: #3e85f3;
 `;
 
 export const LogoImg = styled.img`
@@ -33,7 +37,7 @@ export const AuthTitle = styled.h1`
   margin: 0 0 32px;
   padding: 0;
 
-  color: #ffffff;
+  color: ${props => props.theme.variable.bgRevers};
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 44px;
@@ -90,18 +94,16 @@ export const LoginLink = styled(Link)`
 
   margin-bottom: 16px;
 
-  background-color: #ffffff;
+  background-color: ${props => props.theme.variable.bgRevers};
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
-  color: #3e85f3;
+  color: ${props => props.theme.variable.textColorBtn};
   font-size: 14px;
   font-weight: 600;
-  line-height: calc(18 / 14); /* 128.571% */
+  line-height: calc(18 / 14);
   letter-spacing: -0.28px;
   text-decoration: none;
-
-  ${'' /* cursor: pointer; */}
 
   span {
     margin-right: 6px;
@@ -119,7 +121,7 @@ export const LoginLink = styled(Link)`
 export const SignupLink = styled(Link)`
   width: 44px;
 
-  color: #ffffff;
+  color: ${props => props.theme.variable.textBtn};
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 12px;
@@ -127,7 +129,7 @@ export const SignupLink = styled(Link)`
   line-height: calc(14 / 12);
   text-decoration: none;
 
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid ${props => props.theme.variable.textBtn};
 
   @media screen and (min-width: 768px) {
     width: 51px;
@@ -153,14 +155,23 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const SliderContainer = styled.div`
-  padding: 0 20px 64px;
+  margin: 0 auto 64px;
+
+  width: 335px;
+
+  box-sizing: border-box;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    padding: 0 94px 100px;
+    width: 580px;
+
+    margin-bottom: 100px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 0 128px 118px;
+    width: 1184px;
+
+    margin-bottom: 118px;
   }
 `;
 
@@ -180,8 +191,12 @@ export const DescriptionList = styled.ul`
 `;
 
 export const DescriptionListItem = styled.li`
-  margin: 0;
+  /* margin: 0 0 64px 0; */
   padding: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 64px;
+  }
 
   @media screen and (min-width: 768px) {
     &.middle {
@@ -220,7 +235,7 @@ export const InfoNumber = styled.p`
   margin: 0 0 14px;
   padding: 0;
 
-  color: #3e85f3;
+  color: ${props => props.theme.variable.activeTextColorBtn};
   font-size: 80px;
   font-weight: 700;
   line-height: 1;
@@ -244,7 +259,7 @@ export const InfoTitle = styled.div`
 
   border-radius: 44px;
 
-  background-color: #dcebf7;
+  background-color: ${props => props.theme.variable.bgColorForm};
 
   &.last {
     width: 139px;
@@ -259,7 +274,7 @@ export const InfoTitle = styled.div`
   }
 
   > h2 {
-    color: #3e85f3;
+    color: ${props => props.theme.variable.activeTextColorBtn};
     font-size: 32px;
     font-weight: 700;
     line-height: calc(40 / 32);
@@ -304,7 +319,7 @@ export const LoginIcon = styled.svg`
   width: 18px;
   height: 18px;
 
-  stroke: #3e85f3;
+  stroke: ${props => props.theme.variable.buttonBg};
 `;
 
 export const ReviewsTitle = styled.h2`
@@ -318,7 +333,7 @@ export const ReviewsTitle = styled.h2`
 
   text-transform: uppercase;
 
-  color: #3e85f3;
+  color: ${props => props.theme.variable.activeTextColorBtn};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;

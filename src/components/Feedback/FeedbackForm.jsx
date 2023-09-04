@@ -6,11 +6,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOwnReview } from '../../redux/reviews/reviewsSelectors';
 // import { changeRating } from '../../redux/reviews/reviewsSlice';
-import { Notify, Report } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   addReview,
   deleteReview,
-  // fetchOwnReviews,
   updateReview,
 } from '../../redux/reviews/reviewsOperations';
 import sprite from '../../images/icons.svg';
@@ -71,9 +70,6 @@ export const FeedbackForm = ({ onClose, user }) => {
   const [action, setAction] = useState('create');
 
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchOwnReviews());
-  // }, [dispatch]);
 
   const ownReview = useSelector(selectOwnReview);
   const [newRating, setNewRating] = useState(ownReview.rating);
@@ -85,9 +81,8 @@ export const FeedbackForm = ({ onClose, user }) => {
     }
   }, [dispatch, ownReview]);
 
-  const handleSubmit = (values, actions, show) => {
-    setIsEditActive(!show);
-    setAction('edit');
+  const handleSubmit = (values, actions) => {
+    // setAction('edit');
     if (action === 'edit') {
       const { content } = values;
       Notify.info('Your review has been edited.');
@@ -123,8 +118,8 @@ export const FeedbackForm = ({ onClose, user }) => {
     }
   };
 
-  const handleEdit = show => {
-    setIsEditActive(!show);
+  const handleEdit = () => {
+    setIsEditActive(!isEditActive);
   };
 
   const handleDelete = () => {
@@ -147,7 +142,7 @@ export const FeedbackForm = ({ onClose, user }) => {
             <Rating
               name="rating"
               component="input"
-              value={values.rating}
+              value={newRating}
               itemStyles={rateStyled}
               style={{ maxWidth: 110, gap: 4, marginBottom: '20px' }}
               onChange={value => {
@@ -162,7 +157,7 @@ export const FeedbackForm = ({ onClose, user }) => {
                   <AreaEdit>
                     <EditBtn
                       onClick={handleEdit}
-                      // isActive={isEditActive}
+                      isActive={isEditActive}
                       type="button"
                     >
                       <EditIcon fill="none">
@@ -190,7 +185,7 @@ export const FeedbackForm = ({ onClose, user }) => {
               <ErrorMessage name="content" component="div" />
             </FormWrapper>
 
-            {!isEditActive && (
+            {(!Boolean(ownReview.content) || isEditActive) && (
               <AreaBtn>
                 <SubmitBtn type="submit">
                   {action === 'edit' ? 'Edit' : 'Save'}

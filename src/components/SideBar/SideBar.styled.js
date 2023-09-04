@@ -56,11 +56,15 @@ export const MenuCloseBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 40px;
   height: 40px;
+
   padding: 0;
   background-color: transparent;
   border-radius: 50%;
+
+  stroke: ${props => props.theme.variable.arrowColor};
 `;
 
 export const CloseIcon = styled.svg`

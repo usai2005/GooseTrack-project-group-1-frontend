@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import sprite from '../../../../images/icons.svg';
 
 import {
@@ -9,14 +10,14 @@ import {
   InfoWrapper,
 } from './AvatarFieldFormUser.styled';
 
-const setFileUrl = (file, cbSetFileUrl) => {
-  if (!file) return cbSetFileUrl(null);
-  const fileReader = new FileReader();
-  fileReader.readAsDataURL(file);
-  fileReader.onload = () => {
-    cbSetFileUrl(fileReader.result);
-  };
-};
+// const setFileUrl = (file, cbSetFileUrl) => {
+//   if (!file) return cbSetFileUrl(null);
+//   const fileReader = new FileReader();
+//   fileReader.readAsDataURL(file);
+//   fileReader.onload = () => {
+//     cbSetFileUrl(fileReader.result);
+//   };
+// };
 
 export const AvatarFieldFormUser = ({
   userName,
@@ -29,17 +30,20 @@ export const AvatarFieldFormUser = ({
   setIsDisabled,
   register,
 }) => {
+  // useEffect(() => {}, []);
   return (
     <UserAvatarWrapper>
       <Label htmlFor={id}>
-        {!avatarURL ? (
+        {currentAvatarURL ? (
+          <img src={URL.createObjectURL(currentAvatarURL)} alt="user_photo" />
+        ) : avatarURL ? (
+          <img src={avatarURL} alt="user_photo" />
+        ) : (
           <p>
             <DefaultAvatarSvg>
-            <use href={`${sprite}#icon-user`} />
+              <use href={`${sprite}#icon-user`} />
             </DefaultAvatarSvg>
           </p>
-        ) : (
-          <img src={avatarURL} alt="user_photo" />
         )}
       </Label>
       <HiddenInput
@@ -48,18 +52,18 @@ export const AvatarFieldFormUser = ({
         type={type}
         accept="image/*"
         onChange={e => {
-          const file = e.target.files[0];
-          setFileUrl(file, setCurrentAvatarURL);
+          setCurrentAvatarURL(e.target.files[0]);
+          console.log(currentAvatarURL, 'new file');
           setIsDisabled(false);
-          return e;
+          // return e;
         }}
       />
-              <p>
-            <PlusSvgOnAvatar>
-             <use href={sprite + '#icon-plus'}></use>
-            {/* <use href={`${sprite}#icon-plus`} /> */}
-            </PlusSvgOnAvatar>
-          </p>
+      <p>
+        <PlusSvgOnAvatar>
+          <use href={sprite + '#icon-plus'}></use>
+          {/* <use href={`${sprite}#icon-plus`} /> */}
+        </PlusSvgOnAvatar>
+      </p>
       <InfoWrapper>
         <h3>{userName}</h3>
         <p>User</p>

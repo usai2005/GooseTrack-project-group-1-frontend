@@ -9,7 +9,7 @@ const Loader = () => {
         strokeColor="#3E85F3"
         strokeWidth="5"
         animationDuration="0.75"
-        width="50"
+        width="100"
         visible={true}
       />
     </LoaderStyles>

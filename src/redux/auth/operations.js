@@ -33,7 +33,13 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+      
       Notify.success(`Welcome!`);
+
       return res.data;
     } catch (error) {
       Notify.failure(`Login or password failed. Try again`);
@@ -42,16 +48,14 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
-  'users/logout', 
-  async (_, thunkAPI) => {
-    try {
-      await axios.post('/users/logout');
-      clearAuthHeader();
-      window.location.href = '/GooseTrack-project-group-1-frontend/';
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/users/logout');
+    clearAuthHeader();
+    window.location.href = '/GooseTrack-project-group-1-frontend/';
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 export const currentUser = createAsyncThunk(
@@ -79,10 +83,12 @@ export const updateUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const res = await axios.patch('users/edit', user);
+
       Notify.success(`Your profile has been updated`);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);

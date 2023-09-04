@@ -107,11 +107,10 @@ export const Input = styled(Field)`
   font-weight: 600;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
-  color: ${props => props.theme.variable.bgReversLabel};
-
+  color: ${props => props.theme.variable.calendarTextColor};
   background-color: ${props => props.theme.variable.primaryBg};
   border-radius: 8px;
-  border: 1px solid rgba(246, 246, 246, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 
   ${viewport.tab} {
     width: 404px;
@@ -174,7 +173,7 @@ export const SubmitBtn = styled.button`
 `;
 
 export const CancelBtn = styled.button`
-  color: ${props => props.theme.variable.reviewLabel};
+  color: ${props => props.theme.variable.calendarTextColor};
   background-color: ${props => props.theme.variable.btnRevers};
   text-transform: none;
   width: 262px;

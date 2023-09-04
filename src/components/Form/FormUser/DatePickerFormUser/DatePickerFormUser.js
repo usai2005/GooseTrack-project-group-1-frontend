@@ -1,9 +1,9 @@
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { format } from 'date-fns';
+import { format,subYears,parse } from 'date-fns';
 
-export  const DatePickerFormUser = ( {setFormBirthday}
+export  const DatePickerFormUser = ( {setFormBirthday, formBirthday}
 
   ) => {
 
@@ -11,6 +11,13 @@ export  const DatePickerFormUser = ( {setFormBirthday}
     return (
         <>
           <ReactDatePicker
+          selected = {parse(formBirthday,'yyyy-MM-dd', new Date())}
+          showYearDropdown
+          showMonthDropdown
+          minDate={new Date('1970-01-01')}
+          maxDate={subYears(new Date(),6)}
+          closeOnScroll={false}
+          formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
           onChange = {value => {
             setFormBirthday((format(value, 'yyyy-MM-dd')))
             console.log("Info value")
@@ -25,11 +32,10 @@ export  const DatePickerFormUser = ( {setFormBirthday}
             //     navigate(`${periodType}/${format(value, 'yyyy-MM-dd')}`, {});
             //   }
             // }}
-            calendarStartDay={1}
+            
             // dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMM yyyy'}
-            closeOnScroll={true}
-            formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-            todayButton="Today"
+        
+            // todayButton="Today"
             // minDate={new Date(createdAt)}
           />
         </>

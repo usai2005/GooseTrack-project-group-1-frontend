@@ -18,8 +18,26 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import { Container, Title, Wrapper } from './StatisticsComp.styled';
+import {
+  Container,
+  LabelContainer,
+  LabelTitle,
+  Title,
+  Wrapper,
+} from './StatisticsComp.styled';
 import { selectCurrentTheme } from 'redux/theme/themeSelectors';
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <LabelContainer className="custom-tooltip">
+        <LabelTitle className="label">{`All tasks for the ${payload[0].name}: ${payload[0].value}`}</LabelTitle>
+        <LabelTitle className="label">{`All tasks for a ${payload[1].name}: ${payload[1].value}`}</LabelTitle>
+      </LabelContainer>
+    );
+  }
+  return null;
+};
 
 export const StatisticsComp = () => {
   const theme = useSelector(selectCurrentTheme);
@@ -40,6 +58,7 @@ export const StatisticsComp = () => {
   let todoByMonth = 0;
   let inprogressByMonth = 0;
   let doneByMonth = 0;
+  // let allTasks = 0;
 
   function filteredTasks(tasks) {
     filteredTasksByDay = tasks.filter(
@@ -68,11 +87,8 @@ export const StatisticsComp = () => {
     ).length;
   }
   filteredTasks(tasks);
-
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
   const allTasksByMonth = todoByMonth + inprogressByMonth + doneByMonth;
-
-  // console.log(tasks)
 
   const data = [
     {
@@ -109,10 +125,16 @@ export const StatisticsComp = () => {
             data={data}
             margin={{ top: 24, right: 10, left: 10, bottom: 10 }}
             barGap={14}
-            
           >
-            <defs  >
-              <linearGradient  id="colorDay" x1="0" y1="0" x2="0" y2="1">
+            <defs>
+              <linearGradient
+                id="colorDay"
+                viewBox="0 0 27 211"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
                 <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
                 <stop offset="95%" stopColor="#FFD2DD" stopOpacity={0.8} />
               </linearGradient>
@@ -125,28 +147,38 @@ export const StatisticsComp = () => {
               vertical={false}
               style={{
                 stroke:
-                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)', 
+                  theme === 'light' ? '#E3F3FF' : 'rgba(227, 243, 255, 0.15)',
               }}
             />
-            <XAxis 
+            <XAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
               dataKey="name"
               axisLine={false}
               tickLine={false}
               height={40}
             />
             <YAxis
+              stroke={theme === 'light' ? '#343434' : '#fff'}
               axisLine={false}
               tickLine={false}
               width={40}
               allowDecimals={false}
               tickMargin={20}
             />
-            <Tooltip />
-            <Bar dataKey="day" fill="url(#colorDay)" barSize={27} >
-              <LabelList dataKey="dayf" position="top" />
+            <Tooltip cursor={false} content={<CustomTooltip />} />
+            <Bar dataKey="day" fill="url(#colorDay)" barSize={27}>
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="dayf"
+                position="top"
+              />
             </Bar>
             <Bar dataKey="month" fill="url(#colorMonth)" barSize={27}>
-              <LabelList dataKey="monthf" position="top" />
+              <LabelList
+                stroke={theme === 'light' ? '#343434' : '#fff'}
+                dataKey="monthf"
+                position="top"
+              />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

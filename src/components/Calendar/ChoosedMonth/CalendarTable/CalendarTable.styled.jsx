@@ -12,22 +12,23 @@ export const WeekContainer = styled.ul`
   background-color: ${props => props.theme.variable.bgCalendar};
   color: ${props => props.theme.variable.text};
 
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
   @media (min-width: 768px) {
     grid-auto-rows: 144px;
-
-    /* padding-top: 50px; */
   }
 
   @media (min-width: 1440px) {
     grid-auto-rows: 125px;
-
-    /* padding-top: 40px; */
   }
 `;
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
-  border: ${props => props.theme.variable.borderColorCalendar};
+  border: ${({ isOverdue, theme }) =>
+    isOverdue ? '' : theme.variable.borderColorCalendar};
   cursor: pointer;
   transition: border 250ms linear;
   &:hover,
@@ -95,6 +96,7 @@ export const WeekNamesContainer = styled.ul`
 
   @media (min-width: 768px) {
     margin-bottom: 18px;
+    margin-top: 8px;
   }
   @media (min-width: 1440px) {
     margin-bottom: 15px;
@@ -114,15 +116,16 @@ export const TaskItem = styled.li`
   padding: 4px;
   margin: 0;
   overflow: hidden;
-
+  text-decoration: ${({ $isOverdue }) => $isOverdue && 'line-through'};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   /* height: 14px; */
   border-radius: 8px;
   background-color: ${({ $priority }) => priorityBg[$priority]};
-  color: ${({ $priority }) => priorityColor[$priority]};
+  color: ${({ $priority, $isOverdue }) =>
+    $isOverdue ? 'grey' : priorityColor[$priority]};
 
   font-size: 10px;
   font-weight: 700;
@@ -133,6 +136,9 @@ export const TaskItem = styled.li`
   }
 
   & p {
+    display: flex;
+    gap: 2px;
+    align-items: center;
     padding: 0;
     margin: 0;
   }
