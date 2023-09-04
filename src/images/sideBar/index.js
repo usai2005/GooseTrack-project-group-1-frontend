@@ -5,6 +5,8 @@ const IMAGES = {
     logoGooseTablet2x: require('./logo-goose-tablet@2x.webp'),
     logoGooseDesktop: require('./logo-goose-desktop.webp'),
     logoGooseDesktop2x: require('./logo-goose-desktop@2x.webp'),
+    headerGooseDesktop: require('./header-goose-desktop.webp'),
+    headerGooseDesktop2x: require('./header-goose-desktop@2x.webp'),
 };
 
 export default IMAGES;

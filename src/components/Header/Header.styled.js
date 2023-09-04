@@ -35,6 +35,13 @@ export const MenuIcon = styled.svg`
   }
 `;
 
+export const ImgHeaderDay = styled.img`
+  width: 64px;
+
+  margin-right: 8px;
+`;
+
+
 export const PageTitle = styled.h1`
   color: ${props => props.theme.variable.headerText};
 
@@ -53,11 +60,22 @@ export const PageTitle = styled.h1`
   }
 
   margin: 0;
-  margin-right: auto;
+  margin-bottom: 8px;
 
   //   color: #111111;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 32px;
   line-height: calc(32 / 32);
+`;
+
+export const TextHeader = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: calc(18 / 14);
+  color: ${props => props.theme.variable.headerText};
+
+  span {
+    color: ${props => props.theme.variable.weekendTextColor};
+  }
 `;
