@@ -96,7 +96,12 @@ export const FormUser = () => {
       <FormBody>
         {userFormInputs.map(input =>
           input.type !== 'date' ? (
-            <FormField key={input.id} {...input} register={reg} />
+            <FormField
+              key={input.id}
+              {...input}
+              register={reg}
+              setIsDisabled={setIsDisabled}
+            />
           ) : (
             <ControlWrapper key={input.id}>
               <DatePickerFormUserWrapper>
