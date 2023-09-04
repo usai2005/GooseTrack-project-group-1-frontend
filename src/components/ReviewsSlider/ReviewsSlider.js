@@ -7,7 +7,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import icons from '../../images/icons.svg';
 
 import {
-  SliderThumb,
   ReviewersName,
   SliderWrapper,
   AvatarImageContainer,
@@ -18,14 +17,12 @@ import {
   StarIcon,
   StarsList,
   ReviewWrapper,
-  ArrowLeftIcon,
   Arrows,
-  ArrowRightIcon,
+  Arrow,
 } from './ReviewsSlider.styled';
 
 const ReviewsSlider = () => {
   const reviews = useSelector(selectReviews);
-
   const slide = useRef(null);
 
   const settings = {
@@ -37,6 +34,7 @@ const ReviewsSlider = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     adaptiveHeight: true,
+    variableWidth: true,
     arrows: false,
     responsive: [
       {
@@ -49,16 +47,13 @@ const ReviewsSlider = () => {
     ],
   };
 
-
-
   const ratingStars = new Array(5).fill(1);
 
-
   return (
-    <SliderThumb>
+    <>
       <Slider ref={slide} {...settings}>
         {reviews.map(review => (
-          <SliderWrapper className="slide" key={review._id}>
+          <SliderWrapper key={review._id}>
             <AboutReviewerContainer>
               <AvatarImageContainer>
                 <img src={review.owner.avatarURL} alt="reviewer" />
@@ -89,16 +84,16 @@ const ReviewsSlider = () => {
       </Slider>
       <ArrowsContainer>
         <Arrows>
-          <ArrowLeftIcon onClick={() => slide?.current?.slickPrev()}>
+          <Arrow className="arrow" onClick={() => slide?.current?.slickPrev()}>
             <use href={icons + '#icon-left-slide-arrow'}></use>
-          </ArrowLeftIcon>
+          </Arrow>
 
-          <ArrowRightIcon onClick={() => slide?.current?.slickNext()}>
+          <Arrow onClick={() => slide?.current?.slickNext()}>
             <use href={icons + '#icon-right-slide-arrow'}></use>
-          </ArrowRightIcon>
+          </Arrow>
         </Arrows>
       </ArrowsContainer>
-    </SliderThumb>
+    </>
   );
 };
 
