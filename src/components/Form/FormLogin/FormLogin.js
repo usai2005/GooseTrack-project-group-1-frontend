@@ -29,7 +29,6 @@ const validationSchema = Yup.object().shape({
 });
 
 function FormLogin() {
-  // const [passwordVissible, setPasswordVissible] = useState(true);
   const [passwordType, setPasswordType] = useState('password');
   const dispatch = useDispatch();
 
@@ -41,9 +40,6 @@ function FormLogin() {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
-        // console.log(values);
-        // setFormValues(values);
-
         dispatch(logIn(values));
 
         const timeOut = setTimeout(() => {
@@ -140,9 +136,6 @@ function FormLogin() {
                 {errors.password && touched.password && (
                   <StyledInlineErrorMessage>
                     {errors.password}
-                    <LoginIcon>
-                      <use href={icons + '#icon-baseline-error-outline'}></use>
-                    </LoginIcon>
                   </StyledInlineErrorMessage>
                 )}
                 <IconEye
@@ -153,14 +146,7 @@ function FormLogin() {
                   }}
                 >
                   {passwordType === 'password' ? (
-                    <AiFillEyeInvisible
-                      style={{
-                        visibility:
-                          touched.password && !errors.password
-                            ? 'visible'
-                            : 'hidden',
-                      }}
-                    />
+                    <AiFillEyeInvisible />
                   ) : (
                     <AiFillEye />
                   )}
