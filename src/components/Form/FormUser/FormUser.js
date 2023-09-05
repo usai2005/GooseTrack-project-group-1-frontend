@@ -7,6 +7,9 @@ import { FormUserSchema } from './consts/FormUserSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormField } from './FormField/FormField';
 import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
+
+import {Container} from "../../../styles/container"
+
 import sprite from '../../../images/icons.svg';
 import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
 import {
@@ -66,6 +69,8 @@ export const FormUser = () => {
       formData.append('birthday', formBirthday.trim());
     if (currentAvatarURL) formData.append('avatarURL', currentAvatarURL);
 
+    console.log(formData);
+
     dispatch(updateUser(formData));
 
     Notify.success('Changes saved successfully');
@@ -99,16 +104,17 @@ export const FormUser = () => {
           ) : (
             <ControlWrapper key={input.id}>
               <DatePickerFormUserWrapper>
-                <Label>Birthday</Label>
+                <Label>Birthday
+                <DatePickerChevronDown>
+                  <use href={`${sprite}#icon-chevron-down`} />
+                </DatePickerChevronDown>
+                </Label>
                 <DatePickerFormUser
                   setFormBirthday={setFormBirthday}
                   formBirthday={formBirthday}
                   key={input.id}
                   {...input}
                 />
-                <DatePickerChevronDown>
-                  <use href={`${sprite}#chevron-down`} />
-                </DatePickerChevronDown>
               </DatePickerFormUserWrapper>
             </ControlWrapper>
           )

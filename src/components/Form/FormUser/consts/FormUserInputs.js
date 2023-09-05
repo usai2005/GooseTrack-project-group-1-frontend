@@ -9,26 +9,11 @@ export const userFormInputs = [
     placeholder: 'Enter your name',
   },
   {
-    inputName: 'phone',
-    type: 'tel',
-    id: nanoid(),
-    label: 'Phone',
-    placeholder: '+38 000 000 0000',
-    mask: '+38 000 000 0000',
-  },
-  {
     inputName: 'birthday',
     type: 'date',
     id: nanoid(),
     label: 'Birthday',
     placeholder: 'DD/MM/YYYY',
-  },
-  {
-    inputName: 'skype',
-    type: 'string',
-    id: nanoid(),
-    label: 'Skype',
-    placeholder: 'Add a skype number',
   },
   {
     inputName: 'email',
@@ -37,6 +22,20 @@ export const userFormInputs = [
     label: 'Email',
     placeholder: 'Enter email',
   },
+  {
+    inputName: 'phone',
+    type: 'tel',
+    id: nanoid(),
+    label: 'Phone',
+    placeholder: 'Enter phone',
+  },
+  {
+    inputName: 'skype',
+    type: 'string',
+    id: nanoid(),
+    label: 'Skype',
+    placeholder: 'Add a skype number',
+  }
 ];
 
 export const userAvatarInput = {
