@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormField } from './FormField/FormField';
 import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
-import {Container} from "../../../styles/container"
+// import {Container} from "../../../styles/container"
 
 import sprite from '../../../images/icons.svg';
 import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
