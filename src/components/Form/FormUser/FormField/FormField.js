@@ -20,7 +20,6 @@ export const FormField = ({
         placeholder={placeholder}
         {...register(inputName)}
         onChange={() => {
-          console.log('edit input');
           setIsDisabled(false);
         }}
       />

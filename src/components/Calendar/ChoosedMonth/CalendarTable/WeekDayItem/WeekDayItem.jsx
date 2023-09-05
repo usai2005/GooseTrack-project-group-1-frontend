@@ -23,15 +23,13 @@ export const WeekDayItem = ({
   const isOverdue = task => {
     const { date, category } = task;
     return (
-      parse(date, 'yyyy-MM-dd', new Date()) <= currentDate &&
-      category !== 'done'
+      parse(date, 'yyyy-MM-dd', new Date()) <= new Date() && category !== 'done'
     );
   };
   return (
     <WeekDay
       key={currentDate}
       onClick={e => handleClick(e, format(currentDate, 'yyyy-MM-dd'))}
-      $isOverdue={isOverdue}
     >
       {!isSameMonth(currentDate, activeDate) ? (
         <span></span>

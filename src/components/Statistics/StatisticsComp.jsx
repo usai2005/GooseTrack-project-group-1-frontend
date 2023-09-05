@@ -1,9 +1,4 @@
-// import React, { useEffect } from 'react';
-import {
-  useSelector,
-  // useDispatch
-} from 'react-redux';
-// import { getAllTasks } from '../../redux/tasks/tasksOperations';
+import { useSelector } from 'react-redux';
 import { selectTasks } from '../../redux/tasks/tasksSelectors';
 import { selectSelectedDate } from '../../redux/date/selectors';
 
@@ -41,13 +36,9 @@ const CustomTooltip = ({ active, payload }) => {
 
 export const StatisticsComp = () => {
   const theme = useSelector(selectCurrentTheme);
-  // const dispatch = useDispatch();
+
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
-
-  // useEffect(() => {
-  //   dispatch(getAllTasks());
-  // }, [dispatch]);
 
   let filteredTasksByDay = null;
   let filteredTasksByMonth = null;
@@ -215,9 +206,6 @@ export const StatisticsComp = () => {
 
 //   const toDay = useSelector(selectActiveDate);
 //   const tasksByMonth = useSelector(selectTasks);
-
-//   console.log("tasksByMonth", tasksByMonth)
-//   console.log("toDay", toDay)
 
 //   const tasksByDay = tasksByMonth.filter(task => task.date === toDay);
 

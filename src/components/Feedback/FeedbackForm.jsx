@@ -95,7 +95,7 @@ export const FeedbackForm = ({ onClose, user }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          console.log(error.message);
+          // console.log(error.message);
         });
     } else {
       const { content } = values;
@@ -109,7 +109,7 @@ export const FeedbackForm = ({ onClose, user }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          console.log(error.message);
+          // console.log(error.message);
         });
     }
     actions.resetForm();
@@ -156,7 +156,7 @@ export const FeedbackForm = ({ onClose, user }) => {
                   <AreaEdit>
                     <EditBtn
                       onClick={handleEdit}
-                      isActive={isEditActive}
+                      // isActive={isEditActive}
                       type="button"
                     >
                       <EditIcon fill="none">

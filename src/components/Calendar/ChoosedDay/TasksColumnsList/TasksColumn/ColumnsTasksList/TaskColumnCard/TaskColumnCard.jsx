@@ -10,7 +10,7 @@ import {
 
 import sprite from '../../../../../../../images/icons.svg';
 import { AreaEdit } from 'components/Feedback/FeedbackForm.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, updateTask } from 'redux/tasks/tasksOperations';
 import { useState } from 'react';
 import { CategoryModal } from './CategoryModal/CategoryModal';
@@ -18,9 +18,10 @@ import {
   ControModalBtn,
   ModalOverlay,
 } from './CategoryModal/CategoryModal.styled';
+import { selectUser } from 'redux/auth/selectors';
 
 export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
-  const avatarUrl = task.owner.avatarURL ?? 'default url';
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const [isChangeDirOpened, setIsChangeDirOpened] = useState(false);
@@ -46,7 +47,7 @@ export const TaskColumnCard = ({ task, setTaskToEdit, setIsOpen }) => {
       <TextCard>{task.title}</TextCard>
       <ContainerData>
         <WrapperData>
-          <ContainerAvatar src={avatarUrl} alt="user name" />
+          <ContainerAvatar src={user.avatarURL} alt="user name" />
           <Priority $priority={task.priority}>{task.priority}</Priority>
         </WrapperData>
 

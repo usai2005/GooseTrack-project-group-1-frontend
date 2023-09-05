@@ -17,9 +17,12 @@ export const DatePickerWrapper = styled.div`
     outline: none;
     border: none;
     border-radius: 8px;
-    height: 30px;
+    height: 34px;
+    @media (max-width: 768px) {
+      height: 30px;
+    }
 
-    width: 140px; ///
+    width: 140px;
 
     color: white;
     text-transform: uppercase;
@@ -104,7 +107,10 @@ export const Controls = styled.button`
   justify-content: center;
   align-items: center;
   width: 36px;
-  height: 30px;
+  height: 34px;
+  @media (max-width: 768px) {
+    height: 30px;
+  }
   background-color: ${props => props.theme.variable.CalendarLinkColor};
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   color: ${props => props.theme.variable.calendarTextColor};
