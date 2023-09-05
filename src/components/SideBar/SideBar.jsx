@@ -24,9 +24,17 @@ const SideBar = () => {
     const handleToggleSideBar = () => {
         dispatch(toggleSideBar());
     };
+
+    const handleBackdropClick = event => {
+        (event.currentTarget === event.target) &&
+            handleToggleSideBar();
+    };
     
     return (
-        <Container className={!currentState && "is-open"}>
+        <Container
+            className={!currentState && "is-open"}
+            onClick={handleBackdropClick}
+        >
             <SideBarContainer>
                 <Wrapper>
                     <Logo />
