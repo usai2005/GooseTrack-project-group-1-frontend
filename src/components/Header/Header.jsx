@@ -1,6 +1,7 @@
 import AddFeedbackBt from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import UserInfo from '../UserInfo/UserInfo';
+
 import IMAGES from '../../images/sideBar/index'
 import icons from '../../images/icons.svg';
 

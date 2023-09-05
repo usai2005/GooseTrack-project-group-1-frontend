@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     margin-right: 8px;
 
+    cursor: pointer;
+
     @media screen and (min-width: 375px) {
         margin-right: 14px;
     }
