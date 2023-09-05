@@ -48,21 +48,12 @@ function FormRegister() {
         try {
           const response = await dispatch(register(values));
           if (register.fulfilled.match(response)) {
-            await dispatch(
-              logIn({ email: values.email, password: values.password })
-            );
+            await dispatch(logIn({ email: values.email, password: values.password }));
           }
 
           resetForm();
         } catch (error) {
-          if (error.response && error.response.status === 401) {
-            console.error('Unauthorized: The user is not authenticated.');
-          } else {
-            console.error(
-              'An error occurred while fetching current user:',
-              error
-            );
-          }
+          console.error('Error:', error.message)
         }
       }}
     >
