@@ -1,7 +1,7 @@
 import AddFeedbackBt from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import UserInfo from '../UserInfo/UserInfo';
-import {Container} from '../../styles/container'
+// import {Container} from '../../styles/container'
 import icons from '../../images/icons.svg';
 
 import {
