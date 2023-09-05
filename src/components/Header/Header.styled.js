@@ -39,20 +39,6 @@ export const ImgHeaderDay = styled.img`
   width: 64px;
 
   margin-right: 8px;
-
-  @media screen and (max-width: 1439px) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
 `;
 
 
@@ -91,19 +77,5 @@ export const TextHeader = styled.p`
 
   span {
     color: ${props => props.theme.variable.weekendTextColor};
-  }
-
-  @media screen and (max-width: 1439px) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
   }
 `;
