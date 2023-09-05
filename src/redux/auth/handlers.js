@@ -13,7 +13,6 @@ export const handleLogOut = state => {
   state.user = {
     name: null,
     email: null,
-    // avatar: null,
     phone: null,
     skype: null,
     birthday: null,
