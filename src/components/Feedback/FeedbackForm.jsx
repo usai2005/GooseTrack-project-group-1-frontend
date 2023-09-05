@@ -127,8 +127,7 @@ export const FeedbackForm = ({ onClose, user }) => {
     dispatch(deleteReview(ownReview._id));
     onClose();
   };
-  console.log(action);
-  console.log(isEditActive);
+
   return (
     <Formik
       initialValues={ownReview || initialValues}

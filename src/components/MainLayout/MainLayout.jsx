@@ -1,22 +1,26 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllTasks } from 'redux/tasks/tasksOperations';
+import { fetchOwnReviews } from 'redux/reviews/reviewsOperations';
 
 import Header from '../Header/Header';
 import SideBar from '../SideBar/SideBar';
 
 import { Container } from '../../styles/container';
 import { MainLayoutContainer, Wrapper } from './MainLayout.styled';
-import { fetchOwnReviews } from 'redux/reviews/reviewsOperations';
 
 const MainLayout = () => {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
   useEffect(() => {
-    dispatch(getAllTasks());
-    dispatch(fetchOwnReviews());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getAllTasks());
+      dispatch(fetchOwnReviews());
+    }
+  }, [dispatch, token]);
 
   return (
     <Container>

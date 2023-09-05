@@ -1,9 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { useEffect, lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import Loader from './Loader/Loader';
 import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -21,37 +20,17 @@ const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
-
 const AccountPage = lazy(() => import('../pages/AccountPage/AccountPage'));
-// const UserProfile = lazy(() => import('../pages/UserProfile'));
-
-const StatisticPage = lazy(() =>
-  import('../pages/StatisticsPage/StatisticsPage')
-);
+const StatisticPage = lazy(() => import('../pages/StatisticsPage/StatisticsPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
-  const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(currentUser());
-      } catch (error) {
-        if (error.response && error.response.status === 401) {
-          console.error('Unauthorized: The user is not authenticated.');
-        } else {
-          console.error(
-            'An error occurred while fetching current user:',
-            error
-          );
-        }
-      }
-    };
-
-    fetchData();
+    dispatch(currentUser());
   }, [dispatch]);
 
   return isRefreshing ? (

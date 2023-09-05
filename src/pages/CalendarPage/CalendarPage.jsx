@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { selectActiveDate, selectPeriodType } from 'redux/date/selectors';
 import { PageWrapper } from './CalendarPage.styled';
-
-// import { Container } from 'styles/container';
 import { format, parseISO } from 'date-fns';
 import {
   setActiveDate,
@@ -28,8 +26,6 @@ export default function CalendarPage() {
     try {
       const date = format(parseISO(currentDate), 'yyyy-MM-dd');
 
-      // console.log('date', date);
-      // console.log('today', today);
       if (today !== date) {
         dispatch(setSelectedDate(date));
         dispatch(setActiveDate(date));

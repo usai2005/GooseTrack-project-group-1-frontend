@@ -20,9 +20,6 @@ export  const DatePickerFormUser = ( {setFormBirthday, formBirthday}
           formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
           onChange = {value => {
             setFormBirthday((format(value, 'yyyy-MM-dd')))
-            console.log("Info value")
-            console.log(value)
-            console.log("Info value")
           }}
             // selected={date}
             // onChange={value => {

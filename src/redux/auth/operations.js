@@ -19,6 +19,7 @@ export const register = createAsyncThunk(
       const res = await axios.post('/users/register', credentials);
       setAuthHeader(res.data.token);
       Notify.success(`Welcome. Your account has been created.`);
+
       return res.data;
     } catch (error) {
       Notify.failure(`This email is already in use`);
@@ -32,12 +33,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/login', credentials);
-      setAuthHeader(res.data.token);
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 300);
-      
+      setAuthHeader(res.data.token);      
       Notify.success(`Welcome!`);
 
       return res.data;

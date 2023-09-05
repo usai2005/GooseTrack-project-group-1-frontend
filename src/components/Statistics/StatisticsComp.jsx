@@ -41,7 +41,6 @@ const CustomTooltip = ({ active, payload }) => {
 
 export const StatisticsComp = () => {
   const theme = useSelector(selectCurrentTheme);
-  // console.log(theme);
   // const dispatch = useDispatch();
   const toDay = useSelector(selectSelectedDate);
   const tasks = useSelector(selectTasks);
