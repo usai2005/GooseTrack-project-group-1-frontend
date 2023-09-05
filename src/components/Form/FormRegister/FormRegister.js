@@ -27,8 +27,7 @@ const validationSchema = Yup.object().shape({
     .required('Please enter your email'),
   password: Yup.string()
     .required('Please enter your password')
-    .min(6, 'Password is too short - should be 6 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .min(6, 'Password is too short - should be 6 chars minimum.'),
 });
 
 function FormRegister() {
@@ -48,12 +47,14 @@ function FormRegister() {
         try {
           const response = await dispatch(register(values));
           if (register.fulfilled.match(response)) {
-            await dispatch(logIn({ email: values.email, password: values.password }));
+            await dispatch(
+              logIn({ email: values.email, password: values.password })
+            );
           }
 
           resetForm();
         } catch (error) {
-          console.error('Error:', error.message)
+          console.error('Error:', error.message);
         }
       }}
     >
