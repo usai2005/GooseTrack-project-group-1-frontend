@@ -30,19 +30,23 @@ export const Form = styled.form`
 export const FormBody = styled.div`
   width: 100%;
   display: grid;
-  padding: 0px 18px;
+  padding:0px  18px;
   margin: 40px 0;
   gap: 18px;
 
   @media screen and  (min-width: 768px) {
     width: 354px;
-    // padding: 0px;
+    padding: 0px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 758px;
+    padding:0px;
 
-    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+  grid-template-rows: repeat(3, 1fr);
+
+    // grid-template-columns: 1fr 1fr;
     column-gap: 50px;
     row-gap: 24px;
   }
@@ -129,7 +133,7 @@ export const DatePickerFormUserWrapper = styled.div`
     height: 42px;
     width: 299px;
 
-    color: ${props => props.theme.variable.borderProfileColor};
+    color: ${props => props.theme.variable.text};
     text-transform: uppercase;
 
     font-weight: 600;
@@ -145,7 +149,7 @@ export const DatePickerFormUserWrapper = styled.div`
     &::placeholder {
       font-size: 16px;
       line-height: calc(18 / 16);
-      color: ${props => props.theme.variable.borderProfileColor};
+      color: rgba(17,17,17,0.15);
 
 
 

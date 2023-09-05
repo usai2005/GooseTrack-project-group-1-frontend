@@ -50,7 +50,7 @@ pointer-events: none;
 
 export const UserAvatarWrapper = styled.div`
   position: relative;
-  // text-align: center;
+  text-align: center;
 
   @media (min-width: 768px) {
     // text-align: center;
@@ -164,7 +164,6 @@ export const HiddenInput = styled.input`
 export const InfoWrapper = styled.div`
   position: relative;
   padding-top: 10px;
-  text-align:center;
   > h3 {
     color: ${props => props.theme.variable.text};
     font-family: InterBold;

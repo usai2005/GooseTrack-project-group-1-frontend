@@ -45,7 +45,7 @@ export const Input = styled.input`
 
   font-size: 14px;
   font-weight: 600;
-  color: ${props => props.theme.variable.borderProfileColor};
+  color: ${props => props.theme.variable.text};
   line-height: calc(18 / 14);
 
   @media screen and (min-width: 768px) {
