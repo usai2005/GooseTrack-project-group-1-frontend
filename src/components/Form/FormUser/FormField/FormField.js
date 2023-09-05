@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Label, Input } from './FormField.styled';
+import { Label, Input, InputFieldThumb } from './FormField.styled';
 
 export const FormField = ({
   id,
@@ -12,7 +12,7 @@ export const FormField = ({
   setIsDisabled,
 }) => {
   return (
-    <div>
+    <InputFieldThumb>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
@@ -23,7 +23,7 @@ export const FormField = ({
           setIsDisabled(false);
         }}
       />
-    </div>
+    </InputFieldThumb>
   );
 };
 

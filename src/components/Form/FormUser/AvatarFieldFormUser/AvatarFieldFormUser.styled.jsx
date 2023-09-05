@@ -1,52 +1,45 @@
 import styled from 'styled-components';
 
-export const  DefaultAvatarSvg = styled.svg`
+export const DefaultAvatarSvg = styled.svg`
   display: inline-block;
   width: 100%;
   height: 100%;
   padding: 20px;
 `;
 
+export const PlusSvgOnAvatar = styled.svg`
+  position: absolute;
+  border-radius: 50%;
+  background-color: #3e85f3;
+  content: '+';
+  stroke: #ffffff;
+  font-family: Inter;
+  font-size: 18px;
+  line-height: 1.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
 
-
-
-export const  PlusSvgOnAvatar = styled.svg`
-position: absolute;
-border-radius: 50%;
-background-color: #3e85f3;
-content: '+';
-stroke: #FFFFFF;
-font-family: Inter;
-font-size: 18px;
-line-height: 1.375rem;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 14px;
-height: 14px;
-
-top: 30px;
+  top: 30px;
   right: 60px;
-pointer-events: none;
-
-@media (min-width: 768px) {
-  width: 1.5rem;
-  height: 1.5rem;
-
-  top: 9.0625rem;
-  right: 45px;
   pointer-events: none;
 
+  @media (min-width: 768px) {
+    width: 1.5rem;
+    height: 1.5rem;
 
-
-  @media (min-width: 1087px) {
-    top: 10.3125rem;
+    top: 9.0625rem;
+    right: 45px;
     pointer-events: none;
+
+    @media (min-width: 1087px) {
+      top: 10.3125rem;
+      pointer-events: none;
+    }
   }
-
-}
 `;
-
 
 export const UserAvatarWrapper = styled.div`
   position: relative;
@@ -58,8 +51,7 @@ export const UserAvatarWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-position:relative;
-
+  position: relative;
 
   display: flex;
   justify-content: center;
@@ -78,22 +70,18 @@ position:relative;
   down: 60px;
   left: 45px;
 
-  
-
-
   & img {
     object-fit: cover;
-    align-items:center;
+    align-items: center;
     height: 100%;
     width: 100%;
   }
-
 
   @media (min-width: 768px) {
     margin-top: 40px;
     width: 124px;
     height: 124px;
-  
+
     left: 17px;
   }
 
@@ -128,7 +116,6 @@ export const HiddenInput = styled.input`
 
   //   font-size: 0.9375rem;
   //   line-height: 0.8125rem;
-
 
   //   /* color: ; */
   //   background-color: #3e85f3;
