@@ -8,9 +8,6 @@ export const InputFieldThumb = styled.div`
   width: 299px;
   height: 64px;
 
-  &:not(:last-child) {
-    margin-bottom: 18px;
-  }
 
   @media screen and (min-width: 768px) {
     width: 354px;
