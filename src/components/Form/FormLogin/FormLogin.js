@@ -24,8 +24,7 @@ const validationSchema = Yup.object().shape({
     .required('Please enter your email'),
   password: Yup.string()
     .required('Please enter your password')
-    .min(6, 'Password is too short - should be 6 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .min(6, 'Password is too short - should be 6 chars minimum.'),
 });
 
 function FormLogin() {
