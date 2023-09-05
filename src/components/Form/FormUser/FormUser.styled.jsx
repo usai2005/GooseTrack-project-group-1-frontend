@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
-
-
 export const Form = styled.form`
-
   display: flex;
   flex-direction: column;
   align-items: center;
 
   border-radius: 16px;
   background-color: ${props => props.theme.variable.secondaryBg};
-
 
   & > button {
     padding: 14px 50px;
@@ -21,7 +17,7 @@ export const Form = styled.form`
       padding: 15px 84px;
     }
 
-    @media screen and  (min-width: 1440px) {
+    @media screen and (min-width: 1440px) {
       margin-bottom: 60px;
     }
   }
@@ -30,43 +26,26 @@ export const Form = styled.form`
 export const FormBody = styled.div`
   width: 100%;
   display: grid;
-  padding:0px  18px;
+  padding: 0px 18px;
   margin: 40px 0;
   gap: 18px;
 
-  @media screen and  (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 354px;
     padding: 0px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 758px;
-    padding:0px;
+    padding: 0px;
 
     grid-auto-flow: column;
-  grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 
-    // grid-template-columns: 1fr 1fr;
     column-gap: 50px;
     row-gap: 24px;
   }
-
-  // @media screen and  (min-width: 1440px) {
-  //   max-width: 1080px;
-  //   padding-left: 164px;
-  //   padding-right: 164px;
-  //   margin-top: 44px;
-  //   margin-bottom: 88px;
-  // }
-
-  // @media screen and (min-width: 2560px) {
-  //   max-width: 1440px;
-  //   padding: 50px;
-  //   grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
-  // }
 `;
-
-
 
 export const FormUserButton = styled.button`
   display: inline-flex;
@@ -96,8 +75,7 @@ export const FormUserButton = styled.button`
 `;
 
 export const Label = styled.label`
-
-position:relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -119,17 +97,12 @@ export const DatePickerFormUserWrapper = styled.div`
     display: none;
   }
   & input {
-    // display: inline;
-
-    // font-family: 'InterSemiBold';
     font-size: 14px;
     background-color: ${props => props.theme.variable.secondaryBg};
     outline: none;
     border: 1px solid ${props => props.theme.variable.borderProfileColor};
-    // border-color: ${props => props.theme.variable.borderProfileColor};
     border-radius: 8px;
-    // text-align: center;
-    padding: 12px  14px;
+    padding: 12px 14px;
     height: 42px;
     width: 299px;
 
@@ -149,11 +122,7 @@ export const DatePickerFormUserWrapper = styled.div`
     &::placeholder {
       font-size: 16px;
       line-height: calc(18 / 16);
-      color: rgba(17,17,17,0.15);
-
-
-
-
+      color: rgba(17, 17, 17, 0.15);
     }
   }
 
@@ -223,35 +192,32 @@ export const DatePickerFormUserWrapper = styled.div`
     color: inherit;
     font-size: 14px;
   }
-  & .react-datepicker__day--disabled{
-    color: grey
+  & .react-datepicker__day--disabled {
+    color: grey;
   }
 
-  .react-datepicker__year-option{
-    color: #3e85f3;
-  }
-  
-  .react-datepicker__year-option:first-of-type{
-    color: #3e85f3;
-    content:^;
-  }
-
-
-  .react-datepicker__month-option{
+  .react-datepicker__year-option {
     color: #3e85f3;
   }
 
-  .react-datepicker__month-year-option{
+  .react-datepicker__year-option:first-of-type {
     color: #3e85f3;
-  }
-  
-
-  .react-datepicker__month-dropdown{
-    color: #3e85f3;
+    content: ^;
   }
 
+  .react-datepicker__month-option {
+    color: #3e85f3;
+  }
 
-  .react-datepicker__year-dropdown{
+  .react-datepicker__month-year-option {
+    color: #3e85f3;
+  }
+
+  .react-datepicker__month-dropdown {
+    color: #3e85f3;
+  }
+
+  .react-datepicker__year-dropdown {
     color: #3e85f3;
   }
 `;
@@ -296,22 +262,17 @@ export const Controls = styled.button`
   }
 `;
 
-
-
 export const DatePickerChevronDown = styled.svg`
+  stroke: ${props => props.theme.variable.calendarTextColor};
+  pointer-events: none;
 
+  position: absolute;
 
-stroke:${props => props.theme.variable.calendarTextColor};
-pointer-events:none;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  top: 38px;
+  right: 14px;
 
-position:absolute;
-
-width:18px;
-height:18px;
-z-index:10;
-top:38px;
-right:14px;
-
-fill:none;
-
+  fill: none;
 `;

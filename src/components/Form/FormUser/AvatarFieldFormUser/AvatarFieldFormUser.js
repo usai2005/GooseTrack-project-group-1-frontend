@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import sprite from '../../../../images/icons.svg';
 
 import {
@@ -9,15 +8,6 @@ import {
   UserAvatarWrapper,
   InfoWrapper,
 } from './AvatarFieldFormUser.styled';
-
-// const setFileUrl = (file, cbSetFileUrl) => {
-//   if (!file) return cbSetFileUrl(null);
-//   const fileReader = new FileReader();
-//   fileReader.readAsDataURL(file);
-//   fileReader.onload = () => {
-//     cbSetFileUrl(fileReader.result);
-//   };
-// };
 
 export const AvatarFieldFormUser = ({
   userName,
@@ -30,7 +20,6 @@ export const AvatarFieldFormUser = ({
   setIsDisabled,
   register,
 }) => {
-  // useEffect(() => {}, []);
   return (
     <UserAvatarWrapper>
       <Label htmlFor={id}>
@@ -59,7 +48,6 @@ export const AvatarFieldFormUser = ({
       <p>
         <PlusSvgOnAvatar>
           <use href={sprite + '#icon-plus'}></use>
-          {/* <use href={`${sprite}#icon-plus`} /> */}
         </PlusSvgOnAvatar>
       </p>
       <InfoWrapper>
