@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import InputMask from 'react-input-mask';
 
 import { Label, Input, InputFieldThumb } from './FormField.styled';
 
@@ -11,18 +12,38 @@ export const FormField = ({
   register,
   setIsDisabled,
 }) => {
+  const isPhoneField = inputName === 'phone';
+
   return (
     <InputFieldThumb>
       <Label htmlFor={id}>{label}</Label>
-      <Input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        {...register(inputName)}
-        onChange={() => {
-          setIsDisabled(false);
-        }}
-      />
+      {isPhoneField ? (
+        <InputMask
+          id={id}
+          mask="+99 (999) 999-9999"
+          maskChar="_"
+          type="tel"
+          placeholder={placeholder}
+          {...register(inputName)}
+          onChange={() => {
+            setIsDisabled(false);
+          }}
+        >
+          {(inputProps) => (
+            <Input {...inputProps} />
+          )}
+        </InputMask>
+      ) : (
+        <Input
+          id={id}
+          type={type}
+          placeholder={placeholder}
+          {...register(inputName)}
+          onChange={() => {
+            setIsDisabled(false);
+          }}
+        />
+      )}
     </InputFieldThumb>
   );
 };
