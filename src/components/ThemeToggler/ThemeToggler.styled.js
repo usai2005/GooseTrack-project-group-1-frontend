@@ -5,6 +5,14 @@ export const Wrapper = styled.div`
 
     cursor: pointer;
 
+    fill: ${props => props.theme.variable.buttonBg};
+
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        fill: ${props => props.theme.variable.btnColorActive};
+    }
+
     @media screen and (min-width: 375px) {
         margin-right: 14px;
     }
