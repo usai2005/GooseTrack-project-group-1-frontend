@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 
+// import { ErrorMessage } from '@hookform/error-message';
+
+// import {StyledErrorMessage} from '../consts/styledErrorMessage.styled'
+
 import { Label, Input, InputFieldThumb } from './FormField.styled';
 
 export const FormField = ({
@@ -10,11 +14,13 @@ export const FormField = ({
   placeholder,
   label,
   register,
+  // errors,
   setIsDisabled,
 }) => {
   const isPhoneField = inputName === 'phone';
 
   return (
+    <>
     <InputFieldThumb>
       <Label htmlFor={id}>{label}</Label>
       {isPhoneField ? (
@@ -44,7 +50,12 @@ export const FormField = ({
           }}
         />
       )}
+      
     </InputFieldThumb>
+    {/* <StyledErrorMessage>
+        <ErrorMessage errors={errors} name={inputName} />
+      </StyledErrorMessage> */}
+</>
   );
 };
 
@@ -55,4 +66,5 @@ FormField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
+  // errors: PropTypes.any.isRequired,
 };

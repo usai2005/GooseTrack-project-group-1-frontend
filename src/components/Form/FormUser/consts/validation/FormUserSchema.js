@@ -1,22 +1,9 @@
 import * as Yup from 'yup';
 
-const nameRegExp = new RegExp(
-  "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-);
+import { isValidFileType } from './fileTypeValidation';
+import { nameRegExp, phoneRegExp } from './regExps';
 
-const phoneRegExp =
-  /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
-// const validFileExtensions = {
-//   image: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'webp'],
-// };
-
-// const isValidFileType = value => {
-//   if (typeof value === 'string' && value.includes('image')) return true;
-//   if (value.length === 0) return true;
-//   const fileName = value[0]?.name.toLowerCase();
-//   return validFileExtensions['image'].indexOf(fileName.split('.').pop()) > -1;
-// };
 
 export const FormUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -36,7 +23,7 @@ export const FormUserSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email format')
     .required('This field is required'),
-  // avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
-  //   return value === '' || isValidFileType(value);
-  // }),
+  avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
+    return value === '' || isValidFileType(value);
+  }),
 });
