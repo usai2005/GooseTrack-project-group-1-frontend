@@ -35,7 +35,7 @@ export const userFormInputs = [
     id: nanoid(),
     label: 'Skype',
     placeholder: 'Add a skype number',
-  }
+  },
 ];
 
 export const userAvatarInput = {

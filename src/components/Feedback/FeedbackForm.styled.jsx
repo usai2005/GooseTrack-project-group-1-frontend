@@ -139,7 +139,7 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   max-width: 240px;
   font-size: 12px;
   font-weight: 500;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     max-width: 330px;
   }
 `;

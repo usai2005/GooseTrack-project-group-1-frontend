@@ -17,19 +17,6 @@ export const DatePickerFormUser = ({ setFormBirthday, formBirthday }) => {
         onChange={value => {
           setFormBirthday(format(value, 'yyyy-MM-dd'));
         }}
-        // selected={date}
-        // onChange={value => {
-        //   if (periodType === 'month') {
-        //     navigate(`${periodType}/${format(value, 'yyyy-MM-dd')}`, {});
-        //   } else {
-        //     navigate(`${periodType}/${format(value, 'yyyy-MM-dd')}`, {});
-        //   }
-        // }}
-
-        // dateFormat={periodType === 'month' ? 'MMMM yyyy' : 'dd MMM yyyy'}
-
-        // todayButton="Today"
-        // minDate={new Date(createdAt)}
       />
     </>
   );

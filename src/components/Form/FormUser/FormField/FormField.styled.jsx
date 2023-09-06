@@ -58,8 +58,7 @@ export const Input = styled.input`
   &::placeholder {
     /* font-size: 16px;
     line-height: 18px; */
-    color: 'inherit'; //should think about placeholder color
-  }
+    color: 'inherit'; 
 
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;

@@ -1,8 +1,6 @@
 import { styled } from 'styled-components';
 
 export const PageWrapper = styled.div`
-
-
   padding: 0 20px 95px 20px;
 
   @media screen and (min-width: 768px) {

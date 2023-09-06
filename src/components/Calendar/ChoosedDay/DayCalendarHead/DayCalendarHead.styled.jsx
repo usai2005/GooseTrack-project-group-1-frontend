@@ -25,7 +25,7 @@ export const WeekNamesContainer = styled.ul`
   border-radius: 8px;
   background-color: ${props => props.theme.variable.bgCalendar};
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 8px;
   }
 `;

@@ -26,9 +26,9 @@ export const PlusSvgOnAvatar = styled.svg`
 
   pointer-events: none;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 1.5rem;
-    height: 1.5rem;
+    height: 1.5rem;    
 
     pointer-events: none;
   }
@@ -39,7 +39,7 @@ export const PlusSvgOnAvatar = styled.svg`
   @media (max-width: 768px) {
     top: -32px;
     right: -14px;
-  }
+  } 
 `;
 
 export const UserAvatarWrapper = styled.div`
@@ -50,7 +50,7 @@ export const UserAvatarWrapper = styled.div`
     top: -31px;
 `;
 
-export const Label = styled.label`
+export const Label = styled.label`  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,17 +73,17 @@ export const Label = styled.label`
   @media (min-width: 768px) {
     margin-top: 40px;
     width: 124px;
-    height: 124px;
+    height: 124px;  
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 60px;
   }
 `;
 
 export const HiddenInput = styled.input`
   position: relative;
-
+  
   align-items: center;
 
   width: 12px;
@@ -100,9 +100,9 @@ export const HiddenInput = styled.input`
     right: -14px;
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 1.5rem;
-    height: 1.5rem;
+    height: 1.5rem;     
   }
 `;
 
@@ -117,7 +117,7 @@ export const InfoWrapper = styled.div`
 
     margin-bottom: 0.25rem;
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       font-size: 1.125rem;
       margin-bottom: 0.5rem;
     }
@@ -129,7 +129,7 @@ export const InfoWrapper = styled.div`
     font-size: 14px;
     line-height: 0.875rem;
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       font-size: 0.875rem;
       line-height: 1.125rem;
     }
