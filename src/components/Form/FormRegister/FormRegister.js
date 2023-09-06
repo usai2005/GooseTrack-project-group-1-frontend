@@ -15,8 +15,19 @@ import {
   LoginIcon,
   InputContainer,
   IconEye,
+  WrapperIcon,
 } from './FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
+
+// const EyeIconPlaceholder = {
+
+//   <>
+//     <span>Enter password</span>{' '}
+//     <WrapperIcon>
+//       <AiFillEyeInvisible color="#DCE3E5" size="20px" />
+//     </WrapperIcon>
+//   </>;
+// };
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,7 +45,6 @@ function FormRegister() {
   const [passwordType, setPasswordType] = useState('password');
 
   const dispatch = useDispatch();
-
   return (
     <Formik
       initialValues={{
@@ -58,7 +68,7 @@ function FormRegister() {
         }
       }}
     >
-      {({ errors, touched, handleSubmit, isValid }) => {
+      {({ errors, touched, handleSubmit, isValid, values }) => {
         return (
           <ContainerForm>
             <Form name="contact" method="post" onSubmit={handleSubmit}>
@@ -152,9 +162,9 @@ function FormRegister() {
                   htmlFor="password"
                   style={{
                     color:
-                      touched.password && !errors.password
+                      values.password.length > 0 && !errors.password
                         ? '#3cbc81'
-                        : touched.password && errors.password
+                        : values.password.length > 0 && errors.password
                         ? '#e74a3b'
                         : 'initial',
                   }}
@@ -165,35 +175,44 @@ function FormRegister() {
                     name="password"
                     autoCorrect="off"
                     autoComplete="password"
-                    placeholder="Enter password"
+                    placeholder="Enter your password"
+                    aria-label="Password"
                     style={{
                       borderColor:
-                        touched.password && !errors.password
+                        values.password.length > 0 && !errors.password
                           ? '#3cbc81'
-                          : touched.password && errors.password
+                          : values.password.length > 0 && errors.password
                           ? '#e74a3b'
                           : '#dce3e5',
                     }}
                   />
                 </Label>
-                {errors.password && touched.password && (
+                {errors.password && values.password.length > 0 && (
                   <StyledInlineErrorMessage>
                     {errors.password}
+                    <LoginIcon>
+                      <use href={icons + '#icon-baseline-error-outline'}></use>
+                    </LoginIcon>
                   </StyledInlineErrorMessage>
                 )}
-                <IconEye
-                  onClick={() => {
-                    passwordType === 'password'
-                      ? setPasswordType('text')
-                      : setPasswordType('password');
-                  }}
-                >
-                  {passwordType === 'password' ? (
-                    <AiFillEyeInvisible />
-                  ) : (
-                    <AiFillEye />
-                  )}
-                </IconEye>
+                {values.password.length > 0 && (
+                  <IconEye
+                    style={{
+                      right: errors.password ? '45px' : '20px',
+                    }}
+                    onClick={() => {
+                      passwordType === 'password'
+                        ? setPasswordType('text')
+                        : setPasswordType('password');
+                    }}
+                  >
+                    {passwordType === 'password' ? (
+                      <AiFillEyeInvisible size="20px" />
+                    ) : (
+                      <AiFillEye size="20px" />
+                    )}
+                  </IconEye>
+                )}
               </InputContainer>
               <FormButton isValid={isValid}>Sign up</FormButton>
             </Form>
