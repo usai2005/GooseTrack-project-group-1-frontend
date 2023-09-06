@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/GooseTrack-project-group-1-frontend/static/css/main.ff9e4b5a.css",
-    "main.js": "/GooseTrack-project-group-1-frontend/static/js/main.1381f611.js",
+    "main.js": "/GooseTrack-project-group-1-frontend/static/js/main.510b02e3.js",
     "static/css/880.aa92a926.chunk.css": "/GooseTrack-project-group-1-frontend/static/css/880.aa92a926.chunk.css",
     "static/js/880.54d3075b.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/880.54d3075b.chunk.js",
-    "static/js/668.59978c32.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/668.59978c32.chunk.js",
-    "static/js/847.194e442f.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/847.194e442f.chunk.js",
+    "static/js/668.24a561e0.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/668.24a561e0.chunk.js",
+    "static/js/847.7d4d1686.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/847.7d4d1686.chunk.js",
     "static/js/265.d87ab2df.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/265.d87ab2df.chunk.js",
     "static/js/865.0225e06e.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/865.0225e06e.chunk.js",
     "static/js/776.274b51db.chunk.js": "/GooseTrack-project-group-1-frontend/static/js/776.274b51db.chunk.js",
@@ -36,7 +36,7 @@
     "static/media/all-in-one-tab-1x-704.webp": "/GooseTrack-project-group-1-frontend/static/media/all-in-one-tab-1x-704.da7e653afebb573c80ed.webp",
     "static/media/all-in-one-mob-2x-670.webp": "/GooseTrack-project-group-1-frontend/static/media/all-in-one-mob-2x-670.79a023d2d40b90d70b8b.webp",
     "static/media/all-in-one-desk-1x-604.webp": "/GooseTrack-project-group-1-frontend/static/media/all-in-one-desk-1x-604.85b2e0f1abcdedac482b.webp",
-    "static/media/icons.svg": "/GooseTrack-project-group-1-frontend/static/media/icons.09b10ad8920153fa513a848b5dff4538.svg",
+    "static/media/icons.svg": "/GooseTrack-project-group-1-frontend/static/media/icons.8f0c0be94bc71b438f72f66da1b68dc5.svg",
     "static/media/sidebar-mob-2x-670.webp": "/GooseTrack-project-group-1-frontend/static/media/sidebar-mob-2x-670.38b58d007d29b28f0b96.webp",
     "static/media/tab@2x.webp": "/GooseTrack-project-group-1-frontend/static/media/tab@2x.999bc6fbe552ea711f91.webp",
     "static/media/desk@2x.webp": "/GooseTrack-project-group-1-frontend/static/media/desk@2x.6754570d745b47f70ce4.webp",
@@ -68,11 +68,11 @@
     "static/media/logo-goose-mob.webp": "/GooseTrack-project-group-1-frontend/static/media/logo-goose-mob.4676f39dd836e6b94737.webp",
     "static/media/close.svg": "/GooseTrack-project-group-1-frontend/static/media/close.3363a6706a17d9e2615fa4e8dc6348aa.svg",
     "main.ff9e4b5a.css.map": "/GooseTrack-project-group-1-frontend/static/css/main.ff9e4b5a.css.map",
-    "main.1381f611.js.map": "/GooseTrack-project-group-1-frontend/static/js/main.1381f611.js.map",
+    "main.510b02e3.js.map": "/GooseTrack-project-group-1-frontend/static/js/main.510b02e3.js.map",
     "880.aa92a926.chunk.css.map": "/GooseTrack-project-group-1-frontend/static/css/880.aa92a926.chunk.css.map",
     "880.54d3075b.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/880.54d3075b.chunk.js.map",
-    "668.59978c32.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/668.59978c32.chunk.js.map",
-    "847.194e442f.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/847.194e442f.chunk.js.map",
+    "668.24a561e0.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/668.24a561e0.chunk.js.map",
+    "847.7d4d1686.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/847.7d4d1686.chunk.js.map",
     "265.d87ab2df.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/265.d87ab2df.chunk.js.map",
     "865.0225e06e.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/865.0225e06e.chunk.js.map",
     "776.274b51db.chunk.js.map": "/GooseTrack-project-group-1-frontend/static/js/776.274b51db.chunk.js.map",
@@ -84,6 +84,6 @@
   },
   "entrypoints": [
     "static/css/main.ff9e4b5a.css",
-    "static/js/main.1381f611.js"
+    "static/js/main.510b02e3.js"
   ]
 }
