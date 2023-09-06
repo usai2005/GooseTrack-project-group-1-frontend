@@ -15,7 +15,7 @@ import {
   LoginIcon,
   InputContainer,
   IconEye,
-  WrapperIcon,
+  // WrapperIcon,
 } from './FormRegister.styled';
 import FormButton from '../FormButton/FormButton';
 
