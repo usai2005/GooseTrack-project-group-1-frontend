@@ -93,6 +93,8 @@ export const Label = styled.label`
 `;
 
 export const HiddenInput = styled.input`
+
+opacity:0;
   position: relative;
   top: -29px;
   left: 92px;
