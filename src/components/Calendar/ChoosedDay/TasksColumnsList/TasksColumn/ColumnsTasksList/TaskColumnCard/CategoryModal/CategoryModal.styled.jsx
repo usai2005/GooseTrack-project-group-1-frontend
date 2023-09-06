@@ -18,7 +18,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   z-index: 1;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding: 20px 24px;
     width: 147px;
   }
@@ -37,7 +37,7 @@ export const CategoriesList = styled.ul`
       margin-bottom: 12px;
     }
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       width: 99px;
     }
   }
@@ -80,7 +80,7 @@ export const ControModalBtn = styled.button`
     stroke: #3e85f3;
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.28;
   }

@@ -16,11 +16,11 @@ export const WeekContainer = styled.ul`
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     grid-auto-rows: 144px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     grid-auto-rows: 125px;
   }
 `;
@@ -94,11 +94,11 @@ export const WeekNamesContainer = styled.ul`
   border-radius: 8px;
   background-color: ${props => props.theme.variable.bgCalendar};
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 18px;
     margin-top: 8px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     margin-bottom: 15px;
   }
 `;
@@ -132,7 +132,7 @@ export const TaskItem = styled.li`
   font-weight: 700;
   line-height: calc(10 / 14);
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
   }
 

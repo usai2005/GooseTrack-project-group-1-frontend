@@ -6,7 +6,7 @@ export const AuthSection = styled.section`
 
   margin: 0 auto 64px;
 
-  background-color: ${props => props.theme.variable.buttonBg};
+  background-color: #3e85f3;
 `;
 
 export const AuthContainer = styled.div`
@@ -37,7 +37,7 @@ export const AuthTitle = styled.h1`
   margin: 0 0 32px;
   padding: 0;
 
-  color: ${props => props.theme.variable.bgRevers};
+  color: #ffffff;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 44px;
@@ -94,19 +94,25 @@ export const LoginLink = styled(Link)`
 
   margin-bottom: 16px;
 
-  background-color: ${props => props.theme.variable.bgRevers};
+  background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
-  color: ${props => props.theme.variable.textColorBtn};
+  color: #3e85f3;
   font-size: 14px;
   font-weight: 600;
   line-height: calc(18 / 14);
   letter-spacing: -0.28px;
   text-decoration: none;
 
+  transition: transform 250ms linear;
+
   span {
     margin-right: 6px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
   }
 
   @media screen and (min-width: 768px) {
@@ -121,7 +127,7 @@ export const LoginLink = styled(Link)`
 export const SignupLink = styled(Link)`
   width: 44px;
 
-  color: ${props => props.theme.variable.textBtn};
+  color: #ffffff;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 12px;
@@ -129,13 +135,22 @@ export const SignupLink = styled(Link)`
   line-height: calc(14 / 12);
   text-decoration: none;
 
-  border-bottom: 1px solid ${props => props.theme.variable.textBtn};
+  border-bottom: 1px solid #ffffff;
 
   @media screen and (min-width: 768px) {
     width: 51px;
 
     font-size: 14px;
     line-height: calc(18 / 14);
+  }
+`;
+
+export const ListItem = styled.li`
+  display: inline-block;
+  transition: transform 250ms linear;
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -191,7 +206,6 @@ export const DescriptionList = styled.ul`
 `;
 
 export const DescriptionListItem = styled.li`
-  /* margin: 0 0 64px 0; */
   padding: 0;
 
   &:not(:last-child) {
@@ -235,7 +249,7 @@ export const InfoNumber = styled.p`
   margin: 0 0 14px;
   padding: 0;
 
-  color: ${props => props.theme.variable.activeTextColorBtn};
+  color: #3e85f3;
   font-size: 80px;
   font-weight: 700;
   line-height: 1;
@@ -259,7 +273,7 @@ export const InfoTitle = styled.div`
 
   border-radius: 44px;
 
-  background-color: ${props => props.theme.variable.bgColorForm};
+  background-color: #dcebf7;
 
   &.last {
     width: 139px;
@@ -274,7 +288,7 @@ export const InfoTitle = styled.div`
   }
 
   > h2 {
-    color: ${props => props.theme.variable.activeTextColorBtn};
+    color: #3e85f3;
     font-size: 32px;
     font-weight: 700;
     line-height: calc(40 / 32);
@@ -319,7 +333,7 @@ export const LoginIcon = styled.svg`
   width: 18px;
   height: 18px;
 
-  stroke: ${props => props.theme.variable.buttonBg};
+  stroke: #3e85f3;
 `;
 
 export const ReviewsTitle = styled.h2`
@@ -333,7 +347,7 @@ export const ReviewsTitle = styled.h2`
 
   text-transform: uppercase;
 
-  color: ${props => props.theme.variable.activeTextColorBtn};
+  color: #3e85f3;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;

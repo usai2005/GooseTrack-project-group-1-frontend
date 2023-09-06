@@ -87,7 +87,7 @@ export const Arrow = styled.svg`
   border-radius: 6px;
 
   &:hover {
-    background-color: ${props => props.theme.variable.bgColorForm};
+    background-color: #dcebf7;
 
     transition: background-color 250ms;
   }

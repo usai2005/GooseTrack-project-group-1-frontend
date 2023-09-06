@@ -26,7 +26,9 @@ export const PlusSvgOnAvatar = styled.svg`
   right: 60px;
   pointer-events: none;
 
-  @media (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
+
     width: 1.5rem;
     height: 1.5rem;
 
@@ -34,7 +36,9 @@ export const PlusSvgOnAvatar = styled.svg`
     right: 45px;
     pointer-events: none;
 
-    @media (min-width: 1440px) {
+
+    @media screen and (min-width: 1440px) {
+
       top: 10.3125rem;
       pointer-events: none;
     }
@@ -44,6 +48,7 @@ export const PlusSvgOnAvatar = styled.svg`
 export const UserAvatarWrapper = styled.div`
   position: relative;
   text-align: center;
+
 `;
 
 export const Label = styled.label`
@@ -72,7 +77,9 @@ export const Label = styled.label`
     width: 100%;
   }
 
-  @media (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
+
     margin-top: 40px;
     width: 124px;
     height: 124px;
@@ -80,7 +87,7 @@ export const Label = styled.label`
     left: 17px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 60px;
   }
 `;
@@ -101,7 +108,23 @@ export const HiddenInput = styled.input`
   border-radius: 50%;
   background-color: #3e85f3;
 
-  @media (min-width: 768px) {
+
+  // :before {
+  //   position: absolute;
+  //   content: '+';
+
+  //   width: 14px;
+  //   height: 14px;
+
+  //   font-size: 0.9375rem;
+  //   line-height: 0.8125rem;
+
+  //   /* color: ; */
+  //   background-color: #3e85f3;
+  // }
+
+  @media screen and (min-width: 768px) {
+
     width: 1.5rem;
     height: 1.5rem;
 
@@ -109,7 +132,7 @@ export const HiddenInput = styled.input`
     left: 97px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     top: -37px;
   }
 `;
@@ -125,7 +148,7 @@ export const InfoWrapper = styled.div`
 
     margin-bottom: 0.25rem;
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       font-size: 1.125rem;
       margin-bottom: 0.5rem;
     }
@@ -137,7 +160,7 @@ export const InfoWrapper = styled.div`
     font-size: 14px;
     line-height: 0.875rem;
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       font-size: 0.875rem;
       line-height: 1.125rem;
     }

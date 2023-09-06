@@ -9,7 +9,7 @@ export const FormContainer = styled.div`
   border: ${props => props.theme.variable.borderFormColor};
   background-color: ${props => props.theme.variable.bgColorTaskModal};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 396px;
     padding: 40px 28px;
   }
@@ -57,7 +57,7 @@ export const TitleField = styled(Field)`
   font-size: 14px;
   line-height: calc(18 / 14);
   cursor: pointer;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 340px;
     height: 46px;
     padding: 14px 18px;
@@ -95,7 +95,7 @@ export const TimeField = styled(Field)`
     cursor: pointer;
     width: 35px;
   }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 163px;
     height: 46px;
     padding: 14px 18px;
@@ -121,7 +121,7 @@ export const PriorityLabel = styled.label`
   font-family: InterSemiBold;
   font-size: 12px;
   line-height: calc(14 / 12);
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: calc(18 / 14);
   }
@@ -194,7 +194,7 @@ export const ActionButton = styled.button`
     background-color: #2b78ef;
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 182px;
     height: 48px;
     padding: 10px 20px;
@@ -235,7 +235,7 @@ export const CancelButton = styled.button`
     background-color: #e7e3e3;
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 144px;
     height: 48px;
   }
