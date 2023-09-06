@@ -13,7 +13,7 @@ export const LogoutLink = styled(Link)`
 
     text-decoration: none;
 
-    background-color: #3E85F3;
+    background-color: ${props => props.theme.variable.buttonBg};
     border-radius: 16px;
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
@@ -22,6 +22,8 @@ export const LogoutLink = styled(Link)`
     font-weight: 600;
     line-height: calc(18 / 14); /* 128.571% */
     letter-spacing: -0.28px;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     span {
         margin-right: 11px;
@@ -32,12 +34,14 @@ export const LogoutLink = styled(Link)`
         height: 46px;
 
         font-size: 18px;
-        line-height: calc(24 / 18); /* 133.333% */
+        line-height: calc(24 / 18);
         letter-spacing: -0.36px;
     }
 
     &:hover {
-        background-color: #2B78EF;
+        background-color: ${props => props.theme.variable.btnColorActive};
+
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 `;
 
