@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const DefaultAvatarSvg = styled.svg`
+  position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  // padding: 20px;
 `;
 
 export const PlusSvgOnAvatar = styled.svg`
@@ -16,19 +17,20 @@ export const PlusSvgOnAvatar = styled.svg`
   font-family: Inter;
   font-size: 18px;
   line-height: 1.375rem;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 
   top: -42px;
+
+ // right: -24px;
   right: -92px;
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
     width: 1.5rem;
-    height: 1.5rem;
+    height: 1.5rem;    
+
 
     top: -61px;
     right: -97px;
@@ -38,17 +40,29 @@ export const PlusSvgOnAvatar = styled.svg`
       top: -61px;
       pointer-events: none;
     }
+
   }
+  @media (min-width: 1440px) {
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    top: -32px;
+    right: -14px;
+  } 
 `;
 
 export const UserAvatarWrapper = styled.div`
   position: relative;
   text-align: center;
+
+
+  @media (max-width: 768px) {
+    top: -31px;
+
 `;
 
-export const Label = styled.label`
-  position: relative;
-
+export const Label = styled.label`  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,14 +70,10 @@ export const Label = styled.label`
   width: 72px;
   height: 72px;
 
-  margin-bottom: 18px;
-  margin-top: -30px;
-
   border-radius: 50%;
   border: 2px solid #3e85f3;
   background-color: none;
   overflow: hidden;
-  left: 45px;
 
   & img {
     object-fit: cover;
@@ -72,12 +82,12 @@ export const Label = styled.label`
     width: 100%;
   }
 
+
   @media screen and (min-width: 768px) {
+
     margin-top: 40px;
     width: 124px;
-    height: 124px;
-
-    left: 17px;
+    height: 124px;  
   }
 
   @media screen and (min-width: 1440px) {
@@ -88,19 +98,23 @@ export const Label = styled.label`
 export const HiddenInput = styled.input`
   opacity:0;
   position: relative;
-  top: -29px;
-  left: 92px;
-
-  display: flex;
+  
   align-items: center;
 
   width: 12px;
   height: 12px;
-  border: 0;
-  padding: 0;
+
+  top: -18px;
+  right: -24px;
 
   border-radius: 50%;
   background-color: #3e85f3;
+
+
+  @media (max-width: 768px) {
+    top: -14px;
+    right: -14px;
+  }
 
   // :before {
   //   position: absolute;
@@ -116,22 +130,16 @@ export const HiddenInput = styled.input`
   //   background-color: #3e85f3;
   // }
 
+
   @media screen and (min-width: 768px) {
     width: 1.5rem;
-    height: 1.5rem;
-
-    top: -37px;
-    left: 97px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    top: -37px;
+    height: 1.5rem;     
   }
 `;
 
 export const InfoWrapper = styled.div`
   position: relative;
-  padding-top: 10px;
+  padding-top: 20px;
   > h3 {
     color: ${props => props.theme.variable.text};
     font-family: InterBold;
