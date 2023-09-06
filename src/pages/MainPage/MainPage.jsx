@@ -28,6 +28,7 @@ import {
   Span,
   ReviewsTitle,
   Picture,
+  ListItem,
 } from './MainPage.styled';
 
 export default function MainPage() {
@@ -61,9 +62,9 @@ export default function MainPage() {
                 </LoginIcon>
               </LoginLink>
             </li>
-            <li>
+            <ListItem>
               <SignupLink to="/register">Sign up</SignupLink>
-            </li>
+            </ListItem>
           </AuthList>
           <BackToTopButton />
         </AuthContainer>
@@ -87,7 +88,6 @@ export default function MainPage() {
                 </InfoThumb>
 
                 <Picture>
-
                   <source
                     srcSet={`${IMAGES.calendarViewDesk1x604} 604w, ${IMAGES.calendarViewDesk2x1208} 1208w`}
                     media="(min-width: 1440px)"
@@ -108,9 +108,7 @@ export default function MainPage() {
                     alt="Calendar view"
                     loading="lazy"
                   />
-
                 </Picture>
-
               </DescriptionListItem>
               <DescriptionListItem className="middle">
                 <InfoThumb className="middle">

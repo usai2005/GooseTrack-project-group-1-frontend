@@ -21,7 +21,7 @@ export const ContainerForm = styled.div`
 
   background-color: ${props => props.theme.variable.bgCalendar};
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     min-width: 344px;
   }
 
@@ -30,8 +30,7 @@ export const ContainerForm = styled.div`
 
   min-height: 165px;
 
-
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     min-width: 344px;
   }
 `;
