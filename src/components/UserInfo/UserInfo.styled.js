@@ -15,10 +15,6 @@ export const UserName = styled.h2`
   }
 `;
 
-
-
-
-
 export const UserAvatarImg = styled.img`
   width: 32px;
   height: 32px;
@@ -28,13 +24,13 @@ export const UserAvatarImg = styled.img`
   border: 2px solid #3e85f3;
   background-size: contain;
 
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
     width: 44px;
     height: 44px;
   }
 `;
-
-
 
 export const UserAvatar = styled.div`
   width: 32px;
@@ -46,12 +42,13 @@ export const UserAvatar = styled.div`
   // background-image: ${props => `url(${props.img})`};
   background-size: contain;
 
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
     width: 44px;
     height: 44px;
   }
 `;
-
 
 export const  DefaultAvatarSvg = styled.svg`
 padding:6px;

@@ -21,7 +21,7 @@ const UserNav = () => {
       <li>
         <ItemLink
           className={
-              pathname === '/account'
+              pathname.includes('/account')
             && 'is-active'}
           onClick={handleToggleSideBar}
           to="/account">
