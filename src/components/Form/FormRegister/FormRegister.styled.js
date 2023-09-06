@@ -93,6 +93,13 @@ export const IconEye = styled.svg`
   height: 20px;
   position: absolute;
   bottom: 40px;
-  right: 20px;
+
   overflow: visible;
+`;
+export const WrapperIcon = styled.svg`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 40px;
+  right: 20px;
 `;
