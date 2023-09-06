@@ -20,35 +20,18 @@ import {
 import { DatePickerFormUser } from './DatePickerFormUser/DatePickerFormUser';
 import { Notify } from 'notiflix';
 
-
-// Validation block imports
-
 import { FormUserSchema } from './consts/validation/FormUserSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 
-
-
 export const FormUser = () => {
-  const { name, email, avatarURL, phone, skype, birthday } =
-    useSelector(selectUser);
+  const { name, email, avatarURL, phone, skype, birthday } = useSelector(selectUser);
 
   const dispatch = useDispatch();
 
-
-// Validation block
-
-  // useEffect(() => {
-  //   if (isError && error?.status !== 413)
-  //     notify(error?.data?.message || 'Sorry, something went wrong');
-  //   if (isError && error.status === 413) notify('The image is too large');
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isError]);
-
   const { register: reg,
-    // control,
-     handleSubmit
-    //  formState: { errors, isDirty, dirtyFields },
+     handleSubmit,
+     formState: { errors }
     } = useForm({
     resolver: yupResolver(FormUserSchema),
     mode: 'onSubmit',
@@ -61,22 +44,6 @@ export const FormUser = () => {
       avatarURL: !avatarURL ? '' : avatarURL,
     },
   });
-
-  // useEffect(() => {
-  //   const checkIsDirty = () => {
-  //     if (currentAvatarUrl === userImgUrl) {
-  //       if (isDirty) setIsDisabled(false);
-  //       if (!isDirty) setIsDisabled(true);
-  //       if (isError && error?.status !== 413) setIsDisabled(true);
-  //     }
-  //   };
-
-  //   checkIsDirty();
-
-  // }, [isDirty, dirtyFields]);
-
-
-// End of validation block
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentAvatarURL, setCurrentAvatarURL] = useState(null);
@@ -103,8 +70,6 @@ export const FormUser = () => {
       formData.append('birthday', formBirthday.trim());
     if (currentAvatarURL) formData.append('avatarURL', currentAvatarURL);
 
-    console.log(formData);
-
     dispatch(updateUser(formData));
 
     Notify.success('Changes saved successfully');
@@ -119,7 +84,6 @@ export const FormUser = () => {
       <AvatarFieldFormUser
         type="file"
         userName={name}
-        // errors={errors}
         register={reg}
         avatarURL={avatarURL}
         currentAvatarURL={currentAvatarURL}
@@ -133,9 +97,9 @@ export const FormUser = () => {
             <FormField
               key={input.id}
               {...input}
-                 // errors={errors}
               register={reg}
               setIsDisabled={setIsDisabled}
+              error={errors[input.inputName]} 
             />
           ) : (
             <ControlWrapper key={input.id}>
@@ -149,7 +113,6 @@ export const FormUser = () => {
                 <DatePickerFormUser
                   setFormBirthday={setFormBirthday}
                   formBirthday={formBirthday}
-                  // errors={errors}
                   key={input.id}
                   {...input}
                 />
