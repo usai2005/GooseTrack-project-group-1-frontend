@@ -8,8 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormField } from './FormField/FormField';
 import { userAvatarInput, userFormInputs } from './consts/FormUserInputs';
 
-// import {Container} from "../../../styles/container"
-
 import sprite from '../../../images/icons.svg';
 import { AvatarFieldFormUser } from './AvatarFieldFormUser/AvatarFieldFormUser';
 import {
@@ -54,7 +52,6 @@ export const FormUser = () => {
   }, [birthday]);
 
   const onSubmit = async data => {
-    // const preparedBirthday = formBirthday === '' ? formBirthday : formBirthday;
     const preparedEmail = data.email === '' ? email : data.email;
     const preparedPhone = data.phone === '' ? ' ' : data.phone;
     const preparedSkype = data.skype === '' ? '' : data.skype;
@@ -104,10 +101,11 @@ export const FormUser = () => {
           ) : (
             <ControlWrapper key={input.id}>
               <DatePickerFormUserWrapper>
-                <Label>Birthday
-                <DatePickerChevronDown>
-                  <use href={`${sprite}#icon-chevron-down`} />
-                </DatePickerChevronDown>
+                <Label>
+                  Birthday
+                  <DatePickerChevronDown>
+                    <use href={`${sprite}#icon-chevron-down`} />
+                  </DatePickerChevronDown>
                 </Label>
                 <DatePickerFormUser
                   setFormBirthday={setFormBirthday}

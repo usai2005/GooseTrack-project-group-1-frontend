@@ -8,9 +8,6 @@ export const InputFieldThumb = styled.div`
   width: 299px;
   height: 64px;
 
-  &:not(:last-child) {
-    margin-bottom: 18px;
-  }
 
   @media screen and (min-width: 768px) {
     width: 354px;
@@ -61,8 +58,7 @@ export const Input = styled.input`
   &::placeholder {
     /* font-size: 16px;
     line-height: 18px; */
-    color: 'inherit'; //should think about placeholder color
-  }
+    color: 'inherit'; 
 
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;

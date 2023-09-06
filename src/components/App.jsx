@@ -25,13 +25,16 @@ const StatisticPage = lazy(() => import('../pages/StatisticsPage/StatisticsPage'
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
+  const token = useSelector((state) => state.auth.token);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
+    if (token) {
+      dispatch(currentUser());
+    }
+  }, [dispatch, token]);
 
   return isRefreshing ? (
     <Loader />
