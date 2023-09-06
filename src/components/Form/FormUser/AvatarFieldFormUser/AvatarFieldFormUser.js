@@ -17,8 +17,9 @@ export const AvatarFieldFormUser = ({
   avatarURL,
   currentAvatarURL,
   setCurrentAvatarURL,
-  setIsDisabled,
+  // setIsDisabled,
   register,
+  setValue,
 }) => {
   return (
     <UserAvatarWrapper>
@@ -42,7 +43,8 @@ export const AvatarFieldFormUser = ({
         accept="image/*"
         onChange={e => {
           setCurrentAvatarURL(e.target.files[0]);
-          setIsDisabled(false);
+          setValue(inputName, e.target.files[0], { shouldDirty: true });
+          // setIsFormDirty(true);
         }}
       />
       <p>
