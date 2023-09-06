@@ -212,7 +212,6 @@ export const EditIcon = styled.svg`
 `;
 
 export const CancelButton = styled.button`
-  /* display: flex; */
   width: 118px;
   height: 42px;
   padding: 10px 20px;
