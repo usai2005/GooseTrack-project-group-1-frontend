@@ -11,7 +11,9 @@ export const FeedbackButton = styled.button`
 
   border: none;
   border-radius: 10px;
-  background-color: #3e85f3;
+  background-color: ${props => props.theme.variable.buttonBg};
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   color: #ffffff;
   text-align: center;
@@ -32,6 +34,8 @@ export const FeedbackButton = styled.button`
     }
 
     &:hover {
-        background-color: #2B78EF;
+        background-color: ${props => props.theme.variable.btnColorActive};
+
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 `;

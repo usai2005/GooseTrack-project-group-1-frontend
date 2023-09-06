@@ -64,6 +64,8 @@ export const ItemLink = styled(NavLink)`
       ? props.theme.variable.bgReversLabel
     : props.theme.variable.btnNavText};
 
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     background-color: ${props => props.theme.variable.btnNav};
 
@@ -80,6 +82,8 @@ export const ItemLink = styled(NavLink)`
         ? props.theme.variable.btnDisActive
         : props.theme.variable.gooseColor};
     // color: #3e85f3;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.is-active {

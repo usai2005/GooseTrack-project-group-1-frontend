@@ -97,7 +97,6 @@ export const TaskForm = ({ category, task, onClose }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          // console.log(error.message);
         });
     } else {
       Notify.success('Task has been successfully created.');
@@ -110,7 +109,6 @@ export const TaskForm = ({ category, task, onClose }) => {
         })
         .catch(error => {
           Notify.failure('Something went wrong.');
-          // console.log(error.message);
         });
     }
   };
