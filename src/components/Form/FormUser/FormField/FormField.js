@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 
 // import { ErrorMessage } from '@hookform/error-message';
-// import {StyledErrorMessage} from '../consts/styledErrorMessage.styled'
+import {StyledErrorMessage} from '../consts/styledErrorMessage.styled'
 
 import { Label, Input, InputFieldThumb } from './FormField.styled';
 
@@ -33,7 +33,7 @@ export const FormField = ({
             placeholder={placeholder}
             {...register(inputName)}
             onChange={e => {
-              console.log('e.target.value', e.target.value);
+              // console.log('e.target.value', e.target.value);
               setValue(inputName, e.target.value, { shouldDirty: true });
               // setIsDisabled(false);
             }}
@@ -53,12 +53,9 @@ export const FormField = ({
             }}
           />
         )}
+        {error && <StyledErrorMessage>{error.message}</StyledErrorMessage>}
       </InputFieldThumb>
-      {error && <p style={{ color: 'red' }}>{error.message}</p>}
-
-      {/* <StyledErrorMessage>
-        <ErrorMessage errors={errors} name={inputName} />
-      </StyledErrorMessage> */}
+      
     </>
   );
 };
