@@ -1,9 +1,16 @@
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+// import { ErrorMessage } from '@hookform/error-message';
+// import { StyledErrorMessage } from '../consts/styledErrorMessage.styled';
+
+
 import { format, subYears, parse } from 'date-fns';
 
-export const DatePickerFormUser = ({ setFormBirthday, formBirthday }) => {
+export const DatePickerFormUser = ({ setFormBirthday, formBirthday, 
+  // inputName,
+  // errors
+}) => {
   return (
     <>
       <ReactDatePicker
@@ -18,6 +25,9 @@ export const DatePickerFormUser = ({ setFormBirthday, formBirthday }) => {
           setFormBirthday(format(value, 'yyyy-MM-dd'));
         }}
       />
+       {/* <StyledErrorMessage>
+        <ErrorMessage errors={errors} name={inputName} />
+      </StyledErrorMessage> */}
     </>
   );
 };
