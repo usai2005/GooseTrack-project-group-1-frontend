@@ -13,8 +13,10 @@ export const FormField = ({
   placeholder,
   label,
   register,
-  setIsDisabled,
+  // setIsDisabled,
   error,
+  setValue,
+  // setIsFormDirty,
 }) => {
   const isPhoneField = inputName === 'phone';
 
@@ -30,13 +32,13 @@ export const FormField = ({
             type="tel"
             placeholder={placeholder}
             {...register(inputName)}
-            onChange={() => {
-              setIsDisabled(false);
+            onChange={e => {
+              console.log('e.target.value', e.target.value);
+              setValue(inputName, e.target.value, { shouldDirty: true });
+              // setIsDisabled(false);
             }}
           >
-            {(inputProps) => (
-              <Input {...inputProps} />
-            )}
+            {inputProps => <Input {...inputProps} />}
           </InputMask>
         ) : (
           <Input
@@ -44,15 +46,15 @@ export const FormField = ({
             type={type}
             placeholder={placeholder}
             {...register(inputName)}
-            onChange={() => {
-              setIsDisabled(false);
+            onChange={e => {
+              setValue(inputName, e.target.value, { shouldDirty: true });
+              // setIsFormDirty(true);
+              // setIsDisabled(false);
             }}
           />
         )}
       </InputFieldThumb>
-      {error && (
-        <p style={{ color: 'red' }}>{error.message}</p>
-      )}
+      {error && <p style={{ color: 'red' }}>{error.message}</p>}
 
       {/* <StyledErrorMessage>
         <ErrorMessage errors={errors} name={inputName} />
@@ -61,7 +63,6 @@ export const FormField = ({
   );
 };
 
-
 FormField.propTypes = {
   id: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
@@ -69,5 +70,5 @@ FormField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-  error: PropTypes.any.isRequired,
+  error: PropTypes.any,
 };

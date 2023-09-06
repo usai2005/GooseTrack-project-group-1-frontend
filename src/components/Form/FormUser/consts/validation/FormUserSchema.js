@@ -31,6 +31,8 @@ export const FormUserSchema = Yup.object().shape({
     .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
     .required('Email is required field'),
   phone: Yup.string()
+    .min(13, 'The phone number must be in format: +38 (000) 111-2345')
+    .max(20, 'The phone number must be in format: +38 (000) 111-2345')
     .required(
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
     )
@@ -48,7 +50,7 @@ export const FormUserSchema = Yup.object().shape({
         return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
-    // avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
-    //   return value === '' || isValidFileType(value);
-    // }),
+  // avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
+  //   return value === '' || isValidFileType(value);
+  // }),
 });
