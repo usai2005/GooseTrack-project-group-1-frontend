@@ -12,8 +12,7 @@ export const ModalWrapper = styled.div`
   right: 50;
 
   width: 115px;
-  background-color: ${props => props.theme.variable.bgCalendar};
-  /* transition: ${props => props.theme.defaultTransition}; */
+  background-color: ${props => props.theme.variable.bgColorTaskModal};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   z-index: 1;
@@ -61,9 +60,9 @@ export const ControModalBtn = styled.button`
   font-family: 'InterNormal', sans-serif;
   font-size: 12px;
   line-height: 1.17;
-  /* color: ${props => props.theme.mainTextColor}; */
+  color: ${props => props.theme.variable.calendarTextColor};
   width: 100%;
-  background-color: white;
+  background-color: ${props => props.theme.variable.bgColorTaskModal};
   border: 0;
   cursor: pointer;
   fill: none;
@@ -93,25 +92,3 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100vh;
 `;
-
-// export const ControModalBtn = styled.button`
-// font-size: 12px;
-//   padding: 0;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   border: none;
-//   fill: none;
-//   cursor: pointer;
-//   background-color: ${props => props.theme.variable.bgCalendar};
-
-//   & svg {
-//     background-color: ${props => props.theme.variable.bgCalendar};
-//   }
-
-//   stroke: ${props => props.theme.variable.arrowIconColor};
-//   &:hover,
-//   &:focus {
-//     stroke: #3e85f3;
-//   }
-// `;
