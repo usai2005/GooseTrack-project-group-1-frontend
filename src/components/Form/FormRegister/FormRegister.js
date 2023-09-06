@@ -45,7 +45,6 @@ function FormRegister() {
   const [passwordType, setPasswordType] = useState('password');
 
   const dispatch = useDispatch();
-
   return (
     <Formik
       initialValues={{
