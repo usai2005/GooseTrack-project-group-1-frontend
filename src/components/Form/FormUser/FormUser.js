@@ -138,7 +138,7 @@ export const FormUser = () => {
       </FormBody>
       <FormUserButton
         type="submit"
-        // function="save"
+        function="save"
         disabled={!isDirty || !isValid}
       >
         Save changes

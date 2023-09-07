@@ -3,16 +3,14 @@ import styled from 'styled-components';
 export const ContainerHeader = styled.div`
   display: flex;
   align-items: center;
-  padding: 24px 20px 0px 20px;
-  margin-bottom: 22px;
+  padding: 24px 20px 95px 20px;
 
   @media screen and (min-width: 768px) {
-    padding: 24px 32px 0px 32px;
+    padding: 24px 32px 64px 32px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 40px 32px 0px 32px;
-    margin-bottom: 32px;
+    padding: 40px 32px 32px 32px;
   }
 `;
 
@@ -58,6 +56,7 @@ export const ImgHeaderDay = styled.img`
     overflow: hidden;
   }
 `;
+
 
 export const PageTitle = styled.h1`
   color: ${props => props.theme.variable.headerText};

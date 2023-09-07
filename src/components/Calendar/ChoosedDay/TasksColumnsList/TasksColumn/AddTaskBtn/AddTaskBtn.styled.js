@@ -13,7 +13,6 @@ export const Button = styled.button`
   text-align: center;
   font-size: 14px;
   font-family: InterSemiBold;
-  margin-top: auto;
   color: ${props => props.theme.variable.text};
 
   background-color: ${props => props.theme.variable.btnNav};
