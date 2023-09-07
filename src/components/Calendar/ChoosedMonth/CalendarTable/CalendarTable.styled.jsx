@@ -27,8 +27,8 @@ export const WeekContainer = styled.ul`
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
-  border: ${({ $isOverdue, theme }) =>
-    $isOverdue ? '' : theme.variable.borderColorCalendar};
+  border: ${({ isOverdue, theme }) =>
+    isOverdue ? '' : theme.variable.borderColorCalendar};
   cursor: pointer;
   transition: border 250ms linear;
   &:hover,
@@ -131,14 +131,6 @@ export const TaskItem = styled.li`
   font-size: 10px;
   font-weight: 700;
   line-height: calc(10 / 14);
-  transition: all 250ms ease-in-out;
-
-  &:hover {
-    /* border-color: ${({ $priority, $isOverdue }) =>
-      $isOverdue ? 'grey' : priorityColor[$priority]};
-    border: red; */
-    color: #343434;
-  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

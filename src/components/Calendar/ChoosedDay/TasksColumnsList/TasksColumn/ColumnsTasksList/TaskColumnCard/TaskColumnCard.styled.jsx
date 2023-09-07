@@ -5,22 +5,11 @@ export const ContainerColumnCard = styled.div`
   width: 100%;
   padding: 14px 14px 18px;
   border-radius: 8px;
-  transition: all 250ms ease-in-out;
-
-  margin-bottom: 14px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 18px;
-  }
-
+  margin-bottom: 18px;
   background-color: ${props => props.theme.variable.primaryBg};
 
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   // bordercalendarcolor: 'rgba(220,	227,	229, 0.80)';
-
-  &:hover,
-  &:focus {
-    border-color: #3e85f3;
-  }
 `;
 
 export const TextCard = styled.div`
@@ -68,6 +57,7 @@ export const Priority = styled.p`
   border-radius: 4px;
 `;
 
+
 export const ControlBtn = styled.button`
   padding: 0;
   display: flex;
@@ -90,3 +80,4 @@ export const ControlBtn = styled.button`
     stroke: #3e85f3;
   }
 `;
+

@@ -40,10 +40,7 @@ export const FormUserSchema = Yup.object().shape({
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
     ),
   skype: Yup.string()
-    .matches(
-      /^@[a-z0-9_]{1,16}$/,
-      'Start with @ and contain only [a-z], [0-9] and _'
-    )
+    .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 3 and 16 characters')
     .max(13, 'At most 13 digits is required')
     .test(
       'Skype-validation',
