@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 
-// import { ErrorMessage } from '@hookform/error-message';
-import {StyledErrorMessage} from '../consts/styledErrorMessage.styled'
+import { StyledErrorMessage } from '../consts/styledErrorMessage.styled';
 
 import { Label, Input, InputFieldThumb } from './FormField.styled';
 
@@ -13,19 +12,28 @@ export const FormField = ({
   placeholder,
   label,
   register,
-  // setIsDisabled,
   error,
   setValue,
-  // setIsFormDirty,
 }) => {
   const isPhoneField = inputName === 'phone';
+
 
   return (
     <>
       <InputFieldThumb>
-        <Label htmlFor={id}>{label}</Label>
+        <Label
+          htmlFor={id}
+          style={{
+            color: error ? '#e74a3b' :  '',
+          }}
+        >
+          {label}
+        </Label>
         {isPhoneField ? (
           <InputMask
+            style={{
+              borderColor: error ? '#e74a3b' : '',
+            }}
             id={id}
             mask="+99 (999) 999-9999"
             maskChar="_"
@@ -33,29 +41,27 @@ export const FormField = ({
             placeholder={placeholder}
             {...register(inputName)}
             onChange={e => {
-              // console.log('e.target.value', e.target.value);
               setValue(inputName, e.target.value, { shouldDirty: true });
-              // setIsDisabled(false);
             }}
           >
             {inputProps => <Input {...inputProps} />}
           </InputMask>
         ) : (
           <Input
+            style={{
+              borderColor: error ? '#e74a3b' : '',
+            }}
             id={id}
             type={type}
             placeholder={placeholder}
             {...register(inputName)}
             onChange={e => {
               setValue(inputName, e.target.value, { shouldDirty: true });
-              // setIsFormDirty(true);
-              // setIsDisabled(false);
             }}
           />
         )}
         {error && <StyledErrorMessage>{error.message}</StyledErrorMessage>}
       </InputFieldThumb>
-      
     </>
   );
 };

@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 
-// import { isValidFileType } from './fileTypeValidation';
 import { nameRegExp, phoneRegExp } from './regExps';
 
 import moment from 'moment/moment';
@@ -50,7 +49,4 @@ export const FormUserSchema = Yup.object().shape({
         return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
-  // avatarURL: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
-  //   return value === '' || isValidFileType(value);
-  // }),
 });
