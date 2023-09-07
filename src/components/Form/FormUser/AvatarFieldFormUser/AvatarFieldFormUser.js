@@ -17,8 +17,8 @@ export const AvatarFieldFormUser = ({
   avatarURL,
   currentAvatarURL,
   setCurrentAvatarURL,
-  setIsDisabled,
   register,
+  setValue,
 }) => {
   return (
     <UserAvatarWrapper>
@@ -28,11 +28,9 @@ export const AvatarFieldFormUser = ({
         ) : avatarURL ? (
           <img src={avatarURL} alt="user_photo" />
         ) : (
-          <p>
             <DefaultAvatarSvg>
               <use href={`${sprite}#icon-user`} />
             </DefaultAvatarSvg>
-          </p>
         )}
       </Label>
       <HiddenInput
@@ -42,14 +40,12 @@ export const AvatarFieldFormUser = ({
         accept="image/*"
         onChange={e => {
           setCurrentAvatarURL(e.target.files[0]);
-          setIsDisabled(false);
+          setValue(inputName, e.target.files[0], { shouldDirty: true });
         }}
       />
-      <p>
         <PlusSvgOnAvatar>
           <use href={sprite + '#icon-plus'}></use>
         </PlusSvgOnAvatar>
-      </p>
       <InfoWrapper>
         <h3>{userName}</h3>
         <p>User</p>
