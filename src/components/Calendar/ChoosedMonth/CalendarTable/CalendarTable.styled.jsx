@@ -27,8 +27,8 @@ export const WeekContainer = styled.ul`
 export const WeekDay = styled.li`
   list-style: none;
   padding: 8px 4px;
-  border: ${({ isOverdue, theme }) =>
-    isOverdue ? '' : theme.variable.borderColorCalendar};
+  border: ${({ $isOverdue, theme }) =>
+    $isOverdue ? '' : theme.variable.borderColorCalendar};
   cursor: pointer;
   transition: border 250ms linear;
   &:hover,

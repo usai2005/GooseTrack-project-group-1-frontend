@@ -8,9 +8,11 @@ export const ContainerForm = styled.div`
   padding-right: 18px;
   padding-bottom: 10px;
 
-  min-width: 335px;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 380px;
+  min-width: 335px;
+
   border-radius: 8px;
 
   color: ${props => props.theme.variable.calendarTextColor};
@@ -28,5 +30,11 @@ export const ContainerForm = styled.div`
 
   @media screen and (min-width: 1440px) {
     min-width: 344px;
+    height: 495px;
+  }
+
+  & ul {
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
   }
 `;

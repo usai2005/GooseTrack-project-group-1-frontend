@@ -1,4 +1,5 @@
 import { format, startOfWeek, addDays, parse, isSameDay } from 'date-fns';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   WeekNamesContainer,
@@ -33,7 +34,7 @@ export const DayCalendarHead = () => {
   const weekStartDate = startOfWeek(today, { weekStartsOn: 1 });
 
   const weekDays = [];
-  const isShort = window.innerWidth < 767;
+  const isShort = useMediaQuery({ query: '(max-width: 767px)' });
 
   for (let day = 0; day < 7; day++) {
     weekDays.push(

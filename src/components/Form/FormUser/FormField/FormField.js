@@ -17,14 +17,13 @@ export const FormField = ({
 }) => {
   const isPhoneField = inputName === 'phone';
 
-
   return (
     <>
       <InputFieldThumb>
         <Label
           htmlFor={id}
           style={{
-            color: error ? '#e74a3b' :  '',
+            color: error ? '#e74a3b' : '',
           }}
         >
           {label}

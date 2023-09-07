@@ -1,4 +1,5 @@
 import { format, startOfWeek, addDays } from 'date-fns';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   WeekNames,
@@ -8,11 +9,12 @@ import {
 export const MonthCalendarHead = () => {
   const weekStartDate = startOfWeek(new Date(), { weekStartsOn: 1 });
   const weekDays = [];
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   for (let day = 0; day < 7; day++) {
     weekDays.push(
       <WeekNames key={format(addDays(weekStartDate, day), 'EE')}>
-        {window.innerWidth < 767
+        {isMobile
           ? format(addDays(weekStartDate, day), 'EEEEE')
           : format(addDays(weekStartDate, day), 'EE')}
       </WeekNames>
