@@ -108,6 +108,12 @@ export const Controls = styled.button`
   align-items: center;
   width: 36px;
   height: 34px;
+  transition: all 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #3e85f3;
+  }
   @media (max-width: 768px) {
     height: 30px;
   }

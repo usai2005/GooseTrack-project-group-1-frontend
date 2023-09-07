@@ -9,8 +9,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 35px;
+  margin-bottom: 24px;
 
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
   /* ${viewport.mob} {
     width: 287px;
     font-size: 14px;
