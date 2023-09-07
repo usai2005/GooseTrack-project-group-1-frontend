@@ -8,6 +8,7 @@ import {
 import { ContainerWeekDay, ContainerDateCell } from './DayCalendarHead.styled';
 import { useSelector } from 'react-redux';
 import { selectSelectedDate } from 'redux/date/selectors';
+import { useMediaQuery } from 'react-responsive';
 
 // Отдельный компонент для дней недели
 const WeekDay = ({ date, isShort }) => {
@@ -33,7 +34,7 @@ export const DayCalendarHead = () => {
   const weekStartDate = startOfWeek(today, { weekStartsOn: 1 });
 
   const weekDays = [];
-  const isShort = window.innerWidth < 767;
+  const isShort = useMediaQuery({ query: '(max-width: 767px)' });
 
   for (let day = 0; day < 7; day++) {
     weekDays.push(

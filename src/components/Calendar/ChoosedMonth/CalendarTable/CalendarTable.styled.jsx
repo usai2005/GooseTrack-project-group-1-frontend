@@ -30,7 +30,7 @@ export const WeekDay = styled.li`
   border: ${({ isOverdue, theme }) =>
     isOverdue ? '' : theme.variable.borderColorCalendar};
   cursor: pointer;
-  transition: border 250ms linear;
+  transition: all 250ms linear;
   &:hover,
   &:focus {
     border: 1px solid #ceeefd;
@@ -120,7 +120,13 @@ export const TaskItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  transition: all 250ms linear;
 
+  &:hover {
+    border: 1px solid
+      ${({ $priority, $isOverdue }) =>
+        $isOverdue ? 'grey' : priorityColor[$priority]};
+  }
   /* height: 14px; */
   border-radius: 8px;
   background-color: ${({ $priority, $isOverdue }) =>
