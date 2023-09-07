@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MainLayoutContainer = styled.div`
   display: flex;
 
-  height: 100vh;
+  min-height: 100vh;
 
   background-color: ${props => props.theme.variable.primaryBg};
   /* background: #f7f6f9; */
