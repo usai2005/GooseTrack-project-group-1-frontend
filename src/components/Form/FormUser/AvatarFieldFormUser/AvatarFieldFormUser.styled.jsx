@@ -20,21 +20,19 @@ export const PlusSvgOnAvatar = styled.svg`
   width: 12px;
   height: 12px;
 
-  top: -42px;
 
-  right: -92px;
+  top: -18px;
+  right: -24px;
+
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
     width: 1.5rem;
     height: 1.5rem;
 
-    top: -61px;
-    right: -97px;
     pointer-events: none;
 
     @media screen and (min-width: 1440px) {
-      top: -61px;
       pointer-events: none;
     }
   }
@@ -43,7 +41,7 @@ export const PlusSvgOnAvatar = styled.svg`
   }
 
   @media (max-width: 768px) {
-    top: -32px;
+    top: -14px;
     right: -14px;
   }
 `;
@@ -107,6 +105,7 @@ export const HiddenInput = styled.input`
     top: -14px;
     right: -14px;
   }
+
 
   @media screen and (min-width: 768px) {
     width: 1.5rem;

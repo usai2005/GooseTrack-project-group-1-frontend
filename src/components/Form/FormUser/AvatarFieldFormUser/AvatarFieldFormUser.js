@@ -28,11 +28,9 @@ export const AvatarFieldFormUser = ({
         ) : avatarURL ? (
           <img src={avatarURL} alt="user_photo" />
         ) : (
-          <p>
             <DefaultAvatarSvg>
               <use href={`${sprite}#icon-user`} />
             </DefaultAvatarSvg>
-          </p>
         )}
       </Label>
       <HiddenInput
@@ -45,11 +43,9 @@ export const AvatarFieldFormUser = ({
           setValue(inputName, e.target.files[0], { shouldDirty: true });
         }}
       />
-      <p>
         <PlusSvgOnAvatar>
           <use href={sprite + '#icon-plus'}></use>
         </PlusSvgOnAvatar>
-      </p>
       <InfoWrapper>
         <h3>{userName}</h3>
         <p>User</p>
