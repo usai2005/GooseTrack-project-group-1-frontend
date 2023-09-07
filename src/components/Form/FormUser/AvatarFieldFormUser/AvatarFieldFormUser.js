@@ -17,7 +17,6 @@ export const AvatarFieldFormUser = ({
   avatarURL,
   currentAvatarURL,
   setCurrentAvatarURL,
-  // setIsDisabled,
   register,
   setValue,
 }) => {
@@ -44,7 +43,6 @@ export const AvatarFieldFormUser = ({
         onChange={e => {
           setCurrentAvatarURL(e.target.files[0]);
           setValue(inputName, e.target.files[0], { shouldDirty: true });
-          // setIsFormDirty(true);
         }}
       />
       <p>
