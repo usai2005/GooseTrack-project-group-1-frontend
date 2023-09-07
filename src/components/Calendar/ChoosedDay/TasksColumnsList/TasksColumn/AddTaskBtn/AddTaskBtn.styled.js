@@ -1,25 +1,22 @@
 import { styled } from 'styled-components';
-// const viewport = {
-//   mob: '@media screen and (max-width: 767px)',
-//   tab: '@media screen and (min-width: 768px)',
-//   desk: '@media screen and (min-width: 1440px)',
-// };
+
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.variable.btnBlue};
   width: 100%;
   border-radius: 8px;
   padding: 17px;
   border: 1px dashed #cae8ff;
-  border-color: ${props => props.theme.variable.activeBtnBlue};
   margin-top: 8px;
   text-align: center;
   font-size: 14px;
   font-family: InterSemiBold;
   color: ${props => props.theme.variable.text};
+
+  background-color: ${props => props.theme.variable.btnNav};
+  border-color: #3e85f3;
 
   &:active,
   &:focus,

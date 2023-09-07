@@ -8,7 +8,6 @@ const viewport = {
 
 export const Container = styled.div`
   border: solid 1px ${props => props.theme.variable.borderColor};
-  stroke: rgba(52, 52, 52, 0.5);
 
   margin-right: auto;
   margin-left: auto;
