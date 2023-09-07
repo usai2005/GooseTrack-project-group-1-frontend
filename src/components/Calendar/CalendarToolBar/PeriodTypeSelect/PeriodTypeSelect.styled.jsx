@@ -18,6 +18,7 @@ export const MonthToggle = styled.button`
   font-size: 14px;
   line-height: calc(14 / 18);
   // margin-bottom: 24px;
+  transition: all 250ms ease-in-out;
 
   &:first-of-type {
     border-top-left-radius: 8px;
@@ -29,5 +30,8 @@ export const MonthToggle = styled.button`
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-left: 1px solid rgba(62, 133, 143, 0.2);
+  }
+  &:hover {
+    color: #343434;
   }
 `;

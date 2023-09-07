@@ -19,7 +19,7 @@ export const CalendarTasks = ({
       return title.length > 3 ? title.substring(0, 3) + '...' : title;
     }
     if (!isMobile) {
-      return title.length > 7 ? title.substring(0, 7) + '...' : title;
+      return title.length > 6 ? title.substring(0, 6) + '...' : title;
     }
     return title;
   };

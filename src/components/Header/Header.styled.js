@@ -4,7 +4,7 @@ export const ContainerHeader = styled.div`
   display: flex;
   align-items: center;
   padding: 24px 20px 0px 20px;
-  margin-bottom: 64px;
+  margin-bottom: 22px;
 
   @media screen and (min-width: 768px) {
     padding: 24px 32px 0px 32px;

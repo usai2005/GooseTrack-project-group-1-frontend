@@ -10,7 +10,8 @@ export const ContainerForm = styled.div`
 
   width: 100%;
   /* height: 100%; */
-  height: 380px;
+  /* height: 390px; */
+  height: calc(100vh - 264px);
   min-width: 335px;
 
   border-radius: 8px;
@@ -21,12 +22,13 @@ export const ContainerForm = styled.div`
 
   @media screen and (min-width: 768px) {
     min-width: 344px;
+    height: calc(100vh - 250px);
   }
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-color: ${props => props.theme.variable.borderFormColor};
 
-  min-height: 165px;
+  /* min-height: 165px; */
 
   @media screen and (min-width: 1440px) {
     min-width: 344px;
