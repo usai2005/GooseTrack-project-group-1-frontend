@@ -79,7 +79,7 @@ export const FormUser = () => {
     if (birthday !== formBirthday)
       formData.append('birthday', formBirthday.trim());
     if (currentAvatarURL) formData.append('avatarURL', currentAvatarURL);
-    console.log('formData', formData);
+    // console.log('formData', formData);
     dispatch(updateUser(formData));
 
     Notify.success('Changes saved successfully');

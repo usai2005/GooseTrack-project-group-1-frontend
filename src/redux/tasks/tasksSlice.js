@@ -1,5 +1,5 @@
 import { logOut } from 'redux/auth/operations';
-import { handleFulfilled, handlePending, handleRejected } from './handlers';
+import { handleFulfilled, handleMonthFulfilled, handlePending, handleRejected } from './handlers';
 
 const { createSlice } = require('@reduxjs/toolkit');
 const {
@@ -25,7 +25,7 @@ const tasksSlice = createSlice({
       .addCase(getAllTasks.fulfilled, handleFulfilled)
       .addCase(getAllTasks.rejected, handleRejected)
       .addCase(fetchTasks.pending, handlePending)
-      .addCase(fetchTasks.fulfilled, handleFulfilled)
+      .addCase(fetchTasks.fulfilled, handleMonthFulfilled)
       .addCase(fetchTasks.rejected, handleRejected)
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, { payload }) => {

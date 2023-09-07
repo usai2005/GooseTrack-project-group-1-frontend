@@ -59,8 +59,10 @@ export const Input = styled.input`
     /* font-size: 16px;
     line-height: 18px; */
     color: 'inherit'; 
-
+  }
+  
   &[type='time']::-webkit-calendar-picker-indicator {
     background: none;
   }
+
 `;
