@@ -7,7 +7,6 @@ export const ContainerColumnCard = styled.div`
   border-radius: 8px;
   margin-bottom: 18px;
   background-color: ${props => props.theme.variable.primaryBg};
-
   border: ${props => props.theme.variable.borderColorWeekCalendar};
   // bordercalendarcolor: 'rgba(220,	227,	229, 0.80)';
 `;
@@ -57,7 +56,6 @@ export const Priority = styled.p`
   border-radius: 4px;
 `;
 
-
 export const ControlBtn = styled.button`
   padding: 0;
   display: flex;
@@ -80,4 +78,3 @@ export const ControlBtn = styled.button`
     stroke: #3e85f3;
   }
 `;
-
