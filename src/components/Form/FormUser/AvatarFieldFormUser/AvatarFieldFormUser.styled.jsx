@@ -5,7 +5,6 @@ export const DefaultAvatarSvg = styled.svg`
   display: inline-block;
   width: 100%;
   height: 100%;
-  // padding: 20px;
 `;
 
 export const PlusSvgOnAvatar = styled.svg`
@@ -21,35 +20,28 @@ export const PlusSvgOnAvatar = styled.svg`
   width: 12px;
   height: 12px;
 
-  top: -42px;
-
- // right: -24px;
-  right: -92px;
+  top: -18px;
+  right: -24px;
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
     width: 1.5rem;
-    height: 1.5rem;    
+    height: 1.5rem;
 
-
-    top: -61px;
-    right: -97px;
     pointer-events: none;
 
     @media screen and (min-width: 1440px) {
-      top: -61px;
       pointer-events: none;
     }
-
   }
   @media (min-width: 1440px) {
     pointer-events: none;
   }
 
   @media (max-width: 768px) {
-    top: -32px;
+    top: -14px;
     right: -14px;
-  } 
+  }
 `;
 
 export const UserAvatarWrapper = styled.div`
@@ -59,7 +51,7 @@ export const UserAvatarWrapper = styled.div`
 
   @media (max-width: 768px) {
     top: -31px;
-
+  }
 `;
 
 export const Label = styled.label`  
@@ -115,20 +107,6 @@ export const HiddenInput = styled.input`
     top: -14px;
     right: -14px;
   }
-
-  // :before {
-  //   position: absolute;
-  //   content: '+';
-
-  //   width: 14px;
-  //   height: 14px;
-
-  //   font-size: 0.9375rem;
-  //   line-height: 0.8125rem;
-
-  //   /* color: ; */
-  //   background-color: #3e85f3;
-  // }
 
 
   @media screen and (min-width: 768px) {
